@@ -23,19 +23,17 @@ class Character extends Component {
   constructor(props) {
     super(props);
 
-    const template = this.props._readTemplate();
+    this.template = this.props._readTemplate();
     this.state = {
       showCam: false,
       characterName: '',
       descTrans: '',
       pictureUri: '',
-      language: template.languages.teacher
+      language: this.template.languages.teacher
     };
 
-    this._next = this._next.bind(this);
     this._handleChangeName = this._handleChangeName.bind(this);
     this._handleChangeTrans = this._handleChangeTrans.bind(this);
-    this._toggleCam = this._toggleCam.bind(this);
     this._setImage = this._setImage.bind(this);
     this._removeImage = this._removeImage.bind(this);
   }
@@ -149,6 +147,8 @@ class People extends Component {
             _toggleCam={this._toggleCam}
             pictureUri={this.state.pictureUri}/>
         </Modal>
+        <Character
+          _readTemplate={this.props._readTemplate} />
         <ContinueButton
           enabled={ (this.state.characterName && this.state.descTrans && this.state.pictureUri) }
           label='Dialogue'
