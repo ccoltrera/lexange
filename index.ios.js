@@ -23,7 +23,7 @@ var template = {
       descTrans: '',
       name: '',
       photoUri: ''
-    }
+    },
   ],
   dialogue: [
     {
@@ -45,7 +45,7 @@ class lexchange extends Component {
 
   _updateTemplate(updateQuery) {
     template = update(template, updateQuery);
-    console.log(template)
+    // console.log(template)
   }
 
   _readTemplate() {

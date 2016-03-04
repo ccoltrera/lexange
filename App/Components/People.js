@@ -34,7 +34,6 @@ class People extends Component {
   }
 
   _toggleCam(_setImage) {
-    console.log(arguments)
     this.setState({
       _setImage: _setImage,
       showCam: !this.state.showCam
@@ -49,10 +48,21 @@ class People extends Component {
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate
       }
-    })
+    });
   }
 
   render() {
+    var characters = [];
+    for (let i = 0; i < this.template.characters.length; i++) {
+      characters.push(
+        <Character
+          key={'character' + i}
+          num={i}
+          _updateTemplate={this.props._updateTemplate}
+          _readTemplate={this.props._readTemplate}
+          _toggleCam={this._toggleCam} />
+      )
+    }
 
     return (
       <View style={styles.container}>
@@ -66,11 +76,7 @@ class People extends Component {
             _toggleCam={this._toggleCam}
             pictureUri={this.state.pictureUri}/>
         </Modal>
-        <Character
-          num={0}
-          _updateTemplate={this.props._updateTemplate}
-          _readTemplate={this.props._readTemplate}
-          _toggleCam={this._toggleCam} />
+        {characters}
         <ContinueButton
           enabled={ (false) }
           label='Dialogue'
