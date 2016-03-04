@@ -19,10 +19,11 @@ class Character extends Component {
     super(props);
 
     this.template = this.props._readTemplate();
+
     this.state = {
-      name: '',
-      descTrans: '',
-      pictureUri: '',
+      name: this.template.characters[this.props.num].name,
+      descTrans: this.template.characters[this.props.num].descTrans,
+      pictureUri: this.template.characters[this.props.num].pictureUri,
     };
 
     this._handleChangeName = _handleChange.bind(
