@@ -31,8 +31,8 @@ class Languages extends Component {
   }
 
   _next() {
-    this.props.navigator.push({
-      title: 'People',
+    this.props.toRoute({
+      name: 'People',
       component: People,
       passProps: {
         _readTemplate: this.props._readTemplate,
@@ -45,27 +45,31 @@ class Languages extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>Language You Are Teaching:</Text>
-        <TextInput
-          autoCorrect={false}
-          returnKeyType='done'
-          style={styles.textInput}
-          value={this.state.teacher}
-          onChange={this._handleChangeTeacher}
-          placeholder='Your language'
-          />
-        <Text>Language Your Students Speak:</Text>
-        <TextInput
-          autoCorrect={false}
-          returnKeyType='done'
-          style={styles.textInput}
-          value={this.state.student}
-          onChange={this._handleChangeStudent}
-          placeholder="Student's language"
-          />
+        <Text style={styles.labelText}>LANGUAGE YOU ARE TEACHING:</Text>
+        <View style={styles.backBox}>
+          <TextInput
+            autoCorrect={false}
+            returnKeyType='done'
+            style={styles.textInput}
+            value={this.state.teacher}
+            onChange={this._handleChangeTeacher}
+            placeholder='Your language'
+            />
+        </View>
+        <Text style={styles.labelText}>LANGUAGE YOUR STUDENTS SPEAK:</Text>
+        <View style={styles.backBox}>
+          <TextInput
+            autoCorrect={false}
+            returnKeyType='done'
+            style={styles.textInput}
+            value={this.state.student}
+            onChange={this._handleChangeStudent}
+            placeholder="Student's language"
+            />
+        </View>
         <ContinueButton
-          enabled={ (this.state.teacher && this.state.student) }
-          label='Dialogue'
+          enabled={ /*(this.state.teacher && this.state.student)*/ true }
+          label='People'
           _next={this._next}
         />
       </View>
@@ -77,35 +81,37 @@ class Languages extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-    marginTop: 65,
     flexDirection: 'column',
-    backgroundColor: '#169FAD'
+    backgroundColor: '#FDFDF1',
+    paddingTop: 10
+  },
+  labelText: {
+    fontFamily: 'helvetica',
+    fontWeight: '100',
+    fontSize: 14,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 16,
+  },
+  backBox: {
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 26,
+    paddingRight: 26,
+    borderWidth: 1,
+    borderColor: '#C8C7CC'
   },
   textInput: {
-    height: 50,
-    padding: 4,
-    marginRight: 5,
-    marginBottom: 5,
-    fontSize: 20,
+    height: 30,
+    paddingLeft: 10,
+    fontSize: 16,
     borderWidth: 1,
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderRadius: 8,
-    color: '#FFFFFF'
-  },
-  button: {
-    height: 40,
-    marginTop: 5,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 100,
-    justifyContent: 'center'
-  },
-  buttonGroup: {
-    flex: 1,
-    flexDirection: 'column'
-  },
+    color: '#000000'
+  }
 });
 
 export default Languages;

@@ -8,6 +8,7 @@ import React, {
 } from 'react-native';
 
 import update from 'react-addons-update';
+import Router from 'react-native-simple-router';
 
 import Languages from './App/Components/Languages';
 import Cam from './App/Components/Cam';
@@ -54,10 +55,10 @@ class lexchange extends Component {
 
   render() {
     return (
-      <NavigatorIOS
-        style={styles.container}
-        initialRoute={{
-          title: 'Languages',
+      <Router
+        headerStyle={styles.header}
+        firstRoute={{
+          name: 'Languages',
           component: Languages,
           passProps: {
             _readTemplate: this._readTemplate,
@@ -77,9 +78,8 @@ class lexchange extends Component {
 // }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#111111'
+  header: {
+    backgroundColor: '#169FAD'
   }
 });
 

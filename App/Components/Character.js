@@ -65,8 +65,8 @@ class Character extends Component {
 
     return (
       <View>
-        <Text style={styles.desc}>{desc}: </Text>
-        <View style={styles.row}>
+        <Text style={styles.labelText}>{desc}: </Text>
+        <View style={[styles.row, styles.backBox]}>
           {cameraButton}
           <View style={styles.column}>
             <TextInput
@@ -106,24 +106,24 @@ const styles = StyleSheet.create({
   },
   textInput: {
     flex: 5,
-    height: 50,
-    padding: 4,
-    marginLeft: 5,
+    height: 30,
+    paddingLeft: 10,
+    marginTop: 5,
+    marginLeft: 10,
     marginBottom: 5,
-    fontSize: 18,
+    fontSize: 16,
     borderWidth: 1,
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderRadius: 8,
-    color: '#FFFFFF'
+    color: '#000000'
   },
   cameraButton: {
     justifyContent: 'center',
     height: 80,
     width: 80,
-    marginTop: 10,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderRadius: 10
   },
   roundedHighlight: {
@@ -133,8 +133,27 @@ const styles = StyleSheet.create({
   },
   camera: {
     fontSize: 36,
+    color: '#858E99',
     alignSelf: 'center'
-  }
+  },
+  labelText: {
+    fontFamily: 'helvetica',
+    fontWeight: '100',
+    fontSize: 14,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 16,
+  },
+  backBox: {
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 26,
+    paddingRight: 26,
+    borderWidth: 1,
+    borderColor: '#C8C7CC'
+  },
 });
 
 export default Character;

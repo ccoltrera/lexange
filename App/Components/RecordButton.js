@@ -133,10 +133,10 @@ class RecordButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    height: 20,
-    marginBottom: 10,
+    height: 30,
+    marginBottom: 5,
     backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderWidth: 1,
     borderRadius: 100,
     justifyContent: 'center'

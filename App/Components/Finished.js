@@ -73,16 +73,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 15,
-    marginTop: 65,
     flexDirection: 'column',
-    backgroundColor: '#169FAD'
+    backgroundColor: '#FDFDF1'
   },
   button: {
     flex: 1,
     height: 40,
-    marginTop: 5,
+    marginTop: 10,
     backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderWidth: 1,
     borderRadius: 100,
     justifyContent: 'center'
@@ -94,11 +93,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderRadius: 10
   },
   bubble: {
-    marginTop: 5,
+    marginTop: 10,
     backgroundColor: '#FFFFFF',
     flex: 6,
     height: 50,
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     borderRadius: 20,
-    borderColor: '#FFFFFF'
+    borderColor: '#000000'
   },
   bubbleText: {
     backgroundColor: 'rgba(255,255,255,0)',

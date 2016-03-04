@@ -12,6 +12,7 @@ import React, {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AudioRecorder} from 'react-native-audio';
 
+import ContinueButton from './ContinueButton';
 import RecordButton from './RecordButton';
 import Finished from './Finished';
 
@@ -26,8 +27,9 @@ class Main extends Component {
     }
 
     this._handleChange = this._handleChange.bind(this);
-    this._handleSubmit = this._handleSubmit.bind(this);
     this._setRecordingLength = this._setRecordingLength.bind(this);
+
+    this._next = this._next.bind(this);
   }
 
   _handleChange(event) {
@@ -36,9 +38,9 @@ class Main extends Component {
     });
   }
 
-  _handleSubmit() {
-    this.props.navigator.push({
-      title: 'Finished Lesson',
+  _next() {
+    this.props.toRoute({
+      name: 'Finished Scenario',
       component: Finished,
       passProps: {
         greeting: this.state.greeting,
@@ -57,40 +59,31 @@ class Main extends Component {
   }
 
   render() {
-    var continueButton = (this.state.greeting && this.state.recordingLength) ? (
-      <TouchableHighlight
-        style={styles.button}
-        onPress={this._handleSubmit}
-        underlayColor='white'
-        >
-        <Text style={styles.buttonText}>Finish <Icon name='caret-right' /></Text>
-      </TouchableHighlight>
-    ) : (
-      <TouchableHighlight
-        style={styles.unbutton}
-        underlayColor='white'
-        >
-        <Text style={styles.unbuttonText}>Finish <Icon name='caret-right' /></Text>
-      </TouchableHighlight>
-    )
 
     return (
       <View style={styles.container}>
-        <Text style={styles.characterName}>{this.template.characters[0].name}:</Text>
-        <View style={styles.row}>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.greeting}
-            onChange={this._handleChange}
-            placeholder='Morning greeting'
-            />
-          <RecordButton
-            AudioRecorder={AudioRecorder}
-            _setRecordingLength={this._setRecordingLength}
-            recordingLength={this.state.recordingLength}
-            />
+          <Text style={styles.labelText}>{this.template.characters[0].name}:</Text>
+        <View style={[styles.backBox, styles.row]}>
+
+            <TextInput
+              style={styles.textInput}
+              value={this.state.greeting}
+              onChange={this._handleChange}
+              placeholder='Morning greeting'
+              />
+            <RecordButton
+              AudioRecorder={AudioRecorder}
+              _setRecordingLength={this._setRecordingLength}
+              recordingLength={this.state.recordingLength}
+              style={styles.recordButton}
+              />
+
         </View>
-        {continueButton}
+          <ContinueButton
+            enabled={ /*this.state.greeting && this.state.recordingLength*/ true }
+            label='Finish'
+            _next={this._next}
+          />
       </View>
     )
   }
@@ -99,28 +92,42 @@ class Main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-    marginTop: 65,
     flexDirection: 'column',
-    backgroundColor: '#169FAD'
+    backgroundColor: '#FDFDF1'
   },
   row: {
     flexDirection: 'row'
   },
-  characterName: {
-    marginBottom: 5,
-    fontSize: 16
+  labelText: {
+    fontFamily: 'helvetica',
+    fontWeight: '100',
+    fontSize: 14,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 16,
+  },
+  backBox: {
+    backgroundColor: '#FFFFFF',
+    justifyContent: 'center',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 26,
+    paddingRight: 26,
+    borderWidth: 1,
+    borderColor: '#C8C7CC'
   },
   textInput: {
     flex: 5,
-    height: 50,
-    padding: 4,
-    marginRight: 5,
-    fontSize: 20,
+    height: 30,
+    paddingLeft: 10,
+    marginTop: 5,
+    marginRight: 10,
+    marginBottom: 5,
+    fontSize: 16,
     borderWidth: 1,
-    borderColor: '#FFFFFF',
+    borderColor: '#000000',
     borderRadius: 8,
-    color: '#FFFFFF'
+    color: '#000000'
   },
   button: {
     marginTop: 10,
@@ -151,6 +158,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'rgba(10,10,10,0.2)',
     alignSelf: 'center'
+  },
+  recordButton: {
+    flex: 1
   }
 });
 

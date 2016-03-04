@@ -43,8 +43,8 @@ class People extends Component {
   }
 
   _next() {
-    this.props.navigator.push({
-      title: 'Dialogue',
+    this.props.toRoute({
+      name: 'Dialogue',
       component: Dialogue,
       passProps: {
         _readTemplate: this.props._readTemplate,
@@ -79,7 +79,7 @@ class People extends Component {
         </Modal>
         {characters}
         <ContinueButton
-          enabled={ this.state.continue }
+          enabled={ /*this.state.continue*/ true }
           label='Dialogue'
           _next={this._next}
         />
@@ -91,10 +91,9 @@ class People extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
-    marginTop: 65,
+    paddingTop: 15,
     flexDirection: 'column',
-    backgroundColor: '#169FAD'
+    backgroundColor: '#FDFDF1'
   }
 });
 
