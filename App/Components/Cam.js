@@ -16,30 +16,49 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 class CamModal extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      newSnapUri: ''
+    }
+
+    this._retake = this._retake.bind(this);
+  }
+
+  _retake() {
+    this.setState({
+      newSnapUri: ''
+    });
   }
 
   render() {
+    var dimens = Dimensions.get('window');
 
+    var pictureOver = this.state.newSnapUri ? (
+      <View style={styles.imageContainer}>
+        <Image style={[styles.image, {height: dimens.height, width: dimens.width} ]} source={{uri: this.state.newSnapUri}} />
+      </View>
+    ) : (
+      null
+    )
 
-    return this.props.pictureURI ? (
-        <View style={styles.container}>
-          <Image style={styles.image} source={{uri: this.props.pictureURI}}></Image>
-        </View>
-      ) : (
+    return (
       <View style={styles.container}>
-        <Camera
-          ref={(cam) => {
-            this.camera = cam;
-          }}
-          captureTarget={Camera.constants.CaptureTarget.disk}
-          style={styles.preview}
-          aspect={Camera.constants.Aspect.fill}>
-          <Icon style={styles.capture} name='camera' onPress={this.takePicture.bind(this)} />
-          <TouchableHighlight
-            onPress={this.props._toggleCam} >
-            <Text style={styles.cancel} >Cancel</Text>
-          </TouchableHighlight>
-        </Camera>
+        <View style={styles.container}>
+          <Camera
+            ref={(cam) => {
+              this.camera = cam;
+            }}
+            captureTarget={Camera.constants.CaptureTarget.disk}
+            style={styles.preview}
+            aspect={Camera.constants.Aspect.fill}>
+            <Icon style={styles.capture} name='camera' onPress={this.takePicture.bind(this)} />
+            <TouchableHighlight
+              onPress={this.props._toggleCam} >
+              <Text style={styles.cancel} >Cancel</Text>
+            </TouchableHighlight>
+          </Camera>
+        </View>
+        {pictureOver}
       </View>
     );
   }
@@ -47,14 +66,20 @@ class CamModal extends Component {
   takePicture() {
     this.camera.capture()
       .then((data) => {
-        console.log(data)
-        this.props._setImage(data);
+
+        this.setState({
+          newSnapUri: data
+        });
+
         Alert.alert(
           'Use picture?',
           'You can change it later if you want.',
           [
-            {text: 'Retake', onPress: () => this.props._removeImage() },
-            {text: 'OK', onPress: () => this.props._toggleCam() },
+            {text: 'Retake', onPress: () => this._retake() },
+            {text: 'OK', onPress: () => {
+              this.props._setImage(data);
+              this.props._toggleCam()
+            } },
           ]
         )
       })
@@ -65,6 +90,11 @@ class CamModal extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1
+  },
+  imageContainer: {
+    position: 'absolute',
+    top: 0,
+    left: 0
   },
   preview: {
     flex: 1,

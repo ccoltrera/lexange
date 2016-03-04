@@ -73,8 +73,7 @@ class People extends Component {
           <Cam
             _setImage={this.state._setImage}
             _removeImage={this._removeImage}
-            _toggleCam={this._toggleCam}
-            pictureUri={this.state.pictureUri}/>
+            _toggleCam={this._toggleCam} />
         </Modal>
         {characters}
         <ContinueButton
