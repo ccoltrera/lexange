@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 65,
     flexDirection: 'column',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#169FAD'
   },
   button: {
     flex: 1,

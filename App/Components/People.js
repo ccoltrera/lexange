@@ -25,6 +25,7 @@ class People extends Component {
 
     this.template = this.props._readTemplate();
     this.state = {
+      continue: false,
       showCam: false,
       _setImage: undefined
     };
@@ -35,6 +36,7 @@ class People extends Component {
 
   _toggleCam(_setImage) {
     this.setState({
+      continue: true,
       _setImage: _setImage,
       showCam: !this.state.showCam
     });
@@ -77,7 +79,7 @@ class People extends Component {
         </Modal>
         {characters}
         <ContinueButton
-          enabled={ (false) }
+          enabled={ this.state.continue }
           label='Dialogue'
           _next={this._next}
         />
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 65,
     flexDirection: 'column',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#169FAD'
   }
 });
 

@@ -18,6 +18,8 @@ import Finished from './Finished';
 class Main extends Component {
   constructor(props) {
     super(props);
+
+    this.template = this.props._readTemplate();
     this.state = {
       recordingLength: 0.0,
       greeting: ''
@@ -43,9 +45,9 @@ class Main extends Component {
         AudioRecorder: AudioRecorder,
         recorded: true,
         recordingLength: this.state.recordingLength,
-        characterName: this.props.characterName,
-        descTrans: this.props.descTrans,
-        pictureURI: this.props.pictureURI
+        characterName: this.template.characters[0].name,
+        descTrans: this.template.characters[0].descTrans,
+        pictureURI: this.template.characters[0].pictureUri
       }
     });
   }
@@ -74,7 +76,7 @@ class Main extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.characterName}>{this.props.characterName}:</Text>
+        <Text style={styles.characterName}>{this.template.characters[0].name}:</Text>
         <View style={styles.row}>
           <TextInput
             style={styles.textInput}
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 65,
     flexDirection: 'column',
-    backgroundColor: '#48BBEC'
+    backgroundColor: '#169FAD'
   },
   row: {
     flexDirection: 'row'
