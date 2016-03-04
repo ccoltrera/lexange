@@ -8,14 +8,14 @@ function templateStringer (array, text, i, string) {
   return templateStringer(array, text, i + 1, string) + '}';
 }
 
-function _handleChange(array, event) {
+function _handleChange(stateName, array, event) {
 
-  var text = event.nativeEvent.text;
+  var text = typeof event === 'string' ? event : event.nativeEvent.text;
 
   var stateUpdate = {};
   var templateUpdate = JSON.parse( templateStringer(array, text, 0, '') );
 
-  stateUpdate[array[1]] = text;
+  stateUpdate[stateName] = text;
 
   this.setState(stateUpdate);
 

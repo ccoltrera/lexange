@@ -37,7 +37,7 @@ class ContinueButton extends Component {
       <TouchableHighlight
         style={buttonStyle}
         underlayColor='white'
-        onPress={this.props._next}
+        onPress={_next}
         >
         <Text style={textStyle}>{this.props.label} <Icon name='caret-right' /></Text>
       </TouchableHighlight>

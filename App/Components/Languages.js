@@ -22,12 +22,12 @@ class Languages extends Component {
 
     this.state = {
       teacher: this.template.languages.teacher,
-      student: this.template.languages.student,
+      student: this.template.languages.student
     }
 
     this._next = this._next.bind(this);
-    this._handleChangeTeacher = _handleChange.bind(this, ['languages', 'teacher']);
-    this._handleChangeStudent = _handleChange.bind(this, ['languages', 'student']);
+    this._handleChangeTeacher = _handleChange.bind(this, 'teacher', ['languages', 'teacher']);
+    this._handleChangeStudent = _handleChange.bind(this, 'student', ['languages', 'student']);
   }
 
   _next() {
@@ -47,6 +47,7 @@ class Languages extends Component {
       <View style={styles.container}>
         <Text>Language You Are Teaching:</Text>
         <TextInput
+          autoCorrect={false}
           returnKeyType='done'
           style={styles.textInput}
           value={this.state.teacher}
@@ -55,6 +56,7 @@ class Languages extends Component {
           />
         <Text>Language Your Students Speak:</Text>
         <TextInput
+          autoCorrect={false}
           returnKeyType='done'
           style={styles.textInput}
           value={this.state.student}

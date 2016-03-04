@@ -16,6 +16,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 class CamModal extends Component {
   constructor(props) {
     super(props);
+
+    console.log(this.props)
   }
 
   render() {
