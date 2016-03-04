@@ -1,0 +1,15 @@
+{
+  "name": "Lexchange",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start"
+  },
+  "dependencies": {
+    "react-addons-update": "^0.14.7",
+    "react-native": "^0.21.0",
+    "react-native-camera": "git+https://github.com/lwansbrough/react-native-camera.git",
+    "react-native-sound": "^0.7.3",
+    "react-native-vector-icons": "^1.2.1"
+  }
+}
