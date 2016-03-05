@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 8,
     color: '#000000'
   },
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     width: 80,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 10
   },
   roundedHighlight: {
@@ -139,9 +139,9 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '100',
-    fontSize: 14,
-    marginTop: 10,
-    marginBottom: 10,
+    fontSize: 16,
+    marginTop: 15,
+    marginBottom: 5,
     marginLeft: 16,
   },
   backBox: {

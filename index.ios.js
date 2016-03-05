@@ -20,7 +20,7 @@ var template = {
   },
   characters: [
     {
-      desc: 'Man on the street',
+      desc: 'Person on the street',
       descTrans: '',
       name: '',
       photoUri: ''

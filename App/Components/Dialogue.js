@@ -43,6 +43,8 @@ class Main extends Component {
       name: 'Finished Scenario',
       component: Finished,
       passProps: {
+        _readTemplate: this.props._readTemplate,
+        _updateTemplate: this.props._updateTemplate,
         greeting: this.state.greeting,
         AudioRecorder: AudioRecorder,
         recorded: true,
@@ -80,7 +82,10 @@ class Main extends Component {
 
         </View>
           <ContinueButton
-            enabled={ /*this.state.greeting && this.state.recordingLength*/ true }
+            enabled={
+              this.state.greeting && this.state.recordingLength
+              // true
+            }
             label='Finish'
             _next={this._next}
           />
@@ -92,6 +97,7 @@ class Main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 15,
     flexDirection: 'column',
     backgroundColor: '#FDFDF1'
   },
@@ -101,9 +107,9 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '100',
-    fontSize: 14,
-    marginTop: 10,
-    marginBottom: 10,
+    fontSize: 16,
+    marginTop: 15,
+    marginBottom: 5,
     marginLeft: 16,
   },
   backBox: {
@@ -125,39 +131,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 8,
     color: '#000000'
-  },
-  button: {
-    marginTop: 10,
-    height: 40,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#111111',
-    alignSelf: 'center'
-  },
-  unbutton: {
-    marginTop: 10,
-    height: 40,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    borderColor: 'rgba(255,255,255,0.2)',
-    borderWidth: 1,
-    borderRadius: 8,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  unbuttonText: {
-    fontSize: 18,
-    color: 'rgba(10,10,10,0.2)',
-    alignSelf: 'center'
   },
   recordButton: {
     flex: 1

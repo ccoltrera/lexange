@@ -13,6 +13,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 class Finished extends Component {
   constructor(props) {
     super(props);
+
+    this.template = this.props._readTemplate();
     this.state = {
       playing: false
     };
@@ -56,7 +58,7 @@ class Finished extends Component {
 
     return (
       <View style={styles.container}>
-        <Text>{this.props.characterName}:</Text>
+        <Text style={styles.labelText}>{this.template.characters[0].name}:</Text>
         <View style={styles.row}>
           <Image style={styles.imageHolder} source={{uri: this.props.pictureURI}} />
           <View style={styles.bubble}>
@@ -79,25 +81,33 @@ const styles = StyleSheet.create({
   button: {
     flex: 1,
     height: 40,
-    marginTop: 10,
+    marginTop: 0,
     backgroundColor: '#FFFFFF',
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderWidth: 1,
     borderRadius: 100,
     justifyContent: 'center'
+  },
+  labelText: {
+    fontFamily: 'helvetica',
+    fontWeight: '100',
+    fontSize: 16,
+    marginTop: 15,
+    marginBottom: 5,
+    marginLeft: 16,
   },
   imageHolder: {
     justifyContent: 'center',
     height: 80,
     width: 80,
-    marginTop: 10,
+    marginTop: 0,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 10
   },
   bubble: {
-    marginTop: 10,
+    marginTop: 0,
     backgroundColor: '#FFFFFF',
     flex: 6,
     height: 50,
@@ -105,12 +115,15 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginRight: 5,
     borderRadius: 20,
-    borderColor: '#000000'
+    borderColor: '#C8C7CC',
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10
   },
   bubbleText: {
     backgroundColor: 'rgba(255,255,255,0)',
-    marginLeft: 10,
-    fontSize: 18
+    fontSize: 16
   },
   row: {
     flexDirection: 'row'
@@ -121,7 +134,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#111111',
+    color: '#858E99',
     alignSelf: 'center'
   }
 });

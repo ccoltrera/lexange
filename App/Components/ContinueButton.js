@@ -41,7 +41,12 @@ class ContinueButton extends Component {
           underlayColor='white'
           onPress={_next}
           >
-          <Text style={textStyle}>{this.props.label} <Icon name='caret-right' /></Text>
+          <View style={styles.touchWrapper}>
+            <Text style={textStyle}>{this.props.label} </Text>
+            <View style={{marginLeft: 5, marginTop: 2}}>
+              <Icon name='chevron-right' style={styles.caret} />
+            </View>
+          </View>
         </TouchableHighlight>
       </View>
     )
@@ -61,6 +66,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     color: '#FFFFFF',
+    fontWeight: '500',
     alignSelf: 'center'
   },
   unbutton: {
@@ -86,6 +92,14 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     alignSelf: 'stretch',
     justifyContent: 'center'
+  },
+  touchWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  caret: {
+    fontSize: 16,
+    color: '#FFFFFF'
   }
 });
 
