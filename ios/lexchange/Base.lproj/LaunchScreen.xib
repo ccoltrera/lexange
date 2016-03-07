@@ -8,20 +8,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="launch-screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="WtY-tj-0jq">
-                    <rect key="frame" x="8" y="164" width="375" height="151"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="lexchange-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="boM-FL-Oh2">
+                    <rect key="frame" x="79" y="185" width="216" height="86"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.086274509803921567" green="0.62352941176470589" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="503" y="455"/>
+            <point key="canvasLocation" x="423.5" y="553.5"/>
         </view>
     </objects>
     <resources>
-        <image name="launch-screen.png" width="375" height="151"/>
+        <image name="lexchange-logo.png" width="216" height="86"/>
     </resources>
 </document>

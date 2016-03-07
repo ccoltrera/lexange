@@ -38,13 +38,13 @@ class ContinueButton extends Component {
       <View style={styles.backup}>
         <TouchableHighlight
           style={buttonStyle}
-          underlayColor='white'
+          underlayColor='#028B99'
           onPress={_next}
           >
           <View style={styles.touchWrapper}>
             <Text style={textStyle}>{this.props.label} </Text>
             <View style={{marginLeft: 5, marginTop: 2}}>
-              <Icon name='chevron-right' style={styles.caret} />
+              <Icon name='chevron-right' style={styles.chevron} />
             </View>
           </View>
         </TouchableHighlight>
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center'
   },
-  caret: {
+  chevron: {
     fontSize: 16,
     color: '#FFFFFF'
   }

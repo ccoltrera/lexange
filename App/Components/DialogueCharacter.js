@@ -54,11 +54,25 @@ class Character extends Component {
   render() {
 
     var cameraButton = (!this.state.pictureUri) ? (
-      <TouchableHighlight onPress={this._toggleCam} style={styles.cameraButton}>
+      <TouchableHighlight
+        onPress={this._toggleCam}
+        style={styles.cameraButton}
+        underlayColor='#EEEEEE'
+        >
         <Icon name='camera' style={styles.camera}/>
       </TouchableHighlight>
     ) : (
-      <Image style={styles.cameraButton} source={{uri: this.state.pictureUri}} onPress={this._toggleCam} />
+      <TouchableHighlight
+        onPress={this._toggleCam}
+        style={styles.cameraButton}
+        >
+        <Image
+          // style={styles.cameraButton}
+          style={styles.cameraButtonImage}
+          source={{uri: this.state.pictureUri}}
+          onPress={this._toggleCam}
+          />
+      </TouchableHighlight>
     )
 
     const desc = this.template.characters[this.props.num].desc;
@@ -124,6 +138,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC',
+    borderRadius: 10
+  },
+  cameraButtonImage: {
+    flex: 1,
     borderRadius: 10
   },
   roundedHighlight: {
