@@ -17,12 +17,9 @@ class BackButton extends Component {
   render() {
     return (
       <View style={styles.wrapper}>
-        <View style={{marginTop: 3, marginRight: 2,marginLeft: 4}}>
+        <View style={styles.chevronWrapper}>
           <Icon name='chevron-left' style={styles.chevron} />
         </View>
-        <Text style={styles.buttonText}>
-          Back
-        </Text>
       </View>
     )
   }
@@ -31,16 +28,28 @@ class BackButton extends Component {
 const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    marginLeft: 5,
+    paddingLeft: 12,
+    paddingRight: 16,
+    paddingTop: 3,
+    paddingBottom: 3,
+    borderWidth: 1.5,
+    borderRadius: 10,
+    borderColor: '#FFFFFF'
+  },
+  chevronWrapper: {
+    marginTop: 2,
+    // marginRight: 1,
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#FFFFFF',
     fontWeight: '300',
     alignSelf: 'center'
   },
   chevron: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#FFFFFF'
   }
 })
