@@ -38,7 +38,7 @@ class RecordButton extends Component {
   }
 
   componentDidMount() {
-    this.props.AudioRecorder.prepareRecordingAtPath('/test.caf')
+    this.props.AudioRecorder.prepareRecordingAtPath('/dialogue' + this.props.num + '.caf')
     this.props.AudioRecorder.onProgress = (data) => {
       this.setState({currentTime: Math.floor(data.currentTime)});
       if (this.state.currentTime >= this.props.recordingLength) {

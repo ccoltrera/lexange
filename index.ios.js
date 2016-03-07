@@ -21,7 +21,7 @@ var template = {
   },
   characters: [
     {
-      desc: 'Person on the street',
+      desc: 'Friendly stranger',
       descTrans: '',
       name: '',
       photoUri: ''
@@ -31,7 +31,7 @@ var template = {
     {
       character: 0,
       guide: 'Morning greeting',
-      trans: '',
+      diaTrans: '',
       audioUri: ''
     }
   ]

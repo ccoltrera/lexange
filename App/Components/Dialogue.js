@@ -12,8 +12,8 @@ import React, {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AudioRecorder} from 'react-native-audio';
 
+import DialogueForm from './DialogueForm';
 import ContinueButton from './ContinueButton';
-import RecordButton from './RecordButton';
 import Finished from './Finished';
 
 class Main extends Component {
@@ -45,13 +45,9 @@ class Main extends Component {
       passProps: {
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate,
-        greeting: this.state.greeting,
         AudioRecorder: AudioRecorder,
         recorded: true,
         recordingLength: this.state.recordingLength,
-        characterName: this.template.characters[0].name,
-        descTrans: this.template.characters[0].descTrans,
-        pictureURI: this.template.characters[0].pictureUri
       }
     });
   }
@@ -61,34 +57,32 @@ class Main extends Component {
   }
 
   render() {
+    var dialogue = [];
+    for (let i=0; i < this.template.dialogue.length; i++) {
+      dialogue.push(
+        <DialogueForm
+          key={'dialogue' + i}
+          num={i}
+          _updateTemplate={this.props._updateTemplate}
+          _readTemplate={this.props._readTemplate}
+          AudioRecorder={AudioRecorder}
+          _setRecordingLength={this._setRecordingLength}
+          recordingLength={this.state.recordingLength}
+        />
+      )
+    }
 
     return (
       <View style={styles.container}>
-          <Text style={styles.labelText}>{this.template.characters[0].name}:</Text>
-        <View style={[styles.backBox, styles.row]}>
-
-            <TextInput
-              style={styles.textInput}
-              value={this.state.greeting}
-              onChange={this._handleChange}
-              placeholder='Morning greeting'
-              />
-            <RecordButton
-              AudioRecorder={AudioRecorder}
-              _setRecordingLength={this._setRecordingLength}
-              recordingLength={this.state.recordingLength}
-              style={styles.recordButton}
-              />
-
-        </View>
-          <ContinueButton
-            enabled={
-              this.state.greeting && this.state.recordingLength
-              // true
-            }
-            label='Finish'
-            _next={this._next}
-          />
+        {dialogue}
+        <ContinueButton
+          enabled={
+            // this.state.greeting && this.state.recordingLength
+            true
+          }
+          label='Finish'
+          _next={this._next}
+        />
       </View>
     )
   }

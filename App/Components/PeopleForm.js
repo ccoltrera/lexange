@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import _handleChange from '../Utils/templateUtils';
 
-class Character extends Component {
+class PeopleForm extends Component {
   constructor(props) {
     super(props);
 
@@ -54,25 +54,14 @@ class Character extends Component {
   render() {
 
     var cameraButton = (!this.state.pictureUri) ? (
-      <TouchableHighlight
-        onPress={this._toggleCam}
-        style={styles.cameraButton}
-        underlayColor='#EEEEEE'
-        >
-        <Icon name='camera' style={styles.camera}/>
-      </TouchableHighlight>
+      <Icon name='camera' style={styles.camera}/>
     ) : (
-      <TouchableHighlight
+      <Image
+        // style={styles.cameraButton}
+        style={styles.cameraButtonImage}
+        source={{uri: this.state.pictureUri}}
         onPress={this._toggleCam}
-        style={styles.cameraButton}
-        >
-        <Image
-          // style={styles.cameraButton}
-          style={styles.cameraButtonImage}
-          source={{uri: this.state.pictureUri}}
-          onPress={this._toggleCam}
-          />
-      </TouchableHighlight>
+        />
     )
 
     const desc = this.template.characters[this.props.num].desc;
@@ -81,7 +70,13 @@ class Character extends Component {
       <View>
         <Text style={styles.labelText}>{desc}: </Text>
         <View style={[styles.row, styles.backBox]}>
-          {cameraButton}
+          <TouchableHighlight
+            onPress={this._toggleCam}
+            style={styles.cameraButton}
+            underlayColor='#EEEEEE'
+            >
+            {cameraButton}
+          </TouchableHighlight>
           <View style={styles.column}>
             <TextInput
               autoCorrect={false}
@@ -174,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Character;
+export default PeopleForm;

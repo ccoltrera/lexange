@@ -15,7 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Cam from './Cam';
 import Dialogue from './Dialogue';
 import ContinueButton from './ContinueButton';
-import DialogueCharacter from './DialogueCharacter';
+import PeopleForm from './PeopleForm';
 
 import _handleChange from '../Utils/templateUtils';
 
@@ -57,7 +57,7 @@ class People extends Component {
     var characters = [];
     for (let i = 0; i < this.template.characters.length; i++) {
       characters.push(
-        <DialogueCharacter
+        <PeopleForm
           key={'character' + i}
           num={i}
           _updateTemplate={this.props._updateTemplate}
@@ -80,8 +80,8 @@ class People extends Component {
         {characters}
         <ContinueButton
           enabled={
-            this.state.continue
-            // true
+            // this.state.continue
+            true
           }
           label='Dialogue'
           _next={this._next}

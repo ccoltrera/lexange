@@ -62,7 +62,7 @@ class Finished extends Component {
         <View style={styles.row}>
           <Image style={styles.imageHolder} source={{uri: this.props.pictureURI}} />
           <View style={styles.bubble}>
-            <Text style={styles.bubbleText}>{this.props.greeting}</Text>
+            <Text style={styles.bubbleText}>{this.template.dialogue[0].diaTrans}</Text>
           </View>
           {playButton}
         </View>
