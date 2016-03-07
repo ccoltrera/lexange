@@ -80,8 +80,8 @@ class People extends Component {
         {characters}
         <ContinueButton
           enabled={
-            // this.state.continue
-            true
+            this.state.continue || this.template.characters[0].pictureUri
+            // true
           }
           label='Dialogue'
           _next={this._next}

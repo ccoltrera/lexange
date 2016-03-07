@@ -46,14 +46,16 @@ class Main extends Component {
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate,
         AudioRecorder: AudioRecorder,
-        recorded: true,
+        recorded: false,
         recordingLength: this.state.recordingLength,
       }
     });
   }
 
   _setRecordingLength(length) {
-    this.setState({recordingLength: length});
+    this.setState({
+      recordingLength: length
+    });
   }
 
   render() {
@@ -77,8 +79,8 @@ class Main extends Component {
         {dialogue}
         <ContinueButton
           enabled={
-            // this.state.greeting && this.state.recordingLength
-            true
+            this.state.recordingLength
+            // true
           }
           label='Finish'
           _next={this._next}

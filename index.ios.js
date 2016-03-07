@@ -24,7 +24,7 @@ var template = {
       desc: 'Friendly stranger',
       descTrans: '',
       name: '',
-      photoUri: ''
+      pictureUri: ''
     },
   ],
   dialogue: [

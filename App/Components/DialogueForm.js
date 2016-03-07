@@ -19,7 +19,7 @@ class DialogueForm extends Component {
     this.state = {
       diaTrans: this.template.dialogue[this.props.num].diaTrans,
       audioUri: this.template.dialogue[this.props.num].audioUri
-    }
+    };
 
     this._handleChangeTrans = _handleChange.bind(
       this,
@@ -27,8 +27,8 @@ class DialogueForm extends Component {
       ['dialogue', this.props.num, 'diaTrans']
     );
 
-    this.characterNum = this.template.dialogue[this.props.num].character
-    this.character = this.template.characters[this.characterNum]
+    this.characterNum = this.template.dialogue[this.props.num].character;
+    this.character = this.template.characters[this.characterNum];
 
   }
 
