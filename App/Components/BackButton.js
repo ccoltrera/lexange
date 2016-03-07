@@ -29,17 +29,17 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginLeft: 5,
-    paddingLeft: 12,
-    paddingRight: 16,
-    paddingTop: 3,
-    paddingBottom: 3,
+    marginLeft: 4.5,
+    paddingLeft: 17,
+    paddingRight: 20,
+    paddingTop: 6,
+    paddingBottom: 5,
     borderWidth: 1.5,
     borderRadius: 10,
     borderColor: '#FFFFFF'
   },
   chevronWrapper: {
-    marginTop: 2,
+    // marginTop: 2,
     // marginRight: 1,
   },
   buttonText: {
