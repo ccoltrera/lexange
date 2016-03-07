@@ -27,12 +27,15 @@ class DialogueForm extends Component {
       ['dialogue', this.props.num, 'diaTrans']
     );
 
+    this.characterNum = this.template.dialogue[this.props.num].character
+    this.character = this.template.characters[this.characterNum]
+
   }
 
   render() {
     return(
       <View>
-        <Text style={styles.labelText}>{this.template.characters[this.props.num].name}:</Text>
+        <Text style={styles.labelText}>{this.character.name}:</Text>
         <View style={[styles.backBox, styles.row]}>
             <TextInput
               autoCorrect={false}

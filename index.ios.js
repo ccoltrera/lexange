@@ -33,7 +33,7 @@ var template = {
       guide: 'Morning greeting',
       diaTrans: '',
       audioUri: ''
-    }
+    },
   ]
 }
 
