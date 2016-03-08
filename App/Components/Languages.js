@@ -69,8 +69,8 @@ class Languages extends Component {
         </View>
         <ContinueButton
           enabled={
-            (this.state.teacher && this.state.student)
-            // true
+            // (this.state.teacher && this.state.student)
+            true
           }
           label='People'
           _next={this._next}

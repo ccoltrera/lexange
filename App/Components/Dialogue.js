@@ -79,8 +79,8 @@ class Main extends Component {
         {dialogue}
         <ContinueButton
           enabled={
-            this.state.recordingLength
-            // true
+            // this.state.recordingLength
+            true
           }
           label='Finish'
           _next={this._next}
