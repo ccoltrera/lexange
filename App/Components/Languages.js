@@ -68,7 +68,10 @@ class Languages extends Component {
             />
         </View>
         <ContinueButton
-          enabled={ /*(this.state.teacher && this.state.student)*/ true }
+          enabled={
+            (this.state.teacher && this.state.student)
+            // true
+          }
           label='People'
           _next={this._next}
         />
@@ -89,8 +92,8 @@ const styles = StyleSheet.create({
     fontFamily: 'helvetica',
     fontWeight: '100',
     fontSize: 14,
-    marginTop: 10,
-    marginBottom: 10,
+    marginTop: 15,
+    marginBottom: 5,
     marginLeft: 16,
   },
   backBox: {
@@ -108,7 +111,7 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 8,
     color: '#000000'
   }

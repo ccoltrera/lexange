@@ -1,67 +1,27 @@
 'use strict';
 import React, {
-  Text,
-  View,
   Component,
+  View,
   StyleSheet,
-  TouchableHighlight,
   Image
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import DialogueItem from './DialogueItem';
-
-class Finished extends Component {
+class DialogueItem extends Component {
   constructor(props) {
     super(props);
 
     this.template = this.props._readTemplate();
-    this.state = {
-      playing: false
-    };
 
-    this._play = this._play.bind(this);
-    this._stop = this._stop.bind(this);
-  }
-
-  _play() {
-    this.props.AudioRecorder.playRecording();
-    this.setState({playing: true});
-
-  }
-
-  _stop() {
-    if (this.state.playing) {
-      this.props.AudioRecorder.stopPlaying();
-      this.setState({playing: false});
-    }
+    this.dialogue = this.template.dialogue[this.props.num];
+    this.character = this.template.characters[this.dialogue.character];
   }
 
   render() {
-    var playIcon = this.state.playing ? 'stop' : 'volume-up';
-
-    var playButton = this.props.recordingLength ? (
-      <TouchableHighlight
-        style={styles.button}
-        onPress={this._play}
-        underlayColor='#EEEEEE'
-        >
-        <Icon name={playIcon} style={styles.buttonText} />
-      </TouchableHighlight>
-    ) : (
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor='#EEEEEE'
-        >
-        <Icon name='volume-off' style={styles.buttonText} />
-      </TouchableHighlight>
-    )
-
     return (
-      <View style={styles.container}>
+      <View>
         <Text style={styles.labelText}>{this.template.characters[0].name}:</Text>
         <View style={styles.row}>
-          <Image style={styles.imageHolder} source={{uri: this.template.characters[0].pictureUri}} />
+          <Image style={styles.imageHolder} source={{uri: this.props.pictureURI}} />
           <View style={styles.bubble}>
             <Text style={styles.bubbleText}>{this.template.dialogue[0].diaTrans}</Text>
           </View>
@@ -70,6 +30,7 @@ class Finished extends Component {
       </View>
     )
   }
+
 }
 
 const styles = StyleSheet.create({
@@ -140,4 +101,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default Finished;
+export default DialogueItem;

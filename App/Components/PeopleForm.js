@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import _handleChange from '../Utils/templateUtils';
 
-class Character extends Component {
+class PeopleForm extends Component {
   constructor(props) {
     super(props);
 
@@ -54,11 +54,14 @@ class Character extends Component {
   render() {
 
     var cameraButton = (!this.state.pictureUri) ? (
-      <TouchableHighlight onPress={this._toggleCam} style={styles.cameraButton}>
-        <Icon name='camera' style={styles.camera}/>
-      </TouchableHighlight>
+      <Icon name='camera' style={styles.camera}/>
     ) : (
-      <Image style={styles.cameraButton} source={{uri: this.state.pictureUri}} onPress={this._toggleCam} />
+      <Image
+        // style={styles.cameraButton}
+        style={styles.cameraButtonImage}
+        source={{uri: this.state.pictureUri}}
+        onPress={this._toggleCam}
+        />
     )
 
     const desc = this.template.characters[this.props.num].desc;
@@ -67,7 +70,13 @@ class Character extends Component {
       <View>
         <Text style={styles.labelText}>{desc}: </Text>
         <View style={[styles.row, styles.backBox]}>
-          {cameraButton}
+          <TouchableHighlight
+            onPress={this._toggleCam}
+            style={styles.cameraButton}
+            underlayColor='#EEEEEE'
+            >
+            {cameraButton}
+          </TouchableHighlight>
           <View style={styles.column}>
             <TextInput
               autoCorrect={false}
@@ -113,7 +122,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 8,
     color: '#000000'
   },
@@ -123,7 +132,11 @@ const styles = StyleSheet.create({
     width: 80,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
+    borderRadius: 10
+  },
+  cameraButtonImage: {
+    flex: 1,
     borderRadius: 10
   },
   roundedHighlight: {
@@ -139,9 +152,9 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '100',
-    fontSize: 14,
-    marginTop: 10,
-    marginBottom: 10,
+    fontSize: 16,
+    marginTop: 15,
+    marginBottom: 5,
     marginLeft: 16,
   },
   backBox: {
@@ -156,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Character;
+export default PeopleForm;

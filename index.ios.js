@@ -10,8 +10,9 @@ import React, {
 import update from 'react-addons-update';
 import Router from 'react-native-simple-router';
 
+import LandingScreen from './App/Components/LandingScreen';
 import Languages from './App/Components/Languages';
-import Cam from './App/Components/Cam';
+import BackButton from './App/Components/BackButton';
 
 var template = {
   languages: {
@@ -20,19 +21,19 @@ var template = {
   },
   characters: [
     {
-      desc: 'Man on the street',
+      desc: 'Friendly stranger',
       descTrans: '',
       name: '',
-      photoUri: ''
+      pictureUri: ''
     },
   ],
   dialogue: [
     {
       character: 0,
       guide: 'Morning greeting',
-      trans: '',
+      diaTrans: '',
       audioUri: ''
-    }
+    },
   ]
 }
 
@@ -58,24 +59,17 @@ class lexchange extends Component {
       <Router
         headerStyle={styles.header}
         firstRoute={{
-          name: 'Languages',
-          component: Languages,
+          component: LandingScreen,
           passProps: {
             _readTemplate: this._readTemplate,
             _updateTemplate: this._updateTemplate
           }
-        }} />
+        }}
+        backButtonComponent={BackButton}
+        />
     );
   }
 }
-
-// class lexchange extends Component {
-//   render() {
-//     return (
-//       <Cam />
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   header: {

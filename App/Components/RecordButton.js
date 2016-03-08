@@ -38,7 +38,7 @@ class RecordButton extends Component {
   }
 
   componentDidMount() {
-    this.props.AudioRecorder.prepareRecordingAtPath('/test.caf')
+    this.props.AudioRecorder.prepareRecordingAtPath('/dialogue' + this.props.num + '.caf')
     this.props.AudioRecorder.onProgress = (data) => {
       this.setState({currentTime: Math.floor(data.currentTime)});
       if (this.state.currentTime >= this.props.recordingLength) {
@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     height: 30,
     marginBottom: 5,
     backgroundColor: '#FFFFFF',
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderWidth: 1,
     borderRadius: 100,
     justifyContent: 'center'
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 18,
-    color: '#111111',
+    color: '#858E99',
     alignSelf: 'center'
   }
 });

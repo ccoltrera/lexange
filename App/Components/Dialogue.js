@@ -12,8 +12,8 @@ import React, {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {AudioRecorder} from 'react-native-audio';
 
+import DialogueForm from './DialogueForm';
 import ContinueButton from './ContinueButton';
-import RecordButton from './RecordButton';
 import Finished from './Finished';
 
 class Main extends Component {
@@ -43,47 +43,48 @@ class Main extends Component {
       name: 'Finished Scenario',
       component: Finished,
       passProps: {
-        greeting: this.state.greeting,
+        _readTemplate: this.props._readTemplate,
+        _updateTemplate: this.props._updateTemplate,
         AudioRecorder: AudioRecorder,
-        recorded: true,
+        recorded: false,
         recordingLength: this.state.recordingLength,
-        characterName: this.template.characters[0].name,
-        descTrans: this.template.characters[0].descTrans,
-        pictureURI: this.template.characters[0].pictureUri
       }
     });
   }
 
   _setRecordingLength(length) {
-    this.setState({recordingLength: length});
+    this.setState({
+      recordingLength: length
+    });
   }
 
   render() {
+    var dialogue = [];
+    for (let i=0; i < this.template.dialogue.length; i++) {
+      dialogue.push(
+        <DialogueForm
+          key={'dialogue' + i}
+          num={i}
+          _updateTemplate={this.props._updateTemplate}
+          _readTemplate={this.props._readTemplate}
+          AudioRecorder={AudioRecorder}
+          _setRecordingLength={this._setRecordingLength}
+          recordingLength={this.state.recordingLength}
+        />
+      )
+    }
 
     return (
       <View style={styles.container}>
-          <Text style={styles.labelText}>{this.template.characters[0].name}:</Text>
-        <View style={[styles.backBox, styles.row]}>
-
-            <TextInput
-              style={styles.textInput}
-              value={this.state.greeting}
-              onChange={this._handleChange}
-              placeholder='Morning greeting'
-              />
-            <RecordButton
-              AudioRecorder={AudioRecorder}
-              _setRecordingLength={this._setRecordingLength}
-              recordingLength={this.state.recordingLength}
-              style={styles.recordButton}
-              />
-
-        </View>
-          <ContinueButton
-            enabled={ /*this.state.greeting && this.state.recordingLength*/ true }
-            label='Finish'
-            _next={this._next}
-          />
+        {dialogue}
+        <ContinueButton
+          enabled={
+            this.state.recordingLength
+            // true
+          }
+          label='Finish'
+          _next={this._next}
+        />
       </View>
     )
   }
@@ -92,6 +93,7 @@ class Main extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 15,
     flexDirection: 'column',
     backgroundColor: '#FDFDF1'
   },
@@ -101,9 +103,9 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '100',
-    fontSize: 14,
-    marginTop: 10,
-    marginBottom: 10,
+    fontSize: 16,
+    marginTop: 15,
+    marginBottom: 5,
     marginLeft: 16,
   },
   backBox: {
@@ -125,39 +127,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
     borderWidth: 1,
-    borderColor: '#000000',
+    borderColor: '#C8C7CC',
     borderRadius: 8,
     color: '#000000'
-  },
-  button: {
-    marginTop: 10,
-    height: 40,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  buttonText: {
-    fontSize: 18,
-    color: '#111111',
-    alignSelf: 'center'
-  },
-  unbutton: {
-    marginTop: 10,
-    height: 40,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    borderColor: 'rgba(255,255,255,0.2)',
-    borderWidth: 1,
-    borderRadius: 8,
-    alignSelf: 'stretch',
-    justifyContent: 'center'
-  },
-  unbuttonText: {
-    fontSize: 18,
-    color: 'rgba(10,10,10,0.2)',
-    alignSelf: 'center'
   },
   recordButton: {
     flex: 1
