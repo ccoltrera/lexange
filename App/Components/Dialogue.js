@@ -40,7 +40,7 @@ class Main extends Component {
 
   _next() {
     this.props.toRoute({
-      name: 'Finished Scenario',
+      name: 'Finished Lesson',
       component: Finished,
       passProps: {
         _readTemplate: this.props._readTemplate,

@@ -17,7 +17,7 @@ class VocabCard extends Component {
     };
 
     this.template = this.props._readTemplate();
-    this.character = this.template.characters[this.props.num];
+    this.content = this.template[this.props.content][this.props.num];
 
     this._toggleShow = this._toggleShow.bind(this);
   }
@@ -31,12 +31,21 @@ class VocabCard extends Component {
   render() {
     var text = this.state.show ? (
         <Text style={[styles.cardText, {color: '#858E99'}]}>
-          { this.character.desc }
+          { this.content.desc }
         </Text>
       ) : (
         <Text style={styles.cardText}>
-          { this.character.descTrans }
+          { this.content.descTrans }
         </Text>
+      )
+
+    var contentBlock = this.props.content === 'people' ? (
+        <View>
+          <Text style={styles.cardText}>{this.content.name}</Text>
+          {text}
+        </View>
+      ) : (
+        {text}
       )
 
     return(
@@ -45,10 +54,9 @@ class VocabCard extends Component {
         onPress={this._toggleShow}
         underlayColor='#EEEEEE'>
         <View style={styles.row}>
-          <Image style={styles.imageHolder} source={{uri: this.character.pictureUri}} />
-          <View style={styles.column}>
-            <Text style={styles.cardText}>{this.character.name}</Text>
-            {text}
+          <Image style={styles.imageHolder} source={{uri: this.content.pictureUri}} />
+          <View style={styles.textColumn}>
+            {contentBlock}
           </View>
         </View>
       </TouchableHighlight>
@@ -60,8 +68,8 @@ class VocabCard extends Component {
 const styles = StyleSheet.create({
   imageHolder: {
     justifyContent: 'center',
-    height: 80,
-    width: 80,
+    height: 60,
+    width: 60,
     marginTop: 0,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
@@ -80,14 +88,17 @@ const styles = StyleSheet.create({
   },
   cardText: {
     backgroundColor: 'rgba(255,255,255,0)',
-    fontSize: 16
+    fontSize: 16,
+    margin: 3
   },
   row: {
     flexDirection: 'row'
   },
-  column: {
+  textColumn: {
+    height: 60,
     flexDirection: 'column',
-    justifyContent: 'center'
+    marginLeft: 5,
+    justifyContent: 'center',
   }
 });
 

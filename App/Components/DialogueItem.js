@@ -25,7 +25,7 @@ class DialogueItem extends Component {
     this._stop = this._stop.bind(this);
 
     this.dialogue = this.template.dialogue[this.props.num];
-    this.character = this.template.characters[this.dialogue.character];
+    this.person = this.template.people[this.dialogue.person];
 
     this._toggleShow = this._toggleShow.bind(this);
   }
@@ -97,9 +97,9 @@ class DialogueItem extends Component {
 
     return (
         <View>
-          <Text style={styles.labelText}>{this.character.name.toUpperCase() }:</Text>
+          <Text style={styles.charName}>{this.person.name.toUpperCase() }</Text>
           <View style={styles.row}>
-            <Image style={styles.imageHolder} source={{uri: this.character.pictureUri}} />
+            <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
             <TouchableHighlight
               style={styles.bubble}
               onPress={this._toggleShow}
@@ -128,18 +128,18 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: 'center'
   },
-  labelText: {
+  charName: {
     fontFamily: 'helvetica',
     fontWeight: '100',
     fontSize: 14,
-    marginTop: 15,
+    // marginTop: 5,
     marginBottom: 5,
-    marginLeft: 16,
+    marginLeft: 5,
   },
   imageHolder: {
     justifyContent: 'center',
-    height: 80,
-    width: 80,
+    height: 60,
+    width: 60,
     marginTop: 0,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,

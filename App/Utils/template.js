@@ -7,22 +7,23 @@ var template = {
     teacher: '',
     student: ''
   },
-  characters: [
+  people: [
     {
-      desc: 'Friend',
-      descTrans: '',
-      name: '',
+      desc: 'A Friend',
+      descTrans: 'ともだち',
+      name: 'えりこ',
       pictureUri: ''
     },
   ],
   dialogue: [
     {
-      character: 0,
+      person: 0,
       guide: 'Morning greeting',
-      diaTrans: '',
+      diaTrans: 'おはようございます。',
       audioUri: ''
     },
-  ]
+  ],
+  items: []
 };
 
 function _updateTemplate(updateQuery) {

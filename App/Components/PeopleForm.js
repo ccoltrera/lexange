@@ -21,30 +21,30 @@ class PeopleForm extends Component {
     this.template = this.props._readTemplate();
 
     this.state = {
-      name: this.template.characters[this.props.num].name,
-      descTrans: this.template.characters[this.props.num].descTrans,
-      pictureUri: this.template.characters[this.props.num].pictureUri,
+      name: this.template.people[this.props.num].name,
+      descTrans: this.template.people[this.props.num].descTrans,
+      pictureUri: this.template.people[this.props.num].pictureUri,
     };
 
     this._handleChangeName = _handleChange.bind(
       this,
       'name',
-      ['characters', this.props.num, 'name']
+      ['people', this.props.num, 'name']
     );
     this._handleChangeTrans = _handleChange.bind(
       this,
       'descTrans',
-      ['characters', this.props.num, 'descTrans']
+      ['people', this.props.num, 'descTrans']
     );
     this._setImage = _handleChange.bind(
       this,
       'pictureUri',
-      ['characters', this.props.num, 'pictureUri']
+      ['people', this.props.num, 'pictureUri']
     );
     this._removeImage = _handleChange.bind(
       this,
       'pictureUri',
-      ['characters', this.props.num, 'pictureUri'],
+      ['people', this.props.num, 'pictureUri'],
       ''
     );
 
@@ -64,7 +64,7 @@ class PeopleForm extends Component {
         />
     )
 
-    const desc = this.template.characters[this.props.num].desc;
+    const desc = this.template.people[this.props.num].desc;
 
     return (
       <View>

@@ -27,15 +27,15 @@ class DialogueForm extends Component {
       ['dialogue', this.props.num, 'diaTrans']
     );
 
-    this.characterNum = this.template.dialogue[this.props.num].character;
-    this.character = this.template.characters[this.characterNum];
+    this.personNum = this.template.dialogue[this.props.num].person;
+    this.person = this.template.people[this.personNum];
 
   }
 
   render() {
     return(
       <View>
-        <Text style={styles.labelText}>{this.character.name.toUpperCase()}:</Text>
+        <Text style={styles.labelText}>{this.person.name.toUpperCase()}:</Text>
         <View style={[/*styles.backBox,*/ styles.row]}>
         <View style={styles.bubble}>
             <TextInput

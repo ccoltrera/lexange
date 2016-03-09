@@ -10,27 +10,75 @@ import React, {
 
 import VocabCard from './VocabCard';
 import DialogueItem from './DialogueItem';
+import ContinueButton from './ContinueButton';
+
+import CreateAccount from './CreateAccount';
 
 class Finished extends Component {
   constructor(props) {
     super(props);
 
     this.template = this.props._readTemplate();
+
+    this._next = this._next.bind(this);
+  }
+
+  _next() {
+    this.props.toRoute({
+      name: 'Create Account',
+      component: CreateAccount,
+    });
   }
 
   render() {
 
-    var vocabCards = []
-    for (let i=0; i < this.template.characters.length; i++) {
-      vocabCards.push(
-        <VocabCard
-          key={'vocabCard' + i}
-          num={i}
-          _updateTemplate={this.props._updateTemplate}
-          _readTemplate={this.props._readTemplate}
-        />
-      )
+    var peopleCards = [];
+    if (this.template.people.length > 0) {
+      for (let i=0; i < this.template.people.length; i++) {
+        peopleCards.push(
+          <VocabCard
+            key={'vocabCard' + i}
+            num={i}
+            content='people'
+            _updateTemplate={this.props._updateTemplate}
+            _readTemplate={this.props._readTemplate}
+          />
+        )
+      }
     }
+
+    var peopleBlock = (peopleCards.length > 0) ? (
+      <View style={styles.cardColumn}>
+        <Text style={styles.labelText}>PEOPLE:</Text>
+        {peopleCards}
+      </View>
+    ) : (
+      <View style={styles.cardColumn}></View>
+    )
+
+    var itemCards = [];
+    if (this.template.items.length > 0) {
+      for (let i=0; i < this.template.items.length; i++) {
+        itemCards.push(
+          <VocabCard
+            key={'vocabCard' + i}
+            num={i}
+            content='items'
+            _updateTemplate={this.props._updateTemplate}
+            _readTemplate={this.props._readTemplate}
+          />
+        )
+      }
+    }
+
+    var itemBlock = (itemCards.length > 0) ? (
+      <View style={styles.cardColumn}>
+        <Text style={styles.labelText}>ITEMS:</Text>
+        {peopleCards}
+      </View>
+    ) : (
+      <View style={styles.cardColumn}></View>
+    )
 
     var dialogueItems = [];
     for (let i=0; i < this.template.dialogue.length; i++) {
@@ -50,8 +98,16 @@ class Finished extends Component {
     return (
 
       <View style={styles.container}>
-        {vocabCards}
+        <View style={styles.cardRow}>
+          {peopleBlock}
+          {itemBlock}
+        </View>
+        <Text style={styles.labelText}>DIALOGUE:</Text>
         {dialogueItems}
+        <ContinueButton
+          enabled={true}
+          label={'Share Your Lesson!'}
+          _next={this._next}/>
       </View>
     )
   }
@@ -69,9 +125,16 @@ const styles = StyleSheet.create({
     fontWeight: '100',
     fontSize: 16,
     marginTop: 15,
-    marginBottom: 5,
-    marginLeft: 16,
+    marginBottom: 10,
+    marginLeft: 5,
   },
+  cardRow: {
+    flexDirection: 'row'
+  },
+  cardColumn: {
+    flexDirection: 'column',
+    flex: 1
+  }
 });
 
 export default Finished;

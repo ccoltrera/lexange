@@ -54,9 +54,9 @@ class People extends Component {
   }
 
   render() {
-    var characters = [];
-    for (let i = 0; i < this.template.characters.length; i++) {
-      characters.push(
+    var people = [];
+    for (let i = 0; i < this.template.people.length; i++) {
+      people.push(
         <PeopleForm
           key={'character' + i}
           num={i}
@@ -77,10 +77,10 @@ class People extends Component {
             _removeImage={this._removeImage}
             _toggleCam={this._toggleCam} />
         </Modal>
-        {characters}
+        {people}
         <ContinueButton
           enabled={
-            // (this.state.continue || this.template.characters[0].pictureUri)
+            // (this.state.continue || this.template.people[0].pictureUri)
             true
           }
           label='Dialogue'
