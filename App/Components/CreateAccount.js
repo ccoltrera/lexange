@@ -6,7 +6,7 @@ import React, {
   Text,
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
+import SignupButton from './SignupButton';
 
 class CreateAccount extends Component {
   constructor(props) {
@@ -14,8 +14,31 @@ class CreateAccount extends Component {
   }
 
   render() {
+    var socialNets = [
+      {name: 'Facebook', color: '#3b5998'},
+      {name: 'Google', color: '#db3236'},
+
+    ];
+
+    var signupButtons = socialNets.map((socialNet) => {
+      return(
+        <SignupButton
+          key={socialNet.name + 'button'}
+          socialNet={socialNet}
+        />
+      )
+    });
+
+    console.log(signupButtons)
+
     return(
       <View style={styles.container}>
+        <View style={styles.row}>
+          <Text style={styles.signup}>
+            TO SHARE, JUST MAKE AN ACCOUNT!
+          </Text>
+        </View>
+        {signupButtons}
       </View>
     )
   }
@@ -24,9 +47,18 @@ class CreateAccount extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
     flexDirection: 'column',
-    backgroundColor: '#FDFDF1'
+    backgroundColor: '#FDFDF1',
+    justifyContent: 'center'
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  signup: {
+    marginBottom: 30,
+    fontSize: 18,
+    fontWeight: '100'
   }
 });
 

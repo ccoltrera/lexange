@@ -94,8 +94,8 @@ class People extends Component {
         {people}
         <ContinueButton
           enabled={
-            // (this.state.continue || this.template.people[0].pictureUri)
-            true
+            (this.state.continue || this.template.people[0].pictureUri)
+            // true
           }
           label='Dialogue'
           _next={this._next}

@@ -100,7 +100,7 @@ class Finished extends Component {
       <View style={styles.container}>
         <View style={styles.tutorialBox}>
           <Text style={styles.tutorialText}>
-            Here's your finished lesson! Click on cards to see translations
+            Here's your finished lesson! Click on cards and dialogue to see translations
           </Text>
         </View>
         <View style={styles.cardRow}>
@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     borderColor: '#C8C7CC'
   },
   tutorialText: {
-    marginBottom: 3,
     fontSize: 16
   },
   labelText: {

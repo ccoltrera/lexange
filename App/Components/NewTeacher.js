@@ -125,12 +125,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   innerCircle: {
-    height: 32,
-    width: 32,
+    height: 37,
+    width: 37,
     backgroundColor: '#FFFFFF',
     borderColor: 'rgba(22,159,173,1)',
     // borderWidth: 10,
-    borderRadius: 15,
+    borderRadius: 18.5,
     alignSelf: 'center'
   },
   unCircle: {

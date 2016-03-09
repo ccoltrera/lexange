@@ -95,7 +95,11 @@ class RecordButton extends Component {
   }
 
   render() {
-    var recordIcon = this.state.recording ? 'stop' : 'microphone';
+    var recordButton = !this.state.recording ? (
+      <Icon name='circle' style={[styles.buttonText, {color: 'red'}]} />
+    ) : (
+      <Icon name='stop' style={styles.buttonText} />
+    )
     var playIcon = this.state.playing ? 'stop' : 'volume-up';
 
     var playButton = this.state.recorded ? (
@@ -122,7 +126,7 @@ class RecordButton extends Component {
           onPress={this._handleRecordPress}
           underlayColor='#EEEEEE'
           >
-          <Icon name={recordIcon} style={styles.buttonText} />
+          {recordButton}
         </TouchableHighlight>
         {playButton}
       </View>
@@ -137,8 +141,8 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
-    borderWidth: 1,
-    borderRadius: 100,
+    borderWidth: 3,
+    borderRadius: 22.5,
     justifyContent: 'center'
   },
   buttonGroup: {

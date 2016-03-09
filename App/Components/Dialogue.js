@@ -84,8 +84,8 @@ class Main extends Component {
         {dialogueForms}
         <ContinueButton
           enabled={
-            // this.state.recordingLength
-            true
+            this.state.recordingLength
+            // true
           }
           label='Finish'
           _next={this._next}
@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
     borderColor: '#C8C7CC'
   },
   tutorialText: {
-    marginBottom: 3,
     fontSize: 16
   },
 });

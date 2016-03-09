@@ -4,14 +4,14 @@ import update from 'react-addons-update';
 
 var template = {
   languages: {
-    teacher: '日本語',
+    teacher: '',
     student: ''
   },
   people: [
     {
       desc: 'A Friend',
-      descTrans: 'ともだち',
-      name: 'えりこ',
+      descTrans: '',
+      name: '',
       pictureUri: ''
     },
   ],
@@ -19,7 +19,7 @@ var template = {
     {
       person: 0,
       guide: 'Morning greeting',
-      diaTrans: 'おはようございます。',
+      diaTrans: '',
       audioUri: ''
     },
   ],

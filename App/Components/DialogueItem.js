@@ -120,12 +120,12 @@ class DialogueItem extends Component {
 const styles = StyleSheet.create({
   button: {
     flex: 1,
-    height: 40,
+    height: 45,
     marginTop: 0,
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
-    borderWidth: 1,
-    borderRadius: 100,
+    borderWidth: 3,
+    borderRadius: 22.5,
     justifyContent: 'center'
   },
   charName: {
