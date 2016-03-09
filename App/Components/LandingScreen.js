@@ -9,11 +9,10 @@ import React, {
   Text
 } from 'react-native';
 
-import Languages from './Languages';
-import ContinueButton from './ContinueButton';
-
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+
+import NewTeacher from './NewTeacher';
 
 class LandingScreen extends Component {
   constructor(props) {
@@ -24,8 +23,8 @@ class LandingScreen extends Component {
 
   _newTeacher() {
     this.props.toRoute({
-      name: 'Languages',
-      component: Languages,
+      name: 'NewTeacher',
+      component: NewTeacher,
       passProps: {
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
     height: (86 * 1.25),
     width: (216 * 1.25),
     marginTop: 80,
-    marginBottom: 70
+    marginBottom: 50
   },
   row: {
     flexDirection: 'row',

@@ -59,9 +59,9 @@ class Main extends Component {
   }
 
   render() {
-    var dialogue = [];
+    var dialogueForms = [];
     for (let i=0; i < this.template.dialogue.length; i++) {
-      dialogue.push(
+      dialogueForms.push(
         <DialogueForm
           key={'dialogue' + i}
           num={i}
@@ -76,7 +76,7 @@ class Main extends Component {
 
     return (
       <View style={styles.container}>
-        {dialogue}
+        {dialogueForms}
         <ContinueButton
           enabled={
             // this.state.recordingLength
@@ -99,14 +99,6 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row'
-  },
-  labelText: {
-    fontFamily: 'helvetica',
-    fontWeight: '100',
-    fontSize: 16,
-    marginTop: 15,
-    marginBottom: 5,
-    marginLeft: 16,
   },
   backBox: {
     backgroundColor: '#FFFFFF',

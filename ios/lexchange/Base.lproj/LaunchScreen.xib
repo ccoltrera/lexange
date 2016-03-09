@@ -11,17 +11,18 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="lexchange-logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="boM-FL-Oh2">
-                    <rect key="frame" x="79" y="185" width="216" height="86"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" image="lexchange-logo2.png" translatesAutoresizingMaskIntoConstraints="NO" id="VbC-tA-Yq0">
+                    <rect key="frame" x="52" y="145" width="270" height="108"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.086274509803921567" green="0.62352941176470589" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
+            <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="423.5" y="553.5"/>
         </view>
     </objects>
     <resources>
-        <image name="lexchange-logo.png" width="216" height="86"/>
+        <image name="lexchange-logo2.png" width="270" height="108"/>
     </resources>
 </document>

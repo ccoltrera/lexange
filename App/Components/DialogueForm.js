@@ -35,8 +35,9 @@ class DialogueForm extends Component {
   render() {
     return(
       <View>
-        <Text style={styles.labelText}>{this.character.name}:</Text>
-        <View style={[styles.backBox, styles.row]}>
+        <Text style={styles.labelText}>{this.character.name.toUpperCase()}:</Text>
+        <View style={[/*styles.backBox,*/ styles.row]}>
+        <View style={styles.bubble}>
             <TextInput
               autoCorrect={false}
               returnKeyType='done'
@@ -45,6 +46,7 @@ class DialogueForm extends Component {
               onChange={this._handleChangeTrans}
               placeholder={this.template.dialogue[this.props.num].guide}
               />
+        </View>
             <RecordButton
               num={this.props.num}
               AudioRecorder={this.props.AudioRecorder}
@@ -60,32 +62,43 @@ class DialogueForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 15,
-    flexDirection: 'column',
-    backgroundColor: '#FDFDF1'
-  },
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
+    paddingLeft: 15,
+    paddingRight: 15
   },
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '100',
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 15,
     marginBottom: 5,
     marginLeft: 16,
   },
-  backBox: {
+  // backBox: {
+  //   backgroundColor: '#FFFFFF',
+  //   justifyContent: 'center',
+  //   paddingTop: 10,
+  //   paddingBottom: 10,
+  //   paddingLeft: 26,
+  //   paddingRight: 26,
+  //   borderWidth: 1,
+  //   borderColor: '#C8C7CC'
+  // },
+  bubble: {
+    marginTop: 0,
     backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 26,
-    paddingRight: 26,
+    flex: 6,
+    height: 50,
     borderWidth: 1,
-    borderColor: '#C8C7CC'
+    marginLeft: 5,
+    marginRight: 5,
+    borderRadius: 20,
+    borderColor: '#C8C7CC',
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft: 10,
+    paddingRight: 10
   },
   textInput: {
     flex: 5,

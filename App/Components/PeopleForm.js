@@ -68,32 +68,37 @@ class PeopleForm extends Component {
 
     return (
       <View>
-        <Text style={styles.labelText}>{desc}: </Text>
+        <View style={[styles.row, styles.labelWrapper]}>
+          <Text style={[styles.labelText, {fontWeight: 'bold'}]}>CHARACTER {this.props.num + 1}: </Text>
+          <Text style={styles.labelText}>{desc.toUpperCase()}</Text>
+        </View>
         <View style={[styles.row, styles.backBox]}>
-          <TouchableHighlight
-            onPress={this._toggleCam}
-            style={styles.cameraButton}
-            underlayColor='#EEEEEE'
-            >
-            {cameraButton}
-          </TouchableHighlight>
-          <View style={styles.column}>
-            <TextInput
-              autoCorrect={false}
-              returnKeyType='done'
-              style={styles.textInput}
-              value={this.state.name}
-              onChange={this._handleChangeName}
-              placeholder='Name'
-              />
-            <TextInput
-              autoCorrect={false}
-              returnKeyType='done'
-              style={styles.textInput}
-              value={this.state.descTrans}
-              onChange={this._handleChangeTrans}
-              placeholder={'\'' + desc + '\' in ' + this.template.languages.teacher}
-              />
+          <View style={styles.row}>
+            <TouchableHighlight
+              onPress={this._toggleCam}
+              style={styles.cameraButton}
+              underlayColor='#EEEEEE'
+              >
+              {cameraButton}
+            </TouchableHighlight>
+            <View style={styles.column}>
+              <TextInput
+                autoCorrect={false}
+                returnKeyType='done'
+                style={styles.textInput}
+                value={this.state.name}
+                onChange={this._handleChangeName}
+                placeholder='Name'
+                />
+              <TextInput
+                autoCorrect={false}
+                returnKeyType='done'
+                style={styles.textInput}
+                value={this.state.descTrans}
+                onChange={this._handleChangeTrans}
+                placeholder={'\'' + desc + '\' in ' + this.template.languages.teacher}
+                />
+          </View>
             </View>
         </View>
       </View>
@@ -103,7 +108,7 @@ class PeopleForm extends Component {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   column: {
     flexDirection: 'column',
@@ -149,17 +154,19 @@ const styles = StyleSheet.create({
     color: '#858E99',
     alignSelf: 'center'
   },
-  labelText: {
-    fontFamily: 'helvetica',
-    fontWeight: '100',
-    fontSize: 16,
+  labelWrapper: {
     marginTop: 15,
     marginBottom: 5,
     marginLeft: 16,
   },
+  labelText: {
+    fontFamily: 'helvetica',
+    fontWeight: '100',
+    fontSize: 14,
+  },
   backBox: {
+    flexDirection: 'column',
     backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 26,
