@@ -76,6 +76,11 @@ class Main extends Component {
 
     return (
       <View style={styles.container}>
+        <View style={styles.tutorialBox}>
+          <Text style={styles.tutorialText}>
+            Make dialogue more useful with audio
+          </Text>
+        </View>
         {dialogueForms}
         <ContinueButton
           enabled={
@@ -97,35 +102,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#FDFDF1'
   },
-  row: {
-    flexDirection: 'row'
-  },
-  backBox: {
+  tutorialBox: {
+    marginLeft: 15,
+    marginRight: 15,
+    padding: 10,
     backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 26,
-    paddingRight: 26,
     borderWidth: 1,
     borderColor: '#C8C7CC'
   },
-  textInput: {
-    flex: 5,
-    height: 30,
-    paddingLeft: 10,
-    marginTop: 5,
-    marginRight: 10,
-    marginBottom: 5,
-    fontSize: 16,
-    borderWidth: 1,
-    borderColor: '#C8C7CC',
-    borderRadius: 8,
-    color: '#000000'
+  tutorialText: {
+    marginBottom: 3,
+    fontSize: 16
   },
-  recordButton: {
-    flex: 1
-  }
 });
 
 export default Main;

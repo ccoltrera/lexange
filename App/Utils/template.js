@@ -4,7 +4,7 @@ import update from 'react-addons-update';
 
 var template = {
   languages: {
-    teacher: '',
+    teacher: '日本語',
     student: ''
   },
   people: [

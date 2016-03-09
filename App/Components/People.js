@@ -77,6 +77,20 @@ class People extends Component {
             _removeImage={this._removeImage}
             _toggleCam={this._toggleCam} />
         </Modal>
+        <View style={styles.tutorialBox}>
+          <Text style={styles.tutorialText}>
+            Make richer lessons by giving characters:
+          </Text>
+          <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+            <Icon name='circle' style={{fontSize: 5}} /> a name
+          </Text>
+          <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+            <Icon name='circle' style={{fontSize: 5}} /> a description in {this.template.languages.teacher}
+          </Text>
+          <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+            <Icon name='circle' style={{fontSize: 5}} /> a picture
+          </Text>
+        </View>
         {people}
         <ContinueButton
           enabled={
@@ -97,6 +111,18 @@ const styles = StyleSheet.create({
     paddingTop: 15,
     flexDirection: 'column',
     backgroundColor: '#FDFDF1'
+  },
+  tutorialBox: {
+    marginLeft: 15,
+    marginRight: 15,
+    padding: 10,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#C8C7CC'
+  },
+  tutorialText: {
+    marginBottom: 3,
+    fontSize: 16
   }
 });
 

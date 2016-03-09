@@ -69,7 +69,7 @@ class PeopleForm extends Component {
     return (
       <View>
         <View style={[styles.row, styles.labelWrapper]}>
-          <Text style={[styles.labelText, {fontWeight: 'bold'}]}>CHARACTER {this.props.num + 1}: </Text>
+          <Text style={[styles.labelText, {fontWeight: 'bold'}]}>PERSON {this.props.num + 1}: </Text>
           <Text style={styles.labelText}>{desc.toUpperCase()}</Text>
         </View>
         <View style={[styles.row, styles.backBox]}>

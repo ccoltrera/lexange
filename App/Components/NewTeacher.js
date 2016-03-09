@@ -39,12 +39,12 @@ class NewTeacher extends Component {
       <View style={styles.container}>
         <Text style={styles.labelText}>Make your first lesson in just a few steps!</Text>
         <View style={styles.one}>
-          <View style={styles.third}>
+          {/*<View style={styles.third}>
             <View style={styles.left}>
               <Text style={styles.leftText}></Text>
             </View>
-          </View>
-          <View style={styles.third}>
+          </View>*/}
+          <View style={{flex: 1, flexDirection: 'column'}}>
             <TouchableHighlight
               style={styles.outerCircle}
               underlayColor='#169FAD'
@@ -65,6 +65,23 @@ class NewTeacher extends Component {
             </View>
           </View>
           <View style={styles.third}>
+            <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
+              <Text style={styles.sectionDesc}>Tell us the </Text>
+              <Text style={styles.sectionName}>Languages</Text>
+            </View>
+            <View style={styles.descBlock}>
+              <Text style={styles.sectionDesc}>Enrich the lesson with </Text>
+              <Text style={styles.sectionName}>People</Text>
+            </View>
+            <View style={styles.descBlock}>
+              <Text style={styles.sectionDesc}>Write and record the </Text>
+              <Text style={styles.sectionName}>Dialogue</Text>
+            </View>
+            <View style={styles.descBlock}>
+              <Text style={styles.sectionDesc}>Be proud of what you </Text>
+              <Text style={styles.sectionName}>Finished</Text>
+              <Text style={styles.sectionDesc}>!</Text>
+            </View>
           </View>
         </View>
         <ContinueButton
@@ -88,6 +105,7 @@ const styles = StyleSheet.create({
   },
   one: {
     flexDirection: 'row',
+    marginBottom: -60
   },
   third: {
     flex: 3,
@@ -128,7 +146,7 @@ const styles = StyleSheet.create({
   line: {
     margin: -5,
     height: 80,
-    width: 8,
+    width: 5,
     backgroundColor: 'rgba(22,159,173,1)',
     alignSelf: 'center',
     borderWidth: 1,
@@ -143,6 +161,19 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     margin: 30
   },
+  sectionName: {
+    alignSelf: 'flex-start',
+    fontWeight: '700',
+    fontSize: 16
+  },
+  sectionDesc: {
+    alignSelf: 'flex-start',
+    fontSize: 16
+  },
+  descBlock: {
+    flexDirection: 'row',
+    marginBottom: 87
+  }
 });
 
 export default NewTeacher;

@@ -98,6 +98,11 @@ class Finished extends Component {
     return (
 
       <View style={styles.container}>
+        <View style={styles.tutorialBox}>
+          <Text style={styles.tutorialText}>
+            Here's your finished lesson! Click on cards to see translations
+          </Text>
+        </View>
         <View style={styles.cardRow}>
           {peopleBlock}
           {itemBlock}
@@ -120,6 +125,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#FDFDF1'
   },
+  tutorialBox: {
+    marginLeft: 15,
+    marginRight: 15,
+    padding: 10,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#C8C7CC'
+  },
+  tutorialText: {
+    marginBottom: 3,
+    fontSize: 16
+  },
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '100',
@@ -134,7 +151,7 @@ const styles = StyleSheet.create({
   cardColumn: {
     flexDirection: 'column',
     flex: 1
-  }
+  },
 });
 
 export default Finished;
