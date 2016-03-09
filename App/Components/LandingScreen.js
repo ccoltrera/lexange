@@ -23,12 +23,8 @@ class LandingScreen extends Component {
 
   _newTeacher() {
     this.props.toRoute({
-      name: 'NewTeacher',
-      component: NewTeacher,
-      passProps: {
-        _readTemplate: this.props._readTemplate,
-        _updateTemplate: this.props._updateTemplate
-      }
+      name: 'Welcome',
+      component: NewTeacher
     });
   }
 
@@ -51,7 +47,7 @@ class LandingScreen extends Component {
                   <FAIcon name='graduation-cap' style={styles.bBIcon}/>
                 </View>
               </View>
-              <Text style={styles.bBText}>Returning Users</Text>
+              <Text style={styles.bBText}>Returning User</Text>
             </View>
           </TouchableHighlight>
         </View>
@@ -95,7 +91,7 @@ const styles = StyleSheet.create({
     height: (86 * 1.25),
     width: (216 * 1.25),
     marginTop: 80,
-    marginBottom: 50
+    marginBottom: 60
   },
   row: {
     flexDirection: 'row',

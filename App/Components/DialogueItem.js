@@ -37,30 +37,45 @@ class DialogueItem extends Component {
   }
 
   _stop() {
-    if (this.state.playing) {
       this.props.AudioRecorder.stopPlaying();
       this.setState({playing: false});
-    }
   }
 
   _toggleShow() {
     this.setState({
       show: !this.state.show
     });
-    // console.log('hmmmmm')
+  }
+
+  componentDidMount() {
+    this.props.AudioRecorder.onProgress = (data) => {
+      this.setState({currentTime: Math.floor(data.currentTime)});
+      if (this.state.currentTime >= this.props.recordingLength) {
+        this.setState({playing: false});
+      }
+    }
   }
 
   render() {
-    var playIcon = this.state.playing ? 'stop' : 'volume-up';
 
     var playButton = this.props.recordingLength ? (
-      <TouchableHighlight
-        style={styles.button}
-        onPress={this._play}
-        underlayColor='#EEEEEE'
-        >
-        <Icon name={playIcon} style={styles.buttonText} />
-      </TouchableHighlight>
+      this.state.playing ? (
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this._stop}
+          underlayColor='#EEEEEE'
+          >
+          <Icon name='stop' style={styles.buttonText} />
+        </TouchableHighlight>
+      ) : (
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this._play}
+          underlayColor='#EEEEEE'
+          >
+          <Icon name='volume-up' style={styles.buttonText} />
+        </TouchableHighlight>
+      )
     ) : (
       <TouchableHighlight
         style={styles.button}
@@ -82,20 +97,20 @@ class DialogueItem extends Component {
 
     return (
         <View>
-        <Text style={styles.labelText}>{this.character.name.toUpperCase() }:</Text>
-        <View style={styles.row}>
-          <Image style={styles.imageHolder} source={{uri: this.character.pictureUri}} />
-          <TouchableHighlight
-            style={styles.bubble}
-            onPress={this._toggleShow}
-            underlayColor='#FFFFFF'
-            >
+          <Text style={styles.labelText}>{this.character.name.toUpperCase() }:</Text>
+          <View style={styles.row}>
+            <Image style={styles.imageHolder} source={{uri: this.character.pictureUri}} />
+            <TouchableHighlight
+              style={styles.bubble}
+              onPress={this._toggleShow}
+              underlayColor='#EEEEEE'
+              >
 
-            {text}
+              {text}
 
-          </TouchableHighlight>
-          {playButton}
-        </View>
+            </TouchableHighlight>
+            {playButton}
+          </View>
         </View>
     )
   }
@@ -103,12 +118,6 @@ class DialogueItem extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 15,
-    flexDirection: 'column',
-    backgroundColor: '#FDFDF1'
-  },
   button: {
     flex: 1,
     height: 40,
@@ -157,10 +166,6 @@ const styles = StyleSheet.create({
   },
   row: {
     flexDirection: 'row'
-  },
-  buttonGroup: {
-    flex: 1,
-    flexDirection: 'column'
   },
   buttonText: {
     fontSize: 18,
