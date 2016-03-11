@@ -125,13 +125,13 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '300',
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: 18,
+    marginBottom: 10,
   },
   imageHolder: {
     justifyContent: 'center',
-    height: 60,
-    width: 60,
+    height: 80,
+    width: 80,
     marginRight: 10,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   },
   bubbleText: {
     backgroundColor: 'rgba(255,255,255,0)',
-    fontSize: 16
+    fontSize: 18
   },
   button: {
     flex: 1,
@@ -172,7 +172,10 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   card: {
-    margin: 15,
+    marginTop: 5,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
     padding: 15,
     backgroundColor: '#FFFFFF',
     borderRadius: 5,

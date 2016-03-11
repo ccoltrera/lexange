@@ -70,7 +70,7 @@ class PeopleForm extends Component {
       <View>
         <View style={styles.card}>
           <View style={[styles.row, styles.labelWrapper]}>
-            <Text style={[styles.labelText, {fontWeight: 'bold'}]}>Character {this.props.num + 1}: </Text>
+            <Text style={[styles.labelText, {fontWeight: 'bold', color: 'rgba(22,159,173,1)'}]}>Character {this.props.num + 1}: </Text>
             <Text style={styles.labelText}>{desc}</Text>
           </View>
           <View style={styles.row}>
@@ -114,14 +114,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1
   },
+  padder: {
+    height: 50
+  },
   textInput: {
     flex: 5,
-    height: 30,
+    height: 40,
     paddingLeft: 10,
-    marginTop: 5,
+    marginBottom: 10,
     marginLeft: 10,
     marginBottom: 5,
-    fontSize: 16,
+    fontSize: 18,
     borderWidth: 1,
     borderColor: '#C8C7CC',
     borderRadius: 8,
@@ -156,12 +159,18 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '300',
-    fontSize: 16,
+    fontSize: 18,
     marginBottom: 5,
   },
   card: {
-    margin: 15,
-    padding: 15,
+    marginTop: 5,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     shadowColor: '#000000',

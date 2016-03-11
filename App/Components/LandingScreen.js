@@ -85,7 +85,6 @@ class LandingScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: '#169FAD',
   },
   headerShadow: {
@@ -103,8 +102,8 @@ const styles = StyleSheet.create({
   logo: {
     height: (86 * 1.25),
     width: (216 * 1.25),
-    marginTop: 80,
-    marginBottom: 60
+    marginTop: 50,
+    marginBottom: 40
   },
   row: {
     flexDirection: 'row',
@@ -115,21 +114,21 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     borderWidth: 1,
-    borderRadius: 5,
+    borderRadius: 20,
     borderColor: '#FDFDF1',
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 2,
-      width: 0
-    }
+    // shadowColor: '#000000',
+    // shadowOpacity: 0.5,
+    // shadowRadius: 2,
+    // shadowOffset: {
+    //   height: 2,
+    //   width: 0
+    // }
   },
   bbIconWrapper: {
     alignSelf: 'center',
     height: 40,
     width: 60,
-    marginBottom: 10
+    marginBottom: 5
   },
   bBBlock: {
     flexDirection: 'column'

@@ -68,17 +68,22 @@ class VocabCard extends Component {
 const styles = StyleSheet.create({
   imageHolder: {
     justifyContent: 'center',
-    height: 60,
-    width: 60,
-    marginTop: 0,
+    height: 80,
+    width: 80,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC',
     borderRadius: 10
   },
   card: {
-    margin: 15,
-    padding: 15,
+    marginTop: 5,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     shadowColor: '#000000',
@@ -91,7 +96,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     backgroundColor: 'rgba(255,255,255,0)',
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '300',
     margin: 5
   },
@@ -99,7 +104,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   textColumn: {
-    height: 60,
+    height: 80,
     flexDirection: 'column',
     marginLeft: 5,
     justifyContent: 'center',

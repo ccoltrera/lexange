@@ -5,11 +5,14 @@ import React, {
   Component,
   StyleSheet,
   TouchableHighlight,
-  Image
+  Image,
+  ScrollView,
+  Dimensions
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
+import Tutorial from './Tutorial';
 import VocabCard from './VocabCard';
 import DialogueItem from './DialogueItem';
 import ContinueButton from './ContinueButton';
@@ -45,34 +48,11 @@ class Finished extends Component {
   }
 
   render() {
-    var tutorial = this.state.showThisTutorial ? (
-      <View style={styles.tutorialBox}>
-        <TouchableHighlight
-          style={[styles.closeTutButton, {marginBottom: 5}]}
-          onPress={this._toggleTutorial}
-          underlayColor='#FFFFFF'
-          >
-          <View style={{flexDirection: 'row'}}>
-            <Text>HIDE TIPS </Text>
-            <Icon name='times-circle-o' style={styles.closeTutIcon} />
-          </View>
-        </TouchableHighlight>
+    var tutorialText = (
+      <View>
         <Text style={styles.tutorialText}>
           Here's your finished lesson! Click on cards and dialogue to see translations
         </Text>
-      </View>
-    ) : (
-      <View style={styles.tutorialBox}>
-        <TouchableHighlight
-          style={[styles.closeTutButton, {marginBottom: -5}]}
-          onPress={this._toggleTutorial}
-          underlayColor='#FFFFFF'
-          >
-          <View style={{flexDirection: 'row'}}>
-            <Text>SHOW TIPS </Text>
-            <Icon name='times-circle-o' style={styles.closeTutIcon} />
-          </View>
-        </TouchableHighlight>
       </View>
     )
 
@@ -142,11 +122,20 @@ class Finished extends Component {
 
     return (
       <View style={styles.container}>
-        {tutorial}
-        {peopleBlock}
-        {itemBlock}
-        <Text style={styles.labelText}>Dialogue:</Text>
-        {dialogueItems}
+        <View style={{height: Dimensions.get('window').height - 134}}>
+          <ScrollView
+            style={styles.scrollView}
+            showVerticalScrollIndicator={true}>
+            {peopleBlock}
+            {itemBlock}
+            <Text style={styles.labelText}>Dialogue:</Text>
+            {dialogueItems}
+            <View style={styles.padder}></View>
+          </ScrollView>
+        </View>
+        <Tutorial
+          tutorialText={tutorialText}
+          showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={true}
           label={'Share Your Lesson!'}
@@ -159,9 +148,13 @@ class Finished extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // padding: 15,
-    flexDirection: 'column',
     backgroundColor: '#FDFDF1'
+  },
+  scrollView: {
+    paddingTop: 15,
+  },
+  padder: {
+    height: 50
   },
   headerShadow: {
     backgroundColor: '#169FAD',
@@ -175,38 +168,18 @@ const styles = StyleSheet.create({
       width: 0,
     },
   },
-  tutorialBox: {
-    marginLeft: -1,
-    marginRight: -1,
-    padding: 15,
-    paddingBottom: 10,
-    marginBottom: 15,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#C8C7CC'
-  },
   tutorialText: {
     marginBottom: 5,
     fontSize: 16,
     fontWeight: '300'
   },
-  closeTutButton: {
-    alignSelf: 'flex-end',
-    borderRadius: 15,
-    marginTop: -10,
-    marginRight: -3
-  },
-  closeTutIcon: {
-    fontSize: 16,
-    borderRadius: 8,
-  },
-  closeTutText: {
-    fontWeight: '400'
-  },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '300',
-    fontSize: 16,
+    fontWeight: '400',
+    // color: '#169FAD',
+    fontSize: 18,
+    marginTop: 10,
+    marginBottom: 5,
     marginLeft: 15,
   },
   cardRow: {

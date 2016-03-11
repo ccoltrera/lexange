@@ -5,7 +5,9 @@ import React, {
   StyleSheet,
   View,
   Text,
-  TouchableHighlight
+  TouchableHighlight,
+  ScrollView,
+  Dimensions
 } from 'react-native';
 
 import Languages from './Languages';
@@ -39,61 +41,62 @@ class NewTeacher extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.labelText}>Make your first lesson in just a few steps!</Text>
-          <View style={styles.one}>
-            {/*<View style={styles.third}>
-              <View style={styles.left}>
-                <Text style={styles.leftText}></Text>
-              </View>
-            </View>*/}
-            <View style={{flex: 1, flexDirection: 'column'}}>
-              <TouchableHighlight
-                style={styles.outerCircle}
-                underlayColor='#169FAD'
-                onPress={this._goLanguages}>
-                <View style={styles.innerCircle}></View>
-              </TouchableHighlight>
-              <View style={styles.line}>
-              </View>
-              <View style={styles.unCircle}>
-              </View>
-              <View style={styles.line}>
-              </View>
-              <View style={styles.unCircle}>
-              </View>
-              <View style={styles.line}>
-              </View>
-              <View style={styles.unCircle}>
+        <View style={{height: Dimensions.get('window').height - 134}}>
+          <ScrollView
+            style={styles.scrollView}
+            showVerticalScrollIndicator={true}>
+            <View style={styles.card}>
+              <Text style={styles.labelText}>Make your first lesson in just a few steps!</Text>
+              <View style={styles.one}>
+                <View style={{flex: 1, flexDirection: 'column'}}>
+                  <TouchableHighlight
+                    style={styles.outerCircle}
+                    underlayColor='#169FAD'
+                    onPress={this._goLanguages}>
+                    <View style={styles.innerCircle}></View>
+                  </TouchableHighlight>
+                  <View style={styles.line}>
+                  </View>
+                  <View style={styles.unCircle}>
+                  </View>
+                  <View style={styles.line}>
+                  </View>
+                  <View style={styles.unCircle}>
+                  </View>
+                  <View style={styles.line}>
+                  </View>
+                  <View style={styles.unCircle}>
+                  </View>
+                </View>
+                <View style={styles.third}>
+                  <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
+                    <Text style={styles.sectionDesc}>Tell us the </Text>
+                    <Text style={styles.sectionName}>languages</Text>
+                  </View>
+                  <View style={styles.descBlock}>
+                    <Text style={styles.sectionDesc}>Enrich the lesson with </Text>
+                    <Text style={styles.sectionName}>characters</Text>
+                  </View>
+                  <View style={styles.descBlock}>
+                    <Text style={styles.sectionDesc}>Write and record the </Text>
+                    <Text style={styles.sectionName}>dialogue</Text>
+                  </View>
+                  <View style={styles.descBlock}>
+                    <Text style={styles.sectionDesc}>Be proud of what you </Text>
+                    <Text style={styles.sectionName}>finished</Text>
+                    <Text style={styles.sectionDesc}>!</Text>
+                  </View>
+                </View>
               </View>
             </View>
-            <View style={styles.third}>
-              <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
-                <Text style={styles.sectionDesc}>Tell us the </Text>
-                <Text style={styles.sectionName}>languages</Text>
-              </View>
-              <View style={styles.descBlock}>
-                <Text style={styles.sectionDesc}>Enrich the lesson with </Text>
-                <Text style={styles.sectionName}>characters</Text>
-              </View>
-              <View style={styles.descBlock}>
-                <Text style={styles.sectionDesc}>Write and record the </Text>
-                <Text style={styles.sectionName}>dialogue</Text>
-              </View>
-              <View style={styles.descBlock}>
-                <Text style={styles.sectionDesc}>Be proud of what you </Text>
-                <Text style={styles.sectionName}>finished</Text>
-                <Text style={styles.sectionDesc}>!</Text>
-              </View>
-            </View>
-          </View>
+          </ScrollView>
         </View>
         <ContinueButton
           enabled={
             // (this.state.teacher && this.state.student)
             true
           }
-          label='Start Making Your Lesson'
+          label='Start'
           _next={this._goLanguages}
         />
       </View>
@@ -104,9 +107,12 @@ class NewTeacher extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: '#FDFDF1',
-    paddingTop: 10
+
+  },
+  scrollView: {
+    paddingTop: 15,
+    paddingBottom: 40
   },
   headerShadow: {
     backgroundColor: '#169FAD',
@@ -126,6 +132,7 @@ const styles = StyleSheet.create({
   },
   third: {
     flex: 3,
+    marginLeft: -10,
     flexDirection: 'column',
   },
   outerCircle: {
@@ -168,17 +175,21 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(22,159,173,1)'
   },
   labelText: {
+    marginTop: 10,
+    marginLeft: -10,
+    marginRight: -10,
+    marginBottom: 25,
     fontFamily: 'helvetica',
-    fontWeight: '300',
-    // color: '#169FAD',
+    fontWeight: '700',
+    color: 'rgba(22,159,173,1)',
     fontSize: 16,
     alignSelf: 'center',
-    margin: 20
   },
   sectionName: {
     alignSelf: 'flex-start',
     fontWeight: '700',
-    fontSize: 16
+    fontSize: 16,
+    color: 'rgba(22,159,173,1)'
   },
   sectionDesc: {
     alignSelf: 'flex-start',
@@ -190,7 +201,11 @@ const styles = StyleSheet.create({
     marginBottom: 87
   },
   card: {
-    margin: 15,
+    marginTop: 5,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingTop: 15,
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     shadowColor: '#000000',

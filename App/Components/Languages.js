@@ -5,7 +5,9 @@ import React, {
   Text,
   View,
   TouchableHighlight,
-  TextInput
+  TextInput,
+  ScrollView,
+  Dimensions
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -47,26 +49,33 @@ class Languages extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.card}>
-          <Text style={styles.labelText}>{'Language You Are Teaching:'}</Text>
-          <TextInput
-            autoCorrect={false}
-            returnKeyType='done'
-            style={styles.textInput}
-            value={this.state.teacher}
-            onChange={this._handleChangeTeacher}
-            placeholder='Your language'
-            />
-          <View style={{height: 15}}></View>
-          <Text style={styles.labelText}>{'Language Your Students Speak:'}</Text>
-          <TextInput
-            autoCorrect={false}
-            returnKeyType='done'
-            style={styles.textInput}
-            value={this.state.student}
-            onChange={this._handleChangeStudent}
-            placeholder="Student's language"
-            />
+        <View style={{height: Dimensions.get('window').height - 134}}>
+          <ScrollView
+            style={styles.scrollView}
+            showVerticalScrollIndicator={true}>
+            <View style={styles.card}>
+              <Text style={styles.labelText}>{'Language you are teaching:'}</Text>
+              <TextInput
+                autoCorrect={false}
+                returnKeyType='done'
+                style={styles.textInput}
+                value={this.state.teacher}
+                onChange={this._handleChangeTeacher}
+                placeholder='Your language'
+                />
+              </View>
+            <View style={styles.card}>
+              <Text style={styles.labelText}>{'Language your students speak:'}</Text>
+              <TextInput
+                autoCorrect={false}
+                returnKeyType='done'
+                style={styles.textInput}
+                value={this.state.student}
+                onChange={this._handleChangeStudent}
+                placeholder="Student's language"
+                />
+            </View>
+          </ScrollView>
         </View>
         <ContinueButton
           enabled={
@@ -85,9 +94,12 @@ class Languages extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: '#FDFDF1',
-    paddingTop: 10
+
+  },
+  scrollView: {
+    paddingTop: 15,
+    paddingBottom: 40,
   },
   headerShadow: {
     backgroundColor: '#169FAD',
@@ -104,12 +116,19 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: '300',
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: 18,
+    marginBottom: 10,
   },
   card: {
-    margin: 15,
-    padding: 15,
+    marginTop: 5,
+    marginBottom: 10,
+    marginLeft: 15,
+    marginRight: 15,
+    paddingTop: 15,
+    paddingTop: 15,
+    paddingBottom: 15,
+    paddingLeft: 10,
+    paddingRight: 10,
     backgroundColor: '#FFFFFF',
     borderRadius: 5,
     shadowColor: '#000000',
@@ -121,9 +140,9 @@ const styles = StyleSheet.create({
     }
   },
   textInput: {
-    height: 30,
+    height: 40,
     paddingLeft: 10,
-    fontSize: 16,
+    fontSize: 18,
     borderWidth: 1,
     borderColor: '#C8C7CC',
     borderRadius: 8,

@@ -4,6 +4,7 @@ import React, {
   View,
   StyleSheet,
   Text,
+  ScrollView
 } from 'react-native';
 
 import SignupButton from './SignupButton';
@@ -32,14 +33,16 @@ class CreateAccount extends Component {
     console.log(signupButtons)
 
     return(
-      <View style={styles.container}>
+      <ScrollView
+        showVerticalScrollIndicator={true}
+        style={styles.container}>
         <View style={styles.row}>
           <Text style={styles.signup}>
             To share, just make an account!
           </Text>
         </View>
         {signupButtons}
-      </View>
+      </ScrollView>
     )
   }
 }
@@ -47,18 +50,17 @@ class CreateAccount extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     backgroundColor: '#FDFDF1',
-    justifyContent: 'center'
   },
   row: {
+    marginTop: 180,
     flexDirection: 'row',
     justifyContent: 'center'
   },
   signup: {
     marginBottom: 30,
-    fontSize: 18,
-    fontWeight: '100'
+    fontSize: 20,
+    fontWeight: '400'
   }
 });
 

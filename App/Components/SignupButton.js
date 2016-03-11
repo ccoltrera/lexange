@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   },
   socialButton: {
     height: 40,
-    width: 240,
+    width: 300,
     flexDirection: 'row',
     borderRadius: 5,
   },

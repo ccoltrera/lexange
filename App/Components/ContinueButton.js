@@ -28,6 +28,7 @@ class ContinueButton extends Component {
         styles.unbuttonText
       )
 
+
     var _next = this.props.enabled ? (
         this.props._next
       ) : (
@@ -35,7 +36,7 @@ class ContinueButton extends Component {
       )
 
     return (
-      <View style={styles.backup}>
+      // <View style={styles.backup}>
         <TouchableHighlight
           style={buttonStyle}
           underlayColor='#028B99'
@@ -48,40 +49,55 @@ class ContinueButton extends Component {
             </View>
           </View>
         </TouchableHighlight>
-      </View>
+      // </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   button: {
-    height: 40,
+    height: 70,
     backgroundColor: 'rgba(22,159,173,1)',
     borderColor: 'rgba(22,159,173,0)',
-    borderWidth: 1,
-    borderRadius: 8,
+    // borderWidth: 1,
+    // borderRadius: 8,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   },
   buttonText: {
-    fontSize: 16,
+    fontSize: 20,
     color: '#FFFFFF',
-    fontWeight: '500',
+    fontWeight: '700',
     alignSelf: 'center'
   },
   unbutton: {
-    height: 40,
+    height: 70,
     backgroundColor: 'rgba(22,159,173,0.4)',
     borderColor: 'rgba(22,159,173,0)',
-    borderWidth: 1,
-    borderRadius: 8,
+    // borderWidth: 1,
+    // borderRadius: 8,
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   },
   unbuttonText: {
-    fontSize: 16,
+    fontSize: 20,
     color: '#FFFFFF',
-    alignSelf: 'center'
+    alignSelf: 'center',
+    fontWeight: '700'
   },
   backup: {
     margin: 15,
@@ -98,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   chevron: {
-    fontSize: 16,
+    fontSize: 20,
     color: '#FFFFFF'
   }
 });
