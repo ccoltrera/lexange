@@ -68,11 +68,11 @@ class PeopleForm extends Component {
 
     return (
       <View>
-        <View style={[styles.row, styles.labelWrapper]}>
-          <Text style={[styles.labelText, {fontWeight: 'bold'}]}>PERSON {this.props.num + 1}: </Text>
-          <Text style={styles.labelText}>{desc.toUpperCase()}</Text>
-        </View>
-        <View style={[styles.row, styles.backBox]}>
+        <View style={styles.card}>
+          <View style={[styles.row, styles.labelWrapper]}>
+            <Text style={[styles.labelText, {fontWeight: 'bold'}]}>Character {this.props.num + 1}: </Text>
+            <Text style={styles.labelText}>{desc}</Text>
+          </View>
           <View style={styles.row}>
             <TouchableHighlight
               onPress={this._toggleCam}
@@ -114,10 +114,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     flex: 1
   },
-  desc: {
-    marginBottom: 5,
-    fontSize: 16
-  },
   textInput: {
     flex: 5,
     height: 30,
@@ -136,7 +132,7 @@ const styles = StyleSheet.create({
     height: 80,
     width: 80,
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#C8C7CC',
     borderRadius: 10
   },
@@ -155,24 +151,26 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   labelWrapper: {
-    marginTop: 15,
     marginBottom: 5,
-    marginLeft: 16,
   },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '100',
-    fontSize: 14,
+    fontWeight: '300',
+    fontSize: 16,
+    marginBottom: 5,
   },
-  backBox: {
-    flexDirection: 'column',
+  card: {
+    margin: 15,
+    padding: 15,
     backgroundColor: '#FFFFFF',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 26,
-    paddingRight: 26,
-    borderWidth: 1,
-    borderColor: '#C8C7CC'
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   },
 });
 

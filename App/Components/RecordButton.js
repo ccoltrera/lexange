@@ -138,16 +138,18 @@ class RecordButton extends Component {
 const styles = StyleSheet.create({
   button: {
     height: 45,
-    marginBottom: 5,
+    width: 45,
+    marginRight: 10,
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
-    borderWidth: 3,
+    borderWidth: 2,
     borderRadius: 22.5,
     justifyContent: 'center'
   },
   buttonGroup: {
+    marginTop: 10,
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'row'
   },
   buttonText: {
     fontSize: 18,

@@ -8,6 +8,8 @@ import React, {
   Image
 } from 'react-native';
 
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 import VocabCard from './VocabCard';
 import DialogueItem from './DialogueItem';
 import ContinueButton from './ContinueButton';
@@ -18,19 +20,61 @@ class Finished extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      showThisTutorial: this.props.showTutorial,
+    }
+
     this.template = this.props._readTemplate();
 
     this._next = this._next.bind(this);
+    this._toggleTutorial = this._toggleTutorial.bind(this);
   }
 
   _next() {
     this.props.toRoute({
       name: 'Create Account',
       component: CreateAccount,
+      headerStyle: styles.headerShadow
     });
   }
 
+  _toggleTutorial() {
+    this.setState({
+      showThisTutorial: !this.state.showThisTutorial
+    })
+  }
+
   render() {
+    var tutorial = this.state.showThisTutorial ? (
+      <View style={styles.tutorialBox}>
+        <TouchableHighlight
+          style={[styles.closeTutButton, {marginBottom: 5}]}
+          onPress={this._toggleTutorial}
+          underlayColor='#FFFFFF'
+          >
+          <View style={{flexDirection: 'row'}}>
+            <Text>HIDE TIPS </Text>
+            <Icon name='times-circle-o' style={styles.closeTutIcon} />
+          </View>
+        </TouchableHighlight>
+        <Text style={styles.tutorialText}>
+          Here's your finished lesson! Click on cards and dialogue to see translations
+        </Text>
+      </View>
+    ) : (
+      <View style={styles.tutorialBox}>
+        <TouchableHighlight
+          style={[styles.closeTutButton, {marginBottom: -5}]}
+          onPress={this._toggleTutorial}
+          underlayColor='#FFFFFF'
+          >
+          <View style={{flexDirection: 'row'}}>
+            <Text>SHOW TIPS </Text>
+            <Icon name='times-circle-o' style={styles.closeTutIcon} />
+          </View>
+        </TouchableHighlight>
+      </View>
+    )
 
     var peopleCards = [];
     if (this.template.people.length > 0) {
@@ -48,12 +92,12 @@ class Finished extends Component {
     }
 
     var peopleBlock = (peopleCards.length > 0) ? (
-      <View style={styles.cardColumn}>
-        <Text style={styles.labelText}>PEOPLE:</Text>
+      <View>
+        <Text style={styles.labelText}>Characters:</Text>
         {peopleCards}
       </View>
     ) : (
-      <View style={styles.cardColumn}></View>
+      null
     )
 
     var itemCards = [];
@@ -72,12 +116,12 @@ class Finished extends Component {
     }
 
     var itemBlock = (itemCards.length > 0) ? (
-      <View style={styles.cardColumn}>
-        <Text style={styles.labelText}>ITEMS:</Text>
+      <View>
+        <Text style={styles.labelText}>Objects:</Text>
         {peopleCards}
       </View>
     ) : (
-      <View style={styles.cardColumn}></View>
+      null
     )
 
     var dialogueItems = [];
@@ -95,19 +139,13 @@ class Finished extends Component {
       )
     }
 
-    return (
 
+    return (
       <View style={styles.container}>
-        <View style={styles.tutorialBox}>
-          <Text style={styles.tutorialText}>
-            Here's your finished lesson! Click on cards and dialogue to see translations
-          </Text>
-        </View>
-        <View style={styles.cardRow}>
-          {peopleBlock}
-          {itemBlock}
-        </View>
-        <Text style={styles.labelText}>DIALOGUE:</Text>
+        {tutorial}
+        {peopleBlock}
+        {itemBlock}
+        <Text style={styles.labelText}>Dialogue:</Text>
         {dialogueItems}
         <ContinueButton
           enabled={true}
@@ -121,28 +159,55 @@ class Finished extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 15,
+    // padding: 15,
     flexDirection: 'column',
     backgroundColor: '#FDFDF1'
   },
+  headerShadow: {
+    backgroundColor: '#169FAD',
+    marginLeft: -2,
+    marginRight: -2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+  },
   tutorialBox: {
-    marginLeft: 15,
-    marginRight: 15,
-    padding: 10,
+    marginLeft: -1,
+    marginRight: -1,
+    padding: 15,
+    paddingBottom: 10,
+    marginBottom: 15,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC'
   },
   tutorialText: {
-    fontSize: 16
+    marginBottom: 5,
+    fontSize: 16,
+    fontWeight: '300'
+  },
+  closeTutButton: {
+    alignSelf: 'flex-end',
+    borderRadius: 15,
+    marginTop: -10,
+    marginRight: -3
+  },
+  closeTutIcon: {
+    fontSize: 16,
+    borderRadius: 8,
+  },
+  closeTutText: {
+    fontWeight: '400'
   },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '100',
+    fontWeight: '300',
     fontSize: 16,
-    marginTop: 15,
-    marginBottom: 10,
-    marginLeft: 5,
+    marginLeft: 15,
   },
   cardRow: {
     flexDirection: 'row'

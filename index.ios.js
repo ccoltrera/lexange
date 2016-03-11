@@ -33,7 +33,9 @@ class lexchange extends Component {
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: '#169FAD'
+    backgroundColor: '#169FAD',
+    marginLeft: -2,
+    marginRight: -2
   }
 });
 

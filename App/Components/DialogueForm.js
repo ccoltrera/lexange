@@ -4,7 +4,8 @@ import React, {
   View,
   Text,
   StyleSheet,
-  TextInput
+  TextInput,
+  Image
 } from 'react-native';
 
 import _handleChange from '../Utils/templateUtils';
@@ -34,26 +35,28 @@ class DialogueForm extends Component {
 
   render() {
     return(
-      <View>
-        <Text style={styles.labelText}>{this.person.name.toUpperCase()}:</Text>
-        <View style={[/*styles.backBox,*/ styles.row]}>
-        <View style={styles.bubble}>
-            <TextInput
-              autoCorrect={false}
-              returnKeyType='done'
-              style={styles.textInput}
-              value={this.state.diaTrans}
-              onChange={this._handleChangeTrans}
-              placeholder={this.template.dialogue[this.props.num].guide}
-              />
-        </View>
+      <View style={styles.card}>
+        <Text style={styles.labelText}>{this.person.name}:</Text>
+        <View style={{flexDirection: 'row'}}>
+          <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
+          <View style={{flexDirection: 'column', flex: 1}}>
+            <View style={styles.bubble}>
+                <TextInput
+                  autoCorrect={false}
+                  returnKeyType='done'
+                  style={styles.textInput}
+                  value={this.state.diaTrans}
+                  onChange={this._handleChangeTrans}
+                  placeholder={'\'' + this.template.dialogue[this.props.num].guide + '\' in ' + this.template.languages.teacher}
+                  />
+            </View>
             <RecordButton
               num={this.props.num}
               AudioRecorder={this.props.AudioRecorder}
               _setRecordingLength={this.props._setRecordingLength}
               recordingLength={this.props.recordingLength}
-              style={styles.recordButton}
               />
+          </View>
         </View>
       </View>
     )
@@ -62,60 +65,54 @@ class DialogueForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    paddingLeft: 15,
-    paddingRight: 15
-  },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '100',
-    fontSize: 14,
-    marginTop: 15,
+    fontWeight: '300',
+    fontSize: 16,
     marginBottom: 5,
-    marginLeft: 16,
   },
-  // backBox: {
-  //   backgroundColor: '#FFFFFF',
-  //   justifyContent: 'center',
-  //   paddingTop: 10,
-  //   paddingBottom: 10,
-  //   paddingLeft: 26,
-  //   paddingRight: 26,
-  //   borderWidth: 1,
-  //   borderColor: '#C8C7CC'
-  // },
-  bubble: {
-    marginTop: 0,
+  imageHolder: {
+    justifyContent: 'center',
+    height: 60,
+    width: 60,
+    marginRight: 10,
     backgroundColor: '#FFFFFF',
-    flex: 6,
+    borderWidth: 1,
+    borderColor: '#C8C7CC',
+    borderRadius: 10
+  },
+  bubble: {
+    backgroundColor: '#FFFFFF',
+    flex: 1,
     height: 50,
     borderWidth: 1,
-    marginLeft: 5,
-    marginRight: 5,
     borderRadius: 20,
     borderColor: '#C8C7CC',
-    paddingTop: 5,
-    paddingBottom: 5,
-    paddingLeft: 10,
-    paddingRight: 10
+    padding: 10
   },
   textInput: {
-    flex: 5,
+    flex: 1,
     height: 30,
     paddingLeft: 10,
-    marginTop: 5,
-    marginRight: 10,
-    marginBottom: 5,
     fontSize: 16,
     borderWidth: 1,
     borderColor: '#C8C7CC',
     borderRadius: 8,
     color: '#000000'
   },
-  recordButton: {
-    flex: 1
-  }
+  card: {
+    margin: 15,
+    padding: 15,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
+  },
 });
 
 export default DialogueForm;

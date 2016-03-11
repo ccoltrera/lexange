@@ -32,12 +32,14 @@ class Languages extends Component {
 
   _next() {
     this.props.toRoute({
-      name: 'People',
+      name: 'Characters',
       component: People,
       passProps: {
+        showTutorial: this.props.showTutorial,
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate
-      }
+      },
+      headerStyle: styles.headerShadow
     });
   }
 
@@ -45,8 +47,8 @@ class Languages extends Component {
 
     return (
       <View style={styles.container}>
-        <Text style={styles.labelText}>LANGUAGE YOU ARE TEACHING:</Text>
-        <View style={styles.backBox}>
+        <View style={styles.card}>
+          <Text style={styles.labelText}>{'Language You Are Teaching:'}</Text>
           <TextInput
             autoCorrect={false}
             returnKeyType='done'
@@ -55,9 +57,8 @@ class Languages extends Component {
             onChange={this._handleChangeTeacher}
             placeholder='Your language'
             />
-        </View>
-        <Text style={styles.labelText}>LANGUAGE YOUR STUDENTS SPEAK:</Text>
-        <View style={styles.backBox}>
+          <View style={{height: 15}}></View>
+          <Text style={styles.labelText}>{'Language Your Students Speak:'}</Text>
           <TextInput
             autoCorrect={false}
             returnKeyType='done'
@@ -69,10 +70,10 @@ class Languages extends Component {
         </View>
         <ContinueButton
           enabled={
-            (this.state.teacher && this.state.student)
-            // true
+            // (this.state.teacher && this.state.student)
+            true
           }
-          label='People'
+          label='Next'
           _next={this._next}
         />
       </View>
@@ -88,23 +89,36 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFDF1',
     paddingTop: 10
   },
+  headerShadow: {
+    backgroundColor: '#169FAD',
+    marginLeft: -2,
+    marginRight: -2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
+  },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '100',
-    fontSize: 14,
-    marginTop: 15,
+    fontWeight: '300',
+    fontSize: 16,
     marginBottom: 5,
-    marginLeft: 16,
   },
-  backBox: {
+  card: {
+    margin: 15,
+    padding: 15,
     backgroundColor: '#FFFFFF',
-    justifyContent: 'center',
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 26,
-    paddingRight: 26,
-    borderWidth: 1,
-    borderColor: '#C8C7CC'
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   },
   textInput: {
     height: 30,

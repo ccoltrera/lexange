@@ -35,7 +35,7 @@ class CreateAccount extends Component {
       <View style={styles.container}>
         <View style={styles.row}>
           <Text style={styles.signup}>
-            TO SHARE, JUST MAKE AN ACCOUNT!
+            To share, just make an account!
           </Text>
         </View>
         {signupButtons}

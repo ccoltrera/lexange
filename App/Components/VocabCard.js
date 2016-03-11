@@ -41,7 +41,7 @@ class VocabCard extends Component {
 
     var contentBlock = this.props.content === 'people' ? (
         <View>
-          <Text style={styles.cardText}>{this.content.name}</Text>
+          <Text style={[styles.cardText, {fontWeight: 'bold'}]}>{this.content.name}</Text>
           {text}
         </View>
       ) : (
@@ -77,19 +77,23 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   card: {
-    marginTop: 0,
+    margin: 15,
+    padding: 15,
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    marginLeft: 5,
-    marginRight: 5,
-    borderRadius: 10,
-    borderColor: '#C8C7CC',
-    padding: 5
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   },
   cardText: {
     backgroundColor: 'rgba(255,255,255,0)',
     fontSize: 16,
-    margin: 3
+    fontWeight: '300',
+    margin: 5
   },
   row: {
     flexDirection: 'row'

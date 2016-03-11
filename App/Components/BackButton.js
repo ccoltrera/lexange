@@ -18,7 +18,7 @@ class BackButton extends Component {
     return (
       <View style={styles.wrapper}>
         <View style={styles.chevronWrapper}>
-          <Icon name='chevron-left' style={styles.chevron} />
+          <Icon name='chevron-circle-left' style={styles.chevron} />
         </View>
       </View>
     )
@@ -29,12 +29,11 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginLeft: 4.5,
-    paddingLeft: 17,
-    paddingRight: 20,
-    paddingTop: 6,
-    paddingBottom: 5,
-    borderWidth: 1,
+    marginLeft: 0,
+    paddingLeft: 15,
+    paddingTop: 4,
+    paddingBottom: 0,
+    borderWidth: 0,
     borderRadius: 10,
     borderColor: '#FFFFFF'
   },
@@ -49,7 +48,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   chevron: {
-    fontSize: 16,
+    fontSize: 25,
     color: '#FFFFFF'
   }
 })

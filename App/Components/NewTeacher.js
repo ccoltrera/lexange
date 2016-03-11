@@ -28,59 +28,63 @@ class NewTeacher extends Component {
       name: 'Languages',
       component: Languages,
       passProps: {
+        showTutorial: true,
         _readTemplate: templateFuncs._readTemplate,
         _updateTemplate: templateFuncs._updateTemplate
-      }
+      },
+      headerStyle: styles.headerShadow
     });
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.labelText}>Make your first lesson in just a few steps!</Text>
-        <View style={styles.one}>
-          {/*<View style={styles.third}>
-            <View style={styles.left}>
-              <Text style={styles.leftText}></Text>
+        <View style={styles.card}>
+          <Text style={styles.labelText}>Make your first lesson in just a few steps!</Text>
+          <View style={styles.one}>
+            {/*<View style={styles.third}>
+              <View style={styles.left}>
+                <Text style={styles.leftText}></Text>
+              </View>
+            </View>*/}
+            <View style={{flex: 1, flexDirection: 'column'}}>
+              <TouchableHighlight
+                style={styles.outerCircle}
+                underlayColor='#169FAD'
+                onPress={this._goLanguages}>
+                <View style={styles.innerCircle}></View>
+              </TouchableHighlight>
+              <View style={styles.line}>
+              </View>
+              <View style={styles.unCircle}>
+              </View>
+              <View style={styles.line}>
+              </View>
+              <View style={styles.unCircle}>
+              </View>
+              <View style={styles.line}>
+              </View>
+              <View style={styles.unCircle}>
+              </View>
             </View>
-          </View>*/}
-          <View style={{flex: 1, flexDirection: 'column'}}>
-            <TouchableHighlight
-              style={styles.outerCircle}
-              underlayColor='#169FAD'
-              onPress={this._goLanguages}>
-              <View style={styles.innerCircle}></View>
-            </TouchableHighlight>
-            <View style={styles.line}>
-            </View>
-            <View style={styles.unCircle}>
-            </View>
-            <View style={styles.line}>
-            </View>
-            <View style={styles.unCircle}>
-            </View>
-            <View style={styles.line}>
-            </View>
-            <View style={styles.unCircle}>
-            </View>
-          </View>
-          <View style={styles.third}>
-            <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
-              <Text style={styles.sectionDesc}>Tell us the </Text>
-              <Text style={styles.sectionName}>Languages</Text>
-            </View>
-            <View style={styles.descBlock}>
-              <Text style={styles.sectionDesc}>Enrich the lesson with </Text>
-              <Text style={styles.sectionName}>People</Text>
-            </View>
-            <View style={styles.descBlock}>
-              <Text style={styles.sectionDesc}>Write and record the </Text>
-              <Text style={styles.sectionName}>Dialogue</Text>
-            </View>
-            <View style={styles.descBlock}>
-              <Text style={styles.sectionDesc}>Be proud of what you </Text>
-              <Text style={styles.sectionName}>Finished</Text>
-              <Text style={styles.sectionDesc}>!</Text>
+            <View style={styles.third}>
+              <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
+                <Text style={styles.sectionDesc}>Tell us the </Text>
+                <Text style={styles.sectionName}>languages</Text>
+              </View>
+              <View style={styles.descBlock}>
+                <Text style={styles.sectionDesc}>Enrich the lesson with </Text>
+                <Text style={styles.sectionName}>characters</Text>
+              </View>
+              <View style={styles.descBlock}>
+                <Text style={styles.sectionDesc}>Write and record the </Text>
+                <Text style={styles.sectionName}>dialogue</Text>
+              </View>
+              <View style={styles.descBlock}>
+                <Text style={styles.sectionDesc}>Be proud of what you </Text>
+                <Text style={styles.sectionName}>finished</Text>
+                <Text style={styles.sectionDesc}>!</Text>
+              </View>
             </View>
           </View>
         </View>
@@ -102,6 +106,19 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#FDFDF1',
+    paddingTop: 10
+  },
+  headerShadow: {
+    backgroundColor: '#169FAD',
+    marginLeft: -2,
+    marginRight: -2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
   },
   one: {
     flexDirection: 'row',
@@ -110,9 +127,6 @@ const styles = StyleSheet.create({
   third: {
     flex: 3,
     flexDirection: 'column',
-  },
-  left: {
-
   },
   outerCircle: {
     height: 50,
@@ -125,20 +139,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   innerCircle: {
-    height: 37,
-    width: 37,
+    height: 40,
+    width: 40,
     backgroundColor: '#FFFFFF',
     borderColor: 'rgba(22,159,173,1)',
     // borderWidth: 10,
-    borderRadius: 18.5,
+    borderRadius: 20,
     alignSelf: 'center'
   },
   unCircle: {
     height: 36,
     width: 36,
-    backgroundColor: 'rgba(22,159,173,1)',
-    // borderColor: '',
-    // borderWidth: 10,
+    backgroundColor: '#FFFFFF',
+    // backgroundColor: 'rgba(22,159,173,1)',
+    borderColor: 'rgba(22,159,173,1)',
+    borderWidth: 5,
     borderRadius: 18,
     alignSelf: 'center',
     justifyContent: 'center'
@@ -149,17 +164,16 @@ const styles = StyleSheet.create({
     width: 5,
     backgroundColor: 'rgba(22,159,173,1)',
     alignSelf: 'center',
-    borderWidth: 1,
+    borderWidth: 0,
     borderColor: 'rgba(22,159,173,1)'
   },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '100',
+    fontWeight: '300',
     // color: '#169FAD',
     fontSize: 16,
-    fontWeight: '200',
     alignSelf: 'center',
-    margin: 30
+    margin: 20
   },
   sectionName: {
     alignSelf: 'flex-start',
@@ -168,11 +182,24 @@ const styles = StyleSheet.create({
   },
   sectionDesc: {
     alignSelf: 'flex-start',
+    fontWeight: '300',
     fontSize: 16
   },
   descBlock: {
     flexDirection: 'row',
     marginBottom: 87
+  },
+  card: {
+    margin: 15,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   }
 });
 

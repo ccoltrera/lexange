@@ -96,20 +96,24 @@ class DialogueItem extends Component {
       )
 
     return (
-        <View>
-          <Text style={styles.charName}>{this.person.name.toUpperCase() }</Text>
-          <View style={styles.row}>
+        <View style={styles.card}>
+          <Text style={styles.labelText}>{this.person.name}:</Text>
+          <View style={{flexDirection: 'row'}}>
             <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
-            <TouchableHighlight
-              style={styles.bubble}
-              onPress={this._toggleShow}
-              underlayColor='#EEEEEE'
-              >
+            <View style={{flexDirection: 'column', flex: 1}}>
+              <View style={{flexDirection: 'row'}}>
+                <TouchableHighlight
+                  style={styles.bubble}
+                  onPress={this._toggleShow}
+                  underlayColor='#EEEEEE'
+                  >
 
-              {text}
+                  {text}
 
-            </TouchableHighlight>
-            {playButton}
+                </TouchableHighlight>
+              </View>
+              {playButton}
+            </View>
           </View>
         </View>
     )
@@ -118,59 +122,67 @@ class DialogueItem extends Component {
 }
 
 const styles = StyleSheet.create({
-  button: {
-    flex: 1,
-    height: 45,
-    marginTop: 0,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#C8C7CC',
-    borderWidth: 3,
-    borderRadius: 22.5,
-    justifyContent: 'center'
-  },
-  charName: {
+  labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '100',
-    fontSize: 14,
-    // marginTop: 5,
+    fontWeight: '300',
+    fontSize: 16,
     marginBottom: 5,
-    marginLeft: 5,
   },
   imageHolder: {
     justifyContent: 'center',
     height: 60,
     width: 60,
-    marginTop: 0,
+    marginRight: 10,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC',
     borderRadius: 10
   },
   bubble: {
-    marginTop: 0,
     backgroundColor: '#FFFFFF',
-    flex: 5,
+    flex: 1,
+    justifyContent: 'center',
+    height: 50,
     borderWidth: 1,
-    marginLeft: 5,
-    marginRight: 5,
     borderRadius: 20,
     borderColor: '#C8C7CC',
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 15,
-    paddingRight: 15,
+    paddingRight: 15
   },
   bubbleText: {
     backgroundColor: 'rgba(255,255,255,0)',
     fontSize: 16
   },
-  row: {
-    flexDirection: 'row'
+  button: {
+    flex: 1,
+    height: 45,
+    width: 45,
+    marginTop: 10,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#C8C7CC',
+    borderWidth: 2,
+    borderRadius: 22.5,
+    justifyContent: 'center'
   },
   buttonText: {
     fontSize: 18,
     color: '#858E99',
     alignSelf: 'center'
+  },
+  card: {
+    margin: 15,
+    padding: 15,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 5,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   }
 });
 

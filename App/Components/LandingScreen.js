@@ -24,7 +24,8 @@ class LandingScreen extends Component {
   _newTeacher() {
     this.props.toRoute({
       name: 'Welcome',
-      component: NewTeacher
+      component: NewTeacher,
+      headerStyle: styles.headerShadow
     });
   }
 
@@ -87,6 +88,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: '#169FAD',
   },
+  headerShadow: {
+    backgroundColor: '#169FAD',
+    marginLeft: -2,
+    marginRight: -2,
+    shadowColor: '#000000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 2,
+    shadowOpacity: 0.5,
+  },
   logo: {
     height: (86 * 1.25),
     width: (216 * 1.25),
@@ -102,8 +115,15 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     borderWidth: 1,
-    borderRadius: 10,
-    borderColor: '#FFFFFF'
+    borderRadius: 5,
+    borderColor: '#FDFDF1',
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
   },
   bbIconWrapper: {
     alignSelf: 'center',
@@ -125,35 +145,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: '500',
   },
-  longButton: {
-    marginTop: 60,
-    marginBottom: 40,
-    backgroundColor: '#FDFDF1',
-    height: 40,
-    width: 237,
-    alignSelf: 'center',
-    justifyContent: 'center',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
-    borderRadius: 8,
-  },
-  lbBlock: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  lBText: {
-    color: '#169FAD',
-    fontWeight: '500',
-    fontSize: 18,
-    alignSelf: 'center',
-    marginLeft: 10
-  },
-  lBIcon: {
-    marginRight: 3,
-    color: '#169FAD',
-    fontSize: 22,
-    marginTop: 3,
-  }
 })
 
 export default LandingScreen;

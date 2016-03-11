@@ -84,11 +84,11 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   backup: {
-    margin: 26,
+    margin: 15,
     height: 40,
-    backgroundColor: '#FFFFFF',
-    borderColor: '#FFFFFF',
-    borderWidth: 1,
+    backgroundColor: 'rgba(255,255,255,0)',
+    // borderColor: '#FFFFFF',
+    // borderWidth: 1,
     borderRadius: 8,
     alignSelf: 'stretch',
     justifyContent: 'center'
