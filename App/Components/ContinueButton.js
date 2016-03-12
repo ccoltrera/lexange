@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   unbutton: {
     height: 70,
-    backgroundColor: 'rgba(22,159,173,0.4)',
+    backgroundColor: '#8DC4CA',
     borderColor: 'rgba(22,159,173,0)',
     // borderWidth: 1,
     // borderRadius: 8,

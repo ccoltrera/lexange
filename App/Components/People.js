@@ -75,13 +75,14 @@ class People extends Component {
     var tutorialText = (
       <View >
         <Text style={styles.tutorialText}>
-          For your first lesson, we'll just have one character for the dialogue.
+          We'll just have one character for your first lesson.
         </Text>
+        <Text style={styles.tutorialText}></Text>
         <Text style={styles.tutorialText}>
           Make richer lessons by giving characters:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a name
+          - a name in {this.template.languages.teacher}
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - a description in {this.template.languages.teacher}

@@ -96,26 +96,29 @@ class DialogueItem extends Component {
       )
 
     return (
-        <View style={styles.card}>
+        <TouchableHighlight
+          style={styles.card}
+          onPress={this._toggleShow}
+          underlayColor='#EEEEEE'
+          >
+          <View>
           <Text style={styles.labelText}>{this.person.name}:</Text>
           <View style={{flexDirection: 'row'}}>
             <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
             <View style={{flexDirection: 'column', flex: 1}}>
               <View style={{flexDirection: 'row'}}>
-                <TouchableHighlight
-                  style={styles.bubble}
-                  onPress={this._toggleShow}
-                  underlayColor='#EEEEEE'
-                  >
+                <View
+                  style={styles.bubble}>
 
                   {text}
 
-                </TouchableHighlight>
+                </View>
               </View>
               {playButton}
             </View>
           </View>
-        </View>
+          </View>
+        </TouchableHighlight>
     )
   }
 

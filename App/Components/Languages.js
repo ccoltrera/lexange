@@ -141,11 +141,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     height: 40,
-    paddingLeft: 10,
+    paddingLeft: 12,
+    paddingRight: 12,
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#C8C7CC',
-    borderRadius: 8,
+    borderRadius: 18,
     color: '#000000'
   }
 });

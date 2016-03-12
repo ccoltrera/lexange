@@ -46,7 +46,10 @@ class NewTeacher extends Component {
             style={styles.scrollView}
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
-              <Text style={styles.labelText}>Make your first lesson in just a few steps!</Text>
+              <View style={styles.labelBlock}>
+                <Text style={styles.labelText}>With Lexchange's simple templates, </Text>
+                <Text style={styles.labelText}>make rich lessons in just a few steps!</Text>
+              </View>
               <View style={styles.one}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
                   <TouchableHighlight
@@ -78,11 +81,11 @@ class NewTeacher extends Component {
                     <Text style={styles.sectionName}>characters</Text>
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Write and record the </Text>
+                    <Text style={styles.sectionDesc}>Give the characters </Text>
                     <Text style={styles.sectionName}>dialogue</Text>
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Be proud of what you </Text>
+                    <Text style={styles.sectionDesc}>Share what you </Text>
                     <Text style={styles.sectionName}>finished</Text>
                     <Text style={styles.sectionDesc}>!</Text>
                   </View>
@@ -96,7 +99,7 @@ class NewTeacher extends Component {
             // (this.state.teacher && this.state.student)
             true
           }
-          label='Start'
+          label='Make Your First Lesson'
           _next={this._goLanguages}
         />
       </View>
@@ -174,16 +177,20 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: 'rgba(22,159,173,1)'
   },
-  labelText: {
+  labelBlock: {
+
     marginTop: 10,
-    marginLeft: -10,
-    marginRight: -10,
-    marginBottom: 25,
+    marginLeft: -5,
+    marginRight: -5,
+    marginBottom: 10,
+  },
+  labelText: {
     fontFamily: 'helvetica',
     fontWeight: '700',
     color: 'rgba(22,159,173,1)',
     fontSize: 16,
     alignSelf: 'center',
+    marginBottom: 5
   },
   sectionName: {
     alignSelf: 'flex-start',

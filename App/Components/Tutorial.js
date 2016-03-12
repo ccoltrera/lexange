@@ -5,7 +5,9 @@ import React, {
   TouchableHighlight,
   StyleSheet,
   Text,
-  Dimensions
+  Dimensions,
+  LayoutAnimation,
+  TouchableWithoutFeedback
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -17,6 +19,7 @@ class Tutorial extends Component {
     this.state = {
       firstTutorial: this.props.showTutorial,
       showThisTutorial: false,
+
     }
 
     this._toggleTutorial = this._toggleTutorial.bind(this);
@@ -30,6 +33,7 @@ class Tutorial extends Component {
       {showThisTutorial: !this.state.showThisTutorial}
     )
 
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.setState(stateUpdate)
   }
 
@@ -40,43 +44,44 @@ class Tutorial extends Component {
     var tutorialShowTop;
 
     var tutorial = this.state.firstTutorial ? (
-        <View style={[styles.tutorialModal, {width: width, height: height} ]}>
-          <View style={styles.tutorialPopup}>
-            {this.props.tutorialText}
-            <TouchableHighlight
-              style={[styles.closeTutButton, {marginBottom: 5}]}
-              onPress={this._toggleTutorial}
-              underlayColor='#FFFFFF'
-              >
-              <View style={{flexDirection: 'row'}}>
-                <Icon name='times-circle-o' style={styles.closeTutIcon} />
-              </View>
-            </TouchableHighlight>
-          </View>
+      <View style={[styles.tutorialModal, {width: width, height: height} ]}>
+        <View style={styles.tutorialPopup}>
+          {this.props.tutorialText}
+          <TouchableHighlight
+            style={[styles.closeTutButton, {marginBottom: 5}]}
+            onPress={this._toggleTutorial}
+            underlayColor='#FFFFFF'
+            >
+            <View style={{flexDirection: 'row'}}>
+              <Icon name='times-circle-o' style={styles.closeTutIcon} />
+            </View>
+          </TouchableHighlight>
         </View>
+      </View>
     ) : (
-      <TouchableHighlight
-        onPress={this._toggleTutorial}
-        underlayColor='#FFFFFF'
-        style={[styles.tutorialTab,
-          {
-            top: this.state.showThisTutorial ? ( null ) : ( height - 40 ),
-            bottom: this.state.showThisTutorial ? ( 40 ) : (null),
-            left: 5,
-            width: width - 10,
-            flexDirection: 'column',
-          }
-        ]} >
-        <View>
-          <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center'}}>
-            <Text style={styles.tabText}>TIPS </Text>
-            <Icon
-              style={styles.chevron}
-              name={this.state.showThisTutorial ? 'chevron-down' : 'chevron-up' } />
+      <TouchableWithoutFeedback
+          onPress={this._toggleTutorial}>
+        <View
+          style={[styles.tutorialTab,
+            {
+              top: this.state.showThisTutorial ? ( null ) : ( height - 40 ),
+              bottom: this.state.showThisTutorial ? ( 40 ) : (null),
+              left: 15,
+              width: width - 30,
+              flexDirection: 'column',
+            }
+          ]} >
+          <View>
+            <View style={{flexDirection: 'row', flex: 1, justifyContent: 'center'}}>
+              <Text style={styles.tabText}>TIPS </Text>
+              <Icon
+                style={styles.chevron}
+                name={this.state.showThisTutorial ? 'chevron-down' : 'chevron-up' } />
+            </View>
+          {this.props.tutorialText}
           </View>
-        {this.props.tutorialText}
         </View>
-      </TouchableHighlight>
+      </TouchableWithoutFeedback>
     )
 
     return tutorial;
@@ -98,7 +103,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   tutorialPopup: {
-    margin: 30,
+    margin: 15,
     padding: 20,
     backgroundColor: '#FFFFFF',
     borderWidth: 0,

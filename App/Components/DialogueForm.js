@@ -40,7 +40,10 @@ class DialogueForm extends Component {
         <View style={{flexDirection: 'row'}}>
           <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
           <View style={{flexDirection: 'column', flex: 1}}>
-            <View style={styles.bubble}>
+            <Text style={styles.textInputLabel}>
+                '{this.template.dialogue[this.props.num].guide}' in {this.template.languages.teacher}:
+            </Text>
+
                 <TextInput
                   autoCorrect={false}
                   returnKeyType='done'
@@ -49,7 +52,7 @@ class DialogueForm extends Component {
                   onChange={this._handleChangeTrans}
                   placeholder={'\'' + this.template.dialogue[this.props.num].guide + '\' in ' + this.template.languages.teacher}
                   />
-            </View>
+
             <RecordButton
               num={this.props.num}
               AudioRecorder={this.props.AudioRecorder}
@@ -93,12 +96,18 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     height: 40,
-    paddingLeft: 10,
+    paddingLeft: 12,
+    paddingRight: 12,
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#C8C7CC',
-    borderRadius: 8,
-    color: '#000000'
+    borderRadius: 18,
+    color: '#000000',
+  },
+  textInputLabel: {
+    fontFamily: 'helvetica',
+    fontWeight: '300',
+    fontSize: 14,
   },
   card: {
     marginTop: 5,

@@ -37,7 +37,7 @@ class LandingScreen extends Component {
         </View>
         <View style={styles.row}>
           <TouchableHighlight
-            style={[styles.bigButton, {width: 237}]}
+            style={[styles.bigButton, {width: 257}]}
             underlayColor='#FFFFFF'>
             <View style={styles.bbBlock}>
               <View style={styles.row}>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: 18,
     borderColor: '#FDFDF1',
     // shadowColor: '#000000',
     // shadowOpacity: 0.5,
@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   },
   bBText: {
     color: '#169FAD',
-    fontSize: 14,
+    fontSize: 16,
     alignSelf: 'center',
     fontWeight: '500',
   },

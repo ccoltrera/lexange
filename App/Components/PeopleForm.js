@@ -82,14 +82,20 @@ class PeopleForm extends Component {
               {cameraButton}
             </TouchableHighlight>
             <View style={styles.column}>
+              <Text style={styles.textInputLabel}>
+                Name in {this.template.languages.teacher}:
+              </Text>
               <TextInput
                 autoCorrect={false}
                 returnKeyType='done'
                 style={styles.textInput}
                 value={this.state.name}
                 onChange={this._handleChangeName}
-                placeholder='Name'
+                placeholder={'Name in' + this.template.languages.teacher}
                 />
+              <Text style={styles.textInputLabel}>
+                '{desc}' in {this.template.languages.teacher}:
+              </Text>
               <TextInput
                 autoCorrect={false}
                 returnKeyType='done'
@@ -112,23 +118,29 @@ const styles = StyleSheet.create({
   },
   column: {
     flexDirection: 'column',
-    flex: 1
+    flex: 1,
+    paddingLeft: 10,
+    // paddingRight: 10
   },
   padder: {
     height: 50
   },
   textInput: {
-    flex: 5,
+    flex: 1,
     height: 40,
-    paddingLeft: 10,
-    marginBottom: 10,
-    marginLeft: 10,
     marginBottom: 5,
+    paddingLeft: 12,
+    paddingRight: 12,
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#C8C7CC',
-    borderRadius: 8,
-    color: '#000000'
+    borderRadius: 18,
+    color: '#000000',
+  },
+  textInputLabel: {
+    fontFamily: 'helvetica',
+    fontWeight: '300',
+    fontSize: 14,
   },
   cameraButton: {
     justifyContent: 'center',
@@ -141,7 +153,7 @@ const styles = StyleSheet.create({
   },
   cameraButtonImage: {
     flex: 1,
-    borderRadius: 10
+    borderRadius: 9
   },
   roundedHighlight: {
     height: 80,

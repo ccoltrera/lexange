@@ -88,8 +88,12 @@ class Dialogue extends Component {
     var tutorialText = (
       <View>
         <Text style={styles.tutorialText}>
-          Just a one phrase 'dialogue' this time.
+          Now give your character something to say.
         </Text>
+        <Text style={styles.tutorialText}>
+          Most lessons will have more characters and dialogue, but for now just one phrase.
+        </Text>
+        <Text style={styles.tutorialText}></Text>
         <Text style={styles.tutorialText}>
           Make dialogues more useful by adding text AND audio.
         </Text>

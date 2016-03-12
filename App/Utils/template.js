@@ -9,14 +9,8 @@ var template = {
   },
   people: [
     {
-      desc: 'A Friend',
+      desc: 'A friend',
       descTrans: 'ともだち',
-      name: 'えりこ',
-      pictureUri: ''
-    },
-    {
-      desc: 'Another Friend',
-      descTrans: 'ほかのともだち',
       name: 'ひろ',
       pictureUri: ''
     },
@@ -24,16 +18,10 @@ var template = {
   dialogue: [
     {
       person: 0,
-      guide: 'Morning greeting',
-      diaTrans: 'おはよう。',
+      guide: 'Good morning',
+      diaTrans: 'おはよう',
       audioUri: ''
     },
-    {
-      person: 1,
-      guide: 'Morning greeting',
-      diaTrans: 'おはよう。',
-      audioUri: ''
-    }
   ],
   items: []
 };
