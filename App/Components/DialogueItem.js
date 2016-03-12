@@ -87,11 +87,11 @@ class DialogueItem extends Component {
 
     var text = this.state.show ? (
         <Text style={[styles.bubbleText, {color: '#858E99'}]}>
-          { this.dialogue.guide }
+          { this.dialogue.phraseTrans }
         </Text>
       ) : (
         <Text style={styles.bubbleText}>
-          { this.dialogue.diaTrans }
+          { this.dialogue.phrase }
         </Text>
       )
 

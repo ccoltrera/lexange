@@ -29,9 +29,8 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
-    marginLeft: 0,
-    paddingLeft: 15,
-    paddingTop: 4,
+    paddingLeft: 25,
+    paddingTop: 2,
     paddingBottom: 0,
     borderWidth: 0,
     borderRadius: 10,

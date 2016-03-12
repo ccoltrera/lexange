@@ -41,15 +41,18 @@ class RecordButton extends Component {
     this.props.AudioRecorder.prepareRecordingAtPath('/dialogue' + this.props.num + '.caf')
     this.props.AudioRecorder.onProgress = (data) => {
       this.setState({currentTime: Math.floor(data.currentTime)});
+
       if (this.state.currentTime >= this.props.recordingLength) {
         this.setState({playing: false});
       }
 
     };
+
     this.props.AudioRecorder.onFinished = (data) => {
       this.setState({finished: data.finished, recorded: true});
       console.log(`Finished recording: ${data.finished}`)
     };
+
   }
 
   _stop() {
@@ -100,7 +103,7 @@ class RecordButton extends Component {
     ) : (
       <Icon name='stop' style={styles.buttonText} />
     )
-    var playIcon = this.state.playing ? 'stop' : 'volume-up';
+    var playIcon = this.state.playing ? 'stop' : 'play';
 
     var playButton = this.state.recorded ? (
       <TouchableHighlight
@@ -147,7 +150,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   buttonGroup: {
-    marginTop: 10,
+    marginBottom: 10,
     flex: 1,
     flexDirection: 'row'
   },

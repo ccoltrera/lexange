@@ -19,7 +19,8 @@ var template = {
     {
       person: 0,
       guide: 'Good morning',
-      diaTrans: 'おはよう',
+      phrase: 'おはよう',
+      phraseTrans: 'Good morning [casual]',
       audioUri: ''
     },
   ],

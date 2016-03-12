@@ -18,14 +18,21 @@ class DialogueForm extends Component {
     this.template = this.props._readTemplate();
 
     this.state = {
-      diaTrans: this.template.dialogue[this.props.num].diaTrans,
+      phrase: this.template.dialogue[this.props.num].phrase,
+      phraseTrans: this.template.dialogue[this.props.num].phraseTrans,
       audioUri: this.template.dialogue[this.props.num].audioUri
     };
 
-    this._handleChangeTrans = _handleChange.bind(
+    this._handleChangePhrase = _handleChange.bind(
       this,
-      'diaTrans',
-      ['dialogue', this.props.num, 'diaTrans']
+      'phrase',
+      ['dialogue', this.props.num, 'phrase']
+    );
+
+    this._handleChangePhraseTrans = _handleChange.bind(
+      this,
+      'phraseTrans',
+      ['dialogue', this.props.num, 'phraseTrans']
     );
 
     this.personNum = this.template.dialogue[this.props.num].person;
@@ -41,23 +48,32 @@ class DialogueForm extends Component {
           <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
           <View style={{flexDirection: 'column', flex: 1}}>
             <Text style={styles.textInputLabel}>
-                '{this.template.dialogue[this.props.num].guide}' in {this.template.languages.teacher}:
+              '{this.template.dialogue[this.props.num].guide}' in {this.template.languages.teacher}:
             </Text>
-
-                <TextInput
-                  autoCorrect={false}
-                  returnKeyType='done'
-                  style={styles.textInput}
-                  value={this.state.diaTrans}
-                  onChange={this._handleChangeTrans}
-                  placeholder={'\'' + this.template.dialogue[this.props.num].guide + '\' in ' + this.template.languages.teacher}
-                  />
-
+            <TextInput
+              autoCorrect={false}
+              returnKeyType='done'
+              style={styles.textInput}
+              value={this.state.phrase}
+              onChange={this._handleChangePhrase}
+              placeholder={'\'' + this.template.dialogue[this.props.num].guide + '\' in ' + this.template.languages.teacher}
+              />
             <RecordButton
               num={this.props.num}
               AudioRecorder={this.props.AudioRecorder}
               _setRecordingLength={this.props._setRecordingLength}
               recordingLength={this.props.recordingLength}
+              />
+            <Text style={styles.textInputLabel}>
+              Translation in {this.template.languages.student}:
+            </Text>
+            <TextInput
+              autoCorrect={false}
+              returnKeyType='done'
+              style={styles.textInput}
+              value={this.state.phraseTrans}
+              onChange={this._handleChangePhraseTrans}
+              placeholder={'Translation in ' + this.template.languages.student}
               />
           </View>
         </View>
@@ -96,6 +112,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     height: 40,
+    marginBottom: 5,
     paddingLeft: 12,
     paddingRight: 12,
     fontSize: 18,

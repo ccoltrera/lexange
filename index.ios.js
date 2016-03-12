@@ -26,6 +26,7 @@ class lexchange extends Component {
           component: LandingScreen
         }}
         backButtonComponent={BackButton}
+        titleStyle={{fontSize: 20}}
         />
     );
   }

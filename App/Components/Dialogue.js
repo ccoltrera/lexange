@@ -91,11 +91,20 @@ class Dialogue extends Component {
           Now give your character something to say.
         </Text>
         <Text style={styles.tutorialText}>
-          Most lessons will have more characters and dialogue, but for now just one phrase.
+          Most lessons will have more characters, and dialogue. But for now just one phrase.
         </Text>
         <Text style={styles.tutorialText}></Text>
         <Text style={styles.tutorialText}>
-          Make dialogues more useful by adding text AND audio.
+          Make dialogues more useful with:
+        </Text>
+        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+          - written sentences in {this.template.languages.teacher}
+        </Text>
+        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+          - audio in {this.template.languages.teacher}
+        </Text>
+        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+          - natural translations in {this.template.languages.student}
         </Text>
       </View>
     )
