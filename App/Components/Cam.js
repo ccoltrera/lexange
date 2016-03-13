@@ -32,10 +32,13 @@ class CamModal extends Component {
 
   render() {
     var dimens = Dimensions.get('window');
+    var barHeight = (dimens.height - dimens.width) / 2;
 
     var pictureOver = this.state.newSnapUri ? (
       <View style={styles.imageContainer}>
         <Image style={[styles.image, {height: dimens.height, width: dimens.width} ]} source={{uri: this.state.newSnapUri}} />
+        <View style={[styles.bar, {top: 0, height: barHeight}]}></View>
+        <View style={[styles.bar, {bottom: 0, height: barHeight}]}></View>
       </View>
     ) : (
       null
@@ -51,6 +54,8 @@ class CamModal extends Component {
             captureTarget={Camera.constants.CaptureTarget.disk}
             style={styles.preview}
             aspect={Camera.constants.Aspect.fill}>
+            <View style={[styles.bar, {top: 0, height: barHeight}]}></View>
+            <View style={[styles.bar, {bottom: 0, height: barHeight}]}></View>
             <Icon style={styles.capture} name='camera' onPress={this.takePicture.bind(this)} />
             <TouchableHighlight
               onPress={this.props._toggleCam} >
@@ -115,6 +120,12 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 10,
     fontSize: 40
+  },
+  bar: {
+    position: 'absolute',
+    right: 0,
+    left: 0,
+    backgroundColor: '#000000',
   },
   image: {
     flex: 1

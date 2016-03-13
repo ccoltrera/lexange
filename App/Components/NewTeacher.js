@@ -50,7 +50,7 @@ class NewTeacher extends Component {
                 <Text style={styles.labelText}>Lexchange gives you simple templates, you give your students rich lessons.</Text>
               </View>
               <View style={styles.one}>
-                <View style={{flex: 1, flexDirection: 'column'}}>
+                <View style={styles.path}>
                   <TouchableHighlight
                     style={styles.outerCircle}
                     underlayColor='#169FAD'
@@ -127,12 +127,17 @@ const styles = StyleSheet.create({
     },
   },
   one: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     marginBottom: -60
+  },
+  path: {
+    position: 'absolute',
+    top: 0,
+    left: 15
   },
   third: {
     flex: 3,
-    marginLeft: -10,
+    marginLeft: 75,
     flexDirection: 'column',
   },
   outerCircle: {
