@@ -19,7 +19,7 @@ var template = {
     {
       person: 0,
       guide: 'Morning greeting',
-      phrase: 'おはよう',
+      phrase: 'おはよう。',
       phraseTrans: 'Good morning [casual]',
       audioUri: ''
     },

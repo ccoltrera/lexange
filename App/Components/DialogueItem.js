@@ -90,10 +90,22 @@ class DialogueItem extends Component {
           { this.dialogue.phraseTrans }
         </Text>
       ) : (
-        <Text style={styles.bubbleText}>
+        <Text style={[styles.bubbleText, {color: '#FFFFFF'}]}>
           { this.dialogue.phrase }
         </Text>
       )
+
+    var bubbleColor = this.state.show ? (
+      {backgroundColor: '#FFFFFF' }
+    ) : (
+      null
+    )
+
+    var triangleColor = this.state.show ? (
+      {borderRightColor: '#FFFFFF' }
+    ) : (
+      null
+    )
 
     return (
         <TouchableHighlight
@@ -106,17 +118,14 @@ class DialogueItem extends Component {
           <View style={{flexDirection: 'row'}}>
             <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
             <View style={{flexDirection: 'column', flex: 1}}>
-              <View style={{flexDirection: 'row'}}>
+              <View>
                 <View style={styles.talkBubble}>
                   <View style={styles.talkBubbleTriangle} />
                     <View
-                      style={[styles.bubble, styles.talkBubbleSquare]}>
-
+                      style={[styles.bubble, styles.talkBubbleSquare, bubbleColor]}>
                       {text}
-
                     </View>
-
-                  <View style={styles.talkBubbleTriangleInside} />
+                  <View style={[styles.talkBubbleTriangleInside, triangleColor]} />
                 </View>
               </View>
               {playButton}
@@ -150,14 +159,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     flex: 1,
     justifyContent: 'center',
-    height: 50,
+    // height: 50,
     borderWidth: 1,
     borderRadius: 20,
     borderColor: '#C8C7CC',
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 15,
-    paddingRight: 15
+    paddingRight: 15,
   },
   bubbleText: {
     backgroundColor: 'rgba(255,255,255,0)',
@@ -197,9 +206,10 @@ const styles = StyleSheet.create({
   },
   talkBubbleSquare: {
   //   height: 40,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#169FAD',
     borderWidth: 2,
-    // borderColor: '#000000',
+    borderColor: '#169FAD',
+
   //   borderRadius: 18
   },
   talkBubbleTriangle: {
@@ -211,7 +221,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderTopWidth: 13,
     borderRightWidth: 36,
-    borderRightColor: '#C8C7CC',
+    borderRightColor: '#169FAD',
     borderBottomWidth: 13,
     borderBottomColor: 'transparent'
   },
@@ -224,7 +234,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderTopWidth: 3.25,
     borderRightWidth: 9,
-    borderRightColor: '#FFFFFF',
+    borderRightColor: '#169FAD',
     borderBottomWidth: 3.25,
     borderBottomColor: 'transparent'
   }

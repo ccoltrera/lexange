@@ -47,8 +47,7 @@ class NewTeacher extends Component {
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
               <View style={styles.labelBlock}>
-                <Text style={styles.labelText}>With Lexchange's simple templates, </Text>
-                <Text style={styles.labelText}>make rich lessons in just a few steps!</Text>
+                <Text style={styles.labelText}>Lexchange gives you simple templates, you give your students rich lessons.</Text>
               </View>
               <View style={styles.one}>
                 <View style={{flex: 1, flexDirection: 'column'}}>
@@ -73,21 +72,19 @@ class NewTeacher extends Component {
                 </View>
                 <View style={styles.third}>
                   <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
-                    <Text style={styles.sectionDesc}>Tell us the </Text>
-                    <Text style={styles.sectionName}>languages</Text>
+                    <Text style={styles.sectionDesc}>Tell us the <Text style={styles.sectionName}>languages</Text></Text>
+
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Enrich the lesson with </Text>
-                    <Text style={styles.sectionName}>characters</Text>
+                    <Text style={styles.sectionDesc}>Enrich the lesson with <Text style={styles.sectionName}>characters</Text></Text>
+
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Give the characters </Text>
-                    <Text style={styles.sectionName}>dialogue</Text>
+                    <Text style={styles.sectionDesc}>Give the characters <Text style={styles.sectionName}>dialogue</Text></Text>
+
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Share what you </Text>
-                    <Text style={styles.sectionName}>finished</Text>
-                    <Text style={styles.sectionDesc}>!</Text>
+                    <Text style={styles.sectionDesc}>Share what you <Text style={styles.sectionName}>finished</Text>!</Text>
                   </View>
                 </View>
               </View>
@@ -179,17 +176,20 @@ const styles = StyleSheet.create({
   },
   labelBlock: {
     marginTop: 10,
-    marginLeft: -5,
-    marginRight: -5,
+    marginLeft: 5,
+    marginRight: 5,
     marginBottom: 10,
   },
   labelText: {
+    marginLeft: 5,
+    marginRight: 5,
     fontFamily: 'helvetica',
     fontWeight: '700',
     color: 'rgba(22,159,173,1)',
     fontSize: 16,
     alignSelf: 'center',
-    marginBottom: 5
+    marginBottom: 5,
+    textAlign: 'center',
   },
   sectionName: {
     alignSelf: 'flex-start',
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   descBlock: {
-    flexDirection: 'row',
+    // flexDirection: 'row',
     marginBottom: 87
   },
   card: {

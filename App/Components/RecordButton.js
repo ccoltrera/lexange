@@ -101,16 +101,16 @@ class RecordButton extends Component {
     var recordButton = !this.state.recording ? (
       <Icon name='circle' style={[styles.buttonText, {color: 'red'}]} />
     ) : (
-      <Icon name='stop' style={styles.buttonText} />
+      <Icon name='stop' style={[styles.buttonText, {color: 'black', fontSize: 20}]} />
     )
 
     var playIcon = this.state.playing ? (
-      <Icon name='stop' style={styles.buttonText} />
+      <Icon name='stop' style={[styles.buttonText, {color: 'black', fontSize: 20}]} />
     ) : (
-      <Icon name='play' style={[styles.buttonText, {paddingLeft: 3}]} />
+      <Icon name='play' style={[styles.buttonText, {paddingLeft: 3, color: 'green'}]} />
     );
 
-    var playButton = this.state.recorded ? (
+    var playButton = (
       <TouchableHighlight
         style={styles.button}
         onPress={this._play}
@@ -118,13 +118,6 @@ class RecordButton extends Component {
         >
         {playIcon}
       </TouchableHighlight>
-    ) : (
-      <View
-        style={styles.button}
-        underlayColor='#EEEEEE'
-        >
-        {playIcon}
-      </View>
     )
 
     return (
@@ -137,7 +130,7 @@ class RecordButton extends Component {
           {recordButton}
         </TouchableHighlight>
         {playButton}
-        <TouchableHighlight
+        {/*<TouchableHighlight
           style={styles.button}
           onPress={()=> {
               this._stop();
@@ -147,7 +140,7 @@ class RecordButton extends Component {
           underlayColor='#EEEEEE'
           >
           <Icon name='check' style={[styles.buttonText, {color: 'green'}]} />
-        </TouchableHighlight>
+        </TouchableHighlight>*/}
       </View>
     );
   }
@@ -159,9 +152,10 @@ const styles = StyleSheet.create({
     height: 55,
     width: 55,
     margin: 5,
+
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
-    borderWidth: 2,
+    // borderWidth: 2,
     borderRadius: 27.5,
     justifyContent: 'center'
   },

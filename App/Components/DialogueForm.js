@@ -57,7 +57,7 @@ class DialogueForm extends Component {
 
     var recordPanel = this.state.showRecordPanel ? (
       <View style={styles.recordPanel}>
-        <View style={{flexDirection: 'column'}}>
+        <View style={{flex:1, flexDirection: 'column', marginLeft: 0, marginRight: -10.5, marginTop: 45, borderWidth: 0, borderRadius: 10, borderColor: '#C8C7CC'}}>
           <RecordButton
             num={this.props.num}
             AudioRecorder={this.props.AudioRecorder}
@@ -69,6 +69,12 @@ class DialogueForm extends Component {
             <Text style={styles.recordTime}>{this.props.recordingLength}s</Text>
           </View>
         </View>
+        <TouchableHighlight
+          style={{position: 'absolute', top: 30.5, left: 6, bottom: 1, flexDirection: 'column', borderRadius: 10}}
+          onPress={this._toggleRecordPanel}
+          underlayColor='#FFFFFF'>
+          <Icon name='chevron-left' style={{fontSize: 40, color: '#169FAD', alignSelf: 'center', marginTop: 62}}/>
+        </TouchableHighlight>
       </View>
     ) : (
       <View style={[styles.recordPanel, {left: null, paddingLeft: 0, paddingRight: 0}]}>
@@ -201,28 +207,28 @@ const styles = StyleSheet.create({
     left: 0,
     bottom: 0,
     right: 0,
-    paddingTop: 20,
-    paddingLeft: 18,
     borderRadius: 5,
-    backgroundColor: '#FFFFFF'
+    backgroundColor: '#EEEEEE',
+    flexDirection: 'row'
     // backgroundColor: 'rgba(0,0,0,0.5)',
   },
   timeWrapper: {
     flexDirection: 'column',
     flex: 1,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   recordTime: {
     fontSize: 65,
     color: '#169FAD',
-    fontWeight: '700',
+    fontWeight: '600',
     alignSelf: 'center'
   },
   talkBubbleSquare: {
   //   height: 40,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#169FAD',
     borderWidth: 2,
-    // borderColor: '#000000',
+    borderColor: '#169FAD',
+    color: '#FFFFFF'
   //   borderRadius: 18
   },
   talkBubbleTriangle: {
@@ -234,7 +240,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderTopWidth: 13,
     borderRightWidth: 36,
-    borderRightColor: '#C8C7CC',
+    borderRightColor: '#169FAD',
     borderBottomWidth: 13,
     borderBottomColor: 'transparent'
   },
@@ -247,7 +253,7 @@ const styles = StyleSheet.create({
     borderTopColor: 'transparent',
     borderTopWidth: 3.25,
     borderRightWidth: 9,
-    borderRightColor: '#FFFFFF',
+    borderRightColor: '#169FAD',
     borderBottomWidth: 3.25,
     borderBottomColor: 'transparent'
   }

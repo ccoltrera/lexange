@@ -75,11 +75,11 @@ class People extends Component {
     var tutorialText = (
       <View >
         <Text style={styles.tutorialText}>
-          We'll just have one character for your first lesson.
+          Most lesson templates have more than one character. But let's just have one for your first lesson.
         </Text>
         <Text style={styles.tutorialText}></Text>
         <Text style={styles.tutorialText}>
-          Make richer lessons by giving characters:
+          Complete characters with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - a name in {this.template.languages.teacher}

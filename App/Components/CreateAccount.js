@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFDF1',
   },
   row: {
-    marginTop: 180,
+    marginTop: 120,
     flexDirection: 'row',
     justifyContent: 'center'
   },

@@ -67,6 +67,9 @@ class VocabCard extends Component {
 
 const styles = StyleSheet.create({
   imageHolder: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     justifyContent: 'center',
     height: 80,
     width: 80,
@@ -76,6 +79,7 @@ const styles = StyleSheet.create({
     borderRadius: 10
   },
   card: {
+    height: 110,
     marginTop: 5,
     marginBottom: 10,
     marginLeft: 15,
@@ -101,13 +105,13 @@ const styles = StyleSheet.create({
     margin: 5
   },
   row: {
-    flexDirection: 'row'
+    // flexDirection: 'row'
   },
   textColumn: {
-    height: 80,
+    // height: 80,
     flexDirection: 'column',
-    marginLeft: 5,
-    justifyContent: 'center',
+    marginLeft: 85,
+    // justifyContent: 'center',
   }
 });
 

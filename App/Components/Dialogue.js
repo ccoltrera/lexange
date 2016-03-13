@@ -88,14 +88,14 @@ class Dialogue extends Component {
     var tutorialText = (
       <View>
         <Text style={styles.tutorialText}>
-          Now give your character something to say.
+          Now give your character something to say!
         </Text>
         <Text style={styles.tutorialText}>
-          Most lessons will have more characters, and dialogue. But for now just one phrase.
+          Most lesson templates have dialogues, but let's just have one phrase for your first lesson.
         </Text>
         <Text style={styles.tutorialText}></Text>
         <Text style={styles.tutorialText}>
-          Make dialogues more useful with:
+          Complete dialogues with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - written sentences in {this.template.languages.teacher}
