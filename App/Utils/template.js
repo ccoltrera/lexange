@@ -18,7 +18,7 @@ var template = {
   dialogue: [
     {
       person: 0,
-      guide: 'Good morning',
+      guide: 'Morning greeting',
       phrase: 'おはよう',
       phraseTrans: 'Good morning [casual]',
       audioUri: ''

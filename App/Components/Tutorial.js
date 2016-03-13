@@ -76,8 +76,6 @@ class Tutorial extends Component {
     )
 
     var tutorialCard = (
-      <TouchableWithoutFeedback
-          onPress={this._toggleTutorial}>
         <View style={cardStyles} >
           <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center'}}>
             <Text style={styles.tabText}>TIPS </Text>
@@ -87,15 +85,19 @@ class Tutorial extends Component {
           </View>
           {this.props.tutorialText}
         </View>
-      </TouchableWithoutFeedback>
     );
 
     var tutorial = this.state.firstTutorial ? (
-      <View style={[styles.tutorialModal, {width: width, height: modalHeight} ]}>
+      <TouchableHighlight
+        onPress={this._toggleTutorial}
+        style={[styles.tutorialModal, {width: width, height: modalHeight} ]}>
         {tutorialCard}
-      </View>
+      </TouchableHighlight>
     ) : (
-      tutorialCard
+      <TouchableWithoutFeedback
+          onPress={this._toggleTutorial}>
+        {tutorialCard}
+      </TouchableWithoutFeedback>
     )
 
     return tutorial;

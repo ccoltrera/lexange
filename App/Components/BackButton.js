@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   wrapper: {
     flexDirection: 'row',
     justifyContent: 'center',
-    paddingLeft: 25,
+    paddingLeft: 15,
     paddingTop: 2,
     paddingBottom: 0,
     borderWidth: 0,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   chevron: {
-    fontSize: 25,
+    fontSize: 35,
     color: '#FFFFFF'
   }
 })

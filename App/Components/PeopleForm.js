@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
   textInput: {
     flex: 1,
     height: 40,
-    marginBottom: 5,
+    marginBottom: 15,
     paddingLeft: 12,
     paddingRight: 12,
     fontSize: 18,
@@ -140,7 +140,8 @@ const styles = StyleSheet.create({
   textInputLabel: {
     fontFamily: 'helvetica',
     fontWeight: '300',
-    fontSize: 14,
+    fontSize: 16,
+    marginBottom: 3
   },
   cameraButton: {
     justifyContent: 'center',

@@ -178,7 +178,6 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(22,159,173,1)'
   },
   labelBlock: {
-
     marginTop: 10,
     marginLeft: -5,
     marginRight: -5,

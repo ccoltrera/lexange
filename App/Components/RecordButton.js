@@ -41,7 +41,9 @@ class RecordButton extends Component {
     this.props.AudioRecorder.prepareRecordingAtPath('/dialogue' + this.props.num + '.caf')
     this.props.AudioRecorder.onProgress = (data) => {
       this.setState({currentTime: Math.floor(data.currentTime)});
-
+      if (data.currentTime > 0) {
+        this.props._setRecordingLength( this.state.currentTime );
+      }
       if (this.state.currentTime >= this.props.recordingLength) {
         this.setState({playing: false});
       }
@@ -49,7 +51,6 @@ class RecordButton extends Component {
     };
 
     this.props.AudioRecorder.onFinished = (data) => {
-      this.setState({finished: data.finished, recorded: true});
       console.log(`Finished recording: ${data.finished}`)
     };
 
@@ -57,9 +58,8 @@ class RecordButton extends Component {
 
   _stop() {
     if (this.state.recording) {
-      this.props._setRecordingLength( this.state.currentTime );
       this.props.AudioRecorder.stopRecording();
-      this.setState({stoppedRecording: true, recording: false});
+      this.setState({stoppedRecording: true, recording: false, recorded: true});
     } else if (this.state.playing) {
       this.props.AudioRecorder.stopPlaying();
       this.setState({playing: false, stoppedPlaying: true});
@@ -103,7 +103,12 @@ class RecordButton extends Component {
     ) : (
       <Icon name='stop' style={styles.buttonText} />
     )
-    var playIcon = this.state.playing ? 'stop' : 'play';
+
+    var playIcon = this.state.playing ? (
+      <Icon name='stop' style={styles.buttonText} />
+    ) : (
+      <Icon name='play' style={[styles.buttonText, {paddingLeft: 3}]} />
+    );
 
     var playButton = this.state.recorded ? (
       <TouchableHighlight
@@ -111,15 +116,15 @@ class RecordButton extends Component {
         onPress={this._play}
         underlayColor='#EEEEEE'
         >
-        <Icon name={playIcon} style={styles.buttonText} />
+        {playIcon}
       </TouchableHighlight>
     ) : (
-      <TouchableHighlight
+      <View
         style={styles.button}
         underlayColor='#EEEEEE'
         >
-        <Icon name='volume-off' style={styles.buttonText} />
-      </TouchableHighlight>
+        {playIcon}
+      </View>
     )
 
     return (
@@ -132,6 +137,17 @@ class RecordButton extends Component {
           {recordButton}
         </TouchableHighlight>
         {playButton}
+        <TouchableHighlight
+          style={styles.button}
+          onPress={()=> {
+              this._stop();
+              this.props._toggleRecordPanel();
+            }
+          }
+          underlayColor='#EEEEEE'
+          >
+          <Icon name='check' style={[styles.buttonText, {color: 'green'}]} />
+        </TouchableHighlight>
       </View>
     );
   }
@@ -140,22 +156,22 @@ class RecordButton extends Component {
 
 const styles = StyleSheet.create({
   button: {
-    height: 45,
-    width: 45,
-    marginRight: 10,
+    height: 55,
+    width: 55,
+    margin: 5,
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
     borderWidth: 2,
-    borderRadius: 22.5,
+    borderRadius: 27.5,
     justifyContent: 'center'
   },
   buttonGroup: {
-    marginBottom: 10,
-    flex: 1,
-    flexDirection: 'row'
+    // marginBottom: 10,
+    flexDirection: 'row',
+    alignSelf: 'center'
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 28,
     color: '#858E99',
     alignSelf: 'center'
   }

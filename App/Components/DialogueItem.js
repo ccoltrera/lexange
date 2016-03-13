@@ -65,7 +65,7 @@ class DialogueItem extends Component {
           onPress={this._stop}
           underlayColor='#EEEEEE'
           >
-          <Icon name='stop' style={styles.buttonText} />
+          <Icon name='stop' style={styles.buttonIcon} />
         </TouchableHighlight>
       ) : (
         <TouchableHighlight
@@ -73,7 +73,7 @@ class DialogueItem extends Component {
           onPress={this._play}
           underlayColor='#EEEEEE'
           >
-          <Icon name='volume-up' style={styles.buttonText} />
+          <Icon name='volume-up' style={styles.buttonIcon} />
         </TouchableHighlight>
       )
     ) : (
@@ -81,7 +81,7 @@ class DialogueItem extends Component {
         style={styles.button}
         underlayColor='#EEEEEE'
         >
-        <Icon name='volume-off' style={styles.buttonText} />
+        <Icon name='volume-off' style={styles.buttonIcon} />
       </TouchableHighlight>
     )
 
@@ -107,11 +107,16 @@ class DialogueItem extends Component {
             <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
             <View style={{flexDirection: 'column', flex: 1}}>
               <View style={{flexDirection: 'row'}}>
-                <View
-                  style={styles.bubble}>
+                <View style={styles.talkBubble}>
+                  <View style={styles.talkBubbleTriangle} />
+                    <View
+                      style={[styles.bubble, styles.talkBubbleSquare]}>
 
-                  {text}
+                      {text}
 
+                    </View>
+
+                  <View style={styles.talkBubbleTriangleInside} />
                 </View>
               </View>
               {playButton}
@@ -160,17 +165,17 @@ const styles = StyleSheet.create({
   },
   button: {
     flex: 1,
-    height: 45,
-    width: 45,
+    height: 55,
+    width: 55,
     marginTop: 10,
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
     borderWidth: 2,
-    borderRadius: 22.5,
+    borderRadius: 27.5,
     justifyContent: 'center'
   },
-  buttonText: {
-    fontSize: 18,
+  buttonIcon: {
+    fontSize: 28,
     color: '#858E99',
     alignSelf: 'center'
   },
@@ -189,6 +194,39 @@ const styles = StyleSheet.create({
       height: 2,
       width: 0
     }
+  },
+  talkBubbleSquare: {
+  //   height: 40,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 2,
+    // borderColor: '#000000',
+  //   borderRadius: 18
+  },
+  talkBubbleTriangle: {
+    position: 'absolute',
+    left: -9,
+    top: 7,
+    width: 0,
+    height: 0,
+    borderTopColor: 'transparent',
+    borderTopWidth: 13,
+    borderRightWidth: 36,
+    borderRightColor: '#C8C7CC',
+    borderBottomWidth: 13,
+    borderBottomColor: 'transparent'
+  },
+  talkBubbleTriangleInside: {
+    position: 'absolute',
+    left: -3.0,
+    top: 16.75,
+    width: 0,
+    height: 0,
+    borderTopColor: 'transparent',
+    borderTopWidth: 3.25,
+    borderRightWidth: 9,
+    borderRightColor: '#FFFFFF',
+    borderBottomWidth: 3.25,
+    borderBottomColor: 'transparent'
   }
 });
 
