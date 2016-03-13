@@ -109,15 +109,15 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width
   },
   cancel: {
-    margin: 10,
+    margin: 15,
     color: '#fff',
     fontSize: 16
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
+    backgroundColor: '#169FAD',
     borderRadius: 5,
-    color: '#000',
+    color: '#fff',
     padding: 10,
     fontSize: 40
   },

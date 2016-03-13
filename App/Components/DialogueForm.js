@@ -189,16 +189,16 @@ const styles = StyleSheet.create({
     height: 55,
     width: 55,
     marginTop: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#169FAD',
     borderColor: '#C8C7CC',
-    borderWidth: 2,
+    borderWidth: 0,
     borderRadius: 27.5,
     justifyContent: 'center',
     alignSelf: 'center'
   },
   buttonIcon: {
     fontSize: 28,
-    color: '#858E99',
+    color: '#FFF',
     alignSelf: 'center'
   },
   recordPanel: {

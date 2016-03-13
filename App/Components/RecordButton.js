@@ -107,7 +107,7 @@ class RecordButton extends Component {
     var playIcon = this.state.playing ? (
       <Icon name='stop' style={[styles.buttonText, {color: 'black', fontSize: 20}]} />
     ) : (
-      <Icon name='play' style={[styles.buttonText, {paddingLeft: 3, color: 'green'}]} />
+      <Icon name='play' style={[styles.buttonText, {paddingLeft: 3.5, color: 'green'}]} />
     );
 
     var playButton = (

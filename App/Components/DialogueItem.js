@@ -63,22 +63,22 @@ class DialogueItem extends Component {
         <TouchableHighlight
           style={styles.button}
           onPress={this._stop}
-          underlayColor='#EEEEEE'
+          underlayColor='#028B99'
           >
-          <Icon name='stop' style={styles.buttonIcon} />
+          <Icon name='stop' style={[styles.buttonIcon, {fontSize: 20}]} />
         </TouchableHighlight>
       ) : (
         <TouchableHighlight
           style={styles.button}
           onPress={this._play}
-          underlayColor='#EEEEEE'
+          underlayColor='#028B99'
           >
-          <Icon name='volume-up' style={styles.buttonIcon} />
+          <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 3.5}]} />
         </TouchableHighlight>
       )
     ) : (
       <TouchableHighlight
-        style={styles.button}
+        style={[styles.button, {backgroundColor: '#EEEEEE'}]}
         underlayColor='#EEEEEE'
         >
         <Icon name='volume-off' style={styles.buttonIcon} />
@@ -177,15 +177,15 @@ const styles = StyleSheet.create({
     height: 55,
     width: 55,
     marginTop: 10,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#169FAD',
     borderColor: '#C8C7CC',
-    borderWidth: 2,
+    borderWidth: 0,
     borderRadius: 27.5,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   buttonIcon: {
     fontSize: 28,
-    color: '#858E99',
+    color: '#FFF',
     alignSelf: 'center'
   },
   card: {
