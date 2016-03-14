@@ -90,7 +90,7 @@ class DialogueForm extends Component {
             <TouchableHighlight
               style={styles.button}
               onPress={this._toggleRecordPanel}
-              underlayColor='#EEEEEE'
+              underlayColor='#028B99'
               >
               <Icon name='microphone' style={styles.buttonIcon} />
             </TouchableHighlight>
