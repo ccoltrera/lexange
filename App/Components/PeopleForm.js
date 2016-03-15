@@ -83,7 +83,7 @@ class PeopleForm extends Component {
             </TouchableHighlight>
             <View style={styles.column}>
               <Text style={styles.textInputLabel}>
-                Name in {this.template.languages.teacher}:
+                Character's name ( in {this.template.languages.teacher} ):
               </Text>
               <TextInput
                 autoCorrect={false}
@@ -91,10 +91,10 @@ class PeopleForm extends Component {
                 style={styles.textInput}
                 value={this.state.name}
                 onChange={this._handleChangeName}
-                placeholder={'Name in' + this.template.languages.teacher}
+                placeholder={'Character\'s Name ( in' + this.template.languages.teacher + ' )'}
                 />
               <Text style={styles.textInputLabel}>
-                '{desc}' in {this.template.languages.teacher}:
+                '{desc}' ( in {this.template.languages.teacher} ):
               </Text>
               <TextInput
                 autoCorrect={false}
@@ -102,7 +102,7 @@ class PeopleForm extends Component {
                 style={styles.textInput}
                 value={this.state.descTrans}
                 onChange={this._handleChangeTrans}
-                placeholder={'\'' + desc + '\' in ' + this.template.languages.teacher}
+                placeholder={'\'' + desc + '\' ( in ' + this.template.languages.teacher + ' )'}
                 />
           </View>
             </View>
@@ -131,6 +131,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     paddingLeft: 12,
     paddingRight: 12,
+    fontFamily: 'System',
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#C8C7CC',
@@ -138,7 +139,7 @@ const styles = StyleSheet.create({
     color: '#000000',
   },
   textInputLabel: {
-    fontFamily: 'helvetica',
+    fontFamily: 'System',
     fontWeight: '300',
     fontSize: 16,
     marginBottom: 3
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   labelText: {
-    fontFamily: 'helvetica',
+    fontFamily: 'System',
     fontWeight: '300',
     fontSize: 18,
     marginBottom: 5,

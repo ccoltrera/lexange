@@ -163,7 +163,8 @@ const styles = StyleSheet.create({
   tutorialText: {
     marginBottom: 5,
     fontSize: 16,
-    fontWeight: '300'
+    fontWeight: '300',
+    fontFamily: 'System',
   },
 });
 

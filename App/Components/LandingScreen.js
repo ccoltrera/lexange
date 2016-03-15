@@ -140,6 +140,7 @@ const styles = StyleSheet.create({
   },
   bBText: {
     color: '#169FAD',
+    fontFamily: 'System',
     fontSize: 16,
     alignSelf: 'center',
     fontWeight: '500',

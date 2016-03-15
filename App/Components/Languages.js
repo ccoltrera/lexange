@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     },
   },
   labelText: {
-    fontFamily: 'helvetica',
+    fontFamily: 'System',
     fontWeight: '300',
     fontSize: 18,
     marginBottom: 10,
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#C8C7CC',
     borderRadius: 18,
+    fontFamily: 'System',
     color: '#000000'
   }
 });

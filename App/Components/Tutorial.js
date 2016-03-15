@@ -133,6 +133,7 @@ const styles = StyleSheet.create({
   tabText: {
     fontSize: 20,
     color: '#169FAD',
+    fontFamily: 'System',
     fontWeight: '700'
   },
   chevron: {

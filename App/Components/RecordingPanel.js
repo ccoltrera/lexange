@@ -5,7 +5,7 @@ import React, {
   Text,
   TouchableHighlight,
   StyleSheet,
-  NativeModules
+  NativeModules,
 } from 'react-native';
 
 var { RNRecordAudio } = NativeModules;
@@ -142,13 +142,18 @@ class RecordingPanel extends Component {
             {recordIcon}
           </TouchableHighlight>
           {playButton}
+        </View>
           <TouchableHighlight
-            style={[styles.button, {width: null, paddingLeft: 15, paddingRight: 15}]}
+            style={[styles.bottomButton, {width: null, paddingLeft: 15, paddingRight: 15}]}
             underlayColor='#EEEEEE'
             onPress={this._done}>
-            <Text style={styles.buttonText}>DONE</Text>
+            <View style={styles.touchWrapper}>
+              <Text style={styles.bottomButtonText}>Done </Text>
+              <View style={{marginLeft: 5, marginTop: 2}}>
+                <Icon name='chevron-down' style={styles.chevron} />
+              </View>
+            </View>
           </TouchableHighlight>
-        </View>
       </View>
     )
   }
@@ -191,6 +196,41 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'System',
     backgroundColor: 'transparent'
+  },
+  bottomButton: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 70,
+    backgroundColor: '#FFFFFF',
+    borderColor: '#FFFFFF',
+    // borderWidth: 1,
+    // borderRadius: 8,
+    alignSelf: 'stretch',
+    justifyContent: 'center',
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    }
+  },
+  bottomButtonText: {
+    fontSize: 20,
+    color: '#000000',
+    fontFamily: 'System',
+    fontWeight: '700',
+    alignSelf: 'center'
+  },
+  touchWrapper: {
+    flexDirection: 'row',
+    justifyContent: 'center'
+  },
+  chevron: {
+    fontSize: 20,
+    color: '#000000'
   }
 });
 

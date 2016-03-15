@@ -8,14 +8,9 @@ import React, {
 } from 'react-native';
 
 import Router from 'react-native-simple-router';
-
-import LandingScreen from './App/Components/LandingScreen';
-import Languages from './App/Components/Languages';
 import BackButton from './App/Components/BackButton';
 
-import Dialogue from './App/Components/Dialogue';
-
-import templateFuncs from './App/Utils/template';
+import LandingScreen from './App/Components/LandingScreen';
 
 class lexchange extends Component {
   constructor(props) {
@@ -30,7 +25,7 @@ class lexchange extends Component {
           component: LandingScreen
         }}
         backButtonComponent={BackButton}
-        titleStyle={{fontSize: 20}}
+        titleStyle={styles.title}
         />
     );
   }
@@ -41,6 +36,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#169FAD',
     marginLeft: -2,
     marginRight: -2
+  },
+  title: {
+    fontSize: 20,
+    fontFamily: 'System'
   }
 });
 

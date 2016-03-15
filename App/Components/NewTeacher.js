@@ -11,9 +11,6 @@ import React, {
 } from 'react-native';
 
 import Languages from './Languages';
-import People from './People';
-import Dialogue from './Dialogue';
-import Finished from './Finished';
 import ContinueButton from './ContinueButton';
 
 import templateFuncs from '../Utils/template';
@@ -188,7 +185,7 @@ const styles = StyleSheet.create({
   labelText: {
     marginLeft: 5,
     marginRight: 5,
-    fontFamily: 'helvetica',
+    fontFamily: 'System',
     fontWeight: '700',
     color: 'rgba(22,159,173,1)',
     fontSize: 16,
@@ -199,11 +196,13 @@ const styles = StyleSheet.create({
   sectionName: {
     alignSelf: 'flex-start',
     fontWeight: '700',
+    fontFamily: 'System',
     fontSize: 16,
     color: 'rgba(22,159,173,1)'
   },
   sectionDesc: {
     alignSelf: 'flex-start',
+    fontFamily: 'System',
     fontWeight: '300',
     fontSize: 16
   },

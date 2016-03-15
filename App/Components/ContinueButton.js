@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 20,
     color: '#FFFFFF',
+    fontFamily: 'System',
     fontWeight: '700',
     alignSelf: 'center'
   },
@@ -97,6 +98,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#FFFFFF',
     alignSelf: 'center',
+    fontFamily: 'System',
     fontWeight: '700'
   },
   backup: {
