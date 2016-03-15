@@ -24,17 +24,13 @@ class lexchange extends Component {
 
   render() {
     return (
-      // <Router
-      //   headerStyle={styles.header}
-      //   firstRoute={{
-      //     component: LandingScreen
-      //   }}
-      //   backButtonComponent={BackButton}
-      //   titleStyle={{fontSize: 20}}
-      //   />
-      <Dialogue
-        _readTemplate={templateFuncs._readTemplate}
-        _updateTemplate={templateFuncs._updateTemplate}
+      <Router
+        headerStyle={styles.header}
+        firstRoute={{
+          component: LandingScreen
+        }}
+        backButtonComponent={BackButton}
+        titleStyle={{fontSize: 20}}
         />
     );
   }

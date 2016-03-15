@@ -112,9 +112,6 @@ class Finished extends Component {
           num={i}
           _updateTemplate={this.props._updateTemplate}
           _readTemplate={this.props._readTemplate}
-          AudioRecorder={this.props.AudioRecorder}
-          _setRecordingLength={this._setRecordingLength}
-          recordingLength={this.props.recordingLength}
         />
       )
     }

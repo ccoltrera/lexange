@@ -30,8 +30,6 @@ class CreateAccount extends Component {
       )
     });
 
-    console.log(signupButtons)
-
     return(
       <ScrollView
         showVerticalScrollIndicator={true}

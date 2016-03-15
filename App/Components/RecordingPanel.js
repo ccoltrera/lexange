@@ -9,6 +9,7 @@ import React, {
 } from 'react-native';
 
 var { RNRecordAudio } = NativeModules;
+
 import Sound from 'react-native-sound';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -17,6 +18,8 @@ import _handleChange from '../Utils/templateUtils';
 class RecordingPanel extends Component {
   constructor(props) {
     super(props);
+
+    console.log(this.props.num)
 
     this.template = this.props._readTemplate();
 
@@ -34,11 +37,14 @@ class RecordingPanel extends Component {
     };
 
     this._toggleRecording = this._toggleRecording.bind(this);
-    this._play = this._play.bind(this);
+    this._togglePlay = this._togglePlay.bind(this);
     this._time = this._time.bind(this);
     this._startTimer = this._startTimer.bind(this);
     this._stopTimer = this._stopTimer.bind(this);
     this._resetTimer = this._resetTimer.bind(this);
+    this._done = this._done.bind(this);
+
+    this.audioName = this.template.id + '-audio-' + this.props.num;
 
     this._handleAddRecording = _handleChange.bind(
       this,
@@ -47,9 +53,6 @@ class RecordingPanel extends Component {
       this.audioName +'.m4a'
     );
 
-    this.audioName = this.template.id + '-audio-' + this.props.num;
-
-
   }
 
   componentWillUnmount() {
@@ -57,7 +60,7 @@ class RecordingPanel extends Component {
   }
 
   _toggleRecording() {
-    var _toggleRecording = this._handleAddRecording;
+    var _handleAddRecording = this._handleAddRecording;
     var _startTimer = this._startTimer;
 
     if (this.state.recording) {
@@ -73,16 +76,19 @@ class RecordingPanel extends Component {
 
         function successCallback(results) {
           console.log('JS Success: ' + results['successMsg']);
-          _toggleRecording();
+          _handleAddRecording();
         }
       );
 
 
     } else {
+
       this._resetTimer();
 
       // lock play button when recording
       this.setState({audioReady: false, audioUri: ''});
+
+      console.log(this.audioName);
 
       RNRecordAudio.startRecord(
         this.audioName +".m4a", // filename
@@ -167,7 +173,7 @@ class RecordingPanel extends Component {
     });
   }
 
-  _play(sound) {
+  _togglePlay(sound) {
     this._stopTimer();
     this._resetTimer();
     this.setState({playing : !this.state.playing});
@@ -195,17 +201,45 @@ class RecordingPanel extends Component {
     }
   }
 
+  _done(audioObject) {
+    if (this.state.recording) {
+      var _handleAddRecording = this._handleAddRecording.bind(null, true);
+
+      RNRecordAudio.stopRecord(
+        this.audioName +".m4a", // filename
+
+        function errorCallback(results) {
+          console.log('JS Error: ' + results['errMsg']);
+        },
+
+        function successCallback(results) {
+          console.log('JS Success: ' + results['successMsg']);
+          _handleAddRecording();
+        }
+      );
+    }
+    if (this.state.playing) {
+      // console.log(audioObject);
+      audioObject.stop();
+    }
+
+    this.props._toggleRecordingPanel()
+  }
+
   render() {
 
-    var recording = (this.state.audioUri && !this.state.audioReady) ?  (
+    this.audioObject = (this.state.audioUri && !this.state.audioReady) ?  (
       new Sound(this.audioName +'.m4a', Sound.DOCUMENT, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
         } else { // loaded successfully
-          console.log('duration in seconds: ' + recording.duration +
-              'number of channels: ' + recording.numberOfChannels);
+          console.log('duration in seconds: ' + this.audioObject.duration +
+              'number of channels: ' + this.audioObject.numberOfChannels);
 
-          this._playSound = this._play.bind(null, recording);
+          // console.log(Sound.DOCUMENT)
+
+          this._playSound = this._togglePlay.bind(null, this.audioObject);
+          this._done = this._done.bind(null, this.audioObject);
           this.setState({audioReady: true});
         }
       })
@@ -253,7 +287,7 @@ class RecordingPanel extends Component {
           <TouchableHighlight
             style={[styles.button, {width: null, paddingLeft: 15, paddingRight: 15}]}
             underlayColor='#EEEEEE'
-            onPress={this.props._toggleRecordingPanel}>
+            onPress={this._done}>
             <Text style={styles.buttonText}>DONE</Text>
           </TouchableHighlight>
         </View>

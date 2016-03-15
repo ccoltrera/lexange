@@ -15,10 +15,23 @@ var template = {
       name: 'ひろ',
       pictureUri: ''
     },
+    {
+      desc: 'Another friend',
+      descTrans: 'ほかのともだち',
+      name: 'えり',
+      pictureUri: ''
+    },
   ],
   dialogue: [
     {
       person: 0,
+      guide: 'Morning greeting',
+      phrase: 'おはよう。',
+      phraseTrans: 'Good morning [casual]',
+      audioUri: ''
+    },
+    {
+      person: 1,
       guide: 'Morning greeting',
       phrase: 'おはよう。',
       phraseTrans: 'Good morning [casual]',

@@ -8,7 +8,7 @@ function templateStringer (array, text, i, string) {
   return templateStringer(array, text, i + 1, string) + '}';
 }
 
-function _handleChange(stateName, array, event) {
+function _handleChange(stateName, array, event, unmounted) {
 
   var text = typeof event === 'string' ? event : event.nativeEvent.text;
 
@@ -17,7 +17,9 @@ function _handleChange(stateName, array, event) {
 
   stateUpdate[stateName] = text;
 
-  this.setState(stateUpdate);
+  if (!unmounted) {
+    this.setState(stateUpdate);
+  }
 
   this.props._updateTemplate(templateUpdate);
 }
