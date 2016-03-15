@@ -13,7 +13,7 @@ import LandingScreen from './App/Components/LandingScreen';
 import Languages from './App/Components/Languages';
 import BackButton from './App/Components/BackButton';
 
-import RecordingPanel from './App/Components/RecordingPanel';
+import Dialogue from './App/Components/Dialogue';
 
 import templateFuncs from './App/Utils/template';
 
@@ -32,8 +32,8 @@ class lexchange extends Component {
       //   backButtonComponent={BackButton}
       //   titleStyle={{fontSize: 20}}
       //   />
-      <RecordingPanel
-        num={0}
+      <Dialogue
+        _readTemplate={templateFuncs._readTemplate}
         _updateTemplate={templateFuncs._updateTemplate}
         />
     );

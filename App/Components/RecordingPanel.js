@@ -18,8 +18,10 @@ class RecordingPanel extends Component {
   constructor(props) {
     super(props);
 
+    this.template = this.props._readTemplate();
+
     this.state = {
-      audioUri: '',
+      audioUri: this.template.dialogue[this.props.num].audioUri,
       recording: false,
       audioReady: false,
       playing: false,
@@ -42,8 +44,10 @@ class RecordingPanel extends Component {
       this,
       'audioUri',
       ['dialogue', this.props.num, 'audioUri'],
-      'test.m4a'
+      this.audioName +'.m4a'
     );
+
+    this.audioName = this.template.id + '-audio-' + this.props.num;
 
 
   }
@@ -61,7 +65,7 @@ class RecordingPanel extends Component {
       this._stopTimer();
 
       RNRecordAudio.stopRecord(
-        "test.m4a", // filename
+        this.audioName +".m4a", // filename
 
         function errorCallback(results) {
           console.log('JS Error: ' + results['errMsg']);
@@ -81,7 +85,7 @@ class RecordingPanel extends Component {
       this.setState({audioReady: false, audioUri: ''});
 
       RNRecordAudio.startRecord(
-        "test.m4a", // filename
+        this.audioName +".m4a", // filename
 
         function errorCallback(results) {
           console.log('JS Error: ' + results['errMsg']);
@@ -194,7 +198,7 @@ class RecordingPanel extends Component {
   render() {
 
     var recording = (this.state.audioUri && !this.state.audioReady) ?  (
-      new Sound('test.m4a', Sound.DOCUMENT, (error) => {
+      new Sound(this.audioName +'.m4a', Sound.DOCUMENT, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
         } else { // loaded successfully
@@ -238,13 +242,21 @@ class RecordingPanel extends Component {
     return(
       <View style={styles.container}>
         <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}</Text>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor='#EEEEEE'
-          onPress={this._toggleRecording}>
-          {recordIcon}
-        </TouchableHighlight>
-        {playButton}
+        <View style={styles.buttonGroup}>
+          <TouchableHighlight
+            style={styles.button}
+            underlayColor='#EEEEEE'
+            onPress={this._toggleRecording}>
+            {recordIcon}
+          </TouchableHighlight>
+          {playButton}
+          <TouchableHighlight
+            style={[styles.button, {width: null, paddingLeft: 15, paddingRight: 15}]}
+            underlayColor='#EEEEEE'
+            onPress={this.props._toggleRecordingPanel}>
+            <Text style={styles.buttonText}>DONE</Text>
+          </TouchableHighlight>
+        </View>
       </View>
     )
   }
@@ -254,17 +266,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#169FAD',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   timer: {
     alignSelf: 'center',
-    fontSize: 40,
-    fontFamily: 'Droid Sans Mono'
+    fontWeight: '700',
+    fontSize: 60,
+    fontFamily: 'Droid Sans Mono',
+    color: '#FFFFFF'
+  },
+  buttonGroup: {
+    flexDirection: 'row',
+    justifyContent: 'center'
   },
   button: {
+    margin: 5,
     height: 55,
     width: 55,
-    marginTop: 10,
     backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
     borderWidth: 0,
@@ -274,9 +292,14 @@ const styles = StyleSheet.create({
   },
   buttonIcon: {
     fontSize: 28,
-    color: '#FFF',
+    color: '#FFFFFF',
     alignSelf: 'center'
   },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'System',
+    backgroundColor: 'transparent'
+  }
 });
 
 export default RecordingPanel;

@@ -12,7 +12,6 @@ import React, {
 
 import _handleChange from '../Utils/templateUtils';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import RecordButton from './RecordButton';
 
 class DialogueForm extends Component {
   constructor(props) {
@@ -39,47 +38,14 @@ class DialogueForm extends Component {
       ['dialogue', this.props.num, 'phraseTrans']
     );
 
-    this._toggleRecordPanel = this._toggleRecordPanel.bind(this);
-
     this.personNum = this.template.dialogue[this.props.num].person;
     this.person = this.template.people[this.personNum];
 
-  }
+    this._toggleRecordingPanel = this.props._toggleRecordingPanel.bind(null, this.props.num);
 
-  _toggleRecordPanel() {
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    this.setState({
-      showRecordPanel: !this.state.showRecordPanel
-    });
   }
 
   render() {
-
-    var recordPanel = this.state.showRecordPanel ? (
-      <View style={styles.recordPanel}>
-        <View style={{flex:1, flexDirection: 'column', marginLeft: 0, marginRight: -10.5, marginTop: 45, borderWidth: 0, borderRadius: 10, borderColor: '#C8C7CC'}}>
-          <RecordButton
-            num={this.props.num}
-            AudioRecorder={this.props.AudioRecorder}
-            _setRecordingLength={this.props._setRecordingLength}
-            recordingLength={this.props.recordingLength}
-            _toggleRecordPanel={this._toggleRecordPanel}
-            />
-          <View style={styles.timeWrapper}>
-            <Text style={styles.recordTime}>{this.props.recordingLength}s</Text>
-          </View>
-        </View>
-        <TouchableHighlight
-          style={{position: 'absolute', top: 30.5, left: 6, bottom: 1, flexDirection: 'column', borderRadius: 10}}
-          onPress={this._toggleRecordPanel}
-          underlayColor='#FFFFFF'>
-          <Icon name='chevron-left' style={{fontSize: 40, color: '#169FAD', alignSelf: 'center', marginTop: 62}}/>
-        </TouchableHighlight>
-      </View>
-    ) : (
-      <View style={[styles.recordPanel, {left: null, paddingLeft: 0, paddingRight: 0}]}>
-      </View>
-    )
 
     return(
       <View style={styles.card}>
@@ -89,7 +55,7 @@ class DialogueForm extends Component {
             <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
             <TouchableHighlight
               style={styles.button}
-              onPress={this._toggleRecordPanel}
+              onPress={this._toggleRecordingPanel}
               underlayColor='#028B99'
               >
               <Icon name='microphone' style={styles.buttonIcon} />
@@ -124,7 +90,6 @@ class DialogueForm extends Component {
               />
           </View>
         </View>
-        {recordPanel}
       </View>
     )
   }
@@ -201,27 +166,10 @@ const styles = StyleSheet.create({
     color: '#FFF',
     alignSelf: 'center'
   },
-  recordPanel: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    bottom: 0,
-    right: 0,
-    borderRadius: 5,
-    backgroundColor: '#EEEEEE',
-    flexDirection: 'row'
-    // backgroundColor: 'rgba(0,0,0,0.5)',
-  },
   timeWrapper: {
     flexDirection: 'column',
     flex: 1,
     justifyContent: 'center',
-  },
-  recordTime: {
-    fontSize: 65,
-    color: '#169FAD',
-    fontWeight: '600',
-    alignSelf: 'center'
   },
   talkBubbleSquare: {
   //   height: 40,

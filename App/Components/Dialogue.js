@@ -7,12 +7,14 @@ import React, {
   TextInput,
   TouchableHighlight,
   ScrollView,
-  Dimensions
+  Dimensions,
+  Modal
 } from 'react-native';
 
 import {AudioRecorder} from 'react-native-audio';
 
 import Tutorial from './Tutorial';
+import RecordingPanel from './RecordingPanel';
 import DialogueForm from './DialogueForm';
 import ContinueButton from './ContinueButton';
 import Finished from './Finished';
@@ -24,21 +26,14 @@ class Dialogue extends Component {
     this.template = this.props._readTemplate();
     this.state = {
       showThisTutorial: this.props.showTutorial,
-      recordingLength: 0.0,
-      greeting: ''
+      greeting: '',
+      showRecordingPanel: false,
+      recordingNum: null
     }
-
-    this._handleChange = this._handleChange.bind(this);
-    this._setRecordingLength = this._setRecordingLength.bind(this);
 
     this._next = this._next.bind(this);
     this._toggleTutorial = this._toggleTutorial.bind(this);
-  }
-
-  _handleChange(event) {
-    this.setState({
-      greeting: event.nativeEvent.text
-    });
+    this._toggleRecordingPanel = this._toggleRecordingPanel.bind(this);
   }
 
   _next() {
@@ -49,17 +44,8 @@ class Dialogue extends Component {
         showTutorial: this.props.showTutorial,
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate,
-        AudioRecorder: AudioRecorder,
-        recorded: false,
-        recordingLength: this.state.recordingLength,
       },
       headerStyle: styles.headerShadow
-    });
-  }
-
-  _setRecordingLength(length) {
-    this.setState({
-      recordingLength: length
     });
   }
 
@@ -67,6 +53,13 @@ class Dialogue extends Component {
     this.setState({
       showThisTutorial: !this.state.showThisTutorial
     })
+  }
+
+  _toggleRecordingPanel(num) {
+    this.setState({
+      recordingNum: num,
+      showRecordingPanel: !this.state.showRecordingPanel
+    });
   }
 
   render() {
@@ -78,9 +71,7 @@ class Dialogue extends Component {
           num={i}
           _updateTemplate={this.props._updateTemplate}
           _readTemplate={this.props._readTemplate}
-          AudioRecorder={AudioRecorder}
-          _setRecordingLength={this._setRecordingLength}
-          recordingLength={this.state.recordingLength}
+          _toggleRecordingPanel={this._toggleRecordingPanel}
         />
       )
     }
@@ -111,6 +102,16 @@ class Dialogue extends Component {
 
     return (
       <View style={styles.container}>
+        <Modal
+            animated={true}
+            transparent={true}
+            visible={this.state.showRecordingPanel}>
+            <RecordingPanel
+              num={this.state.recordingNum}
+              _readTemplate={this.props._readTemplate}
+              _updateTemplate={this.props._updateTemplate}
+              _toggleRecordingPanel={this._toggleRecordingPanel} />
+        </Modal>
         <View style={{height: Dimensions.get('window').height - 134}}>
           <ScrollView
             style={styles.scrollView}

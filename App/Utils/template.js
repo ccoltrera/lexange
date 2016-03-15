@@ -3,6 +3,7 @@
 import update from 'react-addons-update';
 
 var template = {
+  id: '0000000001',
   languages: {
     teacher: '日本語',
     student: 'English'
