@@ -18,8 +18,6 @@ import Dialogue from './Dialogue';
 import ContinueButton from './ContinueButton';
 import PeopleForm from './PeopleForm';
 
-import _handleChange from '../Utils/templateUtils';
-
 class People extends Component {
   constructor(props) {
     super(props);

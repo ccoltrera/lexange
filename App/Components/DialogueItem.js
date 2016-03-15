@@ -65,7 +65,7 @@ class DialogueItem extends Component {
           onPress={this._stop}
           underlayColor='#028B99'
           >
-          <Icon name='stop' style={[styles.buttonIcon, {fontSize: 20}]} />
+          <Icon name='stop' style={[styles.buttonIcon, {fontSize: 24}]} />
         </TouchableHighlight>
       ) : (
         <TouchableHighlight

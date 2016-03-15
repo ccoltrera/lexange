@@ -13,6 +13,10 @@ import LandingScreen from './App/Components/LandingScreen';
 import Languages from './App/Components/Languages';
 import BackButton from './App/Components/BackButton';
 
+import RecordingPanel from './App/Components/RecordingPanel';
+
+import templateFuncs from './App/Utils/template';
+
 class lexchange extends Component {
   constructor(props) {
     super(props);
@@ -20,13 +24,17 @@ class lexchange extends Component {
 
   render() {
     return (
-      <Router
-        headerStyle={styles.header}
-        firstRoute={{
-          component: LandingScreen
-        }}
-        backButtonComponent={BackButton}
-        titleStyle={{fontSize: 20}}
+      // <Router
+      //   headerStyle={styles.header}
+      //   firstRoute={{
+      //     component: LandingScreen
+      //   }}
+      //   backButtonComponent={BackButton}
+      //   titleStyle={{fontSize: 20}}
+      //   />
+      <RecordingPanel
+        num={0}
+        _updateTemplate={templateFuncs._updateTemplate}
         />
     );
   }
