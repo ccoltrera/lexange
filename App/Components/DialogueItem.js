@@ -50,8 +50,13 @@ class DialogueItem extends Component {
           console.log('duration in seconds: ' + this.audioObject.getDuration() +
             ' number of channels: ' + this.audioObject.getNumberOfChannels());
 
+          var audioDuration = this.audioObject.getDuration();
+
           this._togglePlaySound = this._togglePlay.bind(null, this.audioObject);
-          this.setState({audioReady: true});
+          this.setState({
+            audioReady: true,
+            audioDuration: Math.round(audioDuration * 10) / 10
+          });
         }
       })
     }
@@ -63,12 +68,34 @@ class DialogueItem extends Component {
     });
   }
 
+  _generateTimeDisplay(num) {
+    var timeString = '';
+
+    if (num > 60) {
+
+    }
+    else {
+      timeString = '00:';
+      if (num >= 10) {
+        timeString = timeString + num;
+      } else {
+        timeString = timeString + '0' + num;
+      }
+    }
+
+    if (timeString.length === 5) {
+      timeString = timeString + '.0';
+    }
+
+    return timeString;
+  }
+
   render() {
 
-    var playColor = this.state.audioReady ? '#FFFFFF' : '#EEEEEE';
+    var playColor = this.state.audioReady ? '#169FAD' : '#EEEEEE';
 
     var playIcon = this.state.playing ? (
-      <Icon name='stop' style={[styles.buttonIcon, {color: '#FFFFFF', fontSize: 24}]} />
+      <Icon name='stop' style={[styles.buttonIcon, {fontSize: 24}]} />
     ) : (
       <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 3.5, color: playColor}]} />
     )
@@ -76,18 +103,22 @@ class DialogueItem extends Component {
     var playButton = this.state.audioReady ? (
       <TouchableHighlight
         style={styles.button}
-        underlayColor='#028B99'
+        // underlayColor='#028B99'
+        underlayColor='#EEEEEE'
         onPress={this._togglePlaySound}>
         {playIcon}
       </TouchableHighlight>
     ) : (
-      <View style={[styles.button, {backgroundColor: '#FFFFFF', borderWidth: 1}]}>
+      <View style={[styles.button]}>
         {playIcon}
       </View>
     )
 
+    var durationString = this._generateTimeDisplay(this.state.audioDuration);
+
     var timeDisplay = this.state.audioReady ? (
-      <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}.{this.state.tenthSec}</Text>
+      // <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}.{this.state.tenthSec} / {durationString}</Text>
+      null
     ) : (
       null
     )
@@ -136,6 +167,7 @@ class DialogueItem extends Component {
                 </View>
               </View>
               {playButton}
+              {timeDisplay}
             </View>
           </View>
           </View>
@@ -180,19 +212,20 @@ const styles = StyleSheet.create({
     fontSize: 18
   },
   button: {
-    flex: 1,
     height: 55,
     width: 55,
     marginTop: 10,
-    backgroundColor: '#169FAD',
+    // backgroundColor: '#169FAD',
+    backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
-    borderWidth: 0,
+    borderWidth: 2,
     borderRadius: 27.5,
     justifyContent: 'center',
   },
   buttonIcon: {
     fontSize: 28,
-    color: '#FFF',
+    // color: '#FFF',
+    color: '#169FAD',
     alignSelf: 'center'
   },
   card: {
@@ -241,7 +274,14 @@ const styles = StyleSheet.create({
     borderRightColor: '#169FAD',
     borderBottomWidth: 3.25,
     borderBottomColor: 'transparent'
-  }
+  },
+  timer: {
+    // alignSelf: 'center',
+    fontWeight: '700',
+    fontSize: 14,
+    fontFamily: 'Droid Sans Mono',
+    color: '#000000'
+  },
 });
 
 export default DialogueItem;

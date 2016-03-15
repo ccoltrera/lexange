@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
   },
   bottomButtonText: {
     fontSize: 20,
-    color: '#000000',
+    color: '#169FAD',
     fontFamily: 'System',
     fontWeight: '700',
     alignSelf: 'center'
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
   },
   chevron: {
     fontSize: 20,
-    color: '#000000'
+    color: '#169FAD'
   }
 });
 

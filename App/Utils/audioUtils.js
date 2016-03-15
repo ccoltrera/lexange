@@ -114,6 +114,7 @@ var audioUtils = {
 
   _resetTimer() {
     this.setState({
+      // playing: false,
       hundredthSec: 0,
       tenthSec: 0,
       sec: 0,
@@ -136,16 +137,18 @@ var audioUtils = {
         if (success) {
           console.log('successfully finished playing');
           this._stopTimer();
+          this._resetTimer();
           this.setState({playing : false});
         } else {
           console.log('playback failed due to audio decoding errors');
           this._stopTimer();
+          this._resetTimer();
           this.setState({playing : false});
         }
       });
 
     } else {
-
+      console.log('stop')
       sound.stop();
 
     }

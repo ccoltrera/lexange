@@ -56,7 +56,8 @@ class DialogueForm extends Component {
             <TouchableHighlight
               style={styles.button}
               onPress={this._toggleRecordingPanel}
-              underlayColor='#028B99'
+              // underlayColor='#028B99'
+              underlayColor='#EEEEEE'
               >
               <Icon name='microphone' style={styles.buttonIcon} />
             </TouchableHighlight>
@@ -155,16 +156,18 @@ const styles = StyleSheet.create({
     height: 55,
     width: 55,
     marginTop: 10,
-    backgroundColor: '#169FAD',
+    // backgroundColor: '#169FAD',
+    backgroundColor: '#FFFFFF',
     borderColor: '#C8C7CC',
-    borderWidth: 0,
+    borderWidth: 2,
     borderRadius: 27.5,
     justifyContent: 'center',
     alignSelf: 'center'
   },
   buttonIcon: {
     fontSize: 28,
-    color: '#FFF',
+    // color: '#FFF',
+    color: '#169FAD',
     alignSelf: 'center'
   },
   timeWrapper: {
