@@ -2,17 +2,17 @@
 import React, {
   Component,
   View,
+  Text,
   TouchableHighlight,
   StyleSheet,
   NativeModules
 } from 'react-native';
 
 var { RNRecordAudio } = NativeModules;
+import Sound from 'react-native-sound';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import _handleChange from '../Utils/templateUtils';
-
-import Sound from 'react-native-sound';
 
 class RecordingPanel extends Component {
   constructor(props) {
@@ -23,10 +23,20 @@ class RecordingPanel extends Component {
       recording: false,
       audioReady: false,
       playing: false,
+      // hundredthSec: 0,
+      tenthSec: 0,
+      sec: 0,
+      tenSec: 0,
+      min: 0,
+      tenMin: 0
     };
 
     this._toggleRecording = this._toggleRecording.bind(this);
     this._play = this._play.bind(this);
+    this._time = this._time.bind(this);
+    this._startTimer = this._startTimer.bind(this);
+    this._stopTimer = this._stopTimer.bind(this);
+    this._resetTimer = this._resetTimer.bind(this);
 
     this._handleAddRecording = _handleChange.bind(
       this,
@@ -34,28 +44,39 @@ class RecordingPanel extends Component {
       ['dialogue', this.props.num, 'audioUri'],
       'test.m4a'
     );
+
+
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
   }
 
   _toggleRecording() {
     var _toggleRecording = this._handleAddRecording;
+    var _startTimer = this._startTimer;
 
     if (this.state.recording) {
+
+      this._stopTimer();
 
       RNRecordAudio.stopRecord(
         "test.m4a", // filename
 
         function errorCallback(results) {
-            console.log('JS Error: ' + results['errMsg']);
+          console.log('JS Error: ' + results['errMsg']);
         },
 
         function successCallback(results) {
-            console.log('JS Success: ' + results['successMsg']);
-            _toggleRecording();
+          console.log('JS Success: ' + results['successMsg']);
+          _toggleRecording();
         }
       );
 
 
     } else {
+      this._resetTimer();
+
       // lock play button when recording
       this.setState({audioReady: false, audioUri: ''});
 
@@ -63,11 +84,12 @@ class RecordingPanel extends Component {
         "test.m4a", // filename
 
         function errorCallback(results) {
-            console.log('JS Error: ' + results['errMsg']);
+          console.log('JS Error: ' + results['errMsg']);
         },
 
         function successCallback(results) {
-            console.log('JS Success: ' + results['successMsg']);
+          _startTimer();
+          console.log('JS Success: ' + results['successMsg']);
         }
       );
 
@@ -76,24 +98,97 @@ class RecordingPanel extends Component {
     this.setState({recording: !this.state.recording});
   }
 
-  _play(sound) {
-    console.log(sound.getDuration())
+  _startTimer() {
+    this.timer = setTimeout(() => {
+      this._time();
+      this._startTimer();
+    }, 1000);
+  }
 
+  _stopTimer() {
+    clearTimeout(this.timer);
+  }
+
+  _time() {
+    if (this.state.sec < 9) {
+      this.setState({
+        hundredthSec: 0,
+        tenthSec: 0,
+        sec: this.state.sec + 1
+      });
+    } else if (this.state.tenSec < 5) {
+      this.setState({
+        hundredthSec: 0,
+        tenthSec: 0,
+        sec: 0,
+        tenSec: this.state.tenSec + 1
+      });
+    } else if (this.state.min < 9) {
+      this.setState({
+        hundredthSec: 0,
+        tenthSec: 0,
+        sec: 0,
+        tenSec: 0,
+        min: this.state.min + 1
+      });
+    } else if (this.state.tenMin < 5) {
+      this.setState({
+        hundredthSec: 0,
+        tenthSec: 0,
+        sec: 0,
+        tenSec: 0,
+        min: 0,
+        tenMin: this.state.tenMin + 1
+      });
+    } else {
+      this.setState({
+        hundredthSec: 0,
+        tenthSec: 0,
+        sec: 0,
+        tenSec: 0,
+        min: 0,
+        tenMin: 0
+      });
+    }
+  }
+
+  _resetTimer() {
+    this.setState({
+      hundredthSec: 0,
+      tenthSec: 0,
+      sec: 0,
+      tenSec: 0,
+      min: 0,
+      tenMin: 0
+    });
+  }
+
+  _play(sound) {
+    this._stopTimer();
+    this._resetTimer();
     this.setState({playing : !this.state.playing});
 
-    this.state.playing ? (
+    if (this.state.playing) {
+
+      this._startTimer();
+
       sound.play((success) => {
         if (success) {
           console.log('successfully finished playing');
+          this._stopTimer();
           this.setState({playing : false});
         } else {
           console.log('playback failed due to audio decoding errors');
+          this._stopTimer();
           this.setState({playing : false});
         }
-      })
-    ) : (
-      sound.stop()
-    )
+      });
+
+    } else {
+
+      sound.stop();
+
+    }
   }
 
   render() {
@@ -142,13 +237,14 @@ class RecordingPanel extends Component {
 
     return(
       <View style={styles.container}>
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor='#EEEEEE'
-        onPress={this._toggleRecording}>
-        {recordIcon}
-      </TouchableHighlight>
-      {playButton}
+        <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}</Text>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor='#EEEEEE'
+          onPress={this._toggleRecording}>
+          {recordIcon}
+        </TouchableHighlight>
+        {playButton}
       </View>
     )
   }
@@ -159,6 +255,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#169FAD',
     justifyContent: 'center'
+  },
+  timer: {
+    alignSelf: 'center',
+    fontSize: 40,
+    fontFamily: 'Droid Sans Mono'
   },
   button: {
     height: 55,

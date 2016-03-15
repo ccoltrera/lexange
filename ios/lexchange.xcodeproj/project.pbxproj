@@ -27,6 +27,7 @@
 		4D69F9311C86DC4A009FA1FF /* AudioPlayerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D69F92E1C86DC4A009FA1FF /* AudioPlayerManager.m */; };
 		4D69F9321C86DC4A009FA1FF /* AudioRecorderManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D69F9301C86DC4A009FA1FF /* AudioRecorderManager.m */; };
 		4DB5503D1C8F7D3D0015ED43 /* lexchange-logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5503C1C8F7D3D0015ED43 /* lexchange-logo2.png */; };
+		4DE38F0C1C97C12400B58849 /* DroidSansMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */; };
 		4DEFF61D1C8A98F200A62862 /* lexchange-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEFF61C1C8A98F200A62862 /* lexchange-logo.png */; };
 		4FD0E90DCCE142319DBA99E9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9590ED167242A48DBF4B83 /* Octicons.ttf */; };
 		6EB970A685E9491B8F27B7DC /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4D236E1EE4BDE98678E59 /* EvilIcons.ttf */; };
@@ -184,6 +185,7 @@
 		4D69F92F1C86DC4A009FA1FF /* AudioRecorderManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioRecorderManager.h; path = "../node_modules/react-native-audio/ios/AudioRecorderManager.h"; sourceTree = "<group>"; };
 		4D69F9301C86DC4A009FA1FF /* AudioRecorderManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioRecorderManager.m; path = "../node_modules/react-native-audio/ios/AudioRecorderManager.m"; sourceTree = "<group>"; };
 		4DB5503C1C8F7D3D0015ED43 /* lexchange-logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lexchange-logo2.png"; path = "../Images/lexchange-logo2.png"; sourceTree = "<group>"; };
+		4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DroidSansMono.ttf; path = ../Fonts/DroidSansMono.ttf; sourceTree = "<group>"; };
 		4DEFF61C1C8A98F200A62862 /* lexchange-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lexchange-logo.png"; path = "../Images/lexchange-logo.png"; sourceTree = "<group>"; };
 		515CB57336A74FA186CC66D1 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		5DC4D236E1EE4BDE98678E59 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -376,6 +378,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4DE38F0A1C97C0AF00B58849 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -424,6 +434,7 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* lexchangeTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
+				4DE38F0A1C97C0AF00B58849 /* Fonts */,
 				09415ABC81A24E6FBFBBDB60 /* Resources */,
 			);
 			indentWidth = 2;
@@ -705,6 +716,7 @@
 				4FD0E90DCCE142319DBA99E9 /* Octicons.ttf in Resources */,
 				4DEFF61D1C8A98F200A62862 /* lexchange-logo.png in Resources */,
 				75792283CA304C2F89BC5CA3 /* Zocial.ttf in Resources */,
+				4DE38F0C1C97C12400B58849 /* DroidSansMono.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
