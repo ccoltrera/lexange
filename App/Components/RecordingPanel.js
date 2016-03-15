@@ -15,11 +15,11 @@ import Sound from 'react-native-sound';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import _handleChange from '../Utils/templateUtils';
 
+import audioUtils from '../Utils/audioUtils';
+
 class RecordingPanel extends Component {
   constructor(props) {
     super(props);
-
-    console.log(this.props.num)
 
     this.template = this.props._readTemplate();
 
@@ -36,12 +36,12 @@ class RecordingPanel extends Component {
       tenMin: 0
     };
 
-    this._toggleRecording = this._toggleRecording.bind(this);
-    this._togglePlay = this._togglePlay.bind(this);
-    this._time = this._time.bind(this);
-    this._startTimer = this._startTimer.bind(this);
-    this._stopTimer = this._stopTimer.bind(this);
-    this._resetTimer = this._resetTimer.bind(this);
+    this._toggleRecording = audioUtils._toggleRecording.bind(this);
+    this._togglePlay = audioUtils._togglePlay.bind(this);
+    this._time = audioUtils._time.bind(this);
+    this._startTimer = audioUtils._startTimer.bind(this);
+    this._stopTimer = audioUtils._stopTimer.bind(this);
+    this._resetTimer = audioUtils._resetTimer.bind(this);
     this._done = this._done.bind(this);
 
     this.audioName = this.template.id + '-audio-' + this.props.num;
@@ -57,148 +57,6 @@ class RecordingPanel extends Component {
 
   componentWillUnmount() {
     clearTimeout(this.timer);
-  }
-
-  _toggleRecording() {
-    var _handleAddRecording = this._handleAddRecording;
-    var _startTimer = this._startTimer;
-
-    if (this.state.recording) {
-
-      this._stopTimer();
-
-      RNRecordAudio.stopRecord(
-        this.audioName +".m4a", // filename
-
-        function errorCallback(results) {
-          console.log('JS Error: ' + results['errMsg']);
-        },
-
-        function successCallback(results) {
-          console.log('JS Success: ' + results['successMsg']);
-          _handleAddRecording();
-        }
-      );
-
-
-    } else {
-
-      this._resetTimer();
-
-      // lock play button when recording
-      this.setState({audioReady: false, audioUri: ''});
-
-      console.log(this.audioName);
-
-      RNRecordAudio.startRecord(
-        this.audioName +".m4a", // filename
-
-        function errorCallback(results) {
-          console.log('JS Error: ' + results['errMsg']);
-        },
-
-        function successCallback(results) {
-          _startTimer();
-          console.log('JS Success: ' + results['successMsg']);
-        }
-      );
-
-    }
-
-    this.setState({recording: !this.state.recording});
-  }
-
-  _startTimer() {
-    this.timer = setTimeout(() => {
-      this._time();
-      this._startTimer();
-    }, 1000);
-  }
-
-  _stopTimer() {
-    clearTimeout(this.timer);
-  }
-
-  _time() {
-    if (this.state.sec < 9) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: this.state.sec + 1
-      });
-    } else if (this.state.tenSec < 5) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: this.state.tenSec + 1
-      });
-    } else if (this.state.min < 9) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: 0,
-        min: this.state.min + 1
-      });
-    } else if (this.state.tenMin < 5) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: 0,
-        min: 0,
-        tenMin: this.state.tenMin + 1
-      });
-    } else {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: 0,
-        min: 0,
-        tenMin: 0
-      });
-    }
-  }
-
-  _resetTimer() {
-    this.setState({
-      hundredthSec: 0,
-      tenthSec: 0,
-      sec: 0,
-      tenSec: 0,
-      min: 0,
-      tenMin: 0
-    });
-  }
-
-  _togglePlay(sound) {
-    this._stopTimer();
-    this._resetTimer();
-    this.setState({playing : !this.state.playing});
-
-    if (this.state.playing) {
-
-      this._startTimer();
-
-      sound.play((success) => {
-        if (success) {
-          console.log('successfully finished playing');
-          this._stopTimer();
-          this.setState({playing : false});
-        } else {
-          console.log('playback failed due to audio decoding errors');
-          this._stopTimer();
-          this.setState({playing : false});
-        }
-      });
-
-    } else {
-
-      sound.stop();
-
-    }
   }
 
   _done(audioObject) {
@@ -233,8 +91,8 @@ class RecordingPanel extends Component {
         if (error) {
           console.log('failed to load the sound', error);
         } else { // loaded successfully
-          console.log('duration in seconds: ' + this.audioObject.duration +
-              'number of channels: ' + this.audioObject.numberOfChannels);
+          console.log('duration in seconds: ' + this.audioObject.getDuration() +
+            ' number of channels: ' + this.audioObject.getNumberOfChannels());
 
           // console.log(Sound.DOCUMENT)
 
@@ -275,7 +133,7 @@ class RecordingPanel extends Component {
 
     return(
       <View style={styles.container}>
-        <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}</Text>
+        <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}.{this.state.tenthSec}</Text>
         <View style={styles.buttonGroup}>
           <TouchableHighlight
             style={styles.button}

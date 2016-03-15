@@ -11,6 +11,8 @@ import React, {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Sound from 'react-native-sound';
 
+import audioUtils from '../Utils/audioUtils';
+
 class DialogueItem extends Component {
   constructor(props) {
     super(props);
@@ -18,33 +20,37 @@ class DialogueItem extends Component {
     this.state = {
       playing: false,
       show: false,
-      audioReady: false
+      audioReady: false,
+      // hundredthSec: 0,
+      tenthSec: 0,
+      sec: 0,
+      tenSec: 0,
+      min: 0,
+      tenMin: 0
     };
 
     this.template = this.props._readTemplate();
-
-    this._play = this._play.bind(this);
 
     this.dialogue = this.template.dialogue[this.props.num];
     this.person = this.template.people[this.dialogue.person];
 
     this._toggleShow = this._toggleShow.bind(this);
 
-    this._play = this._play.bind(this);
-    this._time = this._time.bind(this);
-    this._startTimer = this._startTimer.bind(this);
-    this._stopTimer = this._stopTimer.bind(this);
-    this._resetTimer = this._resetTimer.bind(this);
+    this._togglePlay = audioUtils._togglePlay.bind(this);
+    this._time = audioUtils._time.bind(this);
+    this._startTimer = audioUtils._startTimer.bind(this);
+    this._stopTimer = audioUtils._stopTimer.bind(this);
+    this._resetTimer = audioUtils._resetTimer.bind(this);
 
     if (this.dialogue.audioUri) {
       this.audioObject = new Sound(this.dialogue.audioUri, Sound.DOCUMENT, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
         } else { // loaded successfully
-          console.log('duration in seconds: ' + this.audioObject.duration +
-            ' number of channels: ' + this.audioObject.numberOfChannels);
+          console.log('duration in seconds: ' + this.audioObject.getDuration() +
+            ' number of channels: ' + this.audioObject.getNumberOfChannels());
 
-          this._playSound = this._play.bind(null, this.audioObject);
+          this._togglePlaySound = this._togglePlay.bind(null, this.audioObject);
           this.setState({audioReady: true});
         }
       })
@@ -55,99 +61,6 @@ class DialogueItem extends Component {
     this.setState({
       show: !this.state.show
     });
-  }
-
-   _startTimer() {
-    this.timer = setTimeout(() => {
-      this._time();
-      this._startTimer();
-    }, 1000);
-  }
-
-  _stopTimer() {
-    clearTimeout(this.timer);
-  }
-
-  _time() {
-    if (this.state.sec < 9) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: this.state.sec + 1
-      });
-    } else if (this.state.tenSec < 5) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: this.state.tenSec + 1
-      });
-    } else if (this.state.min < 9) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: 0,
-        min: this.state.min + 1
-      });
-    } else if (this.state.tenMin < 5) {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: 0,
-        min: 0,
-        tenMin: this.state.tenMin + 1
-      });
-    } else {
-      this.setState({
-        hundredthSec: 0,
-        tenthSec: 0,
-        sec: 0,
-        tenSec: 0,
-        min: 0,
-        tenMin: 0
-      });
-    }
-  }
-
-  _resetTimer() {
-    this.setState({
-      hundredthSec: 0,
-      tenthSec: 0,
-      sec: 0,
-      tenSec: 0,
-      min: 0,
-      tenMin: 0
-    });
-  }
-
-  _play(sound) {
-    this._stopTimer();
-    this._resetTimer();
-    this.setState({playing : !this.state.playing});
-
-    if (this.state.playing) {
-
-      this._startTimer();
-
-      sound.play((success) => {
-        if (success) {
-          console.log('successfully finished playing');
-          this._stopTimer();
-          this.setState({playing : false});
-        } else {
-          console.log('playback failed due to audio decoding errors');
-          this._stopTimer();
-          this.setState({playing : false});
-        }
-      });
-
-    } else {
-
-      sound.stop();
-
-    }
   }
 
   render() {
@@ -164,13 +77,19 @@ class DialogueItem extends Component {
       <TouchableHighlight
         style={styles.button}
         underlayColor='#028B99'
-        onPress={this._playSound}>
+        onPress={this._togglePlaySound}>
         {playIcon}
       </TouchableHighlight>
     ) : (
       <View style={[styles.button, {backgroundColor: '#FFFFFF', borderWidth: 1}]}>
         {playIcon}
       </View>
+    )
+
+    var timeDisplay = this.state.audioReady ? (
+      <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}.{this.state.tenthSec}</Text>
+    ) : (
+      null
     )
 
     var text = this.state.show ? (
