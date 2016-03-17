@@ -99,6 +99,7 @@ class RecordingPanel extends Component {
           this._playSound = this._togglePlay.bind(null, this.audioObject);
           this._done = this._done.bind(null, this.audioObject);
           this.setState({audioReady: true});
+
         }
       })
     ) : ( null )
@@ -177,7 +178,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   button: {
-    margin: 5,
+    margin: 20,
     height: 55,
     width: 55,
     backgroundColor: '#FFFFFF',

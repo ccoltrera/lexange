@@ -90,6 +90,7 @@ class Tutorial extends Component {
     var tutorial = this.state.firstTutorial ? (
       <TouchableHighlight
         onPress={this._toggleTutorial}
+        underlayColor='transparent'
         style={[styles.tutorialModal, {width: width, height: modalHeight} ]}>
         {tutorialCard}
       </TouchableHighlight>

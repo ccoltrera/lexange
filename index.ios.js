@@ -2,7 +2,7 @@
 import React, {
   AppRegistry,
   Component,
-  NavigatorIOS,
+  Navigator,
   View,
   StyleSheet
 } from 'react-native';
@@ -17,6 +17,12 @@ class lexchange extends Component {
     super(props);
   }
 
+  _configureScene() {
+    var newConfig = Navigator.SceneConfigs.PushFromRight;
+    newConfig.gestures.pop.edgeHitWidth = 50;
+    return newConfig;
+  }
+
   render() {
     return (
       <Router
@@ -26,6 +32,7 @@ class lexchange extends Component {
         }}
         backButtonComponent={BackButton}
         titleStyle={styles.title}
+        configureScene={this._configureScene()}
         />
     );
   }

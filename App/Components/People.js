@@ -115,8 +115,8 @@ class People extends Component {
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            // (this.state.continue || this.template.people[0].pictureUri)
-            true
+            (this.state.continue || this.template.people[0].pictureUri)
+            // true
           }
           label='Next'
           _next={this._next}

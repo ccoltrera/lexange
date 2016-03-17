@@ -44,7 +44,7 @@ class NewTeacher extends Component {
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
               <View style={styles.labelBlock}>
-                <Text style={styles.labelText}>Lexchange gives you simple templates, you give your students rich lessons.</Text>
+                <Text style={styles.labelText}>Lexchange gives you simple templates, you give your students rich lessons in the form of dialogues and stories.</Text>
               </View>
               <View style={styles.one}>
                 <View style={styles.path}>

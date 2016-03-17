@@ -64,7 +64,7 @@ class DialogueForm extends Component {
           </View>
           <View style={{flexDirection: 'column', flex: 1, marginLeft: 10}}>
             <Text style={styles.textInputLabel}>
-              {this.template.dialogue[this.props.num].guide} ( in {this.template.languages.teacher} ):
+              {this.template.dialogue[this.props.num].guide} ({this.template.languages.teacher}):
             </Text>
             <View style={styles.talkBubble}>
               <View style={styles.talkBubbleTriangle} />
@@ -74,12 +74,12 @@ class DialogueForm extends Component {
                   style={[styles.textInput, styles.talkBubbleSquare]}
                   value={this.state.phrase}
                   onChange={this._handleChangePhrase}
-                  placeholder={'' + this.template.dialogue[this.props.num].guide + ' ( in ' + this.template.languages.teacher + ' )'}
+                  placeholder={this.template.dialogue[this.props.num].guide + ' (' + this.template.languages.teacher + ')'}
                   />
               <View style={styles.talkBubbleTriangleInside} />
             </View>
             <Text style={[styles.textInputLabel, {marginBottom: 7}]}>
-              Translation ( in {this.template.languages.student} ):
+              Translation in {this.template.languages.student}:
             </Text>
             <TextInput
               autoCorrect={false}
@@ -87,7 +87,7 @@ class DialogueForm extends Component {
               style={styles.textInput}
               value={this.state.phraseTrans}
               onChange={this._handleChangePhraseTrans}
-              placeholder={'Translation ( in ' + this.template.languages.student + ' )'}
+              placeholder={'Translation in ' + this.template.languages.student}
               />
           </View>
         </View>

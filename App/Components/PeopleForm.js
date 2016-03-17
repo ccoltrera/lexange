@@ -83,7 +83,7 @@ class PeopleForm extends Component {
             </TouchableHighlight>
             <View style={styles.column}>
               <Text style={styles.textInputLabel}>
-                Character's name ( in {this.template.languages.teacher} ):
+                Character's name ({this.template.languages.teacher}):
               </Text>
               <TextInput
                 autoCorrect={false}
@@ -91,10 +91,10 @@ class PeopleForm extends Component {
                 style={styles.textInput}
                 value={this.state.name}
                 onChange={this._handleChangeName}
-                placeholder={'Character\'s Name ( in' + this.template.languages.teacher + ' )'}
+                placeholder={'Character\'s Name (' + this.template.languages.teacher + ')'}
                 />
               <Text style={styles.textInputLabel}>
-                '{desc}' ( in {this.template.languages.teacher} ):
+                '{desc}' ({this.template.languages.teacher}):
               </Text>
               <TextInput
                 autoCorrect={false}
@@ -102,7 +102,7 @@ class PeopleForm extends Component {
                 style={styles.textInput}
                 value={this.state.descTrans}
                 onChange={this._handleChangeTrans}
-                placeholder={'\'' + desc + '\' ( in ' + this.template.languages.teacher + ' )'}
+                placeholder={'\'' + desc + '\' (' + this.template.languages.teacher + ')'}
                 />
           </View>
             </View>

@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
     height: (86 * 1.25),
     width: (216 * 1.25),
     marginTop: 50,
-    marginBottom: 40
+    marginBottom: 70
   },
   row: {
     flexDirection: 'row',
@@ -145,6 +145,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     fontWeight: '500',
   },
-})
+});
 
 export default LandingScreen;
