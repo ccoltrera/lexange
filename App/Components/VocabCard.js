@@ -76,20 +76,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC',
-    borderRadius: 10
+    borderRadius: 15
   },
   card: {
     height: 110,
-    marginTop: 5,
-    marginBottom: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 10,
-    paddingRight: 10,
+    margin: 18,
+    marginBottom: 0,
+    padding: 15,
     backgroundColor: '#FFFFFF',
-    borderRadius: 5,
+    borderRadius: 20,
     shadowColor: '#000000',
     shadowOpacity: 0.5,
     shadowRadius: 2,
@@ -100,12 +95,10 @@ const styles = StyleSheet.create({
   },
   cardText: {
     backgroundColor: 'rgba(255,255,255,0)',
-    fontSize: 18,
-    fontWeight: '300',
-    margin: 5
-  },
-  row: {
-    // flexDirection: 'row'
+    fontSize: 20,
+    fontWeight: '400',
+    marginLeft: 10,
+    marginBottom: 10
   },
   textColumn: {
     // height: 80,

@@ -5,6 +5,7 @@ import React, {
   StyleSheet,
   Image,
   TouchableHighlight,
+  TouchableOpacity,
   Text
 } from 'react-native';
 
@@ -92,35 +93,24 @@ class DialogueItem extends Component {
 
   render() {
 
-    var playColor = this.state.audioReady ? '#169FAD' : '#EEEEEE';
+    var playColor = this.state.audioReady ? '#FFFFFF' : '#FFFFFF';
 
     var playIcon = this.state.playing ? (
-      <Icon name='stop' style={[styles.buttonIcon, {fontSize: 24}]} />
+      <Icon name='stop' style={[styles.buttonIcon, {fontSize: 30}]} />
     ) : (
       <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 3.5, color: playColor}]} />
     )
 
     var playButton = this.state.audioReady ? (
-      <TouchableHighlight
+      <TouchableOpacity
         style={styles.button}
-        // underlayColor='#028B99'
-        underlayColor='#EEEEEE'
         onPress={this._togglePlaySound}>
         {playIcon}
-      </TouchableHighlight>
+      </TouchableOpacity>
     ) : (
-      <View style={[styles.button]}>
+      <View style={styles.button}>
         {playIcon}
       </View>
-    )
-
-    var durationString = this._generateTimeDisplay(this.state.audioDuration);
-
-    var timeDisplay = this.state.audioReady ? (
-      // <Text style={styles.timer}>{this.state.tenMin}{this.state.min}:{this.state.tenSec}{this.state.sec}.{this.state.tenthSec} / {durationString}</Text>
-      null
-    ) : (
-      null
     )
 
     var text = this.state.show ? (
@@ -133,16 +123,23 @@ class DialogueItem extends Component {
         </Text>
       )
 
-    var bubbleColor = this.state.show ? (
+    var bubbleSpecifics = this.state.show ? (
       {backgroundColor: '#FFFFFF' }
     ) : (
-      null
+      {backgroundColor: 'rgba(22, 159, 173, 0.75)',
+        borderWidth: 0 }
     )
 
-    var triangleColor = this.state.show ? (
+    var triangleInsideColor = this.state.show ? (
       {borderRightColor: '#FFFFFF' }
     ) : (
+      {borderRightColor: 'transparent' }
+    )
+
+    var triangleOutsideColor = this.state.show ? (
       null
+    ) : (
+      {borderRightColor: 'rgba(22, 159, 173, 0.75)' }
     )
 
     return (
@@ -151,25 +148,23 @@ class DialogueItem extends Component {
           onPress={this._toggleShow}
           underlayColor='#EEEEEE'
           >
-          <View>
-          <Text style={styles.labelText}>{this.person.name}:</Text>
           <View style={{flexDirection: 'row'}}>
-            <Image style={styles.imageHolder} source={{uri: this.person.pictureUri}} />
+            <View style={styles.imageHolder}>
+              <Image style={styles.image} source={{uri: this.person.pictureUri}} />
+              {playButton}
+            </View>
             <View style={{flexDirection: 'column', flex: 1}}>
               <View>
                 <View style={styles.talkBubble}>
-                  <View style={styles.talkBubbleTriangle} />
+                  <View style={[styles.talkBubbleTriangle, triangleOutsideColor]} />
                     <View
-                      style={[styles.bubble, styles.talkBubbleSquare, bubbleColor]}>
+                      style={[styles.bubble, styles.talkBubbleSquare, bubbleSpecifics]}>
                       {text}
                     </View>
-                  <View style={[styles.talkBubbleTriangleInside, triangleColor]} />
+                  <View style={[styles.talkBubbleTriangleInside, triangleInsideColor]} />
                 </View>
               </View>
-              {playButton}
-              {timeDisplay}
             </View>
-          </View>
           </View>
         </TouchableHighlight>
     )
@@ -178,21 +173,50 @@ class DialogueItem extends Component {
 }
 
 const styles = StyleSheet.create({
-  labelText: {
-    fontFamily: 'helvetica',
-    fontWeight: '300',
-    fontSize: 18,
-    marginBottom: 10,
+  card: {
+    margin: 18,
+    marginBottom: 0,
+    padding: 15,
+    paddingBottom: 15,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    },
+    justifyContent: 'center'
   },
   imageHolder: {
     justifyContent: 'center',
     height: 80,
     width: 80,
-    marginRight: 10,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#C8C7CC',
-    borderRadius: 10
+    borderRadius: 15
+  },
+  image: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    borderRadius: 15,
+    height: 80,
+    width: 80,
+  },
+  button: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: 80,
+    width: 80,
+    backgroundColor: 'rgba(240,183,103,0.5)',
+    borderRadius: 15,
+    justifyContent: 'center',
+  },
+  buttonIcon: {
+    fontSize: 36,
+    color: '#FFFFFF',
+    alignSelf: 'center'
   },
   bubble: {
     backgroundColor: '#FFFFFF',
@@ -207,80 +231,40 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
     paddingRight: 15,
   },
-  bubbleText: {
-    backgroundColor: 'rgba(255,255,255,0)',
-    fontSize: 18
-  },
-  button: {
-    height: 55,
-    width: 55,
-    marginTop: 10,
-    // backgroundColor: '#169FAD',
-    backgroundColor: '#FFFFFF',
-    borderColor: '#C8C7CC',
-    borderWidth: 2,
-    borderRadius: 27.5,
-    justifyContent: 'center',
-  },
-  buttonIcon: {
-    fontSize: 28,
-    // color: '#FFF',
-    color: '#169FAD',
-    alignSelf: 'center'
-  },
-  card: {
-    marginTop: 5,
-    marginBottom: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    padding: 15,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 2,
-      width: 0
-    }
-  },
   talkBubbleSquare: {
-    backgroundColor: '#169FAD',
-    borderWidth: 2,
-    borderColor: '#169FAD',
+    marginLeft: 15,
+    flex: 1,
+    height: 80,
   },
   talkBubbleTriangle: {
     position: 'absolute',
-    left: -9,
-    top: 7,
+    left: -0.75,
+    top: 33,
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
-    borderTopWidth: 13,
-    borderRightWidth: 36,
-    borderRightColor: '#169FAD',
-    borderBottomWidth: 13,
+    borderTopWidth: 6,
+    borderRightWidth: 16,
+    borderRightColor: '#979797',
+    borderBottomWidth: 6,
     borderBottomColor: 'transparent'
   },
   talkBubbleTriangleInside: {
     position: 'absolute',
-    left: -3.0,
-    top: 16.75,
+    left: 2,
+    top: 33,
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
-    borderTopWidth: 3.25,
-    borderRightWidth: 9,
-    borderRightColor: '#169FAD',
-    borderBottomWidth: 3.25,
+    borderTopWidth: 6,
+    borderRightWidth: 16,
+    borderRightColor: '#FFFFFF',
+    borderBottomWidth: 6,
     borderBottomColor: 'transparent'
   },
-  timer: {
-    // alignSelf: 'center',
-    fontWeight: '700',
-    fontSize: 14,
-    fontFamily: 'Droid Sans Mono',
-    color: '#000000'
+  bubbleText: {
+    backgroundColor: 'rgba(255,255,255,0)',
+    fontSize: 18
   },
 });
 

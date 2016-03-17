@@ -115,8 +115,8 @@ class People extends Component {
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            (this.state.continue || this.template.people[0].pictureUri)
-            // true
+            // (this.state.continue || this.template.people[0].pictureUri)
+            true
           }
           label='Next'
           _next={this._next}
@@ -130,10 +130,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FDFDF1',
-
   },
   scrollView: {
-    paddingTop: 15,
+    paddingTop: 5,
     paddingBottom: 40
   },
   padder: {
@@ -156,6 +155,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     fontFamily: 'System',
+    backgroundColor: 'transparent'
   },
 });
 

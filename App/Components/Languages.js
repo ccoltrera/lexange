@@ -49,33 +49,29 @@ class Languages extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={{height: Dimensions.get('window').height - 134}}>
-          <ScrollView
-            style={styles.scrollView}
-            showVerticalScrollIndicator={true}>
-            <View style={styles.card}>
-              <Text style={styles.labelText}>{'Language you are teaching:'}</Text>
-              <TextInput
-                autoCorrect={false}
-                returnKeyType='done'
-                style={styles.textInput}
-                value={this.state.teacher}
-                onChange={this._handleChangeTeacher}
-                placeholder='Your language'
-                />
-              </View>
-            <View style={styles.card}>
-              <Text style={styles.labelText}>{'Language your students speak:'}</Text>
-              <TextInput
-                autoCorrect={false}
-                returnKeyType='done'
-                style={styles.textInput}
-                value={this.state.student}
-                onChange={this._handleChangeStudent}
-                placeholder="Student's language"
-                />
+        <View style={styles.contentArea}>
+          <View style={styles.card}>
+            <Text style={styles.labelText}>{'Language you are teaching'}</Text>
+            <TextInput
+              autoCorrect={false}
+              returnKeyType='done'
+              style={styles.textInput}
+              value={this.state.teacher}
+              onChange={this._handleChangeTeacher}
+              placeholder='Your language'
+              />
             </View>
-          </ScrollView>
+          <View style={styles.card}>
+            <Text style={styles.labelText}>{'Language your students speak'}</Text>
+            <TextInput
+              autoCorrect={false}
+              returnKeyType='done'
+              style={styles.textInput}
+              value={this.state.student}
+              onChange={this._handleChangeStudent}
+              placeholder="Student's language"
+              />
+          </View>
         </View>
         <ContinueButton
           enabled={
@@ -92,15 +88,6 @@ class Languages extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FDFDF1',
-
-  },
-  scrollView: {
-    paddingTop: 15,
-    paddingBottom: 40,
-  },
   headerShadow: {
     backgroundColor: '#169FAD',
     marginLeft: -2,
@@ -113,23 +100,28 @@ const styles = StyleSheet.create({
       width: 0,
     },
   },
+  container: {
+    flex: 1,
+    backgroundColor: '#FDFDF1',
+  },
+  contentArea: {
+    height: Dimensions.get('window').height - 134,
+    justifyContent: 'center'
+  },
   labelText: {
     fontFamily: 'System',
-    fontWeight: '300',
-    fontSize: 18,
-    marginBottom: 10,
+    fontWeight: '400',
+    fontSize: 20,
+    marginBottom: 15,
+    alignSelf: 'center'
   },
   card: {
-    marginTop: 5,
-    marginBottom: 10,
-    marginLeft: 15,
-    marginRight: 15,
+    margin: 18,
+    padding: 15,
     paddingTop: 30,
     paddingBottom: 30,
-    paddingLeft: 20,
-    paddingRight: 20,
     backgroundColor: '#FFFFFF',
-    borderRadius: 5,
+    borderRadius: 20,
     shadowColor: '#000000',
     shadowOpacity: 0.5,
     shadowRadius: 2,
@@ -144,8 +136,8 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#C8C7CC',
-    borderRadius: 18,
+    borderColor: '#979797',
+    borderRadius: 12,
     fontFamily: 'System',
     color: '#000000'
   }

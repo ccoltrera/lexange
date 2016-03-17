@@ -12,6 +12,9 @@ import BackButton from './App/Components/BackButton';
 
 import LandingScreen from './App/Components/LandingScreen';
 
+import Dialogue from './App/Components/Dialogue';
+import templateFuncs from './App/Utils/template';
+
 class lexchange extends Component {
   constructor(props) {
     super(props);
@@ -35,6 +38,23 @@ class lexchange extends Component {
         configureScene={this._configureScene()}
         />
     );
+    // return (
+    //   <Router
+    //     headerStyle={styles.header}
+    //     firstRoute={{
+    //       name: 'Dialogue',
+    //       component: Dialogue,
+    //       passProps: {
+    //         showTutorial: true,
+    //         _readTemplate: templateFuncs._readTemplate,
+    //         _updateTemplate: templateFuncs._updateTemplate
+    //       },
+    //     }}
+    //     backButtonComponent={BackButton}
+    //     titleStyle={styles.title}
+    //     configureScene={this._configureScene()}
+    //     />
+    // );
   }
 }
 

@@ -116,10 +116,10 @@ const styles = StyleSheet.create({
   capture: {
     flex: 0,
     backgroundColor: '#169FAD',
-    borderRadius: 5,
+    borderRadius: 10,
     color: '#fff',
-    padding: 10,
-    fontSize: 40
+    padding: 15,
+    fontSize: 35
   },
   bar: {
     position: 'absolute',

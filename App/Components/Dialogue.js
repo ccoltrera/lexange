@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FDFDF1'
   },
   scrollView: {
-    paddingTop: 15,
+    paddingTop: 5,
     paddingBottom: 40
   },
   padder: {
@@ -165,6 +165,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     fontFamily: 'System',
+    backgroundColor: 'transparent'
   },
 });
 

@@ -77,6 +77,7 @@ class Tutorial extends Component {
 
     var tutorialCard = (
         <View style={cardStyles} >
+          {/* <View style={styles.cardColor}></View> */}
           <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center'}}>
             <Text style={styles.tabText}>TIPS </Text>
             <Icon
@@ -125,23 +126,34 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC',
-    paddingTop: 10,
+    paddingTop: 8,
     paddingLeft: 15,
     paddingRight: 15,
-    borderRadius: 30,
+    borderRadius: 20,
     flexDirection: 'column',
   },
   tabText: {
     fontSize: 20,
     color: '#169FAD',
     fontFamily: 'System',
-    fontWeight: '700'
+    fontWeight: '700',
+    backgroundColor: 'transparent'
+  },
+  cardColor: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    backgroundColor: 'rgba(240,183,103,0.25)',
+    borderRadius: 20
   },
   chevron: {
     fontSize: 22,
     color: '#169FAD',
-    marginTop: -0.5,
+    marginTop: 0.2,
     marginBottom: 15,
+    backgroundColor: 'transparent'
   }
 });
 

@@ -150,9 +150,9 @@ class RecordingPanel extends Component {
             onPress={this._done}>
             <View style={styles.touchWrapper}>
               <Text style={styles.bottomButtonText}>Done </Text>
-              <View style={{marginLeft: 5, marginTop: 2}}>
+              {/*<View style={{marginLeft: 5, marginTop: 2}}>
                 <Icon name='chevron-down' style={styles.chevron} />
-              </View>
+              </View>*/}
             </View>
           </TouchableHighlight>
       </View>
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   button: {
-    margin: 20,
+    margin: 15,
     height: 55,
     width: 55,
     backgroundColor: '#FFFFFF',
@@ -219,7 +219,7 @@ const styles = StyleSheet.create({
     }
   },
   bottomButtonText: {
-    fontSize: 20,
+    fontSize: 25,
     color: '#169FAD',
     fontFamily: 'System',
     fontWeight: '700',

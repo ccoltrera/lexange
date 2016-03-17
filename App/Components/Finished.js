@@ -73,7 +73,7 @@ class Finished extends Component {
 
     var peopleBlock = (peopleCards.length > 0) ? (
       <View>
-        <Text style={styles.labelText}>Characters:</Text>
+        <Text style={styles.labelText}>Characters</Text>
         {peopleCards}
       </View>
     ) : (
@@ -97,7 +97,7 @@ class Finished extends Component {
 
     var itemBlock = (itemCards.length > 0) ? (
       <View>
-        <Text style={styles.labelText}>Objects:</Text>
+        <Text style={styles.labelText}>Objects</Text>
         {peopleCards}
       </View>
     ) : (
@@ -125,7 +125,7 @@ class Finished extends Component {
             showVerticalScrollIndicator={true}>
             {peopleBlock}
             {itemBlock}
-            <Text style={styles.labelText}>Dialogue:</Text>
+            <Text style={styles.labelText}>Dialogue</Text>
             {dialogueItems}
             <View style={styles.padder}></View>
           </ScrollView>
@@ -135,7 +135,7 @@ class Finished extends Component {
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={true}
-          label={'Share Your Lesson!'}
+          label={'Make More Lessons!'}
           _next={this._next}/>
       </View>
     )
@@ -146,9 +146,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FDFDF1'
-  },
-  scrollView: {
-    paddingTop: 15,
   },
   padder: {
     height: 50
@@ -168,16 +165,17 @@ const styles = StyleSheet.create({
   tutorialText: {
     marginBottom: 5,
     fontSize: 16,
-    fontWeight: '300'
+    fontWeight: '300',
+    backgroundColor: 'transparent',
+    fontFamily: 'System'
   },
   labelText: {
     fontFamily: 'helvetica',
-    fontWeight: '400',
-    // color: '#169FAD',
-    fontSize: 18,
-    marginTop: 10,
-    marginBottom: 5,
-    marginLeft: 15,
+    fontWeight: 'bold',
+    alignSelf: 'center',
+    color: '#169FAD',
+    fontSize: 20,
+    marginTop: 20,
   },
   cardRow: {
     flexDirection: 'row'

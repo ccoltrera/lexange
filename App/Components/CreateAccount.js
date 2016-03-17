@@ -31,16 +31,12 @@ class CreateAccount extends Component {
     });
 
     return(
-      <ScrollView
-        showVerticalScrollIndicator={true}
-        style={styles.container}>
-        <View style={styles.row}>
-          <Text style={styles.signup}>
-            To share, just make an account!
-          </Text>
-        </View>
+      <View style={styles.container}>
+        <Text style={styles.signup}>
+          Great Job! To make more lessons, just make an account.
+        </Text>
         {signupButtons}
-      </ScrollView>
+      </View>
     )
   }
 }
@@ -49,16 +45,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FDFDF1',
-  },
-  row: {
-    marginTop: 120,
-    flexDirection: 'row',
     justifyContent: 'center'
   },
   signup: {
+    marginTop: -60,
+    marginLeft: 18,
+    marginRight: 18,
     marginBottom: 30,
     fontSize: 20,
-    fontWeight: '400'
+    fontWeight: '400',
+    textAlign: 'center'
   }
 });
 

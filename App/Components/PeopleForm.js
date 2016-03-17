@@ -69,43 +69,30 @@ class PeopleForm extends Component {
     return (
       <View>
         <View style={styles.card}>
-          <View style={[styles.row, styles.labelWrapper]}>
-            <Text style={[styles.labelText, {fontWeight: 'bold', color: 'rgba(22,159,173,1)'}]}>Character {this.props.num + 1}: </Text>
-            <Text style={styles.labelText}>{desc}</Text>
-          </View>
-          <View style={styles.row}>
-            <TouchableHighlight
-              onPress={this._toggleCam}
-              style={styles.cameraButton}
-              underlayColor='#EEEEEE'
-              >
-              {cameraButton}
-            </TouchableHighlight>
-            <View style={styles.column}>
-              <Text style={styles.textInputLabel}>
-                Character's name ({this.template.languages.teacher}):
-              </Text>
-              <TextInput
-                autoCorrect={false}
-                returnKeyType='done'
-                style={styles.textInput}
-                value={this.state.name}
-                onChange={this._handleChangeName}
-                placeholder={'Character\'s Name (' + this.template.languages.teacher + ')'}
-                />
-              <Text style={styles.textInputLabel}>
-                '{desc}' ({this.template.languages.teacher}):
-              </Text>
-              <TextInput
-                autoCorrect={false}
-                returnKeyType='done'
-                style={styles.textInput}
-                value={this.state.descTrans}
-                onChange={this._handleChangeTrans}
-                placeholder={'\'' + desc + '\' (' + this.template.languages.teacher + ')'}
-                />
-          </View>
-            </View>
+          <Text style={styles.labelText}><Text style={styles.boldLabelText}>Character {this.props.num + 1}: </Text>{desc}</Text>
+          <TouchableHighlight
+            onPress={this._toggleCam}
+            style={styles.cameraButton}
+            underlayColor='#EEEEEE'
+            >
+            {cameraButton}
+          </TouchableHighlight>
+            <TextInput
+              autoCorrect={false}
+              returnKeyType='done'
+              style={styles.textInput}
+              value={this.state.name}
+              onChange={this._handleChangeName}
+              placeholder={'Character\'s Name (' + this.template.languages.teacher + ')'}
+              />
+            <TextInput
+              autoCorrect={false}
+              returnKeyType='done'
+              style={styles.textInput}
+              value={this.state.descTrans}
+              onChange={this._handleChangeTrans}
+              placeholder={'\'' + desc + '\' (in' + this.template.languages.teacher + ')'}
+              />
         </View>
       </View>
     )
@@ -113,17 +100,49 @@ class PeopleForm extends Component {
 }
 
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
+  card: {
+    margin: 18,
+    marginBottom: 0,
+    padding: 15,
+    paddingBottom: 5,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 20,
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    },
+    justifyContent: 'center'
   },
-  column: {
-    flexDirection: 'column',
+  labelText: {
+    fontFamily: 'System',
+    fontWeight: '400',
+    fontSize: 20,
+    alignSelf: 'center'
+  },
+  boldLabelText: {
+    fontWeight: 'bold',
+    color: 'rgba(22,159,173,1)'
+  },
+  cameraButton: {
+    justifyContent: 'center',
+    height: 170,
+    width: 170,
+    margin: 15,
+    backgroundColor: 'rgba(240,183,103,0.5)',
+    borderRadius: 15,
+    alignSelf: 'center'
+  },
+  camera: {
+    fontSize: 100,
+    color: '#FFFFFF',
+    alignSelf: 'center'
+  },
+  cameraButtonImage: {
     flex: 1,
-    paddingLeft: 10,
-    // paddingRight: 10
-  },
-  padder: {
-    height: 50
+    borderRadius: 15
   },
   textInput: {
     flex: 1,
@@ -134,66 +153,9 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#C8C7CC',
-    borderRadius: 18,
+    borderColor: '#979797',
+    borderRadius: 12,
     color: '#000000',
-  },
-  textInputLabel: {
-    fontFamily: 'System',
-    fontWeight: '300',
-    fontSize: 16,
-    marginBottom: 3
-  },
-  cameraButton: {
-    justifyContent: 'center',
-    height: 80,
-    width: 80,
-    backgroundColor: '#FFFFFF',
-    borderWidth: 2,
-    borderColor: '#C8C7CC',
-    borderRadius: 10
-  },
-  cameraButtonImage: {
-    flex: 1,
-    borderRadius: 9
-  },
-  roundedHighlight: {
-    height: 80,
-    width: 40,
-    borderRadius: 10
-  },
-  camera: {
-    fontSize: 36,
-    color: '#858E99',
-    alignSelf: 'center'
-  },
-  labelWrapper: {
-    marginBottom: 5,
-  },
-  labelText: {
-    fontFamily: 'System',
-    fontWeight: '300',
-    fontSize: 18,
-    marginBottom: 5,
-  },
-  card: {
-    marginTop: 5,
-    marginBottom: 10,
-    marginLeft: 15,
-    marginRight: 15,
-    paddingTop: 15,
-    paddingBottom: 15,
-    paddingLeft: 10,
-    paddingRight: 10,
-    backgroundColor: '#FFFFFF',
-    borderRadius: 5,
-    shadowColor: '#000000',
-    shadowOpacity: 0.5,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 2,
-      width: 0
-    }
   },
 });
 

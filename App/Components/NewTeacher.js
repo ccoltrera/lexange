@@ -38,7 +38,7 @@ class NewTeacher extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={{height: Dimensions.get('window').height - 134}}>
+        <View style={styles.contentArea}>
           <ScrollView
             style={styles.scrollView}
             showVerticalScrollIndicator={true}>
@@ -102,15 +102,6 @@ class NewTeacher extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#FDFDF1',
-
-  },
-  scrollView: {
-    paddingTop: 15,
-    paddingBottom: 40
-  },
   headerShadow: {
     backgroundColor: '#169FAD',
     marginLeft: -2,
@@ -122,6 +113,19 @@ const styles = StyleSheet.create({
       height: 2,
       width: 0,
     },
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#FDFDF1',
+
+  },
+  contentArea: {
+    height: Dimensions.get('window').height - 134,
+    justifyContent: 'center'
+  },
+  scrollView: {
+    paddingTop: 15,
+    paddingBottom: 40
   },
   one: {
     // flexDirection: 'row',
@@ -213,11 +217,11 @@ const styles = StyleSheet.create({
   card: {
     marginTop: 5,
     marginBottom: 10,
-    marginLeft: 15,
-    marginRight: 15,
+    marginLeft: 18,
+    marginRight: 18,
     paddingTop: 15,
     backgroundColor: '#FFFFFF',
-    borderRadius: 5,
+    borderRadius: 20,
     shadowColor: '#000000',
     shadowOpacity: 0.5,
     shadowRadius: 2,
