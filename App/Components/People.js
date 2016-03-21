@@ -31,11 +31,11 @@ class People extends Component {
 
     this._next = this._next.bind(this);
     this._toggleCam = this._toggleCam.bind(this);
+    this._completenessCheck = this._completenessCheck.bind(this);
   }
 
   _toggleCam(_setImage) {
     this.setState({
-      continue: true,
       _setImage: _setImage,
       showCam: !this.state.showCam
     });
@@ -54,6 +54,35 @@ class People extends Component {
     });
   }
 
+  _completenessCheck() {
+
+    this.template = this.props._readTemplate();
+
+    for (let i = 0; i < this.template.people.length; i++) {
+      if (!this.template.people[i].name) {
+        console.log('name' + i);
+        this.setState({continue: false});
+        return;
+      }
+      if (!this.template.people[i].descTrans) {
+        console.log('descTrans' + i);
+        this.setState({continue: false});
+        return;
+      }
+      if (!this.template.people[i].pictureUri) {
+        console.log('pictureUri' + i);
+        this.setState({continue: false});
+        return;
+      }
+    }
+
+    this.setState({continue: true});
+  }
+
+  componentDidMount() {
+    this._completenessCheck();
+  }
+
   render() {
     var {height, width} = Dimensions.get('window');
     var height = height - 134;
@@ -66,6 +95,7 @@ class People extends Component {
           num={i}
           _updateTemplate={this.props._updateTemplate}
           _readTemplate={this.props._readTemplate}
+          _completenessCheck={this._completenessCheck}
           _toggleCam={this._toggleCam} />
       )
     }
@@ -115,10 +145,10 @@ class People extends Component {
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            // (this.state.continue || this.template.people[0].pictureUri)
+            // this.state.continue
             true
           }
-          label='Next'
+          label='Dialogue'
           _next={this._next}
         />
       </View>

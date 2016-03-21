@@ -37,8 +37,8 @@ class LandingScreen extends Component {
         </View>
         <View style={styles.row}>
           <TouchableHighlight
-            style={[styles.bigButton, {width: 257}]}
-            underlayColor='#FFFFFF'>
+            style={[styles.bigButton, {width: 270}]}
+            underlayColor='#FDFDF1'>
             <View style={styles.bbBlock}>
               <View style={styles.row}>
                 <View style={styles.bbIconWrapper}>
@@ -56,17 +56,17 @@ class LandingScreen extends Component {
           <TouchableHighlight
             style={styles.bigButton}
             onPress={this._newTeacher}
-            underlayColor='#FFFFFF'>
+            underlayColor='#FDFDF1'>
             <View style={styles.bBBlock}>
               <View style={styles.bbIconWrapper}>
-                <FoundationIcon name='clipboard-pencil' style={styles.bBIcon}/>
+                <FoundationIcon name='clipboard-pencil' style={[styles.bBIcon, {marginLeft: 5}]}/>
               </View>
               <Text style={styles.bBText}>New Teacher</Text>
             </View>
           </TouchableHighlight>
           <TouchableHighlight
             style={styles.bigButton}
-            underlayColor='#FFFFFF'>
+            underlayColor='#FDFDF1'>
             <View style={styles.bBBlock}>
               <View style={styles.bbIconWrapper}>
                 <FAIcon name='graduation-cap' style={styles.bBIcon}/>
@@ -110,11 +110,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   bigButton: {
-    backgroundColor: '#FDFDF1',
-    margin: 10,
-    padding: 10,
-    borderWidth: 1,
-    borderRadius: 16,
+    // backgroundColor: '#FDFDF1',
+    margin: 5,
+    padding: 15,
+    borderWidth: 2,
+    borderRadius: 26,
     borderColor: '#FDFDF1',
     // shadowColor: '#000000',
     // shadowOpacity: 0.5,
@@ -135,11 +135,11 @@ const styles = StyleSheet.create({
   },
   bBIcon: {
     alignSelf: 'center',
-    color: '#169FAD',
+    color: '#FDFDF1',
     fontSize: 40
   },
   bBText: {
-    color: '#169FAD',
+    color: '#FDFDF1',
     fontFamily: 'System',
     fontSize: 16,
     alignSelf: 'center',

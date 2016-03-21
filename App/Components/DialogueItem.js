@@ -96,9 +96,9 @@ class DialogueItem extends Component {
     var playColor = this.state.audioReady ? '#FFFFFF' : '#FFFFFF';
 
     var playIcon = this.state.playing ? (
-      <Icon name='stop' style={[styles.buttonIcon, {fontSize: 30}]} />
+      <Icon name='stop' style={[styles.buttonIcon, {fontSize: 22}]} />
     ) : (
-      <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 3.5, color: playColor}]} />
+      <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 4, color: playColor}]} />
     )
 
     var playButton = this.state.audioReady ? (
@@ -108,7 +108,7 @@ class DialogueItem extends Component {
         {playIcon}
       </TouchableOpacity>
     ) : (
-      <View style={styles.button}>
+      <View style={[styles.button, {backgroundColor: '#979797'}]}>
         {playIcon}
       </View>
     )
@@ -126,20 +126,20 @@ class DialogueItem extends Component {
     var bubbleSpecifics = this.state.show ? (
       {backgroundColor: '#FFFFFF' }
     ) : (
-      {backgroundColor: 'rgba(22, 159, 173, 0.75)',
+      {backgroundColor: '#8ACFD6',
         borderWidth: 0 }
     )
 
     var triangleInsideColor = this.state.show ? (
       {borderRightColor: '#FFFFFF' }
     ) : (
-      {borderRightColor: 'transparent' }
+      {borderRightColor: '#8ACFD6', left: 4}
     )
 
     var triangleOutsideColor = this.state.show ? (
       null
     ) : (
-      {borderRightColor: 'rgba(22, 159, 173, 0.75)' }
+      {borderRightColor: 'transparent' }
     )
 
     return (
@@ -174,7 +174,7 @@ class DialogueItem extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 18,
+    margin: 15,
     marginBottom: 0,
     padding: 15,
     paddingBottom: 15,
@@ -193,7 +193,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: 80,
     width: 80,
-    borderRadius: 15
+    borderRadius: 15,
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#979797',
   },
   image: {
     position: 'absolute',
@@ -205,17 +208,27 @@ const styles = StyleSheet.create({
   },
   button: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    height: 80,
-    width: 80,
-    backgroundColor: 'rgba(240,183,103,0.5)',
-    borderRadius: 15,
+    right: -60,
+    // left: 40,
+    top: 20,
+    // left: 0,
+    // alignSelf: 'center',
+    height: 120,
+    width: 120,
+    // backgroundColor: 'rgba(240,183,103,0.5)',
+    backgroundColor: 'rgba(22,159,173,1)',
+    borderRadius: 60,
     justifyContent: 'center',
+    // borderWidth: 2,
+    borderColor: 'rgba(22,159,173,0.6)',
+    // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {
-    fontSize: 36,
+    fontSize: 26,
     color: '#FFFFFF',
+    marginRight: 47,
+    marginBottom: 49,
+    // color: 'rgba(22,159,173,1)',
     alignSelf: 'center'
   },
   bubble: {
@@ -224,8 +237,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // height: 50,
     borderWidth: 1,
-    borderRadius: 20,
-    borderColor: '#C8C7CC',
+    borderRadius: 12,
+    borderColor: '#979797',
     paddingTop: 10,
     paddingBottom: 10,
     paddingLeft: 15,
@@ -234,30 +247,30 @@ const styles = StyleSheet.create({
   talkBubbleSquare: {
     marginLeft: 15,
     flex: 1,
-    height: 80,
+    // height: 80,
   },
   talkBubbleTriangle: {
     position: 'absolute',
-    left: -0.75,
-    top: 33,
+    left: 3,
+    top: 11,
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
     borderTopWidth: 6,
-    borderRightWidth: 16,
+    borderRightWidth: 13,
     borderRightColor: '#979797',
     borderBottomWidth: 6,
     borderBottomColor: 'transparent'
   },
   talkBubbleTriangleInside: {
     position: 'absolute',
-    left: 2,
-    top: 33,
+    left: 5,
+    top: 11,
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
     borderTopWidth: 6,
-    borderRightWidth: 16,
+    borderRightWidth: 13,
     borderRightColor: '#FFFFFF',
     borderBottomWidth: 6,
     borderBottomColor: 'transparent'

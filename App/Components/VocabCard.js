@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     width: 80,
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
-    borderColor: '#C8C7CC',
+    borderColor: '#979797',
     borderRadius: 15
   },
   card: {
     height: 110,
-    margin: 18,
+    margin: 15,
     marginBottom: 0,
     padding: 15,
     backgroundColor: '#FFFFFF',
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   cardText: {
     backgroundColor: 'rgba(255,255,255,0)',
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: '400',
     marginLeft: 10,
     marginBottom: 10

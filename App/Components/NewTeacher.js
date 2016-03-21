@@ -44,16 +44,18 @@ class NewTeacher extends Component {
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
               <View style={styles.labelBlock}>
-                <Text style={styles.labelText}>Lexchange gives you simple templates, you give your students rich lessons in the form of dialogues and stories.</Text>
+                <Text style={styles.labelText}>The best language lessons show language in context. Our simple templates make this easy.</Text>
               </View>
               <View style={styles.one}>
                 <View style={styles.path}>
-                  <TouchableHighlight
+                  {/*<TouchableHighlight
                     style={styles.outerCircle}
                     underlayColor='#169FAD'
                     onPress={this._goLanguages}>
                     <View style={styles.innerCircle}></View>
-                  </TouchableHighlight>
+                  </TouchableHighlight>*/}
+                  <View style={styles.unCircle}>
+                  </View>
                   <View style={styles.line}>
                   </View>
                   <View style={styles.unCircle}>
@@ -68,7 +70,7 @@ class NewTeacher extends Component {
                   </View>
                 </View>
                 <View style={styles.third}>
-                  <View style={[styles.descBlock, {marginTop: 14, marginBottom: 94}]}>
+                  <View style={[styles.descBlock, {marginTop: 8}]}>
                     <Text style={styles.sectionDesc}>Tell us the <Text style={styles.sectionName}>languages</Text></Text>
 
                   </View>
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
   path: {
     position: 'absolute',
     top: 0,
-    left: 15
+    left: 21
   },
   third: {
     flex: 3,
@@ -212,13 +214,13 @@ const styles = StyleSheet.create({
   },
   descBlock: {
     // flexDirection: 'row',
-    marginBottom: 87
+    marginBottom: 86.75
   },
   card: {
     marginTop: 5,
     marginBottom: 10,
-    marginLeft: 18,
-    marginRight: 18,
+    marginLeft: 15,
+    marginRight: 15,
     paddingTop: 15,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,

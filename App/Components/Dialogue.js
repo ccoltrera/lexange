@@ -25,15 +25,14 @@ class Dialogue extends Component {
 
     this.template = this.props._readTemplate();
     this.state = {
-      showThisTutorial: this.props.showTutorial,
-      greeting: '',
+      continue: false,
       showRecordingPanel: false,
-      recordingNum: null
+      recordingNum: null,
     }
 
     this._next = this._next.bind(this);
-    this._toggleTutorial = this._toggleTutorial.bind(this);
     this._toggleRecordingPanel = this._toggleRecordingPanel.bind(this);
+    this._completenessCheck = this._completenessCheck.bind(this);
   }
 
   _next() {
@@ -49,17 +48,42 @@ class Dialogue extends Component {
     });
   }
 
-  _toggleTutorial() {
-    this.setState({
-      showThisTutorial: !this.state.showThisTutorial
-    })
-  }
-
   _toggleRecordingPanel(num) {
     this.setState({
       recordingNum: num,
-      showRecordingPanel: !this.state.showRecordingPanel
+      showRecordingPanel: !this.state.showRecordingPanel,
     });
+
+    this._completenessCheck();
+  }
+
+  _completenessCheck() {
+
+    this.template = this.props._readTemplate();
+
+    for (let i = 0; i < this.template.dialogue.length; i++) {
+      if (!this.template.dialogue[i].phrase) {
+        console.log('phrase' + i);
+        this.setState({continue: false});
+        return;
+      }
+      if (!this.template.dialogue[i].phraseTrans) {
+        console.log('phraseTrans' + i);
+        this.setState({continue: false});
+        return;
+      }
+      if (!this.template.dialogue[i].audioUri) {
+        console.log('audioUri' + i);
+        this.setState({continue: false});
+        return;
+      }
+    }
+
+    this.setState({continue: true});
+  }
+
+  componentDidMount() {
+    this._completenessCheck();
   }
 
   render() {
@@ -71,6 +95,7 @@ class Dialogue extends Component {
           num={i}
           _updateTemplate={this.props._updateTemplate}
           _readTemplate={this.props._readTemplate}
+          _completenessCheck={this._completenessCheck}
           _toggleRecordingPanel={this._toggleRecordingPanel}
         />
       )
@@ -125,10 +150,10 @@ class Dialogue extends Component {
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            // this.state.recordingLength
+            // this.state.continue
             true
           }
-          label='Done'
+          label='Finished'
           _next={this._next}
         />
       </View>

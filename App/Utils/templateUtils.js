@@ -22,6 +22,10 @@ function _handleChange(stateName, array, event, unmounted) {
   }
 
   this.props._updateTemplate(templateUpdate);
+
+  if(this.props._completenessCheck) {
+    this.props._completenessCheck();
+  }
 }
 
 export default _handleChange;

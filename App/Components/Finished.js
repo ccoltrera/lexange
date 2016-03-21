@@ -172,9 +172,10 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'helvetica',
     fontWeight: 'bold',
-    alignSelf: 'center',
+    // alignSelf: 'center',
+    marginLeft: 15,
     color: '#169FAD',
-    fontSize: 20,
+    fontSize: 18,
     marginTop: 20,
   },
   cardRow: {

@@ -52,7 +52,7 @@ class DialogueForm extends Component {
 
     return(
       <View style={styles.card}>
-        <Text style={styles.labelText}>{this.template.dialogue[this.props.num].guide + ' (' + this.template.languages.teacher + ')'}</Text>
+        <Text style={styles.labelText}>{this.template.dialogue[this.props.num].guide + ' (in ' + this.template.languages.teacher + ')'}</Text>
         <View style={{flexDirection: 'row'}}>
         <View style={styles.imageHolder}>
           <Image style={styles.image} source={{uri: this.person.pictureUri}} />
@@ -72,7 +72,7 @@ class DialogueForm extends Component {
                     style={[styles.textInput, styles.talkBubbleSquare, {width: bubbleWidth}]}
                     value={this.state.phrase}
                     onChange={this._handleChangePhrase}
-                    placeholder={this.template.dialogue[this.props.num].guide + ' (' + this.template.languages.teacher + ')'}
+                    placeholder={this.template.dialogue[this.props.num].guide + ' (in ' + this.template.languages.teacher + ')'}
                     />
               <View style={styles.talkBubbleTriangleInside} />
             </View>
@@ -93,7 +93,7 @@ class DialogueForm extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 18,
+    margin: 15,
     marginBottom: 0,
     padding: 15,
     paddingBottom: 5,
@@ -111,15 +111,16 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'System',
     fontWeight: '400',
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 15,
-    alignSelf: 'center'
+    // alignSelf: 'center'
   },
   imageHolder: {
     justifyContent: 'center',
     height: 80,
     width: 80,
-    borderRadius: 15
+    borderRadius: 15,
+    overflow: 'hidden'
   },
   image: {
     position: 'absolute',
@@ -128,6 +129,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 80,
     width: 80,
+    borderWidth: 1,
+    borderColor: '#979797',
   },
   textInput: {
     flex: 1,
@@ -138,23 +141,33 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#C8C7CC',
+    borderColor: '#979797',
     borderRadius: 12,
     color: '#000000',
   },
   button: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    height: 80,
-    width: 80,
-    backgroundColor: 'rgba(240,183,103,0.5)',
-    borderRadius: 15,
+    right: -60,
+    // left: 40,
+    top: 20,
+    // left: 0,
+    // alignSelf: 'center',
+    height: 120,
+    width: 120,
+    // backgroundColor: 'rgba(240,183,103,1)',
+    backgroundColor: 'rgba(22,159,173,1)',
+    borderRadius: 60,
     justifyContent: 'center',
+    // borderWidth: 2,
+    borderColor: 'rgba(22,159,173,0.6)',
+    // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {
-    fontSize: 36,
+    fontSize: 27,
     color: '#FFFFFF',
+    marginRight: 47,
+    marginBottom: 49,
+    // color: 'rgba(22,159,173,1)',
     alignSelf: 'center'
   },
   talkBubbleSquare: {
@@ -164,26 +177,26 @@ const styles = StyleSheet.create({
   },
   talkBubbleTriangle: {
     position: 'absolute',
-    left: 0,
-    top: 33,
+    left: 3,
+    top: 11,
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
     borderTopWidth: 6,
-    borderRightWidth: 16,
+    borderRightWidth: 13,
     borderRightColor: '#979797',
     borderBottomWidth: 6,
     borderBottomColor: 'transparent'
   },
   talkBubbleTriangleInside: {
     position: 'absolute',
-    left: 2,
-    top: 33,
+    left: 5,
+    top: 11,
     width: 0,
     height: 0,
     borderTopColor: 'transparent',
     borderTopWidth: 6,
-    borderRightWidth: 16,
+    borderRightWidth: 13,
     borderRightColor: '#FFFFFF',
     borderBottomWidth: 6,
     borderBottomColor: 'transparent'

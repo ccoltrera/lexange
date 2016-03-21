@@ -5,7 +5,8 @@ import React, {
   View,
   Component,
   TextInput,
-  TouchableHighlight,
+  TouchableWithoutFeedback,
+  TouchableOpacity,
   Modal,
   Image
 } from 'react-native';
@@ -53,15 +54,19 @@ class PeopleForm extends Component {
 
   render() {
 
-    var cameraButton = (!this.state.pictureUri) ? (
-      <Icon name='camera' style={styles.camera}/>
+    var characterPhoto = (!this.state.pictureUri) ? (
+      <Text style={[styles.labelText, {color: '#C7C7CD', alignSelf: 'center', marginBottom: 80}]}>Character's Photo</Text>
     ) : (
-      <Image
-        // style={styles.cameraButton}
-        style={styles.cameraButtonImage}
-        source={{uri: this.state.pictureUri}}
-        onPress={this._toggleCam}
-        />
+      // <TouchableOpacity
+      //   onPress={this._toggleCam}
+      //   >
+        <Image
+          // style={styles.cameraButton}
+          style={styles.characterPhoto}
+          source={{uri: this.state.pictureUri}}
+          onPress={this._toggleCam}
+          />
+      // </TouchableOpacity>
     )
 
     const desc = this.template.people[this.props.num].desc;
@@ -70,29 +75,34 @@ class PeopleForm extends Component {
       <View>
         <View style={styles.card}>
           <Text style={styles.labelText}><Text style={styles.boldLabelText}>Character {this.props.num + 1}: </Text>{desc}</Text>
-          <TouchableHighlight
+          <TouchableWithoutFeedback
+            onPress={this._toggleCam}>
+          <View style={styles.photoFrame}>
+          {characterPhoto}
+          <TouchableOpacity
+            style={styles.button}
             onPress={this._toggleCam}
-            style={styles.cameraButton}
-            underlayColor='#EEEEEE'
             >
-            {cameraButton}
-          </TouchableHighlight>
-            <TextInput
-              autoCorrect={false}
-              returnKeyType='done'
-              style={styles.textInput}
-              value={this.state.name}
-              onChange={this._handleChangeName}
-              placeholder={'Character\'s Name (' + this.template.languages.teacher + ')'}
-              />
-            <TextInput
-              autoCorrect={false}
-              returnKeyType='done'
-              style={styles.textInput}
-              value={this.state.descTrans}
-              onChange={this._handleChangeTrans}
-              placeholder={'\'' + desc + '\' (in' + this.template.languages.teacher + ')'}
-              />
+            <Icon name='camera' style={styles.buttonIcon} />
+          </TouchableOpacity>
+          </View>
+          </TouchableWithoutFeedback>
+          <TextInput
+            autoCorrect={false}
+            returnKeyType='done'
+            style={styles.textInput}
+            value={this.state.name}
+            onChange={this._handleChangeName}
+            placeholder={'Character\'s Name (' + this.template.languages.teacher + ')'}
+            />
+          <TextInput
+            autoCorrect={false}
+            returnKeyType='done'
+            style={styles.textInput}
+            value={this.state.descTrans}
+            onChange={this._handleChangeTrans}
+            placeholder={'\'' + desc + '\' (in ' + this.template.languages.teacher + ')'}
+            />
         </View>
       </View>
     )
@@ -101,7 +111,7 @@ class PeopleForm extends Component {
 
 const styles = StyleSheet.create({
   card: {
-    margin: 18,
+    margin: 15,
     marginBottom: 0,
     padding: 15,
     paddingBottom: 5,
@@ -119,30 +129,55 @@ const styles = StyleSheet.create({
   labelText: {
     fontFamily: 'System',
     fontWeight: '400',
-    fontSize: 20,
-    alignSelf: 'center'
+    fontSize: 18,
+    // alignSelf: 'center'
   },
   boldLabelText: {
     fontWeight: 'bold',
     color: 'rgba(22,159,173,1)'
   },
-  cameraButton: {
-    justifyContent: 'center',
+  photoFrame: {
     height: 170,
     width: 170,
     margin: 15,
-    backgroundColor: 'rgba(240,183,103,0.5)',
     borderRadius: 15,
-    alignSelf: 'center'
+    borderWidth: 1,
+    borderColor: '#979797',
+    alignSelf: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden'
   },
-  camera: {
-    fontSize: 100,
-    color: '#FFFFFF',
-    alignSelf: 'center'
-  },
-  cameraButtonImage: {
-    flex: 1,
+  characterPhoto: {
+    // flex: 1,
+    height: 170,
+    width: 170,
+    alignSelf: 'center',
     borderRadius: 15
+  },
+  button: {
+    position: 'absolute',
+    right: -85,
+    // left: 40,
+    top: 85,
+    // left: 0,
+    // alignSelf: 'center',
+    height: 170,
+    width: 170,
+    // backgroundColor: 'rgba(240,183,103,1)',
+    backgroundColor: 'rgba(22,159,173,1)',
+    borderRadius: 85,
+    justifyContent: 'center',
+    // borderWidth: 2,
+    borderColor: 'rgba(22,159,173,0.6)',
+    // backgroundColor: 'rgba(255,255,255,1)'
+  },
+  buttonIcon: {
+    fontSize: 30,
+    color: '#FFFFFF',
+    marginRight: 65,
+    marginBottom: 70,
+    // color: 'rgba(22,159,173,1)',
+    alignSelf: 'center'
   },
   textInput: {
     flex: 1,

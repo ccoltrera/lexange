@@ -60,8 +60,7 @@ class Languages extends Component {
               onChange={this._handleChangeTeacher}
               placeholder='Your language'
               />
-            </View>
-          <View style={styles.card}>
+
             <Text style={styles.labelText}>{'Language your students speak'}</Text>
             <TextInput
               autoCorrect={false}
@@ -75,10 +74,10 @@ class Languages extends Component {
         </View>
         <ContinueButton
           enabled={
-            (this.state.teacher && this.state.student)
-            // true
+            // (this.state.teacher && this.state.student)
+            true
           }
-          label='Next'
+          label='Characters'
           _next={this._next}
         />
       </View>
@@ -106,20 +105,22 @@ const styles = StyleSheet.create({
   },
   contentArea: {
     height: Dimensions.get('window').height - 134,
-    justifyContent: 'center'
+    // justifyContent: 'center'
   },
   labelText: {
     fontFamily: 'System',
     fontWeight: '400',
-    fontSize: 20,
+    fontSize: 18,
+    marginTop: 18,
     marginBottom: 15,
-    alignSelf: 'center'
+    // alignSelf: 'center'
   },
   card: {
-    margin: 18,
+    margin: 15,
+    marginTop: 20,
     padding: 15,
-    paddingTop: 30,
-    paddingBottom: 30,
+    paddingTop: 0,
+    paddingBottom: 25,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',

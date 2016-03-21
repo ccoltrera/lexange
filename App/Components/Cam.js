@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#169FAD',
     borderRadius: 10,
     color: '#fff',
-    padding: 15,
-    fontSize: 35
+    padding: 12,
+    fontSize: 40
   },
   bar: {
     position: 'absolute',

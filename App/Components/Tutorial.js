@@ -89,12 +89,18 @@ class Tutorial extends Component {
     );
 
     var tutorial = this.state.firstTutorial ? (
-      <TouchableHighlight
-        onPress={this._toggleTutorial}
-        underlayColor='transparent'
-        style={[styles.tutorialModal, {width: width, height: modalHeight} ]}>
-        {tutorialCard}
-      </TouchableHighlight>
+      <View style={styles.container}>
+        <TouchableHighlight
+          onPress={this._toggleTutorial}
+          underlayColor='transparent'
+          style={[styles.tutorialModal, {width: width, height: modalHeight} ]}>
+          {tutorialCard}
+        </TouchableHighlight>
+        <TouchableWithoutFeedback>
+        <View style={styles.bumper}>
+        </View>
+        </TouchableWithoutFeedback>
+      </View>
     ) : (
       <TouchableWithoutFeedback
           onPress={this._toggleTutorial}>
@@ -111,6 +117,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     left: 0,
+  },
+  bumper: {
+    backgroundColor: 'purple',
+    height: 70,
+    flex: 1
   },
   tutorialModal: {
     position: 'absolute',
