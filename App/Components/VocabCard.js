@@ -20,6 +20,10 @@ class VocabCard extends Component {
     this.content = this.template[this.props.content][this.props.num];
 
     this._toggleShow = this._toggleShow.bind(this);
+
+    this.desc = decodeURIComponent(this.content.desc);
+    this.descTrans = decodeURIComponent(this.content.descTrans);
+    this.name = decodeURIComponent(this.content.name);
   }
 
   _toggleShow() {
@@ -31,17 +35,17 @@ class VocabCard extends Component {
   render() {
     var text = this.state.show ? (
         <Text style={[styles.cardText, {color: '#858E99'}]}>
-          { this.content.desc }
+          { this.descTrans }
         </Text>
       ) : (
         <Text style={styles.cardText}>
-          { this.content.descTrans }
+          { this.desc }
         </Text>
       )
 
     var contentBlock = this.props.content === 'people' ? (
         <View>
-          <Text style={[styles.cardText, {fontWeight: 'bold'}]}>{this.content.name}</Text>
+          <Text style={[styles.cardText, {fontWeight: 'bold'}]}>{this.name}</Text>
           {text}
         </View>
       ) : (

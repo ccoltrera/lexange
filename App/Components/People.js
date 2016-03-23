@@ -32,6 +32,9 @@ class People extends Component {
     this._next = this._next.bind(this);
     this._toggleCam = this._toggleCam.bind(this);
     this._completenessCheck = this._completenessCheck.bind(this);
+
+    this.teacherLang = decodeURIComponent(this.template.languages.teacher);
+    this.studentLang = decodeURIComponent(this.template.languages.student);
   }
 
   _toggleCam(_setImage) {
@@ -102,21 +105,29 @@ class People extends Component {
 
     var tutorialText = (
       <View >
-        <Text style={styles.tutorialText}>
-          Most lesson templates have more than one character. But let's just have one for your first lesson.
-        </Text>
-        <Text style={styles.tutorialText}></Text>
+        {
+          this.props.showTutorial ? (
+            <Text style={styles.tutorialText}>
+              Most lesson templates have more than one character. But let's just have one for your first lesson. {'\n'}
+            </Text>
+          ) : (
+            null
+          )
+        }
         <Text style={styles.tutorialText}>
           Complete characters with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a name in {this.template.languages.teacher}
-        </Text>
-        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a description in {this.template.languages.teacher}
-        </Text>
-        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - a picture
+        </Text>
+        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+          - a name in {this.teacherLang}
+        </Text>
+        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+          - a description in {this.teacherLang}
+        </Text>
+        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
+          - a translated description in {this.studentLang}
         </Text>
       </View>
     )

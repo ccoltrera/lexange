@@ -33,6 +33,9 @@ class Dialogue extends Component {
     this._next = this._next.bind(this);
     this._toggleRecordingPanel = this._toggleRecordingPanel.bind(this);
     this._completenessCheck = this._completenessCheck.bind(this);
+
+    this.teacherLang = decodeURIComponent(this.template.languages.teacher);
+    this.studentLang = decodeURIComponent(this.template.languages.student);
   }
 
   _next() {
@@ -103,24 +106,27 @@ class Dialogue extends Component {
 
     var tutorialText = (
       <View>
-        <Text style={styles.tutorialText}>
-          Now give your character something to say!
-        </Text>
-        <Text style={styles.tutorialText}>
-          Most lesson templates have dialogues, but let's just have one phrase for your first lesson.
-        </Text>
-        <Text style={styles.tutorialText}></Text>
+        {
+          this.props.showTutorial ? (
+            <Text style={styles.tutorialText}>
+              Now give your character something to say! {'\n\n'}
+              Most lesson templates have dialogues, but let's just have one phrase for your first lesson. {'\n'}
+            </Text>
+          ) : (
+            null
+          )
+        }
         <Text style={styles.tutorialText}>
           Complete dialogues with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - written sentences in {this.template.languages.teacher}
+          - audio in {this.teacherLang} (tap the photo)
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - audio in {this.template.languages.teacher}
+          - written sentences in {this.teacherLang}
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - natural translations in {this.template.languages.student}
+          - natural translations in {this.studentLang}
         </Text>
       </View>
     )

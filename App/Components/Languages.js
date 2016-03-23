@@ -23,8 +23,8 @@ class Languages extends Component {
     this.template = this.props._readTemplate();
 
     this.state = {
-      teacher: this.template.languages.teacher,
-      student: this.template.languages.student
+      teacher: decodeURIComponent(this.template.languages.teacher),
+      student: decodeURIComponent(this.template.languages.student)
     }
 
     this._next = this._next.bind(this);

@@ -37,7 +37,7 @@ class LandingScreen extends Component {
         </View>
         <View style={styles.row}>
           <TouchableHighlight
-            style={[styles.bigButton, {width: 270}]}
+            style={[styles.bigButton, {width: 273}]}
             underlayColor='#FDFDF1'>
             <View style={styles.bbBlock}>
               <View style={styles.row}>

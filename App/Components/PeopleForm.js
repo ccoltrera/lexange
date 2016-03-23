@@ -22,8 +22,9 @@ class PeopleForm extends Component {
     this.template = this.props._readTemplate();
 
     this.state = {
-      name: this.template.people[this.props.num].name,
-      descTrans: this.template.people[this.props.num].descTrans,
+      name: decodeURIComponent(this.template.people[this.props.num].name),
+      desc: decodeURIComponent(this.template.people[this.props.num].desc),
+      descTrans: decodeURIComponent(this.template.people[this.props.num].descTrans),
       pictureUri: this.template.people[this.props.num].pictureUri,
     };
 
@@ -32,7 +33,12 @@ class PeopleForm extends Component {
       'name',
       ['people', this.props.num, 'name']
     );
-    this._handleChangeTrans = _handleChange.bind(
+    this._handleChangeDesc = _handleChange.bind(
+      this,
+      'desc',
+      ['people', this.props.num, 'desc']
+    );
+    this._handleChangeDescTrans = _handleChange.bind(
       this,
       'descTrans',
       ['people', this.props.num, 'descTrans']
@@ -50,6 +56,9 @@ class PeopleForm extends Component {
     );
 
     this._toggleCam = this.props._toggleCam.bind(undefined, this._setImage);
+
+    this.teacherLang = decodeURIComponent(this.template.languages.teacher);
+    this.studentLang = decodeURIComponent(this.template.languages.student);
   }
 
   render() {
@@ -69,12 +78,12 @@ class PeopleForm extends Component {
       // </TouchableOpacity>
     )
 
-    const desc = this.template.people[this.props.num].desc;
+    const guide = this.template.people[this.props.num].guide;
 
     return (
       <View>
         <View style={styles.card}>
-          <Text style={styles.labelText}><Text style={styles.boldLabelText}>Character {this.props.num + 1}: </Text>{desc}</Text>
+          <Text style={styles.labelText}><Text style={styles.boldLabelText}>Character {this.props.num + 1}: </Text>{guide}</Text>
           <TouchableWithoutFeedback
             onPress={this._toggleCam}>
           <View style={styles.photoFrame}>
@@ -93,15 +102,24 @@ class PeopleForm extends Component {
             style={styles.textInput}
             value={this.state.name}
             onChange={this._handleChangeName}
-            placeholder={'Character\'s Name (' + this.template.languages.teacher + ')'}
+            placeholder={'Character\'s Name (' + this.teacherLang + ')'}
+            />
+          <TextInput
+            autoCorrect={false}
+            returnKeyType='done'
+            style={styles.textInput}
+            value={this.state.desc}
+            onChange={this._handleChangeDesc}
+            placeholder={'\'' + guide + '\' (in ' + this.teacherLang + ')'}
             />
           <TextInput
             autoCorrect={false}
             returnKeyType='done'
             style={styles.textInput}
             value={this.state.descTrans}
-            onChange={this._handleChangeTrans}
-            placeholder={'\'' + desc + '\' (in ' + this.template.languages.teacher + ')'}
+            onChange={this._handleChangeDescTrans}
+            placeholder={
+              (this.state.desc ? '\'' + this.state.desc + '\'' : 'Translation') + ' in ' + this.studentLang}
             />
         </View>
       </View>
@@ -164,11 +182,12 @@ const styles = StyleSheet.create({
     height: 170,
     width: 170,
     // backgroundColor: 'rgba(240,183,103,1)',
-    backgroundColor: 'rgba(22,159,173,1)',
+    backgroundColor: 'rgba(22,159,173,0.8)',
     borderRadius: 85,
     justifyContent: 'center',
-    // borderWidth: 2,
-    borderColor: 'rgba(22,159,173,0.6)',
+    borderWidth: 2,
+    borderColor: '#FFFFFF'
+    // borderColor: 'rgba(22,159,173,0.6)',
     // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {

@@ -26,6 +26,7 @@
 		4D18CF861C9783BF00BE2D48 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D18CF851C9783AF00BE2D48 /* libRNSound.a */; };
 		4DB5503D1C8F7D3D0015ED43 /* lexchange-logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5503C1C8F7D3D0015ED43 /* lexchange-logo2.png */; };
 		4DE38F0C1C97C12400B58849 /* DroidSansMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */; };
+		4DE38F3C1CA212E000B58849 /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE38F3B1CA212CF00B58849 /* libRNOverlay.a */; };
 		4DEFF61D1C8A98F200A62862 /* lexchange-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DEFF61C1C8A98F200A62862 /* lexchange-logo.png */; };
 		4FD0E90DCCE142319DBA99E9 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EE9590ED167242A48DBF4B83 /* Octicons.ttf */; };
 		6EB970A685E9491B8F27B7DC /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DC4D236E1EE4BDE98678E59 /* EvilIcons.ttf */; };
@@ -138,6 +139,13 @@
 			remoteGlobalIDString = 4107012F1ACB723B00C6AA39;
 			remoteInfo = RCTCamera;
 		};
+		4DE38F3A1CA212CF00B58849 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4DE38F361CA212CF00B58849 /* RNOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNOverlay;
+		};
 		78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */;
@@ -180,6 +188,7 @@
 		4D18CF801C9783AE00BE2D48 /* RNSound.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
 		4DB5503C1C8F7D3D0015ED43 /* lexchange-logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lexchange-logo2.png"; path = "../Images/lexchange-logo2.png"; sourceTree = "<group>"; };
 		4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DroidSansMono.ttf; path = ../Fonts/DroidSansMono.ttf; sourceTree = "<group>"; };
+		4DE38F361CA212CF00B58849 /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "../node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = "<group>"; };
 		4DEFF61C1C8A98F200A62862 /* lexchange-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lexchange-logo.png"; path = "../Images/lexchange-logo.png"; sourceTree = "<group>"; };
 		515CB57336A74FA186CC66D1 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		5DC4D236E1EE4BDE98678E59 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -207,6 +216,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4DE38F3C1CA212E000B58849 /* libRNOverlay.a in Frameworks */,
 				4D18CF861C9783BF00BE2D48 /* libRNSound.a in Frameworks */,
 				4D18CF7F1C9774D700BE2D48 /* libRNRecordAudio.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -380,6 +390,14 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		4DE38F371CA212CF00B58849 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4DE38F3B1CA212CF00B58849 /* libRNOverlay.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		78C398B11ACF4ADC00677621 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +409,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				4DE38F361CA212CF00B58849 /* RNOverlay.xcodeproj */,
 				4D18CF801C9783AE00BE2D48 /* RNSound.xcodeproj */,
 				4D18CF6A1C97744E00BE2D48 /* RNRecordAudio.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -554,6 +573,10 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
+					ProductGroup = 4DE38F371CA212CF00B58849 /* Products */;
+					ProjectRef = 4DE38F361CA212CF00B58849 /* RNOverlay.xcodeproj */;
+				},
+				{
 					ProductGroup = 4D18CF6B1C97744E00BE2D48 /* Products */;
 					ProjectRef = 4D18CF6A1C97744E00BE2D48 /* RNRecordAudio.xcodeproj */;
 				},
@@ -664,6 +687,13 @@
 			fileType = archive.ar;
 			path = libRCTCamera.a;
 			remoteRef = 4DE263B01C881ED100F199DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4DE38F3B1CA212CF00B58849 /* libRNOverlay.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNOverlay.a;
+			remoteRef = 4DE38F3A1CA212CF00B58849 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		78C398B91ACF4ADC00677621 /* libRCTLinking.a */ = {
@@ -845,6 +875,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEAD_CODE_STRIPPING = NO;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,

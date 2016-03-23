@@ -6,6 +6,7 @@ import React, {
   Image,
   TouchableHighlight,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   Text
 } from 'react-native';
 
@@ -61,6 +62,9 @@ class DialogueItem extends Component {
         }
       })
     }
+
+    this.phrase = decodeURIComponent(this.dialogue.phrase);
+    this.phraseTrans = decodeURIComponent(this.dialogue.phraseTrans);
   }
 
   _toggleShow() {
@@ -115,25 +119,25 @@ class DialogueItem extends Component {
 
     var text = this.state.show ? (
         <Text style={[styles.bubbleText, {color: '#858E99'}]}>
-          { this.dialogue.phraseTrans }
+          { this.phraseTrans }
         </Text>
       ) : (
         <Text style={[styles.bubbleText, {color: '#FFFFFF'}]}>
-          { this.dialogue.phrase }
+          { this.phrase }
         </Text>
       )
 
     var bubbleSpecifics = this.state.show ? (
       {backgroundColor: '#FFFFFF' }
     ) : (
-      {backgroundColor: '#8ACFD6',
+      {backgroundColor: 'rgba(22,159,173,1)',
         borderWidth: 0 }
     )
 
     var triangleInsideColor = this.state.show ? (
       {borderRightColor: '#FFFFFF' }
     ) : (
-      {borderRightColor: '#8ACFD6', left: 4}
+      {borderRightColor: 'rgba(22,159,173,1)', left: 4}
     )
 
     var triangleOutsideColor = this.state.show ? (
@@ -149,10 +153,13 @@ class DialogueItem extends Component {
           underlayColor='#EEEEEE'
           >
           <View style={{flexDirection: 'row'}}>
-            <View style={styles.imageHolder}>
-              <Image style={styles.image} source={{uri: this.person.pictureUri}} />
-              {playButton}
-            </View>
+            <TouchableWithoutFeedback
+              onPress={this._togglePlaySound}>
+              <View style={styles.imageHolder}>
+                <Image style={styles.image} source={{uri: this.person.pictureUri}} />
+                {playButton}
+              </View>
+            </TouchableWithoutFeedback>
             <View style={{flexDirection: 'column', flex: 1}}>
               <View>
                 <View style={styles.talkBubble}>
@@ -216,11 +223,12 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     // backgroundColor: 'rgba(240,183,103,0.5)',
-    backgroundColor: 'rgba(22,159,173,1)',
+    backgroundColor: 'rgba(22,159,173,0.8)',
     borderRadius: 60,
     justifyContent: 'center',
-    // borderWidth: 2,
-    borderColor: 'rgba(22,159,173,0.6)',
+    borderWidth: 1,
+    borderColor: '#FFFFFF'
+    // borderColor: 'rgba(22,159,173,0.6)',
     // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {

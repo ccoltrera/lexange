@@ -91,8 +91,10 @@ class RecordingPanel extends Component {
         if (error) {
           console.log('failed to load the sound', error);
         } else { // loaded successfully
-          console.log('duration in seconds: ' + this.audioObject.getDuration() +
-            ' number of channels: ' + this.audioObject.getNumberOfChannels());
+          if (this.audioObject) {
+            console.log('duration in seconds: ' + this.audioObject.getDuration() +
+              ' number of channels: ' + this.audioObject.getNumberOfChannels());
+          }
 
           // console.log(Sound.DOCUMENT)
 

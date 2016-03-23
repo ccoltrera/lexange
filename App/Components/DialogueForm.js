@@ -7,6 +7,7 @@ import React, {
   TextInput,
   Image,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   LayoutAnimation,
   Dimensions
 } from 'react-native';
@@ -21,8 +22,8 @@ class DialogueForm extends Component {
     this.template = this.props._readTemplate();
 
     this.state = {
-      phrase: this.template.dialogue[this.props.num].phrase,
-      phraseTrans: this.template.dialogue[this.props.num].phraseTrans,
+      phrase: decodeURIComponent(this.template.dialogue[this.props.num].phrase),
+      phraseTrans: decodeURIComponent(this.template.dialogue[this.props.num].phraseTrans),
       audioUri: this.template.dialogue[this.props.num].audioUri,
       showRecordPanel: false,
     };
@@ -44,6 +45,8 @@ class DialogueForm extends Component {
 
     this._toggleRecordingPanel = this.props._toggleRecordingPanel.bind(null, this.props.num);
 
+    this.teacherLang = decodeURIComponent(this.template.languages.teacher);
+    this.studentLang = decodeURIComponent(this.template.languages.student);
   }
 
   render() {
@@ -52,17 +55,20 @@ class DialogueForm extends Component {
 
     return(
       <View style={styles.card}>
-        <Text style={styles.labelText}>{this.template.dialogue[this.props.num].guide + ' (in ' + this.template.languages.teacher + ')'}</Text>
+        <Text style={styles.labelText}>{this.template.dialogue[this.props.num].guide + ' (in ' + this.teacherLang + ')'}</Text>
         <View style={{flexDirection: 'row'}}>
-        <View style={styles.imageHolder}>
-          <Image style={styles.image} source={{uri: this.person.pictureUri}} />
-          <TouchableOpacity
-            style={styles.button}
-            onPress={this._toggleRecordingPanel}
-            >
-            <Icon name='microphone' style={styles.buttonIcon} />
-          </TouchableOpacity>
-        </View>
+        <TouchableWithoutFeedback
+          onPress={this._toggleRecordingPanel}>
+          <View style={styles.imageHolder}>
+            <Image style={styles.image} source={{uri: this.person.pictureUri}} />
+            <TouchableOpacity
+              style={styles.button}
+              onPress={this._toggleRecordingPanel}
+              >
+              <Icon name='microphone' style={styles.buttonIcon} />
+            </TouchableOpacity>
+          </View>
+        </TouchableWithoutFeedback>
             <View style={styles.talkBubble}>
               <View style={styles.talkBubbleTriangle} />
                 <TextInput
@@ -72,7 +78,7 @@ class DialogueForm extends Component {
                     style={[styles.textInput, styles.talkBubbleSquare, {width: bubbleWidth}]}
                     value={this.state.phrase}
                     onChange={this._handleChangePhrase}
-                    placeholder={this.template.dialogue[this.props.num].guide + ' (in ' + this.template.languages.teacher + ')'}
+                    placeholder={this.template.dialogue[this.props.num].guide + ' (in ' + this.teacherLang + ')'}
                     />
               <View style={styles.talkBubbleTriangleInside} />
             </View>
@@ -83,7 +89,7 @@ class DialogueForm extends Component {
           style={styles.textInput}
           value={this.state.phraseTrans}
           onChange={this._handleChangePhraseTrans}
-          placeholder={'Translation in ' + this.template.languages.student}
+          placeholder={'Translation in ' + this.studentLang}
           />
       </View>
     )
@@ -155,11 +161,12 @@ const styles = StyleSheet.create({
     height: 120,
     width: 120,
     // backgroundColor: 'rgba(240,183,103,1)',
-    backgroundColor: 'rgba(22,159,173,1)',
+    backgroundColor: 'rgba(22,159,173,0.8)',
     borderRadius: 60,
     justifyContent: 'center',
-    // borderWidth: 2,
-    borderColor: 'rgba(22,159,173,0.6)',
+    borderWidth: 1,
+    borderColor: '#FFFFFF'
+    // borderColor: 'rgba(22,159,173,0.6)',
     // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {

@@ -11,6 +11,7 @@ import React, {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+import Overlay from 'react-native-overlay';
 
 class Tutorial extends Component {
   constructor(props) {
@@ -39,7 +40,7 @@ class Tutorial extends Component {
 
   render() {
     var {height, width} = Dimensions.get('window');
-    var modalHeight = height - 134;
+    var modalHeight = height - 64;
     var tabWidth = width - 50;
 
     var cardPosition = this.state.showThisTutorial ? (
@@ -49,7 +50,7 @@ class Tutorial extends Component {
     ) : (
       {
         position: 'absolute',
-        top: modalHeight - 40
+        top: modalHeight - 110
       }
     )
 
@@ -89,18 +90,14 @@ class Tutorial extends Component {
     );
 
     var tutorial = this.state.firstTutorial ? (
-      <View style={styles.container}>
+      <Overlay isVisible={true}>
         <TouchableHighlight
           onPress={this._toggleTutorial}
           underlayColor='transparent'
           style={[styles.tutorialModal, {width: width, height: modalHeight} ]}>
           {tutorialCard}
         </TouchableHighlight>
-        <TouchableWithoutFeedback>
-        <View style={styles.bumper}>
-        </View>
-        </TouchableWithoutFeedback>
-      </View>
+      </Overlay>
     ) : (
       <TouchableWithoutFeedback
           onPress={this._toggleTutorial}>
@@ -113,23 +110,14 @@ class Tutorial extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-  },
-  bumper: {
-    backgroundColor: 'purple',
-    height: 70,
-    flex: 1
-  },
   tutorialModal: {
     position: 'absolute',
-    top: 0,
+    top: 64,
     left: 0,
     backgroundColor: 'rgba(0,0,0,0.5)',
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    paddingBottom: 70
   },
   tutorialTab: {
     flexDirection: 'row',

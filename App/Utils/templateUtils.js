@@ -13,7 +13,9 @@ function _handleChange(stateName, array, event, unmounted) {
   var text = typeof event === 'string' ? event : event.nativeEvent.text;
 
   var stateUpdate = {};
-  var templateUpdate = JSON.parse( templateStringer(array, text, 0, '') );
+  var properlyEscapedText = encodeURIComponent(text);
+  var properlyEscapedObject = templateStringer(array, properlyEscapedText, 0, '');
+  var templateUpdate = JSON.parse( properlyEscapedObject );
 
   stateUpdate[stateName] = text;
 

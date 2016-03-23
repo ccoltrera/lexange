@@ -51,7 +51,7 @@ class Finished extends Component {
     var tutorialText = (
       <View>
         <Text style={styles.tutorialText}>
-          Here's your finished lesson! Tap the cards to see translations
+          Here's your finished lesson! Tap the cards to see translations, tap dialogue photos to hear audio.
         </Text>
       </View>
     )
