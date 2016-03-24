@@ -47,8 +47,24 @@ var template = {
       audioUri: '0000000001-audio-2.m4a'
     },
   ],
-  items: [],
-  location: []
+  items: [
+    {
+      guide: 'Umbrella',
+      desc: 'かさ',
+      descTrans: 'Umbrella',
+      descAudioUri: '',
+      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/924F27C9-6CE1-4017-A8D6-B25191AEB0C8/Documents/06b7ebd0756f52670448cd637194016f.jpg',
+    },
+  ],
+  places: [
+    {
+      guide: 'Street',
+      desc: 'とおり',
+      descTrans: 'Street',
+      descAudioUri: '',
+      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/924F27C9-6CE1-4017-A8D6-B25191AEB0C8/Documents/tumblr_lysi3wLZah1r2cj3no1_500.jpg',
+    },
+  ]
 };
 
 // var template = {
@@ -86,7 +102,7 @@ var template = {
 //       pictureUri: '',
 //     },
 //   ],
-//   location: [
+//   places: [
 //     {
 //       guide: '',
 //       desc: '',

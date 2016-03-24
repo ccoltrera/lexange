@@ -170,6 +170,12 @@ class DialogueItem extends Component {
       <View style={styles.blockTopBlender}></View>
     )
 
+    var blockTopDiffuser = (this.props.num === 0) ? (
+      null
+    ) : (
+      <View style={styles.blockTopDiffuser}></View>
+    )
+
     var numDialogues = this.template.dialogue.length;
 
     var blockBottom = (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
@@ -184,6 +190,7 @@ class DialogueItem extends Component {
       <View style={styles.blockBottomBlender}></View>
     )
 
+
     return (
       <TouchableWithoutFeedback
 
@@ -195,6 +202,7 @@ class DialogueItem extends Component {
         {blockTopBlender}
         {blockBottom}
         {blockBottomBlender}
+        {blockTopDiffuser}
           <View style={{flexDirection: 'row'}}>
             <TouchableWithoutFeedback
               onPress={this._togglePlaySound}>
@@ -231,7 +239,7 @@ const styles = StyleSheet.create({
   },
   card: {
     // marginTop: 1,
-    marginBottom: 1,
+    // marginBottom: 1,
     marginLeft: 15,
     marginRight: 15,
     padding: 15,
@@ -268,6 +276,14 @@ const styles = StyleSheet.create({
     right: 0,
     height: 20,
     backgroundColor: '#FFFFFF',
+  },
+  blockTopDiffuser: {
+    position: 'absolute',
+    top: -5,
+    left: 0.1,
+    right: 0.1,
+    height: 5,
+    backgroundColor: 'rgba(255,255,255,1)',
   },
   blockTop: {
     position: 'absolute',

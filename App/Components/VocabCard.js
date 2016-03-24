@@ -49,7 +49,9 @@ class VocabCard extends Component {
           {text}
         </View>
       ) : (
-        {text}
+        <View>
+          {text}
+        </View>
       )
 
     return(

@@ -56,12 +56,43 @@ class Finished extends Component {
       </View>
     )
 
+    var placeCards = [];
+    if (this.template.places.length > 0) {
+      for (let i=0; i < this.template.places.length; i++) {
+        placeCards.push(
+          <VocabCard
+            key={'itemsCard' + i}
+            num={i}
+            content='places'
+            _updateTemplate={this.props._updateTemplate}
+            _readTemplate={this.props._readTemplate}
+          />
+        )
+      }
+    }
+
+    var placeBlock = (placeCards.length > 0) ? (
+      (placeCards.length === 1) ? (
+        <View>
+          <Text style={styles.labelText}>Location</Text>
+          {placeCards}
+        </View>
+      ) : (
+        <View>
+          <Text style={styles.labelText}>Locations</Text>
+          {placeCards}
+        </View>
+      )
+    ) : (
+      null
+    )
+
     var peopleCards = [];
     if (this.template.people.length > 0) {
       for (let i=0; i < this.template.people.length; i++) {
         peopleCards.push(
           <VocabCard
-            key={'vocabCard' + i}
+            key={'peopleCard' + i}
             num={i}
             content='people'
             _updateTemplate={this.props._updateTemplate}
@@ -85,7 +116,7 @@ class Finished extends Component {
       for (let i=0; i < this.template.items.length; i++) {
         itemCards.push(
           <VocabCard
-            key={'vocabCard' + i}
+            key={'itemsCard' + i}
             num={i}
             content='items'
             _updateTemplate={this.props._updateTemplate}
@@ -97,8 +128,8 @@ class Finished extends Component {
 
     var itemBlock = (itemCards.length > 0) ? (
       <View>
-        <Text style={styles.labelText}>Objects</Text>
-        {peopleCards}
+        <Text style={styles.labelText}>Items</Text>
+        {itemCards}
       </View>
     ) : (
       null
@@ -124,6 +155,7 @@ class Finished extends Component {
             style={styles.scrollView}
             showVerticalScrollIndicator={true}>
             {peopleBlock}
+            {placeBlock}
             {itemBlock}
             <Text style={styles.labelText}>Dialogue</Text>
             {dialogueItems}
