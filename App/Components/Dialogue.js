@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
     paddingBottom: 40
   },
   padder: {
-    height: 50
+    height: 75
   },
   headerShadow: {
     backgroundColor: '#169FAD',

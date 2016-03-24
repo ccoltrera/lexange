@@ -14,15 +14,15 @@ var template = {
       desc: 'ともだち',
       descTrans: 'A friend [casual]',
       name: 'ひろ',
-      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/F179DBC4-D394-41E5-B4E8-ABDA5737C087/Documents/1cddf99cd257e9263f93387e5eb69560.jpg'
+      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/924F27C9-6CE1-4017-A8D6-B25191AEB0C8/Documents/1cddf99cd257e9263f93387e5eb69560.jpg'
     },
-    // {
-    //   guide: 'Another friend'
-    //   desc: 'ほかのともだち',
-    //   descTrans: 'Another friend [casual]',
-    //   name: 'えり',
-    //   pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/F179DBC4-D394-41E5-B4E8-ABDA5737C087/Documents/tokyo-street-style-shibuya-leather-jacket.jpg'
-    // },
+    {
+      guide: 'Another friend',
+      desc: 'ほかのともだち',
+      descTrans: 'Another friend [casual]',
+      name: 'えり',
+      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/924F27C9-6CE1-4017-A8D6-B25191AEB0C8/Documents/tokyo-street-style-shibuya-leather-jacket.jpg'
+    },
   ],
   dialogue: [
     {
@@ -32,13 +32,20 @@ var template = {
       phraseTrans: 'Good morning [casual]',
       audioUri: '0000000001-audio-0.m4a'
     },
-    // {
-    //   person: 1,
-    //   guide: 'Morning greeting to friend',
-    //   phrase: 'おはよう、ひろ。',
-    //   phraseTrans: 'Good morning, Hiro [casual]',
-    //   audioUri: '0000000001-audio-1.m4a'
-    // },
+    {
+      person: 1,
+      guide: 'Morning greeting to friend',
+      phrase: 'おはよう、ひろ。',
+      phraseTrans: 'Good morning, Hiro [casual]',
+      audioUri: '0000000001-audio-1.m4a'
+    },
+    {
+      person: 0,
+      guide: 'Morning greeting',
+      phrase: 'げんき？',
+      phraseTrans: 'How are you? [casual]',
+      audioUri: '0000000001-audio-2.m4a'
+    },
   ],
   items: [],
   location: []

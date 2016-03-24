@@ -27,7 +27,7 @@ class NewTeacher extends Component {
       name: 'Languages',
       component: Languages,
       passProps: {
-        showTutorial: true,
+        showTutorial: false,
         _readTemplate: templateFuncs._readTemplate,
         _updateTemplate: templateFuncs._updateTemplate
       },

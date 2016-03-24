@@ -145,10 +145,13 @@ class Finished extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1'
+    backgroundColor: '#FDFDF1',
+  },
+  scrollView: {
+    paddingTop: 10,
   },
   padder: {
-    height: 50
+    height: 75
   },
   headerShadow: {
     backgroundColor: '#169FAD',
@@ -176,7 +179,8 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     color: '#169FAD',
     fontSize: 18,
-    marginTop: 20,
+    marginTop: 5,
+    marginBottom: 15,
   },
   cardRow: {
     flexDirection: 'row'

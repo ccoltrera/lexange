@@ -12,7 +12,7 @@ import BackButton from './App/Components/BackButton';
 
 import LandingScreen from './App/Components/LandingScreen';
 
-import Dialogue from './App/Components/Dialogue';
+import Finished from './App/Components/Finished';
 import templateFuncs from './App/Utils/template';
 
 class lexchange extends Component {
@@ -42,10 +42,9 @@ class lexchange extends Component {
     //   <Router
     //     headerStyle={styles.header}
     //     firstRoute={{
-    //       name: 'Dialogue',
-    //       component: Dialogue,
+    //       name: 'Finished',
+    //       component: Finished,
     //       passProps: {
-    //         showTutorial: true,
     //         _readTemplate: templateFuncs._readTemplate,
     //         _updateTemplate: templateFuncs._updateTemplate
     //       },

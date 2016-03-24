@@ -146,12 +146,55 @@ class DialogueItem extends Component {
       {borderRightColor: 'transparent' }
     )
 
+    // var cardMarginTop = (this.props.num === 0) ? (
+    //   {marginTop: 0}
+    // ) : (
+    //   {marginTop: 0}
+    // )
+
+    // var cardMarginBottom =  (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
+    //   null
+    // ) : (
+    //   {marginBottom: 0}
+    // )
+
+    var blockTop = (this.props.num === 0) ? (
+      null
+    ) : (
+      <View style={styles.blockTop}></View>
+    )
+
+    var blockTopBlender = (this.props.num === 0) ? (
+      null
+    ) : (
+      <View style={styles.blockTopBlender}></View>
+    )
+
+    var numDialogues = this.template.dialogue.length;
+
+    var blockBottom = (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
+      null
+    ) : (
+      <View style={styles.blockBottom}></View>
+    )
+
+    var blockBottomBlender = (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
+      null
+    ) : (
+      <View style={styles.blockBottomBlender}></View>
+    )
+
     return (
-        <TouchableHighlight
-          style={styles.card}
-          onPress={this._toggleShow}
-          underlayColor='#EEEEEE'
-          >
+      <TouchableWithoutFeedback
+
+        onPress={this._toggleShow}
+        underlayColor='#FFFFFF'
+        >
+      <View style={styles.card}>
+        {blockTop}
+        {blockTopBlender}
+        {blockBottom}
+        {blockBottomBlender}
           <View style={{flexDirection: 'row'}}>
             <TouchableWithoutFeedback
               onPress={this._togglePlaySound}>
@@ -173,18 +216,25 @@ class DialogueItem extends Component {
               </View>
             </View>
           </View>
-        </TouchableHighlight>
+        </View>
+      </TouchableWithoutFeedback>
     )
   }
 
 }
 
 const styles = StyleSheet.create({
+  touchableSection: {
+    marginLeft: 15,
+    marginRight: 15,
+    borderRadius: 20
+  },
   card: {
-    margin: 15,
-    marginBottom: 0,
+    // marginTop: 1,
+    marginBottom: 1,
+    marginLeft: 15,
+    marginRight: 15,
     padding: 15,
-    paddingBottom: 15,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',
@@ -196,6 +246,52 @@ const styles = StyleSheet.create({
     },
     justifyContent: 'center'
   },
+  blockBottom: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 15,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    },
+  },
+  blockBottomBlender: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 20,
+    backgroundColor: '#FFFFFF',
+  },
+  blockTop: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 15,
+    backgroundColor: '#FFFFFF',
+    shadowColor: '#000000',
+    shadowOpacity: 0.5,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0
+    },
+  },
+  blockTopBlender: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    height: 25,
+    backgroundColor: '#FFFFFF',
+  },
   imageHolder: {
     justifyContent: 'center',
     height: 80,
@@ -204,6 +300,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     borderWidth: 1,
     borderColor: '#979797',
+    backgroundColor: '#FFFFFF'
   },
   image: {
     position: 'absolute',
