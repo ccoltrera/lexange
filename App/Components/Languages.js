@@ -11,7 +11,7 @@ import React, {
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-import People from './People';
+import Vocab from './Vocab';
 import ContinueButton from './ContinueButton';
 
 import _handleChange from '../Utils/templateUtils';
@@ -35,8 +35,9 @@ class Languages extends Component {
   _next() {
     this.props.toRoute({
       name: 'Characters',
-      component: People,
+      component: Vocab,
       passProps: {
+        type: 'people',
         showTutorial: this.props.showTutorial,
         _readTemplate: this.props._readTemplate,
         _updateTemplate: this.props._updateTemplate

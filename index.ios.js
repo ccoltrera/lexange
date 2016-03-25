@@ -27,33 +27,33 @@ class lexchange extends Component {
   }
 
   render() {
-    // return (
-    //   <Router
-    //     headerStyle={styles.header}
-    //     firstRoute={{
-    //       component: LandingScreen
-    //     }}
-    //     backButtonComponent={BackButton}
-    //     titleStyle={styles.title}
-    //     configureScene={this._configureScene()}
-    //     />
-    // );
     return (
       <Router
         headerStyle={styles.header}
         firstRoute={{
-          name: 'Finished',
-          component: Finished,
-          passProps: {
-            _readTemplate: templateFuncs._readTemplate,
-            _updateTemplate: templateFuncs._updateTemplate
-          },
+          component: LandingScreen
         }}
         backButtonComponent={BackButton}
         titleStyle={styles.title}
         configureScene={this._configureScene()}
         />
     );
+    // return (
+    //   <Router
+    //     headerStyle={styles.header}
+    //     firstRoute={{
+    //       name: 'Finished',
+    //       component: Finished,
+    //       passProps: {
+    //         _readTemplate: templateFuncs._readTemplate,
+    //         _updateTemplate: templateFuncs._updateTemplate
+    //       },
+    //     }}
+    //     backButtonComponent={BackButton}
+    //     titleStyle={styles.title}
+    //     configureScene={this._configureScene()}
+    //     />
+    // );
   }
 }
 
