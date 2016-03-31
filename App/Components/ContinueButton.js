@@ -38,7 +38,7 @@ class ContinueButton extends Component {
     return (
       // <View style={styles.backup}>
         <TouchableHighlight
-          style={buttonStyle}
+          style={[buttonStyle, {position: 'absolute', bottom: 0, left: 0, right: 0}]}
           underlayColor='#028B99'
           onPress={_next}
           >

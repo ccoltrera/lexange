@@ -98,50 +98,67 @@ class VocabForm extends Component {
 
     const guide = this.template[this.props.type][this.props.num].guide;
 
+    var nextStyle = {};
+    var nextBorder = {borderWidth: 2, borderColor: '#F02B1F'}
+
+    switch(this.props.nextUp) {
+      case 'pictureUri' + this.props.num:
+        nextStyle.photoFrame = nextBorder;
+        nextStyle.recordBack = {backgroundColor: 'rgba(240,43,31,0.8)', top: 84};
+        break;
+      case 'name' + this.props.num:
+        nextStyle.name = nextBorder;
+        break;
+      case 'desc' + this.props.num:
+        nextStyle.desc = nextBorder;
+        break;
+      case 'descTrans' + this.props.num:
+        nextStyle.descTrans = nextBorder;
+        break;
+    }
+
     return (
-      <View>
-        <View style={styles.card}>
-          <Text style={styles.labelText}><Text style={styles.boldLabelText}>{descriptor} {this.props.num + 1}: </Text>{guide}</Text>
-          <TouchableWithoutFeedback
-            onPress={this._toggleCam}>
-          <View style={styles.photoFrame}>
+      <View style={styles.card}
+        >
+        <Text style={styles.labelText}><Text style={styles.boldLabelText}>{descriptor} {this.props.num + 1}: </Text>{guide}</Text>
+        <TouchableWithoutFeedback
+          onPress={this._toggleCam}>
+        <View style={[styles.photoFrame, nextStyle.photoFrame]}>
           {vocabPhoto}
           <TouchableOpacity
-            style={styles.button}
+            style={[styles.button, nextStyle.recordBack]}
             onPress={this._toggleCam}
             >
             <Icon name='camera' style={styles.buttonIcon} />
           </TouchableOpacity>
-          </View>
-          </TouchableWithoutFeedback>
-          {this.props.type === 'people' ? ( <TextInput
-            autoCorrect={false}
-            returnKeyType='done'
-            style={styles.textInput}
-            value={this.state.name}
-            onChange={this._handleChangeName}
-            placeholder={'Character\'s Name (' + this.teacherLang + ')'}
-            />) : (
-              null
-            )}
-          <TextInput
-            autoCorrect={false}
-            returnKeyType='done'
-            style={styles.textInput}
-            value={this.state.desc}
-            onChange={this._handleChangeDesc}
-            placeholder={'\'' + guide + '\' (in ' + this.teacherLang + ')'}
-            />
-          <TextInput
-            autoCorrect={false}
-            returnKeyType='done'
-            style={styles.textInput}
-            value={this.state.descTrans}
-            onChange={this._handleChangeDescTrans}
-            placeholder={
-              (this.state.desc ? '\'' + this.state.desc + '\'' : 'Translation') + ' in ' + this.studentLang}
-            />
         </View>
+        </TouchableWithoutFeedback>
+        {this.props.type === 'people' ? ( <TextInput
+          autoCorrect={false}
+          returnKeyType='done'
+          style={[styles.textInput, nextStyle.name]}
+          value={this.state.name}
+          onChange={this._handleChangeName}
+          placeholder={'Character\'s Name (' + this.teacherLang + ')'}
+          />) : (
+            null
+          )}
+        <TextInput
+          autoCorrect={false}
+          returnKeyType='done'
+          style={[styles.textInput, nextStyle.desc]}
+          value={this.state.desc}
+          onChange={this._handleChangeDesc}
+          placeholder={'\'' + guide + '\' (in ' + this.teacherLang + ')'}
+          />
+        <TextInput
+          autoCorrect={false}
+          returnKeyType='done'
+          style={[styles.textInput, nextStyle.descTrans]}
+          value={this.state.descTrans}
+          onChange={this._handleChangeDescTrans}
+          placeholder={(this.state.desc ? '\'' + this.state.desc + '\'' : 'Translation') + ' in ' + this.studentLang}
+          />
       </View>
     )
   }
@@ -156,7 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -168,6 +185,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontWeight: '400',
     fontSize: 18,
+    textAlign: 'center',
     // alignSelf: 'center'
   },
   boldLabelText: {
@@ -226,10 +244,10 @@ const styles = StyleSheet.create({
     paddingRight: 12,
     fontFamily: 'System',
     fontSize: 18,
+    color: '#414141',
     borderWidth: 1,
     borderColor: '#979797',
     borderRadius: 12,
-    color: '#000000',
   },
 });
 

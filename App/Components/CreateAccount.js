@@ -44,7 +44,7 @@ class CreateAccount extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1',
+    backgroundColor: '#C6DCDF',
     justifyContent: 'center'
   },
   signup: {

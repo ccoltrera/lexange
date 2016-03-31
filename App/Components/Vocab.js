@@ -19,6 +19,9 @@ import Dialogue from './Dialogue';
 import ContinueButton from './ContinueButton';
 import VocabForm from './VocabForm';
 
+import SmartScrollView from 'react-native-smart-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 class Vocab extends Component {
   constructor(props) {
     super(props);
@@ -92,25 +95,46 @@ class Vocab extends Component {
 
     this.template = this.props._readTemplate();
 
-    for (let i = 0; i < this.template.people.length; i++) {
-      if (!this.template.people[i].name) {
-        console.log('name' + i);
-        this.setState({continue: false});
+    for (let i = 0; i < this.template[this.props.type].length; i++) {
+      if (!this.template[this.props.type][i].pictureUri) {
+        var nextUp = 'pictureUri' + i;
+        // console.log(nextUp);
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
         return;
       }
-      if (!this.template.people[i].descTrans) {
-        console.log('descTrans' + i);
-        this.setState({continue: false});
+      if (this.props.type === 'people' && !this.template[this.props.type][i].name) {
+        var nextUp = 'name' + i;
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
         return;
       }
-      if (!this.template.people[i].pictureUri) {
-        console.log('pictureUri' + i);
-        this.setState({continue: false});
+      if (!this.template[this.props.type][i].desc) {
+        var nextUp = 'desc' + i;
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
+        return;
+      }
+      if (!this.template[this.props.type][i].descTrans) {
+        var nextUp = 'descTrans' + i;
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
         return;
       }
     }
 
-    this.setState({continue: true});
+    this.setState({
+      nextUp: '',
+      continue: true
+    });
   }
 
   componentDidMount() {
@@ -133,7 +157,7 @@ class Vocab extends Component {
     }
 
     var {height, width} = Dimensions.get('window');
-    var height = height - 134;
+    var height = height - 64;
 
     var vocab = [];
     for (let i = 0; i < this.template[this.props.type].length; i++) {
@@ -142,6 +166,7 @@ class Vocab extends Component {
           key={'vocab' + i}
           num={i}
           type={this.props.type}
+          nextUp={this.state.nextUp}
           _updateTemplate={this.props._updateTemplate}
           _readTemplate={this.props._readTemplate}
           _completenessCheck={this._completenessCheck}
@@ -154,7 +179,7 @@ class Vocab extends Component {
         {
           this.props.showTutorial ? (
             <Text style={styles.tutorialText}>
-              Most lesson templates have more than one character, and even have items and places. But let's just have one character for your first lesson. {'\n'}
+              Most lesson templates have more than one character. Some even have items and places. But let's just have one character for your first lesson. {'\n'}
             </Text>
           ) : (
             null
@@ -190,20 +215,20 @@ class Vocab extends Component {
             _toggleCam={this._toggleCam} />
         </Modal>
         <View style={{height: height}}>
-          <ScrollView
-            style={styles.scrollView}
-            showVerticalScrollIndicator={true}>
+          <KeyboardAwareScrollView
+            ref='scroll'
+            style={styles.scrollView}>
             {vocab}
             <View style={styles.padder}></View>
-          </ScrollView>
+          </KeyboardAwareScrollView>
         </View>
         <Tutorial
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            // this.state.continue
-            true
+            this.state.continue
+            // true
           }
           label='Dialogue'
           _next={this._next}
@@ -216,21 +241,21 @@ class Vocab extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1',
+    backgroundColor: '#C6DCDF',
   },
   scrollView: {
     paddingTop: 5,
-    paddingBottom: 40
+    // marginBottom: 70,
   },
   padder: {
-    height: 75
+    height: 120
   },
   headerShadow: {
     backgroundColor: '#169FAD',
     marginLeft: -2,
     marginRight: -2,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -241,6 +266,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
     fontWeight: '300',
+    color: '#414141',
     fontFamily: 'System',
     backgroundColor: 'transparent'
   },

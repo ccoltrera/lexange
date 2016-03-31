@@ -12,7 +12,7 @@ import BackButton from './App/Components/BackButton';
 
 import LandingScreen from './App/Components/LandingScreen';
 
-import Finished from './App/Components/Finished';
+import Vocab from './App/Components/Vocab';
 import templateFuncs from './App/Utils/template';
 
 class lexchange extends Component {
@@ -42,9 +42,10 @@ class lexchange extends Component {
     //   <Router
     //     headerStyle={styles.header}
     //     firstRoute={{
-    //       name: 'Finished',
-    //       component: Finished,
+    //       name: 'Characters',
+    //       component: Vocab,
     //       passProps: {
+    //         type: 'people',
     //         _readTemplate: templateFuncs._readTemplate,
     //         _updateTemplate: templateFuncs._updateTemplate
     //       },

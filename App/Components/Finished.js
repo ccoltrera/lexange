@@ -177,7 +177,7 @@ class Finished extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1',
+    backgroundColor: '#C6DCDF',
   },
   scrollView: {
     paddingTop: 10,
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     marginLeft: -2,
     marginRight: -2,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,

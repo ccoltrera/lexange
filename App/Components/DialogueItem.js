@@ -146,18 +146,6 @@ class DialogueItem extends Component {
       {borderRightColor: 'transparent' }
     )
 
-    // var cardMarginTop = (this.props.num === 0) ? (
-    //   {marginTop: 0}
-    // ) : (
-    //   {marginTop: 0}
-    // )
-
-    // var cardMarginBottom =  (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
-    //   null
-    // ) : (
-    //   {marginBottom: 0}
-    // )
-
     var blockTop = (this.props.num === 0) ? (
       null
     ) : (
@@ -246,7 +234,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -262,7 +250,7 @@ const styles = StyleSheet.create({
     height: 15,
     backgroundColor: '#FFFFFF',
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -293,7 +281,7 @@ const styles = StyleSheet.create({
     height: 15,
     backgroundColor: '#FFFFFF',
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,

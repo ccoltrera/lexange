@@ -50,7 +50,7 @@ class Tutorial extends Component {
     ) : (
       {
         position: 'absolute',
-        top: modalHeight - 110
+        top: modalHeight - 112
       }
     )
 
@@ -59,15 +59,16 @@ class Tutorial extends Component {
       [styles.tutorialTab, {
         alignSelf: 'center',
         width: tabWidth,
-        paddingBottom: 25,
+        paddingBottom: 15,
       }]
     ) : (
       [styles.tutorialTab, cardPosition, {
+        // paddingTop: 10,
         left: 25,
         width: tabWidth,
         paddingBottom: 40,
         shadowColor: '#000000',
-        shadowOpacity: 0.5,
+        shadowOpacity: 0.2,
         shadowRadius: 2,
         shadowOffset: {
           height: 2,
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderWidth: 1,
     borderColor: '#C8C7CC',
-    paddingTop: 8,
+    paddingTop: 10,
     paddingLeft: 15,
     paddingRight: 15,
     borderRadius: 20,
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: '#169FAD',
     marginTop: 0.2,
-    marginBottom: 15,
+    marginBottom: 10,
     backgroundColor: 'transparent'
   }
 });

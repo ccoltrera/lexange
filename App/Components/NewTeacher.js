@@ -27,7 +27,7 @@ class NewTeacher extends Component {
       name: 'Languages',
       component: Languages,
       passProps: {
-        showTutorial: false,
+        showTutorial: true,
         _readTemplate: templateFuncs._readTemplate,
         _updateTemplate: templateFuncs._updateTemplate
       },
@@ -48,12 +48,6 @@ class NewTeacher extends Component {
               </View>
               <View style={styles.one}>
                 <View style={styles.path}>
-                  {/*<TouchableHighlight
-                    style={styles.outerCircle}
-                    underlayColor='#169FAD'
-                    onPress={this._goLanguages}>
-                    <View style={styles.innerCircle}></View>
-                  </TouchableHighlight>*/}
                   <View style={styles.unCircle}>
                   </View>
                   <View style={styles.line}>
@@ -109,7 +103,7 @@ const styles = StyleSheet.create({
     marginLeft: -2,
     marginRight: -2,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -118,8 +112,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1',
-
+    backgroundColor: '#C6DCDF',
   },
   contentArea: {
     height: Dimensions.get('window').height - 134,
@@ -130,7 +123,6 @@ const styles = StyleSheet.create({
     paddingBottom: 40
   },
   one: {
-    // flexDirection: 'row',
     marginBottom: -60
   },
   path: {
@@ -143,30 +135,10 @@ const styles = StyleSheet.create({
     marginLeft: 75,
     flexDirection: 'column',
   },
-  outerCircle: {
-    height: 50,
-    width: 50,
-    backgroundColor: 'rgba(22,159,173,1)',
-    // borderColor: '',
-    // borderWidth: 10,
-    borderRadius: 25,
-    alignSelf: 'center',
-    justifyContent: 'center'
-  },
-  innerCircle: {
-    height: 40,
-    width: 40,
-    backgroundColor: '#FFFFFF',
-    borderColor: 'rgba(22,159,173,1)',
-    // borderWidth: 10,
-    borderRadius: 20,
-    alignSelf: 'center'
-  },
   unCircle: {
     height: 36,
     width: 36,
     backgroundColor: '#FFFFFF',
-    // backgroundColor: 'rgba(22,159,173,1)',
     borderColor: 'rgba(22,159,173,1)',
     borderWidth: 5,
     borderRadius: 18,
@@ -183,10 +155,10 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(22,159,173,1)'
   },
   labelBlock: {
-    marginTop: 10,
+    marginTop: 5,
     marginLeft: 5,
     marginRight: 5,
-    marginBottom: 10,
+    marginBottom: 15,
   },
   labelText: {
     marginLeft: 5,
@@ -194,7 +166,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontWeight: '700',
     color: 'rgba(22,159,173,1)',
-    fontSize: 16,
+    fontSize: 18,
     alignSelf: 'center',
     marginBottom: 5,
     textAlign: 'center',
@@ -210,10 +182,10 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     fontFamily: 'System',
     fontWeight: '300',
+    color: '#414141',
     fontSize: 16
   },
   descBlock: {
-    // flexDirection: 'row',
     marginBottom: 86.75
   },
   card: {
@@ -225,7 +197,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,

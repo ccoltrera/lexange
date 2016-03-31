@@ -66,23 +66,35 @@ class Dialogue extends Component {
 
     for (let i = 0; i < this.template.dialogue.length; i++) {
       if (!this.template.dialogue[i].phrase) {
-        console.log('phrase' + i);
-        this.setState({continue: false});
-        return;
-      }
-      if (!this.template.dialogue[i].phraseTrans) {
-        console.log('phraseTrans' + i);
-        this.setState({continue: false});
+        var nextUp = 'phrase' + i;
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
         return;
       }
       if (!this.template.dialogue[i].audioUri) {
-        console.log('audioUri' + i);
-        this.setState({continue: false});
+        var nextUp = 'audioUri' + i;
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
+        return;
+      }
+      if (!this.template.dialogue[i].phraseTrans) {
+        var nextUp = 'phraseTrans' + i;
+        this.setState({
+          nextUp: nextUp,
+          continue: false
+        });
         return;
       }
     }
 
-    this.setState({continue: true});
+    this.setState({
+      nextUp: '',
+      continue: true
+    });
   }
 
   componentDidMount() {
@@ -96,6 +108,7 @@ class Dialogue extends Component {
         <DialogueForm
           key={'dialogue' + i}
           num={i}
+          nextUp={this.state.nextUp}
           _updateTemplate={this.props._updateTemplate}
           _readTemplate={this.props._readTemplate}
           _completenessCheck={this._completenessCheck}
@@ -120,10 +133,10 @@ class Dialogue extends Component {
           Complete dialogues with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - audio in {this.teacherLang} (tap the photo)
+          - written sentences in {this.teacherLang}
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - written sentences in {this.teacherLang}
+          - audio in {this.teacherLang} (tap the photo)
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - natural translations in {this.studentLang}
@@ -156,8 +169,8 @@ class Dialogue extends Component {
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            // this.state.continue
-            true
+            this.state.continue
+            // true
           }
           label='Finished'
           _next={this._next}
@@ -170,7 +183,7 @@ class Dialogue extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1'
+    backgroundColor: '#C6DCDF'
   },
   scrollView: {
     paddingTop: 5,
@@ -184,7 +197,7 @@ const styles = StyleSheet.create({
     marginLeft: -2,
     marginRight: -2,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -196,7 +209,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '300',
     fontFamily: 'System',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    color: '#414141',
   },
 });
 

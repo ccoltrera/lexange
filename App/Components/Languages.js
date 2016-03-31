@@ -23,11 +23,13 @@ class Languages extends Component {
     this.template = this.props._readTemplate();
 
     this.state = {
+      continue: false,
       teacher: decodeURIComponent(this.template.languages.teacher),
       student: decodeURIComponent(this.template.languages.student)
     }
 
     this._next = this._next.bind(this);
+    this._completenessCheck = this._completenessCheck.bind(this);
     this._handleChangeTeacher = _handleChange.bind(this, 'teacher', ['languages', 'teacher']);
     this._handleChangeStudent = _handleChange.bind(this, 'student', ['languages', 'student']);
   }
@@ -46,7 +48,50 @@ class Languages extends Component {
     });
   }
 
+  _completenessCheck() {
+
+    this.template = this.props._readTemplate();
+
+    if (!this.template.languages.teacher) {
+      var nextUp = 'teacher';
+      this.setState({
+        nextUp: nextUp,
+        continue: false
+      });
+      return;
+    }
+    if (!this.template.languages.student) {
+      var nextUp = 'student';
+      this.setState({
+        nextUp: nextUp,
+        continue: false
+      });
+      return;
+    }
+
+    this.setState({
+      nextUp: '',
+      continue: true
+    });
+  }
+
+  componentDidMount() {
+    this._completenessCheck();
+  }
+
   render() {
+
+    var nextStyle = {};
+    var nextBorder = {borderWidth: 2, borderColor: '#F02B1F'}
+
+    switch(this.state.nextUp) {
+      case 'teacher':
+        nextStyle.teacher = nextBorder;
+        break;
+      case 'student':
+        nextStyle.student = nextBorder;
+        break;
+    }
 
     return (
       <View style={styles.container}>
@@ -56,7 +101,7 @@ class Languages extends Component {
             <TextInput
               autoCorrect={false}
               returnKeyType='done'
-              style={styles.textInput}
+              style={[styles.textInput, nextStyle.teacher]}
               value={this.state.teacher}
               onChange={this._handleChangeTeacher}
               placeholder='Your language'
@@ -66,7 +111,7 @@ class Languages extends Component {
             <TextInput
               autoCorrect={false}
               returnKeyType='done'
-              style={styles.textInput}
+              style={[styles.textInput, nextStyle.student]}
               value={this.state.student}
               onChange={this._handleChangeStudent}
               placeholder="Student's language"
@@ -75,8 +120,8 @@ class Languages extends Component {
         </View>
         <ContinueButton
           enabled={
-            // (this.state.teacher && this.state.student)
-            true
+            this.state.continue
+            // true
           }
           label='Characters'
           _next={this._next}
@@ -93,7 +138,7 @@ const styles = StyleSheet.create({
     marginLeft: -2,
     marginRight: -2,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -102,7 +147,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#FDFDF1',
+    backgroundColor: '#C6DCDF',
   },
   contentArea: {
     height: Dimensions.get('window').height - 134,
@@ -110,7 +155,8 @@ const styles = StyleSheet.create({
   },
   labelText: {
     fontFamily: 'System',
-    fontWeight: '400',
+    fontWeight: 'bold',
+    color: 'rgba(22,159,173,1)',
     fontSize: 18,
     marginTop: 18,
     marginBottom: 15,
@@ -125,7 +171,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -141,7 +187,7 @@ const styles = StyleSheet.create({
     borderColor: '#979797',
     borderRadius: 12,
     fontFamily: 'System',
-    color: '#000000'
+    color: '#414141',
   }
 });
 

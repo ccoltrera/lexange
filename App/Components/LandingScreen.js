@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
       height: 2
     },
     shadowRadius: 2,
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
   },
   logo: {
     height: (86 * 1.25),

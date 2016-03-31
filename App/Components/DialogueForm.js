@@ -53,40 +53,66 @@ class DialogueForm extends Component {
     var {height, width} = Dimensions.get('window');
     var bubbleWidth = width - 165;
 
+    var nextStyle = {};
+    var nextBorder = {borderWidth: 2, borderColor: '#F02B1F'}
+
+    switch(this.props.nextUp) {
+      case 'phrase' + this.props.num:
+        nextStyle.phrase = nextBorder;
+        nextStyle.phraseTriangle = {borderRightColor: '#F02B1F'};
+        nextStyle.phraseTriangleInside = {left: 8};
+        break;
+      case 'audioUri' + this.props.num:
+        // nextStyle.recordButton = nextBorder;
+        nextStyle.recordBack = {backgroundColor: 'rgba(240,43,31,0.8)', top: 19};
+        // nextStyle.recordIcon = {color: '#FFFFFF'}
+        nextStyle.imageBorder = {borderColor: '#F02B1F', borderWidth: 2};
+        nextStyle.imagePlacement = {top: -1, left: -1};
+        break;
+      case 'phraseTrans' + this.props.num:
+        nextStyle.phraseTrans = nextBorder;
+        break;
+    }
+
     return(
       <View style={styles.card}>
-        <Text style={styles.labelText}>{this.template.dialogue[this.props.num].guide + ' (in ' + this.teacherLang + ')'}</Text>
+        <Text style={styles.labelText}>
+          <Text style={styles.boldLabelText}>
+            {this.template.dialogue[this.props.num].guide}
+          </Text>
+          {' (in ' + this.teacherLang + ')'}
+        </Text>
         <View style={{flexDirection: 'row'}}>
         <TouchableWithoutFeedback
           onPress={this._toggleRecordingPanel}>
-          <View style={styles.imageHolder}>
-            <Image style={styles.image} source={{uri: this.person.pictureUri}} />
+          <View style={[styles.imageHolder, nextStyle.imageBorder]}>
+            <Image style={[styles.image, nextStyle.imagePlacement]} source={{uri: this.person.pictureUri}} />
             <TouchableOpacity
-              style={styles.button}
+              style={[styles.button, nextStyle.recordButton, nextStyle.recordBack]}
               onPress={this._toggleRecordingPanel}
               >
-              <Icon name='microphone' style={styles.buttonIcon} />
+              <Icon name='microphone' style={[styles.buttonIcon, nextStyle.recordIcon]} />
             </TouchableOpacity>
           </View>
         </TouchableWithoutFeedback>
             <View style={styles.talkBubble}>
-              <View style={styles.talkBubbleTriangle} />
+              <View style={[styles.talkBubbleTriangle, nextStyle.phraseTriangle]} />
                 <TextInput
                     autoCorrect={false}
                     returnKeyType='done'
                     multiline={true}
-                    style={[styles.textInput, styles.talkBubbleSquare, {width: bubbleWidth}]}
+                    style={[styles.textInput, styles.talkBubbleSquare, {width: bubbleWidth}, nextStyle.phrase]}
                     value={this.state.phrase}
                     onChange={this._handleChangePhrase}
                     placeholder={this.template.dialogue[this.props.num].guide + ' (in ' + this.teacherLang + ')'}
                     />
-              <View style={styles.talkBubbleTriangleInside} />
+              <View style={[styles.talkBubbleTriangleInside, nextStyle.phraseTriangleInside]} />
             </View>
           </View>
         <TextInput
           autoCorrect={false}
           returnKeyType='done'
-          style={styles.textInput}
+          style={[styles.textInput, nextStyle.phraseTrans]}
           value={this.state.phraseTrans}
           onChange={this._handleChangePhraseTrans}
           placeholder={'Translation in ' + this.studentLang}
@@ -106,7 +132,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',
-    shadowOpacity: 0.5,
+    shadowOpacity: 0.2,
     shadowRadius: 2,
     shadowOffset: {
       height: 2,
@@ -121,12 +147,18 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     // alignSelf: 'center'
   },
+  boldLabelText: {
+    fontWeight: 'bold',
+    color: 'rgba(22,159,173,1)'
+  },
   imageHolder: {
     justifyContent: 'center',
     height: 80,
     width: 80,
     borderRadius: 15,
-    overflow: 'hidden'
+    overflow: 'hidden',
+    borderWidth: 1,
+    borderColor: '#979797',
   },
   image: {
     position: 'absolute',
@@ -135,8 +167,6 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     height: 80,
     width: 80,
-    borderWidth: 1,
-    borderColor: '#979797',
   },
   textInput: {
     flex: 1,
@@ -148,8 +178,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     borderWidth: 1,
     borderColor: '#979797',
+    color: '#414141',
     borderRadius: 12,
-    color: '#000000',
   },
   button: {
     position: 'absolute',
