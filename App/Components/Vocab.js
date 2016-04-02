@@ -146,7 +146,7 @@ class Vocab extends Component {
 
     switch (this.props.type) {
       case 'people':
-        descriptor = 'Character';
+        descriptor = 'Person';
         break;
       case 'items':
         descriptor = 'Item';
@@ -179,14 +179,14 @@ class Vocab extends Component {
         {
           this.props.showTutorial ? (
             <Text style={styles.tutorialText}>
-              Most lesson templates have more than one character. Some even have items and places. But let's just have one character for your first lesson. {'\n'}
+              Most lesson templates have more than one person. Some even have items and places. But let's just have one person for your first lesson. {'\n'}
             </Text>
           ) : (
             null
           )
         }
         <Text style={styles.tutorialText}>
-          Complete {descriptor.toLowerCase()}s with:
+          Complete {descriptor === 'Person' ? 'people' : descriptor.toLowerCase() + 's'} with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - a picture
@@ -215,12 +215,11 @@ class Vocab extends Component {
             _toggleCam={this._toggleCam} />
         </Modal>
         <View style={{height: height}}>
-          <KeyboardAwareScrollView
-            ref='scroll'
+          <SmartScrollView
             style={styles.scrollView}>
             {vocab}
             <View style={styles.padder}></View>
-          </KeyboardAwareScrollView>
+          </SmartScrollView>
         </View>
         <Tutorial
           tutorialText={tutorialText}

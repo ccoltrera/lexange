@@ -102,19 +102,27 @@ class DialogueItem extends Component {
     var playIcon = this.state.playing ? (
       <Icon name='stop' style={[styles.buttonIcon, {fontSize: 22}]} />
     ) : (
-      <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 4, color: playColor}]} />
+      <Icon name='play' style={[styles.buttonIcon, {paddingLeft: 2, color: playColor}]} />
     )
 
     var playButton = this.state.audioReady ? (
       <TouchableOpacity
-        style={styles.button}
-        onPress={this._togglePlaySound}>
-        {playIcon}
+        onPress={this._togglePlaySound}
+        style={styles.touchableWrap}>
+        <View style={styles.button}>
+          {playIcon}
+        </View>
       </TouchableOpacity>
     ) : (
-      <View style={[styles.button, {backgroundColor: '#979797'}]}>
+      <View style={[styles.button, {backgroundColor: 'rgba(151,151,151,0.8)'}]}>
         {playIcon}
       </View>
+    )
+
+    var imageHolderColor = this.state.audioReady ? (
+      {borderColor: 'rgba(22,159,173,0.8)'}
+    ) : (
+      {borderColor: 'rgba(151,151,151,0.8)'}
     )
 
     var text = this.state.show ? (
@@ -194,7 +202,7 @@ class DialogueItem extends Component {
           <View style={{flexDirection: 'row'}}>
             <TouchableWithoutFeedback
               onPress={this._togglePlaySound}>
-              <View style={styles.imageHolder}>
+              <View style={[styles.imageHolder, imageHolderColor]}>
                 <Image style={styles.image} source={{uri: this.person.pictureUri}} />
                 {playButton}
               </View>
@@ -298,45 +306,53 @@ const styles = StyleSheet.create({
   },
   imageHolder: {
     justifyContent: 'center',
-    height: 80,
-    width: 80,
+    height: 100,
+    width: 100,
     borderRadius: 15,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#979797',
-    backgroundColor: '#FFFFFF'
+    borderWidth: 2,
+    // borderColor: 'rgba(22,159,173,0.8)',
+    // backgroundColor: 'rgba(22,159,173,1)',
   },
   image: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    borderRadius: 15,
-    height: 80,
-    width: 80,
+    top: -1,
+    left: -1,
+    // borderRadius: 15,
+    height: 98,
+    width: 98,
+  },
+  touchableWrap: {
+    position: 'absolute',
+    top: -1,
+    left: -1,
+    right: -1,
+    bottom: -1
   },
   button: {
     position: 'absolute',
-    right: -60,
-    // left: 40,
-    top: 20,
+    right: 7,
+    left: 52,
+    bottom: 7,
+    top: 52,
     // left: 0,
     // alignSelf: 'center',
-    height: 120,
-    width: 120,
-    // backgroundColor: 'rgba(240,183,103,0.5)',
+    // height: 30,
+    // width: 120,
+    // backgroundColor: 'rgba(240,183,103,1)',
     backgroundColor: 'rgba(22,159,173,0.8)',
-    borderRadius: 60,
+    borderRadius: 11,
     justifyContent: 'center',
-    borderWidth: 2,
+    // borderWidth: 2,
     borderColor: '#FFFFFF'
     // borderColor: 'rgba(22,159,173,0.6)',
     // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {
-    fontSize: 26,
+    fontSize: 24,
     color: '#FFFFFF',
-    marginRight: 47,
-    marginBottom: 49,
+    // marginRight: 5,
+    // marginBottom: 5,
     // color: 'rgba(22,159,173,1)',
     alignSelf: 'center'
   },

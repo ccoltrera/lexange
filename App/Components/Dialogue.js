@@ -19,6 +19,9 @@ import DialogueForm from './DialogueForm';
 import ContinueButton from './ContinueButton';
 import Finished from './Finished';
 
+import SmartScrollView from 'react-native-smart-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 class Dialogue extends Component {
   constructor(props) {
     super(props);
@@ -102,6 +105,9 @@ class Dialogue extends Component {
   }
 
   render() {
+    var {height, width} = Dimensions.get('window');
+    var height = height - 64;
+
     var dialogueForms = [];
     for (let i=0; i < this.template.dialogue.length; i++) {
       dialogueForms.push(
@@ -152,17 +158,17 @@ class Dialogue extends Component {
             visible={this.state.showRecordingPanel}>
             <RecordingPanel
               num={this.state.recordingNum}
+              _completenessCheck={this._completenessCheck}
               _readTemplate={this.props._readTemplate}
               _updateTemplate={this.props._updateTemplate}
               _toggleRecordingPanel={this._toggleRecordingPanel} />
         </Modal>
-        <View style={{height: Dimensions.get('window').height - 134}}>
-          <ScrollView
-            style={styles.scrollView}
-            showVerticalScrollIndicator={true}>
+        <View style={{height: height}}>
+          <SmartScrollView
+            style={styles.scrollView}>
             {dialogueForms}
             <View style={styles.padder}></View>
-          </ScrollView>
+          </SmartScrollView>
         </View>
         <Tutorial
           tutorialText={tutorialText}
@@ -183,14 +189,14 @@ class Dialogue extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#C6DCDF'
+    backgroundColor: '#C6DCDF',
   },
   scrollView: {
     paddingTop: 5,
-    paddingBottom: 40
+    // marginBottom: 70,
   },
   padder: {
-    height: 75
+    height: 120
   },
   headerShadow: {
     backgroundColor: '#169FAD',
@@ -208,9 +214,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     fontSize: 16,
     fontWeight: '300',
-    fontFamily: 'System',
-    backgroundColor: 'transparent',
     color: '#414141',
+    fontFamily: 'System',
+    backgroundColor: 'transparent'
   },
 });
 

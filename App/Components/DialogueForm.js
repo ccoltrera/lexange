@@ -51,7 +51,7 @@ class DialogueForm extends Component {
 
   render() {
     var {height, width} = Dimensions.get('window');
-    var bubbleWidth = width - 165;
+    var bubbleWidth = width - 176;
 
     var nextStyle = {};
     var nextBorder = {borderWidth: 2, borderColor: '#F02B1F'}
@@ -64,10 +64,8 @@ class DialogueForm extends Component {
         break;
       case 'audioUri' + this.props.num:
         // nextStyle.recordButton = nextBorder;
-        nextStyle.recordBack = {backgroundColor: 'rgba(240,43,31,0.8)', top: 19};
-        // nextStyle.recordIcon = {color: '#FFFFFF'}
-        nextStyle.imageBorder = {borderColor: '#F02B1F', borderWidth: 2};
-        nextStyle.imagePlacement = {top: -1, left: -1};
+        nextStyle.recordBack = {backgroundColor: 'rgba(240,43,31,0.8)', };
+        nextStyle.imageBorder = nextBorder;
         break;
       case 'phraseTrans' + this.props.num:
         nextStyle.phraseTrans = nextBorder;
@@ -83,18 +81,15 @@ class DialogueForm extends Component {
           {' (in ' + this.teacherLang + ')'}
         </Text>
         <View style={{flexDirection: 'row'}}>
-        <TouchableWithoutFeedback
-          onPress={this._toggleRecordingPanel}>
           <View style={[styles.imageHolder, nextStyle.imageBorder]}>
-            <Image style={[styles.image, nextStyle.imagePlacement]} source={{uri: this.person.pictureUri}} />
-            <TouchableOpacity
-              style={[styles.button, nextStyle.recordButton, nextStyle.recordBack]}
-              onPress={this._toggleRecordingPanel}
-              >
-              <Icon name='microphone' style={[styles.buttonIcon, nextStyle.recordIcon]} />
+            <Image style={styles.image} source={{uri: this.person.pictureUri}} />
+            <TouchableOpacity onPress={this._toggleRecordingPanel}
+              style={styles.touchableWrap}>
+              <View style={[styles.button, nextStyle.recordButton, nextStyle.recordBack]}>
+                <Icon name='microphone' style={[styles.buttonIcon, nextStyle.recordIcon]} />
+              </View>
             </TouchableOpacity>
           </View>
-        </TouchableWithoutFeedback>
             <View style={styles.talkBubble}>
               <View style={[styles.talkBubbleTriangle, nextStyle.phraseTriangle]} />
                 <TextInput
@@ -153,20 +148,21 @@ const styles = StyleSheet.create({
   },
   imageHolder: {
     justifyContent: 'center',
-    height: 80,
-    width: 80,
+    height: 100,
+    width: 100,
     borderRadius: 15,
     overflow: 'hidden',
-    borderWidth: 1,
-    borderColor: '#979797',
+    borderWidth: 2,
+    borderColor: 'rgba(22,159,173,0.8)',
+    // backgroundColor: 'rgba(22,159,173,1)',
   },
   image: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    borderRadius: 15,
-    height: 80,
-    width: 80,
+    top: -1,
+    left: -1,
+    // borderRadius: 15,
+    height: 98,
+    width: 98,
   },
   textInput: {
     flex: 1,
@@ -181,36 +177,45 @@ const styles = StyleSheet.create({
     color: '#414141',
     borderRadius: 12,
   },
+  touchableWrap: {
+    position: 'absolute',
+    top: -1,
+    left: -1,
+    right: -1,
+    bottom: -1
+  },
   button: {
     position: 'absolute',
-    right: -60,
-    // left: 40,
-    top: 20,
+    right: 7,
+    left: 52,
+    bottom: 7,
+    top: 52,
     // left: 0,
     // alignSelf: 'center',
-    height: 120,
-    width: 120,
+    // height: 30,
+    // width: 120,
     // backgroundColor: 'rgba(240,183,103,1)',
     backgroundColor: 'rgba(22,159,173,0.8)',
-    borderRadius: 60,
+    borderRadius: 11,
     justifyContent: 'center',
-    borderWidth: 2,
+    // borderWidth: 2,
     borderColor: '#FFFFFF'
     // borderColor: 'rgba(22,159,173,0.6)',
     // backgroundColor: 'rgba(255,255,255,1)'
   },
   buttonIcon: {
-    fontSize: 27,
+    fontSize: 25,
     color: '#FFFFFF',
-    marginRight: 47,
-    marginBottom: 49,
+    // marginRight: 5,
+    // marginBottom: 5,
     // color: 'rgba(22,159,173,1)',
     alignSelf: 'center'
   },
   talkBubbleSquare: {
     marginLeft: 15,
+    // marginRight: 15,
     flex: 1,
-    height: 80,
+    height: 100,
   },
   talkBubbleTriangle: {
     position: 'absolute',

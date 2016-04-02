@@ -77,15 +77,15 @@ const styles = StyleSheet.create({
     top: 0,
     left: 0,
     justifyContent: 'center',
-    height: 80,
-    width: 80,
+    height: 100,
+    width: 100,
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#979797',
+    borderWidth: 2,
+    borderColor: 'rgba(22,159,173,0.8)',
     borderRadius: 15
   },
   card: {
-    height: 110,
+    height: 130,
     marginLeft: 15,
     marginRight: 15,
     marginBottom: 15,
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   textColumn: {
     // height: 80,
     flexDirection: 'column',
-    marginLeft: 85,
+    marginLeft: 105,
     // justifyContent: 'center',
   }
 });

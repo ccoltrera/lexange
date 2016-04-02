@@ -48,12 +48,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   signup: {
-    marginTop: -60,
+    marginTop: -100,
     marginLeft: 18,
     marginRight: 18,
-    marginBottom: 30,
+    marginBottom: 70,
     fontSize: 20,
-    fontWeight: '400',
+    // fontWeight: '600',
+    fontWeight: 'bold',
+    color: 'rgba(22,159,173,1)',
     textAlign: 'center'
   }
 });

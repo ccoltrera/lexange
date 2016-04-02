@@ -62,19 +62,23 @@ class NewTeacher extends Component {
                   </View>
                   <View style={styles.unCircle}>
                   </View>
+                  <View style={styles.line}>
+                  </View>
+                  <View style={styles.unCircle}>
+                  </View>
                 </View>
                 <View style={styles.third}>
                   <View style={[styles.descBlock, {marginTop: 8}]}>
+                    <Text style={styles.sectionDesc}>Choose a <Text style={styles.sectionName}>template</Text></Text>
+                  </View>
+                  <View style={styles.descBlock}>
                     <Text style={styles.sectionDesc}>Tell us the <Text style={styles.sectionName}>languages</Text></Text>
-
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Enrich the lesson with <Text style={styles.sectionName}>characters</Text></Text>
-
+                    <Text style={styles.sectionDesc}>Add <Text style={styles.sectionName}>people</Text>, <Text style={styles.sectionName}>places</Text>, and <Text style={styles.sectionName}>items</Text></Text>
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Give the characters <Text style={styles.sectionName}>dialogue</Text></Text>
-
+                    <Text style={styles.sectionDesc}>Give the people <Text style={styles.sectionName}>dialogue</Text></Text>
                   </View>
                   <View style={styles.descBlock}>
                     <Text style={styles.sectionDesc}>Share what you <Text style={styles.sectionName}>finished</Text>!</Text>
@@ -147,7 +151,7 @@ const styles = StyleSheet.create({
   },
   line: {
     margin: -5,
-    height: 80,
+    height: 50,
     width: 5,
     backgroundColor: 'rgba(22,159,173,1)',
     alignSelf: 'center',
@@ -166,7 +170,7 @@ const styles = StyleSheet.create({
     fontFamily: 'System',
     fontWeight: '700',
     color: 'rgba(22,159,173,1)',
-    fontSize: 18,
+    fontSize: 16,
     alignSelf: 'center',
     marginBottom: 5,
     textAlign: 'center',
@@ -186,7 +190,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   descBlock: {
-    marginBottom: 86.75
+    marginBottom: 56.75
   },
   card: {
     marginTop: 5,
@@ -194,6 +198,7 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     marginRight: 15,
     paddingTop: 15,
+    paddingBottom: 35,
     backgroundColor: '#FFFFFF',
     borderRadius: 20,
     shadowColor: '#000000',

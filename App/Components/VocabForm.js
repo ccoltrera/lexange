@@ -15,6 +15,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import _handleChange from '../Utils/templateUtils';
 
+
+
 class VocabForm extends Component {
   constructor(props) {
     super(props);
@@ -71,7 +73,7 @@ class VocabForm extends Component {
 
     switch (this.props.type) {
       case 'people':
-        descriptor = 'Character';
+        descriptor = 'Person';
         break;
       case 'items':
         descriptor = 'Item';
@@ -104,7 +106,7 @@ class VocabForm extends Component {
     switch(this.props.nextUp) {
       case 'pictureUri' + this.props.num:
         nextStyle.photoFrame = nextBorder;
-        nextStyle.recordBack = {backgroundColor: 'rgba(240,43,31,0.8)', top: 84};
+        nextStyle.recordBack = {backgroundColor: 'rgba(240,43,31,0.8)'};
         break;
       case 'name' + this.props.num:
         nextStyle.name = nextBorder;
@@ -121,25 +123,23 @@ class VocabForm extends Component {
       <View style={styles.card}
         >
         <Text style={styles.labelText}><Text style={styles.boldLabelText}>{descriptor} {this.props.num + 1}: </Text>{guide}</Text>
-        <TouchableWithoutFeedback
-          onPress={this._toggleCam}>
         <View style={[styles.photoFrame, nextStyle.photoFrame]}>
           {vocabPhoto}
           <TouchableOpacity
-            style={[styles.button, nextStyle.recordBack]}
             onPress={this._toggleCam}
-            >
-            <Icon name='camera' style={styles.buttonIcon} />
+            style={styles.touchableWrap}>
+            <View style={[styles.button, nextStyle.recordButton, nextStyle.recordBack]}>
+              <Icon name='camera' style={[styles.buttonIcon, nextStyle.recordIcon]} />
+            </View>
           </TouchableOpacity>
         </View>
-        </TouchableWithoutFeedback>
         {this.props.type === 'people' ? ( <TextInput
           autoCorrect={false}
           returnKeyType='done'
           style={[styles.textInput, nextStyle.name]}
           value={this.state.name}
           onChange={this._handleChangeName}
-          placeholder={'Character\'s Name (' + this.teacherLang + ')'}
+          placeholder={'Person\'s Name (' + this.teacherLang + ')'}
           />) : (
             null
           )}
@@ -197,8 +197,8 @@ const styles = StyleSheet.create({
     width: 170,
     margin: 15,
     borderRadius: 15,
-    borderWidth: 1,
-    borderColor: '#979797',
+    borderWidth: 2,
+    borderColor: 'rgba(22,159,173,0.8)',
     alignSelf: 'center',
     justifyContent: 'center',
     overflow: 'hidden'
@@ -210,20 +210,28 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     borderRadius: 15
   },
-  button: {
+  touchableWrap: {
     position: 'absolute',
-    right: -85,
-    // left: 40,
-    top: 85,
+    top: -1,
+    left: -1,
+    right: -1,
+    bottom: -1
+  },
+ button: {
+    position: 'absolute',
+    right: 10,
+    left: 105,
+    bottom: 10,
+    top: 105,
     // left: 0,
     // alignSelf: 'center',
-    height: 170,
-    width: 170,
+    // height: 30,
+    // width: 120,
     // backgroundColor: 'rgba(240,183,103,1)',
     backgroundColor: 'rgba(22,159,173,0.8)',
-    borderRadius: 85,
+    borderRadius: 13,
     justifyContent: 'center',
-    borderWidth: 2,
+    // borderWidth: 2,
     borderColor: '#FFFFFF'
     // borderColor: 'rgba(22,159,173,0.6)',
     // backgroundColor: 'rgba(255,255,255,1)'
@@ -231,8 +239,8 @@ const styles = StyleSheet.create({
   buttonIcon: {
     fontSize: 30,
     color: '#FFFFFF',
-    marginRight: 65,
-    marginBottom: 70,
+    // marginRight: 65,
+    // marginBottom: 70,
     // color: 'rgba(22,159,173,1)',
     alignSelf: 'center'
   },
