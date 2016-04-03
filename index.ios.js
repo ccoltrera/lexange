@@ -15,6 +15,8 @@ import LandingScreen from './App/Components/LandingScreen';
 import Vocab from './App/Components/Vocab';
 import templateFuncs from './App/Utils/template';
 
+
+
 class lexchange extends Component {
   constructor(props) {
     super(props);

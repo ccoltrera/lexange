@@ -1,6 +1,7 @@
 package com.lexchange;
 
 import com.facebook.react.ReactActivity;
+import io.realm.react.RealmReactPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactPackage;
@@ -37,6 +38,7 @@ public class MainActivity extends ReactActivity {
     protected List<ReactPackage> getPackages() {
         return Arrays.<ReactPackage>asList(
             new MainReactPackage(),
+            new RealmReactPackage(),
         new RCTCameraPackage(),
         new VectorIconsPackage()
         );
