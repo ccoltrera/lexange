@@ -36,7 +36,7 @@ class Languages extends Component {
 
   _next() {
     this.props.toRoute({
-      name: 'Characters',
+      name: 'People',
       component: Vocab,
       passProps: {
         type: 'people',
@@ -95,7 +95,7 @@ class Languages extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.contentArea}>
+        <ScrollView style={styles.contentArea}>
           <View style={styles.card}>
             <Text style={styles.labelText}>{'Language you are teaching'}</Text>
             <TextInput
@@ -117,13 +117,13 @@ class Languages extends Component {
               placeholder="Student's language"
               />
           </View>
-        </View>
+        </ScrollView>
         <ContinueButton
           enabled={
-            this.state.continue
-            // true
+            // this.state.continue
+            true
           }
-          label='Characters'
+          label='People'
           _next={this._next}
         />
       </View>

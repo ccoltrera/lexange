@@ -70,52 +70,6 @@ import realm from '../Utils/database';
 //   ]
 // };
 
-// var template = {
-//   id: '0000000001',
-//   languages: {
-//     teacher: '',
-//     student: ''
-//   },
-//   people: [
-//     {
-//       guide: '',
-//       name: '',
-//       desc: '',
-//       descTrans: '',
-//       pictureUri: '',
-//       descAudioUri: '',
-//       nameAudioUri: '',
-//     },
-//   ],
-//   dialogue: [
-//     {
-//       person: 0,
-//       guide: '',
-//       phrase: '',
-//       phraseTrans: '',
-//       audioUri: ''
-//     },
-//   ],
-//   items: [
-//     {
-//       guide: '',
-//       desc: '',
-//       descTrans: '',
-//       descAudioUri: '',
-//       pictureUri: '',
-//     },
-//   ],
-//   places: [
-//     {
-//       guide: '',
-//       desc: '',
-//       descTrans: '',
-//       descAudioUri: '',
-//       pictureUri: '',
-//     },
-//   ]
-// };
-
 var lessonTemplates = realm.objects('LessonTemplate');
 
 var databaseTemplate = lessonTemplates[0];
@@ -173,7 +127,11 @@ function constructUsableTemplate(databaseTemplate) {
 
 }
 
-var template = constructUsableTemplate(databaseTemplate);
+var template;
+
+function _setTemplate(databaseTemplate) {
+  template = constructUsableTemplate(databaseTemplate);
+}
 
 
 function _updateTemplate(updateQuery) {
@@ -186,5 +144,6 @@ function _readTemplate() {
 
 export default {
   _updateTemplate: _updateTemplate,
-  _readTemplate: _readTemplate
+  _readTemplate: _readTemplate,
+  _setTemplate: _setTemplate
 };

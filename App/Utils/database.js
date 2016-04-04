@@ -20,7 +20,7 @@ const DialogueItemTemplateSchema = {
 const LessonTemplateSchema = {
   name: 'LessonTemplate',
   properties: {
-    name: {type: 'string', default: 'testing'},
+    name: {type: 'string'},
     level: {type: 'string'},
     lessonLength: {type: 'int'},
     people: {type: 'list', objectType: 'VocabTemplate'},
@@ -36,7 +36,7 @@ let realm = new Realm({
 
 var morningGreetingTemplate = {
   name: 'Greeting a Friend (Morning)',
-  level: 'Elementary',
+  level: 'Low Elementary',
   lessonLength: 2,
   people: [
     {
@@ -52,6 +52,7 @@ var morningGreetingTemplate = {
 };
 
 realm.write(()=> {
+  // realm.delete(realm.objects('LessonTemplate'))
   if (realm.objects('LessonTemplate').length === 0) {
     realm.create('LessonTemplate', morningGreetingTemplate);
   }

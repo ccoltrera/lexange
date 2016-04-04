@@ -215,19 +215,19 @@ class Vocab extends Component {
             _toggleCam={this._toggleCam} />
         </Modal>
         <View style={{height: height}}>
-          <SmartScrollView
+          <KeyboardAwareScrollView
             style={styles.scrollView}>
             {vocab}
             <View style={styles.padder}></View>
-          </SmartScrollView>
+          </KeyboardAwareScrollView>
         </View>
         <Tutorial
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            this.state.continue
-            // true
+            // this.state.continue
+            true
           }
           label='Dialogue'
           _next={this._next}

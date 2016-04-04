@@ -84,7 +84,7 @@ class VocabForm extends Component {
     }
 
     var vocabPhoto = (!this.state.pictureUri) ? (
-      <Text style={[styles.labelText, {color: '#C7C7CD', alignSelf: 'center', marginBottom: 80}]}>Photo of the {descriptor}</Text>
+      <Text style={[styles.labelText, {color: '#C7C7CD', alignSelf: 'center', marginBottom: 80, marginLeft: 5, marginRight: 5}]}>Photo of the {descriptor}</Text>
     ) : (
       // <TouchableOpacity
       //   onPress={this._toggleCam}

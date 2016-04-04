@@ -10,10 +10,8 @@ import React, {
   Dimensions
 } from 'react-native';
 
-import Languages from './Languages';
+import Templates from './Templates';
 import ContinueButton from './ContinueButton';
-
-import templateFuncs from '../Utils/template';
 
 class NewTeacher extends Component {
   constructor(props) {
@@ -24,12 +22,10 @@ class NewTeacher extends Component {
 
   _goLanguages() {
     this.props.toRoute({
-      name: 'Languages',
-      component: Languages,
+      name: 'Templates',
+      component: Templates,
       passProps: {
-        showTutorial: true,
-        _readTemplate: templateFuncs._readTemplate,
-        _updateTemplate: templateFuncs._updateTemplate
+        tutorial: true,
       },
       headerStyle: styles.headerShadow
     });
@@ -106,13 +102,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#169FAD',
     marginLeft: -2,
     marginRight: -2,
-    shadowColor: '#000000',
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    shadowOffset: {
-      height: 2,
-      width: 0,
-    },
+    // shadowColor: '#000000',
+    // shadowOpacity: 0.2,
+    // shadowRadius: 2,
+    // shadowOffset: {
+    //   height: 2,
+    //   width: 0,
+    // },
   },
   container: {
     flex: 1,

@@ -164,19 +164,19 @@ class Dialogue extends Component {
               _toggleRecordingPanel={this._toggleRecordingPanel} />
         </Modal>
         <View style={{height: height}}>
-          <SmartScrollView
+          <KeyboardAwareScrollView
             style={styles.scrollView}>
             {dialogueForms}
             <View style={styles.padder}></View>
-          </SmartScrollView>
+          </KeyboardAwareScrollView>
         </View>
         <Tutorial
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
-            this.state.continue
-            // true
+            // this.state.continue
+            true
           }
           label='Finished'
           _next={this._next}
