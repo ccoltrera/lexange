@@ -17,10 +17,10 @@ class NewTeacher extends Component {
   constructor(props) {
     super(props);
 
-    this._goLanguages = this._goLanguages.bind(this);
+    this._next = this._next.bind(this);
   }
 
-  _goLanguages() {
+  _next() {
     this.props.toRoute({
       name: 'Templates',
       component: Templates,
@@ -90,7 +90,7 @@ class NewTeacher extends Component {
             true
           }
           label='Make Your First Lesson'
-          _next={this._goLanguages}
+          _next={this._next}
         />
       </View>
     );

@@ -58,7 +58,7 @@ class VocabCard extends Component {
       <TouchableHighlight
         style={styles.card}
         onPress={this._toggleShow}
-        underlayColor='#EEEEEE'>
+        underlayColor='#FCFCFC'>
         <View style={styles.row}>
           <Image style={styles.imageHolder} source={{uri: this.content.pictureUri}} />
           <View style={styles.textColumn}>

@@ -44,9 +44,13 @@ class ContinueButton extends Component {
           >
           <View style={styles.touchWrapper}>
             <Text style={textStyle}>{this.props.label} </Text>
-            <View style={{marginLeft: 5, marginTop: 2}}>
-              <Icon name='chevron-right' style={styles.chevron} />
-            </View>
+            {
+              this.props.label !== 'Filter Templates' ? (
+                <View style={{marginLeft: 5, marginTop: 2}}>
+                  <Icon name='chevron-right' style={styles.chevron} />
+                </View>
+              ) : ( null )
+            }
           </View>
         </TouchableHighlight>
       // </View>

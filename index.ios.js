@@ -44,7 +44,7 @@ class lexchange extends Component {
     //       name: 'Templates',
     //       component: Templates,
     //       passProps: {
-    //         tutorial: true
+    //         tutorial: false
     //       },
     //     }}
     //     backButtonComponent={BackButton}
