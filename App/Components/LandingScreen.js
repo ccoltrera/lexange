@@ -11,6 +11,7 @@ import React, {
 
 import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import NewTeacher from './NewTeacher';
 import Finished from './Finished';
@@ -50,18 +51,11 @@ class LandingScreen extends Component {
         </View>
         <View style={styles.row}>
           <TouchableHighlight
-            style={[styles.bigButton, {width: 273}]}
+            style={styles.bigButton}
             underlayColor='#FDFDF1'>
-            <View style={styles.bbBlock}>
-              <View style={styles.row}>
-                <View style={styles.bbIconWrapper}>
-                  <FoundationIcon name='clipboard-pencil' style={styles.bBIcon}/>
-                </View>
-                <View style={styles.bbIconWrapper}>
-                  <FAIcon name='graduation-cap' style={styles.bBIcon}/>
-                </View>
-              </View>
-              <Text style={styles.bBText}>Returning User</Text>
+            <View>
+                <Text style={styles.bBText}>Returning Users</Text>
+                <Ionicons name='ios-people' style={[styles.bBIcon, {left: 188}]}/>
             </View>
           </TouchableHighlight>
         </View>
@@ -70,21 +64,19 @@ class LandingScreen extends Component {
             style={styles.bigButton}
             onPress={this._newTeacher}
             underlayColor='#FDFDF1'>
-            <View style={styles.bBBlock}>
-              <View style={styles.bbIconWrapper}>
-                <FoundationIcon name='clipboard-pencil' style={[styles.bBIcon, {marginLeft: 5}]}/>
-              </View>
-              <Text style={styles.bBText}>New Teacher</Text>
+            <View>
+              <Text style={styles.bBText}>New Teachers</Text>
+              <Ionicons name='clipboard' style={[styles.bBIcon, {left: 191}]}/>
             </View>
           </TouchableHighlight>
+        </View>
+        <View style={styles.row}>
           <TouchableHighlight
             style={styles.bigButton}
             underlayColor='#FDFDF1'>
-            <View style={styles.bBBlock}>
-              <View style={styles.bbIconWrapper}>
-                <FAIcon name='graduation-cap' style={styles.bBIcon}/>
-              </View>
-              <Text style={styles.bBText}>New Student</Text>
+            <View>
+              <Text style={styles.bBText}>New Students</Text>
+              <Ionicons name='university' style={[styles.bBIcon, {left: 187}]}/>
             </View>
           </TouchableHighlight>
         </View>
@@ -116,7 +108,7 @@ const styles = StyleSheet.create({
     height: (86 * 1.25),
     width: (216 * 1.25),
     marginTop: 50,
-    marginBottom: 70
+    marginBottom: 60
   },
   row: {
     flexDirection: 'row',
@@ -124,39 +116,34 @@ const styles = StyleSheet.create({
   },
   bigButton: {
     // backgroundColor: '#FDFDF1',
-    margin: 5,
-    padding: 15,
+    margin: 10,
+    width: 130,
+    padding: 2,
     borderWidth: 2,
-    borderRadius: 26,
+    borderRadius: 22,
     borderColor: '#FDFDF1',
-    // shadowColor: '#000000',
-    // shadowOpacity: 0.5,
-    // shadowRadius: 2,
-    // shadowOffset: {
-    //   height: 2,
-    //   width: 0
-    // }
-  },
-  bbIconWrapper: {
-    alignSelf: 'center',
-    height: 40,
-    width: 60,
-    marginBottom: 5
+    width: 265,
+    height: 60,
   },
   bBBlock: {
     flexDirection: 'column'
   },
   bBIcon: {
-    alignSelf: 'center',
+    position: 'absolute',
+    left: 180,
     color: '#FDFDF1',
-    fontSize: 40
+    fontSize: 40,
+    margin: 5
   },
   bBText: {
+    position: 'absolute',
+    left: 10,
     color: '#FDFDF1',
     fontFamily: 'System',
-    fontSize: 16,
+    fontSize: 18,
     alignSelf: 'center',
     fontWeight: '500',
+    margin: 15,
   },
 });
 

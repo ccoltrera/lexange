@@ -64,16 +64,15 @@ class Finished extends Component {
     var tutorialText = this.props.exampleLesson ? (
       <View>
         <Text style={styles.tutorialText}>
-          {'\n'}
-        Here's an example of what you'll be making!
-          {'\n\n'}
-        Tap text to see translations, and tap photos in the dialogue to hear audio.
+          Here's an example of what you'll be making!
+        </Text>
+        <Text style={styles.tutorialText}>
+          Tap text to see translations, and tap photos in the dialogue to hear audio.
         </Text>
       </View>
       ) : (
       <View>
         <Text style={styles.tutorialText}>
-          {'\n'}
           Here's your finished lesson. Are you ready to start making more?
         </Text>
       </View>
@@ -204,7 +203,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#C6DCDF',
   },
   scrollView: {
-    paddingTop: 15,
+    paddingTop: 16,
   },
   padder: {
     height: 75
@@ -222,7 +221,7 @@ const styles = StyleSheet.create({
     },
   },
   tutorialText: {
-    marginBottom: 5,
+    marginBottom: 15,
     fontSize: 16,
     fontWeight: '300',
     backgroundColor: 'transparent',

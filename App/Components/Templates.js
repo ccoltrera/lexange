@@ -82,9 +82,9 @@ class Templates extends Component {
     var tutorialText = (
       <View >
         <Text style={styles.tutorialText}>
-          {'\n'}
           We chose a simple template for your first lesson.
-          {'\n\n'}
+        </Text>
+        <Text style={styles.tutorialText}>
           Later, you can choose templates based on learner level and goals, or make your own!
         </Text>
       </View>
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     // color: '#FFF'
   },
   tutorialText: {
-    marginBottom: 5,
+    marginBottom: 15,
     fontSize: 16,
     fontWeight: '300',
     backgroundColor: 'transparent',

@@ -84,7 +84,6 @@ class Languages extends Component {
     var tutorialText = (
       <View >
         <Text style={styles.tutorialText}>
-          {'\n'}
           This will be used for prompts, and to help you and your students organize lessons.
         </Text>
       </View>
@@ -203,7 +202,7 @@ const styles = StyleSheet.create({
     color: '#414141',
   },
   tutorialText: {
-    marginBottom: 5,
+    marginBottom: 15,
     fontSize: 16,
     fontWeight: '300',
     backgroundColor: 'transparent',

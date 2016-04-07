@@ -186,12 +186,15 @@ class DialogueItem extends Component {
       <View style={styles.blockBottomBlender}></View>
     )
 
-    var spacingAdjust = (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
-      null
-    ) : (
-      {paddingBottom: 5}
-    )
+    var spacingAdjust = {};
 
+    if ( !(numDialogues >= 1 && numDialogues - 1 === this.props.num) ) {
+      spacingAdjust.paddingBottom = 5;
+    }
+
+    if ( !(this.props.num === 0) ) {
+      spacingAdjust.paddingTop = 10
+    }
 
     return (
       <View style={[styles.card, spacingAdjust]}>

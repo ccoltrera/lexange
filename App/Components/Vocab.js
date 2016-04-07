@@ -178,10 +178,8 @@ class Vocab extends Component {
       <View >
         {
           this.props.showTutorial ? (
-            <Text style={styles.tutorialText}>
-              {'\n'}
+            <Text style={[styles.tutorialText, {marginBottom:15}]}>
               Lexchange lessons are stories, and stories have characters.
-              {'\n'}
             </Text>
           ) : (
             null
@@ -191,16 +189,16 @@ class Vocab extends Component {
           Complete {descriptor === 'Person' ? 'characters' : descriptor.toLowerCase() + 's'} with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a picture
+          1) a picture
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a name in {this.teacherLang}
+          2) a name in {this.teacherLang}
         </Text>
         {(this.props.type === 'people') ? (<Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a role in {this.teacherLang} (ex. a teacher, a friend)
+          3) a role in {this.teacherLang} (ex. a teacher, a friend)
         </Text>) : (null)}
-        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a translation of the {(this.props.type === 'people') ? ('role') : ('name')} in {this.studentLang}
+        <Text style={[styles.tutorialText, {marginLeft: 10, marginBottom: 15}]}>
+          4) a translation of the {(this.props.type === 'people') ? ('role') : ('name')} in {this.studentLang}
         </Text>
       </View>
     )

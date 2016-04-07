@@ -41,7 +41,7 @@ class Tutorial extends Component {
   render() {
     var {height, width} = Dimensions.get('window');
     var modalHeight = height - 64;
-    var tabWidth = width - 50;
+    var tabWidth = width //- 50;
 
     var cardPosition = this.props.low ? (
       this.state.showThisTutorial ? (
@@ -59,7 +59,7 @@ class Tutorial extends Component {
       this.state.showThisTutorial ? (
         {
           position: 'absolute',
-          bottom: 45
+          bottom: 40
         }
       ) : (
         {
@@ -75,12 +75,12 @@ class Tutorial extends Component {
         paddingTop: 15,
         alignSelf: 'center',
         width: tabWidth,
-        paddingBottom: 25,
+        paddingBottom: 12,
       }]
     ) : (
       [styles.tutorialTab, {
         // paddingTop: 10,
-        left: 25,
+        // left: 25,
         width: tabWidth,
         paddingBottom: 40,
         shadowColor: '#000000',
@@ -95,7 +95,10 @@ class Tutorial extends Component {
 
     var header = this.props.header ? (
       <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center'}}>
-        <Text style={styles.tabText}>{this.props.header}</Text>
+        <Text style={styles.tabText}>{this.props.header} </Text>
+        <Icon
+          style={styles.chevron}
+          name={this.state.showThisTutorial || this.state.firstTutorial ? 'chevron-down' : 'chevron-up' } />
       </View>
     ): (
       <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center'}}>
@@ -153,7 +156,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingLeft: 20,
     paddingRight: 20,
-    borderRadius: 20,
+    // borderRadius: 20,
     flexDirection: 'column',
   },
   tabText: {
@@ -161,7 +164,8 @@ const styles = StyleSheet.create({
     color: '#169FAD',
     fontFamily: 'System',
     fontWeight: '700',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
+    marginBottom: 15
   },
   cardColor: {
     position: 'absolute',
@@ -175,8 +179,8 @@ const styles = StyleSheet.create({
   chevron: {
     fontSize: 22,
     color: '#169FAD',
-    marginTop: 0.2,
-    marginBottom: 10,
+    marginTop: 0.5,
+    // marginBottom: 10,
     backgroundColor: 'transparent'
   }
 });

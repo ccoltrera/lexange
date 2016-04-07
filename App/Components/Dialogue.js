@@ -127,9 +127,8 @@ class Dialogue extends Component {
       <View>
         {
           this.props.showTutorial ? (
-            <Text style={styles.tutorialText}>
-              {'\n'}
-              Now give your character something to say! {'\n'}
+            <Text style={[styles.tutorialText, {marginBottom:15}]}>
+              Now give your character something to say!
             </Text>
           ) : (
             null
@@ -139,13 +138,13 @@ class Dialogue extends Component {
           Complete dialogues with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - written sentences in {this.teacherLang}
+          1) written sentences in {this.teacherLang}
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - audio in {this.teacherLang} (tap the photo)
+          2) audio in {this.teacherLang} (tap the photo)
         </Text>
-        <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - natural translations in {this.studentLang}
+        <Text style={[styles.tutorialText, {marginLeft: 10, marginBottom: 15}]}>
+          3) natural translations in {this.studentLang}
         </Text>
       </View>
     )
