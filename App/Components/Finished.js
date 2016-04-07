@@ -7,7 +7,8 @@ import React, {
   TouchableHighlight,
   Image,
   ScrollView,
-  Dimensions
+  Dimensions,
+  Modal
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -16,6 +17,7 @@ import Tutorial from './Tutorial';
 import VocabCard from './VocabCard';
 import DialogueItem from './DialogueItem';
 import ContinueButton from './ContinueButton';
+import PhotoModal from './PhotoModal';
 
 import CreateAccount from './CreateAccount';
 import Templates from './Templates';
@@ -26,12 +28,14 @@ class Finished extends Component {
 
     this.state = {
       showThisTutorial: this.props.showTutorial,
+      showPhotoModal: false
     }
 
     this.template = this.props._readTemplate ? this.props._readTemplate() : this.props.exampleLesson;
 
     this._next = this._next.bind(this);
     this._toggleTutorial = this._toggleTutorial.bind(this);
+    this._togglePhotoModal = this._togglePhotoModal.bind(this);
   }
 
   _next() {
@@ -60,11 +64,18 @@ class Finished extends Component {
     })
   }
 
+  _togglePhotoModal(pictureUri) {
+    this.setState({
+      modalPictureUri: pictureUri,
+      showPhotoModal: !this.state.showPhotoModal
+    })
+  }
+
   render() {
     var tutorialText = this.props.exampleLesson ? (
       <View>
         <Text style={styles.tutorialText}>
-          Here's an example of what you'll be making!
+          Here's a simple example of what you'll be making!
         </Text>
         <Text style={styles.tutorialText}>
           Tap text to see translations, and tap photos in the dialogue to hear audio.
@@ -86,7 +97,7 @@ class Finished extends Component {
             key={'itemsCard' + i}
             num={i}
             content='places'
-            _updateTemplate={this.props._updateTemplate}
+            _togglePhotoModal={this._togglePhotoModal}
             template={this.template}
           />
         )
@@ -117,7 +128,7 @@ class Finished extends Component {
             key={'peopleCard' + i}
             num={i}
             content='people'
-            _updateTemplate={this.props._updateTemplate}
+            _togglePhotoModal={this._togglePhotoModal}
             template={this.template}
           />
         )
@@ -141,7 +152,7 @@ class Finished extends Component {
             key={'itemsCard' + i}
             num={i}
             content='items'
-            _updateTemplate={this.props._updateTemplate}
+            _togglePhotoModal={this._togglePhotoModal}
             template={this.template}
           />
         )
@@ -163,7 +174,7 @@ class Finished extends Component {
         <DialogueItem
           key={'dialogue' + i}
           num={i}
-          _updateTemplate={this.props._updateTemplate}
+          _togglePhotoModal={this._togglePhotoModal}
           template={this.template}
         />
       )
@@ -172,6 +183,14 @@ class Finished extends Component {
 
     return (
       <View style={styles.container}>
+        <Modal
+          animated={true}
+          transparent={true}
+          visible={this.state.showPhotoModal}>
+          <PhotoModal
+            pictureUri={this.state.modalPictureUri}
+            _togglePhotoModal={this._togglePhotoModal} />
+        </Modal>
         <View style={{height: Dimensions.get('window').height - 134}}>
           <ScrollView
             style={styles.scrollView}

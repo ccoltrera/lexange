@@ -1,7 +1,7 @@
 'use strict';
 
 import update from 'react-addons-update';
-import realm from '../Utils/database';
+import realm from './database';
 
 var exampleLesson = {
   id: '0000000001',
@@ -15,15 +15,14 @@ var exampleLesson = {
       desc: 'Um aluno',
       descTrans: 'A student [male]',
       name: 'Lucas',
-      pictureUri:
-      '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/Lucas.jpg'
+      pictureUri: 'Lucas.png'
     },
     {
       guide: 'A teacher',
       desc: 'Uma professora',
       descTrans: 'A teacher [female]',
       name: 'Camila',
-      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/Camila.png'
+      pictureUri: 'Camila.png'
     },
   ],
   dialogue: [

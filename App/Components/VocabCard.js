@@ -5,7 +5,8 @@ import React, {
   StyleSheet,
   Image,
   TouchableHighlight,
-  Text
+  TouchableWithoutFeedback,
+  Text,
 } from 'react-native';
 
 class VocabCard extends Component {
@@ -24,6 +25,8 @@ class VocabCard extends Component {
     this.desc = decodeURIComponent(this.content.desc);
     this.descTrans = decodeURIComponent(this.content.descTrans);
     this.name = decodeURIComponent(this.content.name);
+
+    this._togglePhotoModal = this.props._togglePhotoModal.bind(null, this.content.pictureUri);
   }
 
   _toggleShow() {
@@ -45,7 +48,7 @@ class VocabCard extends Component {
 
     var contentBlock = this.props.content === 'people' ? (
         <View>
-          <Text style={[styles.cardText, {fontWeight: 'bold'}]}>{this.name}</Text>
+          <Text style={[styles.cardText, {fontWeight: 'bold', color: 'rgba(22,159,173,1)'}]}>{this.name}</Text>
           {text}
         </View>
       ) : (
@@ -54,18 +57,34 @@ class VocabCard extends Component {
         </View>
       )
 
+    // Checks for values seen in the example lesson
+    var image;
+    if (this.content.pictureUri === 'Camila.png') {
+      console.log('Camila');
+      image = require('../../Images/Camila.png');
+    }
+    else if (this.content.pictureUri === 'Lucas.png') {
+      image = require('../../Images/Lucas.png');
+    }
+    else {
+      image = {uri: this.content.pictureUri};
+    }
+
     return(
-      <TouchableHighlight
-        style={styles.card}
-        onPress={this._toggleShow}
-        underlayColor='#FCFCFC'>
+      <TouchableWithoutFeedback
+        onPress={this._toggleShow}>
+        <View style={styles.card}>
         <View style={styles.row}>
-          <Image style={styles.imageHolder} source={{uri: this.content.pictureUri}} />
+        <TouchableHighlight
+          onPress={this._togglePhotoModal}>
+          <Image style={styles.imageHolder} source={image} />
+        </TouchableHighlight>
           <View style={styles.textColumn}>
             {contentBlock}
           </View>
         </View>
-      </TouchableHighlight>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 
@@ -104,6 +123,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(255,255,255,0)',
     fontSize: 18,
     fontWeight: '400',
+    color: '#414141',
     marginLeft: 10,
     marginBottom: 10
   },

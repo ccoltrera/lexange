@@ -196,6 +196,20 @@ class DialogueItem extends Component {
       spacingAdjust.paddingTop = 10
     }
 
+
+    // Checks for values seen in the example lesson
+    var image;
+    if (this.person.pictureUri === 'Camila.png') {
+      console.log('Camila');
+      image = require('../../Images/Camila.png');
+    }
+    else if (this.person.pictureUri === 'Lucas.png') {
+      image = require('../../Images/Lucas.png');
+    }
+    else {
+      image = {uri: this.person.pictureUri};
+    }
+
     return (
       <View style={[styles.card, spacingAdjust]}>
         {blockTop}
@@ -207,7 +221,7 @@ class DialogueItem extends Component {
             <TouchableWithoutFeedback
               onPress={this._togglePlaySound}>
               <View style={[styles.imageHolder, imageHolderColor]}>
-                <Image style={styles.image} source={{uri: this.person.pictureUri}} />
+                <Image style={styles.image} source={image} />
                 {playButton}
               </View>
             </TouchableWithoutFeedback>

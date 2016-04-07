@@ -1,6 +1,5 @@
 'use strict';
 import React, {
-  AppRegistry,
   Component,
   Dimensions,
   StyleSheet,
@@ -22,6 +21,7 @@ class CamModal extends Component {
     }
 
     this._retake = this._retake.bind(this);
+    this._takePicture = this._takePicture.bind(this);
   }
 
   _retake() {
@@ -56,7 +56,7 @@ class CamModal extends Component {
             aspect={Camera.constants.Aspect.fill}>
             <View style={[styles.bar, {top: 0, height: barHeight}]}></View>
             <View style={[styles.bar, {bottom: 0, height: barHeight}]}></View>
-            <Icon style={styles.capture} name='camera' onPress={this.takePicture.bind(this)} />
+            <Icon style={styles.capture} name='camera' onPress={this._takePicture} />
             <TouchableHighlight
               onPress={this.props._toggleCam} >
               <Text style={styles.cancel} >Cancel</Text>
@@ -68,7 +68,7 @@ class CamModal extends Component {
     );
   }
 
-  takePicture() {
+  _takePicture() {
     this.camera.capture()
       .then((data) => {
 

@@ -64,7 +64,10 @@ class Tutorial extends Component {
       ) : (
         {
           position: 'absolute',
-          top: modalHeight - 117
+          top: modalHeight - 117,
+          backgroundColor: 'rgba(255,255,255,0.7)',
+          borderColor: 'rgba(22,159,173,0.5)',
+          shadowOpacity: 0
         }
       )
     )
@@ -151,8 +154,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: '#C8C7CC',
+    borderTopWidth: 2,
+    borderBottomWidth: 2,
+    borderColor: 'rgba(22,159,173,0.8)',
     paddingTop: 10,
     paddingLeft: 20,
     paddingRight: 20,
@@ -180,7 +184,7 @@ const styles = StyleSheet.create({
     fontSize: 22,
     color: '#169FAD',
     marginTop: 0.5,
-    // marginBottom: 10,
+    marginLeft: 2,
     backgroundColor: 'transparent'
   }
 });

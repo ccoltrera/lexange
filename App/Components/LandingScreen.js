@@ -52,7 +52,7 @@ class LandingScreen extends Component {
         <View style={styles.row}>
           <TouchableHighlight
             style={styles.bigButton}
-            underlayColor='#FDFDF1'>
+            underlayColor='#C6DCDF'>
             <View>
                 <Text style={styles.bBText}>Returning Users</Text>
                 <Ionicons name='ios-people' style={[styles.bBIcon, {left: 188}]}/>
@@ -63,7 +63,7 @@ class LandingScreen extends Component {
           <TouchableHighlight
             style={styles.bigButton}
             onPress={this._newTeacher}
-            underlayColor='#FDFDF1'>
+            underlayColor='#C6DCDF'>
             <View>
               <Text style={styles.bBText}>New Teachers</Text>
               <Ionicons name='clipboard' style={[styles.bBIcon, {left: 191}]}/>
@@ -73,7 +73,7 @@ class LandingScreen extends Component {
         <View style={styles.row}>
           <TouchableHighlight
             style={styles.bigButton}
-            underlayColor='#FDFDF1'>
+            underlayColor='#C6DCDF'>
             <View>
               <Text style={styles.bBText}>New Students</Text>
               <Ionicons name='university' style={[styles.bBIcon, {left: 187}]}/>
