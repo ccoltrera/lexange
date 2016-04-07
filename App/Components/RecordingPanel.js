@@ -44,7 +44,7 @@ class RecordingPanel extends Component {
     this._resetTimer = audioUtils._resetTimer.bind(this);
     this._done = this._done.bind(this);
 
-    this.audioName = this.template.id + '-audio-' + this.props.num;
+    this.audioName = /*this.template.id*/ 'tutorial' + '-audio-' + this.props.num;
 
     this._handleAddRecording = _handleChange.bind(
       this,
@@ -90,7 +90,7 @@ class RecordingPanel extends Component {
       new Sound(this.audioName +'.m4a', Sound.DOCUMENT, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
-        } else { // loaded successfully
+        } else {
           if (this.audioObject) {
             console.log('duration in seconds: ' + this.audioObject.getDuration() +
               ' number of channels: ' + this.audioObject.getNumberOfChannels());
@@ -98,10 +98,11 @@ class RecordingPanel extends Component {
 
           // console.log(Sound.DOCUMENT)
 
-          this._playSound = this._togglePlay.bind(null, this.audioObject);
-          this._done = this._done.bind(null, this.audioObject);
-          this.setState({audioReady: true});
-
+          if (this.audioObject) {
+            this._playSound = this._togglePlay.bind(this, this.audioObject);
+            this._done = this._done.bind(null, this.audioObject);
+            this.setState({audioReady: true});
+          }
         }
       })
     ) : ( null )

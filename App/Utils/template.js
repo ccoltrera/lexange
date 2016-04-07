@@ -3,54 +3,54 @@
 import update from 'react-addons-update';
 import realm from '../Utils/database';
 
-// var template = {
-//   id: '0000000001',
-//   languages: {
-//     teacher: '日本語',
-//     student: 'English'
-//   },
-//   people: [
-//     {
-//       guide: 'A friend',
-//       desc: 'ともだち',
-//       descTrans: 'A friend [casual]',
-//       name: 'ひろ',
-//       pictureUri:
-//       '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/1cddf99cd257e9263f93387e5eb69560.jpg'
-//     },
-//     {
-//       guide: 'Another friend',
-//       desc: 'ほかのともだち',
-//       descTrans: 'Another friend [casual]',
-//       name: 'えり',
-//       pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/tokyo-street-style-shibuya-leather-jacket.jpg'
-//     },
-//   ],
-//   dialogue: [
-//     {
-//       person: 0,
-//       guide: 'Morning greeting',
-//       phrase: 'おはよう。',
-//       phraseTrans: 'Good morning [casual]',
-//       audioUri:
-//       ''
-//     },
-//     {
-//       person: 1,
-//       guide: 'Morning greeting to friend',
-//       phrase: 'おはよう、ひろ。',
-//       phraseTrans: 'Good morning, Hiro [casual]',
-//       audioUri: '0000000001-audio-1.m4a'
-//     },
-//     {
-//       person: 0,
-//       guide: 'Morning greeting',
-//       phrase: 'げんき？',
-//       phraseTrans: 'How are you? [casual]',
-//       audioUri: '0000000001-audio-2.m4a'
-//     },
-//   ],
-  // items: [
+var exampleLesson = {
+  id: '0000000001',
+  languages: {
+    teacher: 'Portuguese (Brazilian)',
+    student: 'English'
+  },
+  people: [
+    {
+      guide: 'A student',
+      desc: 'Um aluno',
+      descTrans: 'A student [male]',
+      name: 'Lucas',
+      pictureUri:
+      '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/Lucas.jpg'
+    },
+    {
+      guide: 'A teacher',
+      desc: 'Uma professora',
+      descTrans: 'A teacher [female]',
+      name: 'Camila',
+      pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/Camila.png'
+    },
+  ],
+  dialogue: [
+    {
+      person: 0,
+      guide: 'Morning greeting to teacher',
+      phrase: 'Bom dia, professora!',
+      phraseTrans: 'Good morning, teacher!',
+      audioUri:
+      'tutorial-audio-0.m4a'
+    },
+    {
+      person: 1,
+      guide: 'Morning greeting to student',
+      phrase: 'Bom dia, Lucas.',
+      phraseTrans: 'Good morning, Lucas',
+      audioUri: 'tutorial-audio-1.m4a'
+    },
+    // {
+    //   person: 0,
+    //   guide: 'Morning greeting',
+    //   phrase: 'げんき？',
+    //   phraseTrans: 'How are you? [casual]',
+    //   audioUri: '0000000001-audio-2.m4a'
+    // },
+  ],
+  items: [
     // {
     //   guide: 'An umbrella',
     //   desc: 'かさ',
@@ -58,8 +58,8 @@ import realm from '../Utils/database';
     //   descAudioUri: '',
     //   pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/06b7ebd0756f52670448cd637194016f.jpg',
     // },
-  // ],
-  // places: [
+  ],
+  places: [
     // {
     //   guide: 'A street',
     //   desc: 'とおり',
@@ -67,8 +67,8 @@ import realm from '../Utils/database';
     //   descAudioUri: '',
     //   pictureUri: '/Users/colincoltrera/Library/Developer/CoreSimulator/Devices/C51084B7-64BD-4E84-81DE-9BCFB4D7FCA4/data/Containers/Data/Application/E4C0BFF3-CF5C-46CC-A865-90837804B491/Documents/tumblr_lysi3wLZah1r2cj3no1_500.jpg',
     // },
-//   ]
-// };
+  ]
+};
 
 var lessonTemplates = realm.objects('LessonTemplate');
 
@@ -145,5 +145,6 @@ function _readTemplate() {
 export default {
   _updateTemplate: _updateTemplate,
   _readTemplate: _readTemplate,
-  _setTemplate: _setTemplate
+  _setTemplate: _setTemplate,
+  exampleLesson: exampleLesson
 };

@@ -35,18 +35,25 @@ let realm = new Realm({
 });
 
 var morningGreetingTemplate = {
-  name: 'Greeting a Friend (Morning)',
+  name: 'Greeting a Teacher (Morning)',
   level: 'Low Elementary',
   lessonLength: 2,
   people: [
     {
-      guide: 'A friend',
+      guide: 'A student',
+    },
+    {
+      guide: 'A teacher',
     },
   ],
   dialogue: [
     {
       person: 0,
-      guide: 'Morning greeting',
+      guide: 'Morning greeting to teacher',
+    },
+    {
+      person: 1,
+      guide: 'Morning greeting to student',
     },
   ]
 };

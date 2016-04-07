@@ -146,7 +146,7 @@ class Vocab extends Component {
 
     switch (this.props.type) {
       case 'people':
-        descriptor = 'Person';
+        descriptor = 'Character';
         break;
       case 'items':
         descriptor = 'Item';
@@ -179,14 +179,16 @@ class Vocab extends Component {
         {
           this.props.showTutorial ? (
             <Text style={styles.tutorialText}>
-              Most lesson templates have more than one person. Some even have items and places. But let's just have one person for your first lesson. {'\n'}
+              {'\n'}
+              Lexchange lessons are stories, and stories have characters.
+              {'\n'}
             </Text>
           ) : (
             null
           )
         }
         <Text style={styles.tutorialText}>
-          Complete {descriptor === 'Person' ? 'people' : descriptor.toLowerCase() + 's'} with:
+          Complete {descriptor === 'Person' ? 'characters' : descriptor.toLowerCase() + 's'} with:
         </Text>
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
           - a picture
@@ -195,10 +197,10 @@ class Vocab extends Component {
           - a name in {this.teacherLang}
         </Text>
         {(this.props.type === 'people') ? (<Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a description in {this.teacherLang}
+          - a role in {this.teacherLang} (ex. a teacher, a friend)
         </Text>) : (null)}
         <Text style={[styles.tutorialText, {marginLeft: 10}]}>
-          - a translated {(this.props.type === 'people') ? ('description') : ('name')} in {this.studentLang}
+          - a translation of the {(this.props.type === 'people') ? ('role') : ('name')} in {this.studentLang}
         </Text>
       </View>
     )
@@ -222,6 +224,7 @@ class Vocab extends Component {
           </KeyboardAwareScrollView>
         </View>
         <Tutorial
+          header={this.props.type === 'people' ? 'Step 3: The Characters' : null}
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton

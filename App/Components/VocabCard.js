@@ -16,7 +16,7 @@ class VocabCard extends Component {
       show: false
     };
 
-    this.template = this.props._readTemplate();
+    this.template = this.props.template;
     this.content = this.template[this.props.content][this.props.num];
 
     this._toggleShow = this._toggleShow.bind(this);

@@ -15,6 +15,7 @@ import Vocab from './Vocab';
 import ContinueButton from './ContinueButton';
 
 import _handleChange from '../Utils/templateUtils';
+import Tutorial from './Tutorial';
 
 class Languages extends Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class Languages extends Component {
 
   _next() {
     this.props.toRoute({
-      name: 'People',
+      name: 'Characters',
       component: Vocab,
       passProps: {
         type: 'people',
@@ -80,6 +81,14 @@ class Languages extends Component {
   }
 
   render() {
+    var tutorialText = (
+      <View >
+        <Text style={styles.tutorialText}>
+          {'\n'}
+          This will be used for prompts, and to help you and your students organize lessons.
+        </Text>
+      </View>
+    )
 
     var nextStyle = {};
     var nextBorder = {borderWidth: 2, borderColor: '#F02B1F'}
@@ -118,12 +127,16 @@ class Languages extends Component {
               />
           </View>
         </ScrollView>
+        <Tutorial
+          header='Step 2: The Languages'
+          tutorialText={tutorialText}
+          showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={
             // this.state.continue
             true
           }
-          label='People'
+          label='Characters'
           _next={this._next}
         />
       </View>
@@ -188,7 +201,14 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     fontFamily: 'System',
     color: '#414141',
-  }
+  },
+  tutorialText: {
+    marginBottom: 5,
+    fontSize: 16,
+    fontWeight: '300',
+    backgroundColor: 'transparent',
+    fontFamily: 'System'
+  },
 });
 
 export default Languages;

@@ -18,6 +18,7 @@ import DialogueItem from './DialogueItem';
 import ContinueButton from './ContinueButton';
 
 import CreateAccount from './CreateAccount';
+import Templates from './Templates';
 
 class Finished extends Component {
   constructor(props) {
@@ -27,18 +28,30 @@ class Finished extends Component {
       showThisTutorial: this.props.showTutorial,
     }
 
-    this.template = this.props._readTemplate();
+    this.template = this.props._readTemplate ? this.props._readTemplate() : this.props.exampleLesson;
 
     this._next = this._next.bind(this);
     this._toggleTutorial = this._toggleTutorial.bind(this);
   }
 
   _next() {
-    this.props.toRoute({
-      name: 'Create Account',
-      component: CreateAccount,
-      headerStyle: styles.headerShadow
-    });
+    if (this.props.exampleLesson) {
+      this.props.toRoute({
+        name: 'Templates',
+        component: Templates,
+        headerStyle: styles.headerShadow,
+        passProps: {
+          tutorial: true,
+        }
+      });
+    }
+    else {
+      this.props.toRoute({
+        name: 'Create Account',
+        component: CreateAccount,
+        headerStyle: styles.headerShadow
+      });
+    }
   }
 
   _toggleTutorial() {
@@ -48,10 +61,20 @@ class Finished extends Component {
   }
 
   render() {
-    var tutorialText = (
+    var tutorialText = this.props.exampleLesson ? (
       <View>
         <Text style={styles.tutorialText}>
-          Here's your finished lesson! Tap the cards to see translations, tap dialogue photos to hear audio.
+          {'\n'}
+        Here's an example of what you'll be making!
+          {'\n\n'}
+        Tap text to see translations, and tap photos in the dialogue to hear audio.
+        </Text>
+      </View>
+      ) : (
+      <View>
+        <Text style={styles.tutorialText}>
+          {'\n'}
+          Here's your finished lesson. Are you ready to start making more?
         </Text>
       </View>
     )
@@ -65,7 +88,7 @@ class Finished extends Component {
             num={i}
             content='places'
             _updateTemplate={this.props._updateTemplate}
-            _readTemplate={this.props._readTemplate}
+            template={this.template}
           />
         )
       }
@@ -74,7 +97,7 @@ class Finished extends Component {
     var placeBlock = (placeCards.length > 0) ? (
       (placeCards.length === 1) ? (
         <View>
-          <Text style={styles.labelText}>Location</Text>
+          <Text style={styles.labelText}>{'Location'.toUpperCase()}</Text>
           {placeCards}
         </View>
       ) : (
@@ -96,7 +119,7 @@ class Finished extends Component {
             num={i}
             content='people'
             _updateTemplate={this.props._updateTemplate}
-            _readTemplate={this.props._readTemplate}
+            template={this.template}
           />
         )
       }
@@ -104,7 +127,7 @@ class Finished extends Component {
 
     var peopleBlock = (peopleCards.length > 0) ? (
       <View>
-        <Text style={styles.labelText}>Characters</Text>
+        <Text style={styles.labelText}>{'Characters'.toUpperCase()}</Text>
         {peopleCards}
       </View>
     ) : (
@@ -120,7 +143,7 @@ class Finished extends Component {
             num={i}
             content='items'
             _updateTemplate={this.props._updateTemplate}
-            _readTemplate={this.props._readTemplate}
+            template={this.template}
           />
         )
       }
@@ -128,7 +151,7 @@ class Finished extends Component {
 
     var itemBlock = (itemCards.length > 0) ? (
       <View>
-        <Text style={styles.labelText}>Items</Text>
+        <Text style={styles.labelText}>{'Items'.toUpperCase()}</Text>
         {itemCards}
       </View>
     ) : (
@@ -142,7 +165,7 @@ class Finished extends Component {
           key={'dialogue' + i}
           num={i}
           _updateTemplate={this.props._updateTemplate}
-          _readTemplate={this.props._readTemplate}
+          template={this.template}
         />
       )
     }
@@ -157,17 +180,18 @@ class Finished extends Component {
             {peopleBlock}
             {placeBlock}
             {itemBlock}
-            <Text style={styles.labelText}>Dialogue</Text>
+            <Text style={styles.labelText}>{'Dialogue'.toUpperCase()}</Text>
             {dialogueItems}
             <View style={styles.padder}></View>
           </ScrollView>
         </View>
         <Tutorial
+          header={this.props.exampleLesson ? 'Welcome to Lexchange' : 'Congratulations!'}
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={true}
-          label={'Make More Lessons!'}
+          label={this.props.exampleLesson ? 'Make Your First Lesson!' : 'Make More Lessons!'}
           _next={this._next}/>
       </View>
     )
@@ -180,7 +204,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#C6DCDF',
   },
   scrollView: {
-    paddingTop: 10,
+    paddingTop: 15,
   },
   padder: {
     height: 75
@@ -210,8 +234,9 @@ const styles = StyleSheet.create({
     // alignSelf: 'center',
     marginLeft: 15,
     color: '#169FAD',
-    fontSize: 18,
-    marginTop: 5,
+    // color: '#FFF',
+    fontSize: 16,
+    marginTop: 0,
     marginBottom: 15,
   },
   cardRow: {

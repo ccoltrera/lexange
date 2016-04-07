@@ -6,7 +6,8 @@ import React, {
   View,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  LayoutAnimation
+  LayoutAnimation,
+  TouchableHighlight
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -19,6 +20,7 @@ class TemplateRow extends Component {
     }
 
     this._toggleDetails = this._toggleDetails.bind(this);
+    this._goLanguages = this.props._goLanguages.bind(null, this.props.rowData);
   }
 
   _toggleDetails() {
@@ -38,7 +40,7 @@ class TemplateRow extends Component {
             key={this.props.sectionID + this.props.rowID + area}
             style={styles.templateText}>
               <Text style={styles.details}>
-                - {area != 'dialogue' ? area.toUpperCase() : 'PHRASES'}
+                - {area === 'dialogue' ? 'PHRASES' : area === 'people' ?  'CHARACTERS': area.toUpperCase() }
               </Text>
               : {this.props.rowData[area].length}
             </Text>
@@ -46,39 +48,26 @@ class TemplateRow extends Component {
       }
     })
 
-    var rowText = this.state.showDetails ? (
+    var rowText = (
       <View>
         <Text style={styles.templateLabel}>{this.props.rowData['name']}</Text>
-        <TouchableWithoutFeedback
-          onPress={this._toggleDetails}>
-          <Text style={styles.details}>HIDE DETAILS</Text>
-        </TouchableWithoutFeedback>
-        {details}
+        {/*details*/}
       </View>
-    ) : (
-      <View>
-        <Text style={styles.templateLabel}>{this.props.rowData['name']}</Text>
-        <TouchableWithoutFeedback
-          onPress={this._toggleDetails}>
-          <Text style={styles.details}>SHOW DETAILS</Text>
-        </TouchableWithoutFeedback>
-      </View>
-    )
+    );
 
     return(
-      <View style={styles.row}>
-        {rowText}
-        <TouchableOpacity
-          onPress={this.props._goLanguages.bind(null, this.props.rowData)}
-          underlayColor='rgba(22,159,173,1)'
-          style={styles.chevronButton}
-          >
+      <TouchableHighlight
+        underlayColor='#FFF'
+        style={styles.row}
+        onPress={this._goLanguages}>
           <View>
-            <View style={styles.chevronBack}></View>
-            <Icon name='chevron-circle-right' style={styles.chevron} />
+            {rowText}
+            <View style={styles.chevronButton}>
+              <View style={styles.chevronBack}></View>
+              <Icon name='chevron-circle-right' style={styles.chevron} />
+            </View>
           </View>
-        </TouchableOpacity>
-      </View>
+      </TouchableHighlight>
     )
   }
 }
@@ -96,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#C6DCDF',
     borderColor: '#FFF',
     // borderTopWidth: 1,
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 1,
     // shadowColor: '#000000',
     // shadowOpacity: 0.2,
     // shadowRadius: 2,
@@ -115,7 +104,7 @@ const styles = StyleSheet.create({
     color: 'rgba(22,159,173,1)'
   },
   templateText: {
-    marginLeft: 15,
+    // marginLeft: 15,
     fontFamily: 'System',
     fontSize: 14 ,
     marginTop: 5,
@@ -130,8 +119,8 @@ const styles = StyleSheet.create({
   },
   chevronButton: {
     position: 'absolute',
-    top: 20,
-    right: 40,
+    top: -6,
+    right: 15,
     borderRadius: 100,
     backgroundColor: 'transparent'
   },

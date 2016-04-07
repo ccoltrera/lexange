@@ -71,10 +71,10 @@ class NewTeacher extends Component {
                     <Text style={styles.sectionDesc}>Tell us the <Text style={styles.sectionName}>languages</Text></Text>
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Add <Text style={styles.sectionName}>people</Text>, <Text style={styles.sectionName}>places</Text>, and <Text style={styles.sectionName}>items</Text></Text>
+                    <Text style={styles.sectionDesc}>Add <Text style={styles.sectionName}>characters</Text>, <Text style={styles.sectionName}>places</Text>, and <Text style={styles.sectionName}>items</Text></Text>
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Give the people <Text style={styles.sectionName}>dialogue</Text></Text>
+                    <Text style={styles.sectionDesc}>Give the characters <Text style={styles.sectionName}>dialogue</Text></Text>
                   </View>
                   <View style={styles.descBlock}>
                     <Text style={styles.sectionDesc}>Share what you <Text style={styles.sectionName}>finished</Text>!</Text>

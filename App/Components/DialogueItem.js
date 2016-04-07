@@ -31,7 +31,7 @@ class DialogueItem extends Component {
       tenMin: 0
     };
 
-    this.template = this.props._readTemplate();
+    this.template = this.props.template;
 
     this.dialogue = this.template.dialogue[this.props.num];
     this.person = this.template.people[this.dialogue.person];
@@ -186,14 +186,15 @@ class DialogueItem extends Component {
       <View style={styles.blockBottomBlender}></View>
     )
 
+    var spacingAdjust = (numDialogues >= 1 && numDialogues - 1 === this.props.num) ? (
+      null
+    ) : (
+      {paddingBottom: 5}
+    )
+
 
     return (
-      <TouchableWithoutFeedback
-
-        onPress={this._toggleShow}
-        underlayColor='#FFFFFF'
-        >
-      <View style={styles.card}>
+      <View style={[styles.card, spacingAdjust]}>
         {blockTop}
         {blockTopBlender}
         {blockBottom}
@@ -208,20 +209,24 @@ class DialogueItem extends Component {
               </View>
             </TouchableWithoutFeedback>
             <View style={{flexDirection: 'column', flex: 1}}>
-              <View>
-                <View style={styles.talkBubble}>
-                  <View style={[styles.talkBubbleTriangle, triangleOutsideColor]} />
-                    <View
-                      style={[styles.bubble, styles.talkBubbleSquare, bubbleSpecifics]}>
-                      {text}
-                    </View>
-                  <View style={[styles.talkBubbleTriangleInside, triangleInsideColor]} />
+              <TouchableWithoutFeedback
+                onPress={this._toggleShow}
+                underlayColor='#FFFFFF'
+                >
+                <View>
+                  <View style={styles.talkBubble}>
+                    <View style={[styles.talkBubbleTriangle, triangleOutsideColor]} />
+                      <View
+                        style={[styles.bubble, styles.talkBubbleSquare, bubbleSpecifics]}>
+                        {text}
+                      </View>
+                    <View style={[styles.talkBubbleTriangleInside, triangleInsideColor]} />
+                  </View>
                 </View>
-              </View>
+              </TouchableWithoutFeedback>
             </View>
           </View>
         </View>
-      </TouchableWithoutFeedback>
     )
   }
 

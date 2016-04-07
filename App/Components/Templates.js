@@ -27,7 +27,7 @@ class Templates extends Component {
 
     // If this is the tutorial, only the tutorial template is shown
     var lessonTemplates = this.props.tutorial ? (
-      realm.objects('LessonTemplate').filtered('name = "Greeting a Friend (Morning)"')
+      realm.objects('LessonTemplate').filtered('name = "Greeting a Teacher (Morning)"')
     ) : (
       realm.objects('LessonTemplate')
     )
@@ -82,10 +82,10 @@ class Templates extends Component {
     var tutorialText = (
       <View >
         <Text style={styles.tutorialText}>
-          Our templates give you outlines for stories and dialogues — you add pictures, phrases, and audio.{'\n'}
-        </Text>
-        <Text style={styles.tutorialText}>
-          Later this screen will be full of templates. You can even make your own! For your first lesson, though, we chose a simple template.
+          {'\n'}
+          We chose a simple template for your first lesson.
+          {'\n\n'}
+          Later, you can choose templates based on learner level and goals, or make your own!
         </Text>
       </View>
     )
@@ -93,6 +93,8 @@ class Templates extends Component {
     // Show tips card if this is the tutorial, otherwise don't
     var tutorialCard = this.props.tutorial ? (
       <Tutorial
+          low={true}
+          header='Step 1: The Template'
           tutorialText={tutorialText}
           showTutorial={this.props.tutorial} />
     ) : (
@@ -125,13 +127,18 @@ class Templates extends Component {
           }}
         />
         {tutorialCard}
-        <ContinueButton
-          enabled={
-            this.props.tutorial ? false : true
-          }
-          label='Filter Templates'
-          _next={this._filterPane}
-        />
+        {this.props.tutorial ? (
+            null
+          ) : (
+          <ContinueButton
+            enabled={
+              this.props.tutorial ? false : true
+            }
+            label='Filter Templates'
+            _next={this._filterPane}
+            />
+          )
+        }
       </View>
     );
   }
@@ -151,7 +158,8 @@ const styles = StyleSheet.create({
     },
   },
   list: {
-    backgroundColor: '#C6DCDF',
+    // backgroundColor: '#C6DCDF',
+    backgroundColor: 'rgba(22,159,173,1)',
   },
   section: {
     // marginTop: 5,
@@ -179,7 +187,13 @@ const styles = StyleSheet.create({
     color: 'rgba(22,159,173,1)'
     // color: '#FFF'
   },
-
+  tutorialText: {
+    marginBottom: 5,
+    fontSize: 16,
+    fontWeight: '300',
+    backgroundColor: 'transparent',
+    fontFamily: 'System'
+  },
 })
 
 export default Templates;

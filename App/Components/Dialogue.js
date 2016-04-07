@@ -128,8 +128,8 @@ class Dialogue extends Component {
         {
           this.props.showTutorial ? (
             <Text style={styles.tutorialText}>
-              Now give your character something to say! {'\n\n'}
-              Most lesson templates have dialogues, but let's just have one phrase for your first lesson. {'\n'}
+              {'\n'}
+              Now give your character something to say! {'\n'}
             </Text>
           ) : (
             null
@@ -171,6 +171,7 @@ class Dialogue extends Component {
           </KeyboardAwareScrollView>
         </View>
         <Tutorial
+          header='Step 4: The Dialogue'
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton

@@ -13,6 +13,10 @@ import FoundationIcon from 'react-native-vector-icons/Foundation';
 import FAIcon from 'react-native-vector-icons/FontAwesome';
 
 import NewTeacher from './NewTeacher';
+import Finished from './Finished';
+
+import template from '../Utils/template';
+var exampleLesson = template.exampleLesson;
 
 class LandingScreen extends Component {
   constructor(props) {
@@ -22,10 +26,19 @@ class LandingScreen extends Component {
   }
 
   _newTeacher() {
+    // this.props.toRoute({
+    //   name: 'Welcome',
+    //   component: NewTeacher,
+    //   headerStyle: styles.headerShadow
+    // });
     this.props.toRoute({
-      name: 'Welcome',
-      component: NewTeacher,
-      headerStyle: styles.headerShadow
+      name: 'Example Lesson',
+      component: Finished,
+      headerStyle: styles.headerShadow,
+      passProps: {
+        exampleLesson: exampleLesson,
+        showTutorial: true
+      }
     });
   }
 

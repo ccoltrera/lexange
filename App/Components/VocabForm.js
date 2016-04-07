@@ -73,7 +73,7 @@ class VocabForm extends Component {
 
     switch (this.props.type) {
       case 'people':
-        descriptor = 'Person';
+        descriptor = 'Character';
         break;
       case 'items':
         descriptor = 'Item';
@@ -139,7 +139,7 @@ class VocabForm extends Component {
           style={[styles.textInput, nextStyle.name]}
           value={this.state.name}
           onChange={this._handleChangeName}
-          placeholder={'Person\'s Name (' + this.teacherLang + ')'}
+          placeholder={'Character\'s Name (' + this.teacherLang + ')'}
           />) : (
             null
           )}
