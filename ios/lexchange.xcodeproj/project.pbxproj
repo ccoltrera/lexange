@@ -24,6 +24,8 @@
 		146834051AC3E58100842450 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 146834041AC3E56700842450 /* libReact.a */; };
 		4D18CF7F1C9774D700BE2D48 /* libRNRecordAudio.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D18CF7B1C97744E00BE2D48 /* libRNRecordAudio.a */; };
 		4D18CF861C9783BF00BE2D48 /* libRNSound.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D18CF851C9783AF00BE2D48 /* libRNSound.a */; };
+		4DA048891CD09190000DBACA /* tutorial-camila.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4DA048871CD09190000DBACA /* tutorial-camila.m4a */; };
+		4DA0488A1CD09190000DBACA /* tutorial-lucas.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4DA048881CD09190000DBACA /* tutorial-lucas.m4a */; };
 		4DB5503D1C8F7D3D0015ED43 /* lexchange-logo2.png in Resources */ = {isa = PBXBuildFile; fileRef = 4DB5503C1C8F7D3D0015ED43 /* lexchange-logo2.png */; };
 		4DE38F0C1C97C12400B58849 /* DroidSansMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */; };
 		4DE38F3C1CA212E000B58849 /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4DE38F3B1CA212CF00B58849 /* libRNOverlay.a */; };
@@ -197,6 +199,8 @@
 		4868CBC0F5A3447FB26F9C72 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 0; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		4D18CF6A1C97744E00BE2D48 /* RNRecordAudio.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNRecordAudio.xcodeproj; path = "../node_modules/react-native-record-audio-ios/RNRecordAudio.xcodeproj"; sourceTree = "<group>"; };
 		4D18CF801C9783AE00BE2D48 /* RNSound.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSound.xcodeproj; path = "../node_modules/react-native-sound/RNSound.xcodeproj"; sourceTree = "<group>"; };
+		4DA048871CD09190000DBACA /* tutorial-camila.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tutorial-camila.m4a"; path = "../Audio/tutorial-camila.m4a"; sourceTree = "<group>"; };
+		4DA048881CD09190000DBACA /* tutorial-lucas.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tutorial-lucas.m4a"; path = "../Audio/tutorial-lucas.m4a"; sourceTree = "<group>"; };
 		4DB5503C1C8F7D3D0015ED43 /* lexchange-logo2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lexchange-logo2.png"; path = "../Images/lexchange-logo2.png"; sourceTree = "<group>"; };
 		4DE38F0B1C97C12400B58849 /* DroidSansMono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = DroidSansMono.ttf; path = ../Fonts/DroidSansMono.ttf; sourceTree = "<group>"; };
 		4DE38F361CA212CF00B58849 /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "../node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = "<group>"; };
@@ -314,6 +318,8 @@
 		09415ABC81A24E6FBFBBDB60 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				4DA048871CD09190000DBACA /* tutorial-camila.m4a */,
+				4DA048881CD09190000DBACA /* tutorial-lucas.m4a */,
 				8FC1608C69D44AE78A22922A /* Entypo.ttf */,
 				5DC4D236E1EE4BDE98678E59 /* EvilIcons.ttf */,
 				4868CBC0F5A3447FB26F9C72 /* FontAwesome.ttf */,
@@ -778,8 +784,10 @@
 				7A955618DBF04A298C5E2CCA /* FontAwesome.ttf in Resources */,
 				4DB5503D1C8F7D3D0015ED43 /* lexchange-logo2.png in Resources */,
 				B3D9E70D580C42A7960FEE91 /* Foundation.ttf in Resources */,
+				4DA048891CD09190000DBACA /* tutorial-camila.m4a in Resources */,
 				82A5305D2D7240E6B987D8BA /* Ionicons.ttf in Resources */,
 				7F16B57F5365466480F4DE1A /* MaterialIcons.ttf in Resources */,
+				4DA0488A1CD09190000DBACA /* tutorial-lucas.m4a in Resources */,
 				4FD0E90DCCE142319DBA99E9 /* Octicons.ttf in Resources */,
 				4DEFF61D1C8A98F200A62862 /* lexchange-logo.png in Resources */,
 				75792283CA304C2F89BC5CA3 /* Zocial.ttf in Resources */,

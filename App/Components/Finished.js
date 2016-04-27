@@ -45,7 +45,7 @@ class Finished extends Component {
         component: Templates,
         headerStyle: styles.headerShadow,
         passProps: {
-          tutorial: true,
+          tutorial: this.props.showTutorial,
         }
       });
     }
@@ -75,7 +75,7 @@ class Finished extends Component {
     var tutorialText = this.props.exampleLesson ? (
       <View>
         <Text style={styles.tutorialText}>
-          Here's a simple example of what you'll be making!
+          Here's a simple example of what you'll be making.
         </Text>
         <Text style={styles.tutorialText}>
           Tap text to see translations, and tap photos in the dialogue to hear audio.
@@ -84,7 +84,7 @@ class Finished extends Component {
       ) : (
       <View>
         <Text style={styles.tutorialText}>
-          Here's your finished lesson. Are you ready to start making more?
+          Here's your finished lesson. Way to go!
         </Text>
       </View>
     )
@@ -204,12 +204,12 @@ class Finished extends Component {
           </ScrollView>
         </View>
         <Tutorial
-          header={this.props.exampleLesson ? 'Welcome to Lexchange' : 'Congratulations!'}
+          header={this.props.exampleLesson ? 'Example Lesson' : 'Congratulations!'}
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={true}
-          label={this.props.exampleLesson ? 'Make Your First Lesson!' : 'Make More Lessons!'}
+          label={this.props.exampleLesson ? 'Make Your First Lesson!' : 'Done'}
           _next={this._next}/>
       </View>
     )

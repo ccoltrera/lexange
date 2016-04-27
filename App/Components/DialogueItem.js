@@ -45,7 +45,10 @@ class DialogueItem extends Component {
     this._resetTimer = audioUtils._resetTimer.bind(this);
 
     if (this.dialogue.audioUri) {
-      this.audioObject = new Sound(this.dialogue.audioUri, Sound.DOCUMENT, (error) => {
+      // If audio is template audio, find it in the main bundle
+      var location = (this.dialogue.audioUri.substring(0,8) === 'tutorial') ? (Sound.MAIN_BUNDLE) : (Sound.DOCUMENT)
+
+      this.audioObject = new Sound(this.dialogue.audioUri, location, (error) => {
         if (error) {
           console.log('failed to load the sound', error);
         } else { // loaded successfully
@@ -200,7 +203,6 @@ class DialogueItem extends Component {
     // Checks for values seen in the example lesson
     var image;
     if (this.person.pictureUri === 'Camila.png') {
-      console.log('Camila');
       image = require('../../Images/Camila.png');
     }
     else if (this.person.pictureUri === 'Lucas.png') {

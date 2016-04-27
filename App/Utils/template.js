@@ -32,14 +32,14 @@ var exampleLesson = {
       phrase: 'Bom dia, professora!',
       phraseTrans: 'Good morning, teacher!',
       audioUri:
-      'tutorial-audio-0.m4a'
+      'tutorial-lucas.m4a'
     },
     {
       person: 1,
       guide: 'Morning greeting to student',
       phrase: 'Bom dia, Lucas.',
       phraseTrans: 'Good morning, Lucas',
-      audioUri: 'tutorial-audio-1.m4a'
+      audioUri: 'tutorial-camila.m4a'
     },
     // {
     //   person: 0,

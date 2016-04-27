@@ -12,6 +12,10 @@ import React, {
 
 import Templates from './Templates';
 import ContinueButton from './ContinueButton';
+import Finished from './Finished';
+
+import template from '../Utils/template';
+var exampleLesson = template.exampleLesson;
 
 class NewTeacher extends Component {
   constructor(props) {
@@ -22,12 +26,13 @@ class NewTeacher extends Component {
 
   _next() {
     this.props.toRoute({
-      name: 'Templates',
-      component: Templates,
+      name: 'Example Lesson',
+      component: Finished,
+      headerStyle: styles.headerShadow,
       passProps: {
-        tutorial: true,
-      },
-      headerStyle: styles.headerShadow
+        exampleLesson: exampleLesson,
+        showTutorial: true
+      }
     });
   }
 
@@ -40,7 +45,12 @@ class NewTeacher extends Component {
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
               <View style={styles.labelBlock}>
-                <Text style={styles.labelText}>The best language lessons show language in context. Our simple templates make this easy.</Text>
+                <Text style={[styles.labelText, {marginBottom: 10}]}>
+                  The best language lessons show language in context — as stories.
+                </Text>
+                <Text style={styles.labelText}>
+                  Our simple templates make this easier.
+                </Text>
               </View>
               <View style={styles.one}>
                 <View style={styles.path}>
@@ -89,7 +99,7 @@ class NewTeacher extends Component {
             // (this.state.teacher && this.state.student)
             true
           }
-          label='Make Your First Lesson'
+          label="See What You'll Be Making"
           _next={this._next}
         />
       </View>

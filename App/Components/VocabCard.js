@@ -60,7 +60,6 @@ class VocabCard extends Component {
     // Checks for values seen in the example lesson
     var image;
     if (this.content.pictureUri === 'Camila.png') {
-      console.log('Camila');
       image = require('../../Images/Camila.png');
     }
     else if (this.content.pictureUri === 'Lucas.png') {

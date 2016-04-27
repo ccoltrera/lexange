@@ -216,6 +216,7 @@ class Vocab extends Component {
         </Modal>
         <View style={{height: height}}>
           <KeyboardAwareScrollView
+            keyboardShouldPersistTaps={true}
             style={styles.scrollView}>
             {vocab}
             <View style={styles.padder}></View>

@@ -27,7 +27,7 @@ class Templates extends Component {
 
     // If this is the tutorial, only the tutorial template is shown
     var lessonTemplates = this.props.tutorial ? (
-      realm.objects('LessonTemplate').filtered('name = "Greeting a Teacher (Morning)"')
+      realm.objects('LessonTemplate').filtered('name = "Greeting a Teacher (Morning)" OR name="Greeting a Teacher (Evening)"')
     ) : (
       realm.objects('LessonTemplate')
     )
@@ -82,10 +82,10 @@ class Templates extends Component {
     var tutorialText = (
       <View >
         <Text style={styles.tutorialText}>
-          We chose a simple template for your first lesson.
+          You can choose from two simple templates for your first lesson.
         </Text>
         <Text style={styles.tutorialText}>
-          Later, you can choose templates based on learner level and goals, or make your own!
+          Later you can choose from dozens, or make your own!
         </Text>
       </View>
     )

@@ -94,7 +94,7 @@ class DialogueForm extends Component {
               <View style={[styles.talkBubbleTriangle, nextStyle.phraseTriangle]} />
                 <TextInput
                     autoCorrect={false}
-                    returnKeyType='done'
+                    returnKeyType='default'
                     multiline={true}
                     style={[styles.textInput, styles.talkBubbleSquare, {width: bubbleWidth}, nextStyle.phrase]}
                     value={this.state.phrase}

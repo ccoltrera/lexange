@@ -164,6 +164,7 @@ class Dialogue extends Component {
         </Modal>
         <View style={{height: height}}>
           <KeyboardAwareScrollView
+            keyboardShouldPersistTaps={true}
             style={styles.scrollView}>
             {dialogueForms}
             <View style={styles.padder}></View>

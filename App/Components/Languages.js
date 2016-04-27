@@ -103,7 +103,9 @@ class Languages extends Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView style={styles.contentArea}>
+        <ScrollView
+          style={styles.contentArea}
+          keyboardShouldPersistTaps={true}>
           <View style={styles.card}>
             <Text style={styles.labelText}>{'Language you are teaching'}</Text>
             <TextInput

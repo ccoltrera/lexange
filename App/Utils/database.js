@@ -36,7 +36,7 @@ let realm = new Realm({
 
 var morningGreetingTemplate = {
   name: 'Greeting a Teacher (Morning)',
-  level: 'Low Elementary',
+  level: 'Beginner',
   lessonLength: 2,
   people: [
     {
@@ -58,10 +58,35 @@ var morningGreetingTemplate = {
   ]
 };
 
+var eveningGreetingTemplate = {
+  name: 'Greeting a Teacher (Evening)',
+  level: 'Beginner',
+  lessonLength: 2,
+  people: [
+    {
+      guide: 'A student',
+    },
+    {
+      guide: 'A teacher',
+    },
+  ],
+  dialogue: [
+    {
+      person: 0,
+      guide: 'Evening greeting to teacher',
+    },
+    {
+      person: 1,
+      guide: 'Evening greeting to student',
+    },
+  ]
+};
+
 realm.write(()=> {
   // realm.delete(realm.objects('LessonTemplate'))
   if (realm.objects('LessonTemplate').length === 0) {
     realm.create('LessonTemplate', morningGreetingTemplate);
+    realm.create('LessonTemplate', eveningGreetingTemplate);
   }
 });
 

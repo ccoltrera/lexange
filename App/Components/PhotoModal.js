@@ -23,7 +23,6 @@ class PhotoModal extends Component {
     // Checks for values seen in the example lesson
     var image;
     if (this.props.pictureUri === 'Camila.png') {
-      console.log('Camila');
       image = require('../../Images/Camila.png');
     }
     else if (this.props.pictureUri === 'Lucas.png') {
@@ -52,9 +51,9 @@ const styles = StyleSheet.create({
   },
   closer: {
     position: 'absolute',
-    top: 30,
+    top: 25,
     left: 15,
-    fontSize: 30,
+    fontSize: 25,
     color: '#FFF'
   },
   imageContainer: {
