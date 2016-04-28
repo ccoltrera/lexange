@@ -25,8 +25,8 @@ class PhotoModal extends Component {
     if (this.props.pictureUri === 'Camila.png') {
       image = require('../../Images/Camila.png');
     }
-    else if (this.props.pictureUri === 'Lucas.png') {
-      image = require('../../Images/Lucas.png');
+    else if (this.props.pictureUri === 'Lucas.jpg') {
+      image = require('../../Images/Lucas.jpg');
     }
     else {
       image = {uri: this.props.pictureUri};

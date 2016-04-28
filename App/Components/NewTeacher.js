@@ -45,32 +45,37 @@ class NewTeacher extends Component {
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
               <View style={styles.labelBlock}>
-                <Text style={[styles.labelText, {marginBottom: 10}]}>
+                {/*<Text style={[styles.labelText, {marginBottom: 10}]}>
                   The best language lessons show language in context — as stories.
-                </Text>
+                </Text>*/}
                 <Text style={styles.labelText}>
-                  Our simple templates make this easier.
+                  With just a few steps, you can teach your language in context — as stories.
                 </Text>
               </View>
               <View style={styles.one}>
                 <View style={styles.path}>
                   <View style={styles.unCircle}>
+                    <Text style={styles.stepNumber}>1</Text>
                   </View>
                   <View style={styles.line}>
                   </View>
                   <View style={styles.unCircle}>
+                    <Text style={styles.stepNumber}>2</Text>
                   </View>
                   <View style={styles.line}>
                   </View>
                   <View style={styles.unCircle}>
+                    <Text style={styles.stepNumber}>3</Text>
                   </View>
                   <View style={styles.line}>
                   </View>
                   <View style={styles.unCircle}>
+                    <Text style={styles.stepNumber}>4</Text>
                   </View>
                   <View style={styles.line}>
                   </View>
                   <View style={styles.unCircle}>
+                    <Text style={styles.stepNumber}>5</Text>
                   </View>
                 </View>
                 <View style={styles.third}>
@@ -92,6 +97,7 @@ class NewTeacher extends Component {
                 </View>
               </View>
             </View>
+            <Text style={styles.labelText}>Skip Tutorial</Text>
           </ScrollView>
         </View>
         <ContinueButton
@@ -200,7 +206,7 @@ const styles = StyleSheet.create({
   },
   card: {
     marginTop: 5,
-    marginBottom: 10,
+    marginBottom: 15,
     marginLeft: 15,
     marginRight: 15,
     paddingTop: 15,
@@ -214,6 +220,14 @@ const styles = StyleSheet.create({
       height: 2,
       width: 0
     }
+  },
+  stepNumber: {
+    backgroundColor: 'transparent',
+    textAlign: 'center',
+    fontFamily: 'System',
+    fontWeight: '700',
+    color: 'rgba(22,159,173,1)',
+    fontSize: 16,
   }
 });
 

@@ -62,8 +62,8 @@ class VocabCard extends Component {
     if (this.content.pictureUri === 'Camila.png') {
       image = require('../../Images/Camila.png');
     }
-    else if (this.content.pictureUri === 'Lucas.png') {
-      image = require('../../Images/Lucas.png');
+    else if (this.content.pictureUri === 'Lucas.jpg') {
+      image = require('../../Images/Lucas.jpg');
     }
     else {
       image = {uri: this.content.pictureUri};

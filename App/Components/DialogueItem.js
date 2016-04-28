@@ -205,8 +205,8 @@ class DialogueItem extends Component {
     if (this.person.pictureUri === 'Camila.png') {
       image = require('../../Images/Camila.png');
     }
-    else if (this.person.pictureUri === 'Lucas.png') {
-      image = require('../../Images/Lucas.png');
+    else if (this.person.pictureUri === 'Lucas.jpg') {
+      image = require('../../Images/Lucas.jpg');
     }
     else {
       image = {uri: this.person.pictureUri};

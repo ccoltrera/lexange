@@ -15,7 +15,7 @@ var exampleLesson = {
       desc: 'Um aluno',
       descTrans: 'A student [male]',
       name: 'Lucas',
-      pictureUri: 'Lucas.png'
+      pictureUri: 'Lucas.jpg'
     },
     {
       guide: 'A teacher',
