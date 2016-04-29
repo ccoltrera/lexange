@@ -95,13 +95,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#169FAD',
     marginLeft: -2,
     marginRight: -2,
-    // shadowColor: '#000000',
-    // shadowOpacity: 0.2,
-    // shadowRadius: 2,
-    // shadowOffset: {
-    //   height: 2,
-    //   width: 0,
-    // },
+    shadowColor: '#000000',
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: 0,
+    },
   },
   container: {
     flex: 1,
