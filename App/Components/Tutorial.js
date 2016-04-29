@@ -97,18 +97,18 @@ class Tutorial extends Component {
     )
 
     var header = this.props.header ? (
-      <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', width: width}}>
         <Text style={styles.tabText}>{this.props.header} </Text>
         <Icon
           style={styles.chevron}
-          name={this.state.showThisTutorial || this.state.firstTutorial ? 'chevron-down' : 'chevron-up' } />
+          name={this.state.showThisTutorial || this.state.firstTutorial ? 'times' : 'info-circle' } />
       </View>
     ): (
-      <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center'}}>
+      <View style={{flexDirection: 'row', justifyContent: 'center', alignSelf: 'center', width: width}}>
         <Text style={styles.tabText}>TIPS </Text>
         <Icon
           style={styles.chevron}
-          name={this.state.showThisTutorial || this.state.firstTutorial ? 'chevron-down' : 'chevron-up' } />
+          name={this.state.showThisTutorial || this.state.firstTutorial ? 'times' : 'info-circle' } />
       </View>
     )
 
@@ -154,8 +154,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: '#FFFFFF',
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
     borderColor: 'rgba(22,159,173,0.8)',
     paddingTop: 10,
     paddingLeft: 20,
@@ -181,10 +181,10 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   chevron: {
+    position: 'absolute',
+    right: 20,
     fontSize: 22,
     color: '#169FAD',
-    marginTop: 0.5,
-    marginLeft: 2,
     backgroundColor: 'transparent'
   }
 });

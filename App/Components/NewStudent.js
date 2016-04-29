@@ -27,7 +27,7 @@ class NewTeacher extends Component {
       headerStyle: styles.headerShadow,
       passProps: {
         showTutorial: true,
-        role: 'teacher'
+        role: 'student'
       }
     });
   }
@@ -41,11 +41,8 @@ class NewTeacher extends Component {
             showVerticalScrollIndicator={true}>
             <View style={styles.card}>
               <View style={styles.labelBlock}>
-                {/*<Text style={[styles.labelText, {marginBottom: 10}]}>
-                  The best language lessons show language in context — as stories.
-                </Text>*/}
                 <Text style={styles.labelText}>
-                  You can teach your language in context — as stories.
+                  Lexchange helps you learn languages that don't have textbooks.
                 </Text>
               </View>
               <View style={styles.one}>
@@ -58,38 +55,22 @@ class NewTeacher extends Component {
                   <View style={styles.unCircle}>
                     <Text style={styles.stepNumber}>2</Text>
                   </View>
-                  <View style={styles.line}>
+                  {/*<View style={styles.line}>
                   </View>
                   <View style={styles.unCircle}>
                     <Text style={styles.stepNumber}>3</Text>
-                  </View>
-                  <View style={styles.line}>
-                  </View>
-                  <View style={styles.unCircle}>
-                    <Text style={styles.stepNumber}>4</Text>
-                  </View>
-                  <View style={styles.line}>
-                  </View>
-                  <View style={styles.unCircle}>
-                    <Text style={styles.stepNumber}>5</Text>
-                  </View>
+                  </View>*/}
                 </View>
                 <View style={styles.third}>
                   <View style={[styles.descBlock, {marginTop: 8}]}>
-                    <Text style={styles.sectionDesc}>Choose a <Text style={styles.sectionName}>template</Text></Text>
+                    <Text style={styles.sectionDesc}>Get <Text style={styles.sectionName}>lessons</Text> from teachers</Text>
                   </View>
                   <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Tell us the <Text style={styles.sectionName}>languages</Text></Text>
+                    <Text style={[styles.sectionDesc, {marginBottom: 25}]}>Use <Text style={styles.sectionName}>study mode</Text> to learn vocab and phrases</Text>
                   </View>
-                  <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Add <Text style={styles.sectionName}>characters</Text>, <Text style={styles.sectionName}>places</Text>, and <Text style={styles.sectionName}>items</Text></Text>
-                  </View>
-                  <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Give the characters <Text style={styles.sectionName}>dialogue</Text></Text>
-                  </View>
-                  <View style={styles.descBlock}>
-                    <Text style={styles.sectionDesc}>Share what you <Text style={styles.sectionName}>finished</Text>!</Text>
-                  </View>
+                  {/*<View style={styles.descBlock}>
+                    <Text style={styles.sectionDesc}>Capture vocab <Text style={styles.sectionName}>on-the-go</Text></Text>
+                  </View>*/}
                 </View>
               </View>
             </View>
@@ -101,7 +82,7 @@ class NewTeacher extends Component {
             // (this.state.teacher && this.state.student)
             true
           }
-          label="See What You'll Be Making"
+          label="What's A Lesson?"
           _next={this._next}
         />
       </View>
@@ -159,12 +140,12 @@ const styles = StyleSheet.create({
   },
   line: {
     margin: -5,
-    height: 50,
-    width: 5,
-    backgroundColor: 'rgba(22,159,173,1)',
+    height: 25,
+    width: 1,
+    backgroundColor: 'rgba(22,159,173,0)',
     alignSelf: 'center',
     borderWidth: 0,
-    borderColor: 'rgba(22,159,173,1)'
+    borderColor: 'rgba(22,159,173,0)'
   },
   labelBlock: {
     marginTop: 5,
@@ -198,7 +179,7 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   descBlock: {
-    marginBottom: 56.75
+    marginBottom: 31.75
   },
   card: {
     marginTop: 5,

@@ -14,12 +14,14 @@ import FAIcon from 'react-native-vector-icons/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import NewTeacher from './NewTeacher';
+import NewStudent from './NewStudent';
 
 class LandingScreen extends Component {
   constructor(props) {
     super(props);
 
     this._newTeacher = this._newTeacher.bind(this);
+    this._newStudent = this._newStudent.bind(this);
   }
 
   _newTeacher() {
@@ -28,15 +30,14 @@ class LandingScreen extends Component {
       component: NewTeacher,
       headerStyle: styles.headerShadow
     });
-    // this.props.toRoute({
-    //   name: 'Example Lesson',
-    //   component: Finished,
-    //   headerStyle: styles.headerShadow,
-    //   passProps: {
-    //     exampleLesson: exampleLesson,
-    //     showTutorial: true
-    //   }
-    // });
+  }
+
+  _newStudent() {
+    this.props.toRoute({
+      name: 'Welcome',
+      component: NewStudent,
+      headerStyle: styles.headerShadow
+    });
   }
 
   render() {
@@ -69,6 +70,7 @@ class LandingScreen extends Component {
         <View style={styles.row}>
           <TouchableHighlight
             style={styles.bigButton}
+            onPress={this._newStudent}
             underlayColor='#C6DCDF'>
             <View>
               <Text style={styles.bBText}>New Students</Text>

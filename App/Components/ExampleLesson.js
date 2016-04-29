@@ -11,16 +11,14 @@ import React, {
   Modal
 } from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
 import Tutorial from './Tutorial';
 import VocabCard from './VocabCard';
 import DialogueItem from './DialogueItem';
 import ContinueButton from './ContinueButton';
 import PhotoModal from './PhotoModal';
 
-import CreateAccount from './CreateAccount';
 import Templates from './Templates';
+import exampleLesson from '../Utils/exampleLesson';
 
 class Finished extends Component {
   constructor(props) {
@@ -31,7 +29,7 @@ class Finished extends Component {
       showPhotoModal: false
     }
 
-    this.template = this.props._readTemplate();
+    this.template = exampleLesson;
 
     this._next = this._next.bind(this);
     this._toggleTutorial = this._toggleTutorial.bind(this);
@@ -39,11 +37,23 @@ class Finished extends Component {
   }
 
   _next() {
-    this.props.toRoute({
-      name: 'Create Account',
-      component: CreateAccount,
-      headerStyle: styles.headerShadow
-    });
+    if (this.props.role === 'teacher') {
+      this.props.toRoute({
+        name: 'Templates',
+        component: Templates,
+        headerStyle: styles.headerShadow,
+        passProps: {
+          tutorial: this.props.showTutorial,
+        }
+      });
+    }
+    else if (this.props.role === 'student') {
+      this.props.toRoute({
+        name: 'Create Account',
+        component: CreateAccount,
+        headerStyle: styles.headerShadow
+      });
+    }
   }
 
   _toggleTutorial() {
@@ -60,10 +70,22 @@ class Finished extends Component {
   }
 
   render() {
-    var tutorialText = (
+    var tutorialText = this.props.role === 'teacher' ? (
       <View>
         <Text style={styles.tutorialText}>
-          Here's your finished lesson. Way to go!
+          Here's a simple example of what you'll be making.
+        </Text>
+        <Text style={styles.tutorialText}>
+          Tap text to see translations, and tap photos in the dialogue to hear audio.
+        </Text>
+      </View>
+      ) : (
+      <View>
+        <Text style={styles.tutorialText}>
+          Lessons are like stories, with characters and dialogue. Some even have locations and items!
+        </Text>
+        <Text style={styles.tutorialText}>
+          Tap text to see translations, and tap photos in the dialogue to hear audio.
         </Text>
       </View>
     )
@@ -183,12 +205,12 @@ class Finished extends Component {
           </ScrollView>
         </View>
         <Tutorial
-          header={'Congratulations!'}
+          header={'Example Lesson'}
           tutorialText={tutorialText}
           showTutorial={this.props.showTutorial} />
         <ContinueButton
           enabled={true}
-          label={'Done'}
+          label={this.props.role === 'teacher' ? 'Make Your First Lesson!' : 'Study Mode'}
           _next={this._next}/>
       </View>
     )
